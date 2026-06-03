@@ -1,0 +1,11 @@
+{
+  "version": "1.0.0-foundation",
+  "schema_version": 1,
+
+  "workspace": "A_06_WORKSPACE",
+  "storage": "A_05_STORAGE",
+  "logs": "A_08_LOGS",
+
+  "ollama_url": "http://127.0.0.1:11434/api/chat",
+  "vision_model": "qwen2.5vl:7b"
+}

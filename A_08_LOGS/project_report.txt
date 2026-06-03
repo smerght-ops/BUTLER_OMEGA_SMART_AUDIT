@@ -1,0 +1,260 @@
+ОТЧЕТ АУДИТА СИСТЕМЫ
+Дата: 2026-06-03 13:57:05
+
+--- СТРУКТУРА ---
+[DIR] A_01_CORE
+  |-- Butler.py (0.9 KB)
+  |-- alarm.py (0.2 KB)
+  |-- fix_butler.py (0.2 KB)
+  |-- healthcheck.py (1.0 KB)
+  |-- Текстовый документ.md (5.9 KB)
+[DIR] A_02_MANAGERS
+  |-- archiver.py (0.2 KB)
+  |-- audit_reporter.py (2.7 KB)
+  |-- catalog_manager.py (1.7 KB)
+[DIR] A_03_ENGINES
+  |-- [DIR] vision
+  |--   |-- GO.py (1.1 KB)
+  |--   |-- vision_tool.py (0.2 KB)
+[DIR] A_04_AGENTS
+  |-- find_bills.py (0.2 KB)
+  |-- professor.py (0.2 KB)
+[DIR] A_06_WORKSPACE
+[DIR] A_07_CONFIG
+  |-- system_manifest.json (0.1 KB)
+[DIR] A_09_TESTS
+  |-- test_vision.py (0.2 KB)
+audit.bat (0.2 KB)
+
+--- ЗАРЕГИСТРИРОВАННЫЕ ФАЙЛЫ (DB) ---
+Файл: ../A_01_CORE/Butler.py | Тег: core
+
+--- ВЫТЯЖКА КОДА ---
+
+[FILE: C:\Users\KOS\Desktop\Butler_Agent\BUTLER_OMEGA\A_01_CORE\alarm.py]
+Ошибка чтения файла: 'utf-8' codec can't decode byte 0xd1 in position 137: invalid continuation byte
+
+[FILE: C:\Users\KOS\Desktop\Butler_Agent\BUTLER_OMEGA\A_01_CORE\Butler.py]
+import sys, os, logging
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+import config
+from A_02_TOOLS import GO
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(message)s")
+
+def main():
+    if not os.path.exists(config.MEMORY_DIR): os.makedirs(config.MEMORY_DIR)
+    
+    files = [f for f in os.listdir(config.ARCHIVE_DIR) if not f.startswith(".")]
+    for f in files:
+        path = os.path.join(config.ARCHIVE_DIR, f)
+        ext = os.path.splitext(f)[1].lower()
+        
+        if ext in [".jpg", ".jpeg", ".png", ".webp"]:
+            print(f"Processing {f}...")
+            res = GO.process_image(path)
+            with open(os.path.join(config.MEMORY_DIR, f"REPORT_{f}.txt"), "w", encoding="utf-8") as r:
+                r.write(res)
+            print("Done.")
+        else:
+            print(f"Skipping {f}")
+
+if __name__ == "__main__":
+    main()
+
+
+[FILE: C:\Users\KOS\Desktop\Butler_Agent\BUTLER_OMEGA\A_01_CORE\fix_butler.py]
+Ошибка чтения файла: 'utf-8' codec can't decode byte 0xcf in position 135: invalid continuation byte
+
+[FILE: C:\Users\KOS\Desktop\Butler_Agent\BUTLER_OMEGA\A_01_CORE\healthcheck.py]
+import os
+import json
+
+def check_system():
+    manifest_path = "../A_07_CONFIG/system_manifest.json"
+    if not os.path.exists(manifest_path):
+        return False, ["✗ Manifest отсутствует"]
+
+    with open(manifest_path, "r") as f:
+        config = json.load(f)
+
+    paths = {
+        "Workspace": config["workspace"],
+        "Storage": config["storage"],
+        "Logs": config["logs"]
+    }
+    
+    results = []
+    all_ok = True
+    
+    for name, path in paths.items():
+        if os.path.exists(path):
+            results.append(f"✓ {name} найден")
+        else:
+            results.append(f"✗ Каталог {name} ({path}) отсутствует")
+            all_ok = False
+            
+    return all_ok, results
+
+if __name__ == "__main__":
+    ok, lines = check_system()
+    print("=== BUTLER OMEGA v1.0 FOUNDATION ===")
+    for line in lines:
+        print(line)
+    
+    if not ok:
+        print("\n!!! SYSTEM NOT READY !!!")
+        exit(1)
+    else:
+        print("\nSYSTEM READY")
+
+[FILE: C:\Users\KOS\Desktop\Butler_Agent\BUTLER_OMEGA\A_02_MANAGERS\archiver.py]
+Ошибка чтения файла: 'utf-8' codec can't decode byte 0xc0 in position 148: invalid start byte
+
+[FILE: C:\Users\KOS\Desktop\Butler_Agent\BUTLER_OMEGA\A_02_MANAGERS\audit_reporter.py]
+import os
+import sqlite3
+import sys
+from datetime import datetime
+
+# Установка кодировки для корректного отображения в терминале
+sys.stdout.reconfigure(encoding='utf-8')
+
+# Абсолютный путь к корню проекта (папка BUTLER_OMEGA)
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+
+# Абсолютный путь к файлу отчета
+REPORT_FILE = os.path.join(os.path.dirname(__file__), "../A_08_LOGS/project_report.txt")
+
+# Путь к базе данных
+DB_PATH = os.path.join(os.path.dirname(__file__), "../A_05_STORAGE/catalog.db")
+
+def get_tree(path, indent=""):
+    tree = ""
+    try:
+        items = sorted(os.listdir(path))
+        for item in items:
+            if item in ['A_08_LOGS', 'A_05_STORAGE']: continue
+            full_path = os.path.join(path, item)
+            if os.path.isdir(full_path):
+                tree += f"{indent}[DIR] {item}\n"
+                tree += get_tree(full_path, indent + "  |-- ")
+            else:
+                size = os.path.getsize(full_path) / 1024
+                tree += f"{indent}{item} ({size:.1f} KB)\n"
+    except Exception as e:
+        tree += f"{indent}Ошибка доступа: {e}\n"
+    return tree
+
+def generate_report():
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    
+    # 1. Структура и дерево
+    report = f"ОТЧЕТ АУДИТА СИСТЕМЫ\nДата: {timestamp}\n\n--- СТРУКТУРА ---\n{get_tree(ROOT)}"
+    
+    # 2. Зарегистрированные файлы из базы
+    report += "\n--- ЗАРЕГИСТРИРОВАННЫЕ ФАЙЛЫ (DB) ---\n"
+    if os.path.exists(DB_PATH):
+        with sqlite3.connect(DB_PATH) as conn:
+            cursor = conn.execute("SELECT path, tag FROM files")
+            for row in cursor.fetchall():
+                report += f"Файл: {row[0]} | Тег: {row[1]}\n"
+    else:
+        report += "База данных не найдена.\n"
+    
+    # 3. Код
+    report += "\n--- ВЫТЯЖКА КОДА ---\n"
+    for root, _, files in os.walk(ROOT):
+        for file in files:
+            if file.endswith(".py"):
+                path = os.path.join(root, file)
+                report += f"\n[FILE: {path}]\n"
+                try:
+                    with open(path, 'r', encoding='utf-8') as f:
+                        report += f.read() + "\n"
+                except Exception as e:
+                    report += f"Ошибка чтения файла: {e}\n"
+    
+    with open(REPORT_FILE, 'w', encoding='utf-8') as f:
+        f.write(report)
+    print(f"✓ Отчет создан: {REPORT_FILE}")
+
+if __name__ == "__main__":
+    generate_report()
+
+[FILE: C:\Users\KOS\Desktop\Butler_Agent\BUTLER_OMEGA\A_02_MANAGERS\catalog_manager.py]
+import sqlite3
+import os
+from datetime import datetime
+
+class CatalogManager:
+    def __init__(self, db_path="../A_05_STORAGE/catalog.db"):
+        # Приводим путь к базе к абсолютному, чтобы не зависеть от места запуска
+        self.db_path = os.path.abspath(os.path.join(os.path.dirname(__file__), db_path))
+        self._init_db()
+
+    def _init_db(self):
+        with sqlite3.connect(self.db_path) as conn:
+            conn.execute('''CREATE TABLE IF NOT EXISTS files 
+                           (id INTEGER PRIMARY KEY, path TEXT UNIQUE, last_modified TEXT, tag TEXT)''')
+            conn.commit()
+
+    def register_file(self, path, tag="general"):
+        # Проверяем существование файла перед регистрацией
+        if not os.path.exists(path):
+            print(f"✗ ОШИБКА: Файл не найден: {path}")
+            return
+            
+        mod_time = datetime.fromtimestamp(os.path.getmtime(path)).isoformat()
+        with sqlite3.connect(self.db_path) as conn:
+            try:
+                conn.execute("INSERT OR REPLACE INTO files (path, last_modified, tag) VALUES (?, ?, ?)", 
+                             (path, mod_time, tag))
+                conn.commit()
+                print(f"✓ Зарегистрировано: {path}")
+            except Exception as e:
+                print(f"✗ ОШИБКА БД: {e}")
+
+if __name__ == "__main__":
+    cm = CatalogManager()
+    # Регистрируем файл по правильному пути из папки A_02_MANAGERS
+    cm.register_file("../A_01_CORE/Butler.py", "core")
+
+[FILE: C:\Users\KOS\Desktop\Butler_Agent\BUTLER_OMEGA\A_03_ENGINES\vision\GO.py]
+﻿import sys, os, requests, base64
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+import config
+
+def process_image(image_path):
+    with open(image_path, "rb") as f:
+        data = base64.b64encode(f.read()).decode("utf-8")
+    
+    payload = {
+        "model": config.VISION_MODEL,
+        "messages": [
+            {"role": "system", "content": "Ты - помощник, который отвечает ИСКЛЮЧИТЕЛЬНО на русском языке."},
+            {"role": "user", "content": "Опиши это изображение максимально подробно на русском языке.", "images": [data]}
+        ],
+        "stream": False
+    }
+    
+    try:
+        r = requests.post(config.OLLAMA_URL, json=payload, timeout=600)
+        if r.status_code == 200:
+            return r.json().get("message", {}).get("content", "Нет данных")
+        else:
+            return f"API Error {r.status_code}: {r.text}"
+    except Exception as e:
+        return f"Критическая ошибка: {str(e)}"
+
+[FILE: C:\Users\KOS\Desktop\Butler_Agent\BUTLER_OMEGA\A_03_ENGINES\vision\vision_tool.py]
+Ошибка чтения файла: 'utf-8' codec can't decode byte 0xcc in position 149: invalid continuation byte
+
+[FILE: C:\Users\KOS\Desktop\Butler_Agent\BUTLER_OMEGA\A_04_AGENTS\find_bills.py]
+Ошибка чтения файла: 'utf-8' codec can't decode byte 0xcf in position 137: invalid continuation byte
+
+[FILE: C:\Users\KOS\Desktop\Butler_Agent\BUTLER_OMEGA\A_04_AGENTS\professor.py]
+Ошибка чтения файла: 'utf-8' codec can't decode byte 0xc3 in position 141: invalid continuation byte
+
+[FILE: C:\Users\KOS\Desktop\Butler_Agent\BUTLER_OMEGA\A_09_TESTS\test_vision.py]
+Ошибка чтения файла: 'utf-8' codec can't decode byte 0xcf in position 136: invalid continuation byte

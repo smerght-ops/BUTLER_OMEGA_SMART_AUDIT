@@ -19,6 +19,7 @@ from A_04_AGENTS.OpenDocumentDepartment.runner import OpenDocumentDepartment
 from A_04_AGENTS.ProjectDocumentationDepartment.runner import ProjectDocumentationDepartment
 from A_04_AGENTS.HomeDepartment.runner import HomeDepartment
 from A_04_AGENTS.BrowserDepartment.runner import BrowserDepartment
+from A_04_AGENTS.PublicationGuardianDepartment.runner import PublicationGuardianDepartment
 from A_07_MEMORY.semantic_memory import SemanticMemory
 from A_07_MEMORY.semantic_reasoning_engine import SemanticReasoningEngine
 from A_03_ORCHESTRATION.butler_harness import ButlerHarness
@@ -42,6 +43,9 @@ class SmartDispatcherV2:
 
         # Specialized handlers precede broad HOME/DOCUMENTS handlers.
         self.departments = [
+            # Publication inspection is a mandatory security gate and must be
+            # registered before broad operational departments.
+            PublicationGuardianDepartment(),
             ProjectDocumentationDepartment(),
             BrowserDepartment(),
             ImageDepartment(),
@@ -74,6 +78,47 @@ class SmartDispatcherV2:
             if self._dept_name(dept) == name.upper():
                 return dept
         return None
+
+    @staticmethod
+    def _publication_guardian_fault(error: str) -> dict:
+        """Return a stable fail-closed dispatcher response without leaking data."""
+        return {
+            "ok": False,
+            "department": "PUBLICATION_GUARDIAN",
+            "model": "SmartDispatcherV2",
+            "latency_ms": 0,
+            "text": "Publication Guardian: FAULT_BLOCK",
+            "error": error,
+            "metadata": {
+                "publication_allowed": False,
+                "publication_result": {
+                    "api_version": "v1",
+                    "status": "FAULT_BLOCK",
+                    "error_category": error,
+                },
+            },
+        }
+
+    def _dispatch_publication_guardian(self, query: str, context: dict) -> dict:
+        guardian = self._find_dept_by_name("PUBLICATION_GUARDIAN")
+        if guardian is None:
+            return self._publication_guardian_fault("GUARDIAN_UNAVAILABLE")
+        try:
+            result = self._execute_department(guardian, query, context=context)
+        except Exception:
+            return self._publication_guardian_fault("GUARDIAN_EXECUTION_FAILED")
+        if not isinstance(result, dict):
+            return self._publication_guardian_fault("GUARDIAN_INVALID_RESPONSE")
+        metadata = result.get("metadata")
+        publication = metadata.get("publication_result") if isinstance(metadata, dict) else None
+        status = publication.get("status") if isinstance(publication, dict) else None
+        allowed = metadata.get("publication_allowed") is True if isinstance(metadata, dict) else False
+        expected_allowed = status in {"PASS", "PASS_WITH_WARNINGS"}
+        if status not in {"PASS", "PASS_WITH_WARNINGS", "BLOCK", "FAULT_BLOCK"}:
+            return self._publication_guardian_fault("GUARDIAN_INVALID_RESPONSE")
+        if allowed != expected_allowed or bool(result.get("ok")) != expected_allowed:
+            return self._publication_guardian_fault("GUARDIAN_CONTRACT_MISMATCH")
+        return result
 
     def _execute_task_plan(self, plan: dict, context: dict = None) -> dict:
         """Execute all steps in a TaskPlan through existing departments."""
@@ -282,6 +327,12 @@ class SmartDispatcherV2:
     def dispatch(self, query: str, context: dict = None):
 
         context = dict(context or {})
+
+        # An actual PublicationRequest is never routed through semantic/chat or
+        # another department. Missing, failed, or malformed Guardian execution
+        # remains a hard FAULT_BLOCK.
+        if "publication_request" in context:
+            return self._dispatch_publication_guardian(query, context)
 
         if "memory_packet" not in context:
             try:

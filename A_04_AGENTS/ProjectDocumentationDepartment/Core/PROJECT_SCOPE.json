@@ -1,0 +1,33 @@
+﻿{
+    "version":  "1.0",
+    "production":  [
+                       "A_01_CORE",
+                       "A_02_MANAGERS",
+                       "A_03_ORCHESTRATION",
+                       "A_04_AGENTS",
+                       "A_05_STORAGE",
+                       "A_06_WORKSPACE",
+                       "A_07_MEMORY",
+                       "A_07_CONFIG",
+                       "A_08_LOGS"
+                   ],
+    "tools":  [
+                  "TOOLS"
+              ],
+    "laboratory":  [
+                       "A_00_AVARIYKA",
+                       "A_99_TEST_DATA"
+                   ],
+    "archives":  [
+                     "A_00_ARCHIVE_BACKUPS",
+                     "A_00_HISTORY",
+                     "A_00_ARCHIVE"
+                 ],
+    "ignore":  [
+                   "__pycache__",
+                   ".git",
+                   ".venv",
+                   "venv",
+                   "env"
+               ]
+}

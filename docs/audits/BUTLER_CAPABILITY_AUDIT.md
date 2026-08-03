@@ -1,0 +1,1801 @@
+============================================================
+BUTLER CAPABILITY AUDIT
+============================================================
+
+## Memory
+- **AttentionMemory** (call) — 1136
+- **ExecutionHistory** (class) — 292
+- **ExecutionMemoryV2** (call) — 1118
+- **HistoryScanner** (class) — 553
+- **MemoryAdvisor** (class) — 1141
+- **MemoryCore** (call) — 208
+- **MemoryDepartment** (call) — 1340
+- **MemoryFacade** (class) — 1144
+- **MemoryFacadeV2** (class) — 1155
+- **MemoryLayer** (call) — 409
+- **MemoryLoop** (call) — 447
+- **MemoryManager** (call) — 1346
+- **MemoryOrchestrator** (call) — 1136
+- **MemoryOrchestratorV2** (class) — 1159
+- **MemoryReplay** (call) — 1158
+- **MemorySidecar** (class) — 448
+- **PNGWorkflowMemory** (class) — 1164
+- **ProjectHistory** (call) — 1145
+- **ProjectMemoryLoader** (call) — 405
+- **SelfHealingMemory** (call) — 1505
+- **SemanticCompressor** (class) — 1176
+- **SemanticConstraintLayer** (call) — 1216
+- **SemanticCore** (call) — 1179
+- **SemanticLayer** (class) — 471
+- **SemanticMatch** (class) — 1192
+- **SemanticMemory** (call) — 1285
+- **SemanticQueryParser** (call) — 1216
+- **SemanticReasoningEngine** (call) — 1192
+- **SemanticReasoningEngineV2** (call) — 1218
+- **SemanticRelationsEngine** (call) — 1199
+- **SemanticSearchEngine** (call) — 1141
+- **TestMemoryAdvisor** (class) — 1347
+- **append_memory** (call) — 508
+- **build_memory_packet** (call) — 218
+- **get_full_history** (call) — 1124
+- **get_history** (call) — 1160
+- **get_memory_summary** (call) — 405
+- **get_weighted_memory** (call) — 1136
+- **load_memory_index** (call) — 1090
+- **memory_stats** (call) — 1141
+- **memory_summary** (call) — 476
+- **project_memory_summary_text** (call) — 1277
+- **rebuild_user_memory** (function) — 1166
+- **route_memory** (function) — 1161
+- **run_memory_guardian** (call) — 1486
+- **save_to_memory** (call) — 1346
+
+## Routing
+- **AgentRouter** (call) — 468
+- **CatalogSearchBridge** (class) — 1125
+- **ChatCoreBridge** (class) — 205
+- **ChatRouterMirror** (class) — 419
+- **ComfyUIBridge** (class) — 371
+- **ContextProvider** (call) — 267
+- **Dispatcher** (call) — 365
+- **DispatcherAgent** (call) — 116
+- **DispatcherBridge** (class) — 429
+- **DispatcherScanner** (call) — 549
+- **DreamDispatcherAdapter** (class) — 432
+- **FactoryCoreBridge** (call) — 434
+- **FakeDispatcher** (class) — 291
+- **ProviderManager** (class) — 367
+- **RouterIntegration** (class) — 467
+- **RouterRegistry** (call) — 123
+- **SmartDispatcher** (call) — 227
+- **SmartDispatcherV2** (call) — 597
+- **SmartRouter** (call) — 1360
+- **ToolBridge** (call) — 365
+
+## Image
+- **ImageDepartment** (call) — 1394
+- **ImageHandler** (call) — 387
+- **ImageSession** (class) — 428
+- **OllamaVisionBackend** (call) — 391
+- **VisionAnalyzer** (call) — 1357
+- **VisionDepartment** (call) — 324
+- **VisionEngine** (class) — 391
+- **_ask_artist** (call) — 499
+- **_build_artist_prompt** (call) — 499
+- **_encode_image** (call) — 625
+- **_extract_image_path** (call) — 625
+- **_extract_scanned_pdf_with_vision** (call) — 385
+- **_latest_image** (call) — 499
+- **_select_artist** (call) — 499
+- **check_comfy_status** (call) — 371
+- **check_comfyui** (call) — 417
+- **generate_image** (call) — 371
+- **image_to_string** (call) — 383
+- **process_image** (function) — 373
+
+## Execution
+- **AgentLoopExecutor** (class) — 1114
+- **ExecutionPolicy** (call) — 296
+- **Executor** (call) — 375
+- **ExecutorFactory** (class) — 346
+- **PolicyLoader** (class) — 296
+- **PolicyRegistry** (class) — 297
+- **PolicyValidator** (class) — 298
+- **Recipe** (call) — 1105
+- **RecipeBuilder** (call) — 279
+- **RecipeExecutor** (class) — 348
+- **RecipeGenerator** (call) — 1420
+- **RecipeLoader** (class) — 349
+- **RecipeQueueWatcher** (call) — 350
+- **RecipeStep** (class) — 1105
+- **RecipeValidator** (class) — 318
+- **RecipeWriter** (class) — 351
+- **ScopePolicy** (call) — 562
+- **TaskContractBuilder** (call) — 281
+- **TaskFeeder** (class) — 235
+- **TaskPlanner** (class) — 309
+- **TaskRunner** (class) — 352
+- **build_planning_recipe** (call) — 261
+- **complete_task** (call) — 352
+- **completed_recipes** (call) — 293
+- **consolidate_completed_task** (call) — 291
+- **default_policy** (call) — 296
+- **executor** (call) — 399
+- **failed_recipes** (call) — 293
+- **fetch_task** (call) — 235
+- **get_next_task** (call) — 480
+- **pending_recipes** (call) — 350
+- **process_agent_task** (call) — 615
+- **run_guarded_task** (function) — 1420
+- **run_task** (call) — 352
+- **sample_executor** (function) — 399
+
+## Knowledge
+- **CatalogManager** (class) — 364
+- **EngineeringObjectCatalog** (call) — 529
+- **HybridResolver** (call) — 412
+- **ReferenceResolver** (call) — 507
+- **Resolver** (class) — 514
+- **SearchDepartment** (call) — 1285
+- **full_text_search** (call) — 1125
+- **get_preferences** (call) — 218
+- **rebuild_search_index** (call) — 251
+- **search** (call) — 379
+- **search_by_entity** (call) — 1354
+- **search_by_tag** (call) — 1354
+- **search_by_text** (call) — 338
+- **search_event** (call) — 1158
+- **show_catalog** (call) — 1455
+- **test_catalog_update** (function) — 257
+- **test_fts5_search** (call) — 209
+- **update_search_context** (call) — 1125
+
+## Architecture
+- **ExecutionRegistry** (class) — 1138
+- **ExecutionRegistryDiscoveryAgent** (class) — 527
+- **GoalsRegistryDiscoveryAgent** (class) — 528
+- **HandlerRegistry** (call) — 387
+- **Lock** (call) — 1202
+- **ManifestLoader** (class) — 250
+- **PassportCommandHandler** (call) — 467
+- **PassportDiscoveryAgent** (class) — 530
+- **PassportReport** (class) — 1088
+- **PassportScanner** (class) — 556
+- **ProjectPassportLoader** (class) — 1098
+- **RLock** (call) — 1202
+- **RegistryBrain** (call) — 466
+- **RegistryDiscoveryAgent** (class) — 532
+- **RegistryLoader** (class) — 1106
+- **RegistryReaderAgent** (class) — 533
+- **RegistryScanner** (call) — 536
+- **RegistryValidator** (class) — 1107
+- **RuntimeCapabilityRegistry** (class) — 320
+- **_load_raw_passport** (call) — 1145
+- **_save_passport** (call) — 1098
+- **_save_registry** (call) — 1115
+- **_save_state_unlocked** (call) — 1202
+- **detect_deadlock** (call) — 1118
+- **get_passport_string** (call) — 1155
+- **inspect_manifest_models** (call) — 315
+- **load_execution_registry** (call) — 1168
+- **load_goals_registry** (call) — 1168
+- **load_lock_source** (call) — 223
+- **load_manifest** (function) — 244
+- **load_passport** (call) — 1103
+- **load_registry** (call) — 1107
+- **passport_summary** (call) — 474
+- **rebuild_lock_manifest** (call) — 223
+- **registry_info** (call) — 1103
+- **run_guardian** (call) — 231
+- **verify_lock_manifest** (call) — 219
+
+## Audit
+- **ButlerContextBuilder** (class) — 422
+- **DependencyAnalyzer** (call) — 275
+- **DependencyClosure** (call) — 271
+- **DependencyGraph** (class) — 273
+- **ProjectContextBuilder** (call) — 270
+- **get_pixmap** (call) — 385
+- **roadmap** (call) — 1103
+
+## Core
+- **ArchitectBootstrap** (call) — 264
+- **BootstrapCore** (class) — 1495
+- **CoreBackupWorker** (call) — 1137
+- **CoreKernel** (class) — 207
+- **CoreOrchestrator** (call) — 208
+- **FrozenCoreGuard** (class) — 438
+- **LoopOrchestratorV3_EXEC_V2** (class) — 1118
+- **LoopOrchestratorV3_MASTER_TRUTH** (class) — 1117
+- **MainOrchestrator** (class) — 221
+- **Orchestrator** (call) — 217
+- **score** (call) — 1192
+- **score_event** (call) — 1124
+
+## Agents
+- **AgentPlanner** (class) — 393
+- **AgentPlannerV2** (call) — 1118
+- **ArchitectAgent** (call) — 261
+- **ArchiveDepartment** (call) — 1285
+- **AudioDepartment** (call) — 338
+- **BaseDepartment** (class) — 487
+- **CodingDepartment** (call) — 1285
+- **Department** (class) — 1359
+- **DocumentsDepartment** (call) — 324
+- **EngineeringAgent** (class) — 518
+- **OpenDocumentDepartment** (class) — 507
+- **ProjectDocumentationDepartment** (call) — 611
+- **ProjectStateDiscoveryAgent** (class) — 531
+- **RuntimeDepartmentsDiscoveryAgent** (class) — 534
+- **TextDepartment** (class) — 620
+- **VideoDepartment** (call) — 1340
+- **_execute_department** (call) — 338
+
+## Other
+- **AntiLoopBudget** (call) — 1338
+- **ArchiveHandler** (call) — 483
+- **Archiver** (class) — 362
+- **ArgumentParser** (call) — 1364
+- **AuditScanner** (call) — 596
+- **AutomaticVerifier** (class) — 339
+- **AutonomousLoop** (class) — 398
+- **BaseExecutionAdapter** (class) — 342
+- **BaseHandler** (class) — 378
+- **ButlerDiagnostics** (class) — 209
+- **ButlerDreamManager** (class) — 291
+- **ButlerHarness** (class) — 399
+- **ButlerInteractiveChat** (call) — 241
+- **ButlerMcpServer** (class) — 251
+- **ButlerOSAdapter** (call) — 1277
+- **ButlerSessionManager** (class) — 321
+- **ButlerSystem** (call) — 1505
+- **Button** (call) — 204
+- **CallVisitor** (class) — 566
+- **ChangeRequestManager** (call) — 1145
+- **Client** (call) — 1493
+- **CodeHandler** (call) — 387
+- **Colors** (class) — 245
+- **CompileGuard** (call) — 399
+- **ConflictResolution** (call) — 536
+- **Constraints** (call) — 1082
+- **ContextBudgetManager** (call) — 1159
+- **ConversationContextEngine** (class) — 426
+- **Counter** (call) — 314
+- **DPSVDK** (class) — 431
+- **Document** (call) — 630
+- **DocxHandler** (call) — 495
+- **EngineeringEvidence** (call) — 530
+- **EngineeringEvidenceCollection** (call) — 526
+- **EngineeringObject** (class) — 576
+- **EngineeringObjectIdentifier** (class) — 578
+- **EngineeringObjectRelationship** (class) — 524
+- **EngineeringPipeline** (call) — 611
+- **EventBus** (class) — 210
+- **EvidenceConsolidation** (call) — 526
+- **ExecutionContext** (call) — 1081
+- **ExecutionLoop** (call) — 1505
+- **ExecutionMonitor** (class) — 293
+- **ExecutionResult** (call) — 348
+- **ExecutionScanner** (call) — 591
+- **ExecutionState** (class) — 294
+- **Fallback** (call) — 1082
+- **FallbackController** (call) — 1342
+- **FeedbackValidatorV2** (class) — 1115
+- **FileHandler** (call) — 214
+- **FileNotFoundError** (call) — 223
+- **Formatter** (call) — 249
+- **Goal** (class) — 303
+- **GoalAnalyzer** (call) — 275
+- **GoalInterpreter** (class) — 303
+- **GoalLoopEngine** (call) — 1118
+- **GoalsScanner** (call) — 536
+- **HarnessScanner** (call) — 552
+- **InlineCodeEditor** (call) — 1345
+- **IntegrationTestGuard** (class) — 440
+- **KeyError** (call) — 317
+- **Label** (call) — 204
+- **LedgerScanner** (call) — 602
+- **LocalFeedbackValidatorV2** (class) — 1117
+- **Matrix** (call) — 385
+- **MessageNetwork** (call) — 1495
+- **NotImplementedError** (call) — 342
+- **OCRBackend** (call) — 391
+- **ObjectMerge** (class) — 584
+- **ObservationLayer** (call) — 1348
+- **PDFHandler** (call) — 387
+- **PDFOCRPipeline** (class) — 386
+- **Path** (call) — 1144
+- **PdfReader** (call) — 385
+- **Planner** (call) — 464
+- **PlannerDecisionEngine** (call) — 267
+- **PlannerEngine** (class) — 305
+- **PlannerFacade** (class) — 308
+- **PlannerPipeline** (call) — 276
+- **Popen** (call) — 204
+- **PowerShellExecutionAdapter** (class) — 343
+- **ProfessorAdapter** (call) — 477
+- **ProjectAuditor** (call) — 1353
+- **ProjectState** (call) — 270
+- **ProjectStateScanner** (class) — 605
+- **PurePosixPath** (call) — 438
+- **PythonExecutionAdapter** (class) — 344
+- **QueueManager** (class) — 368
+- **ReasoningPath** (class) — 1197
+- **Relation** (class) — 1199
+- **ReportsScanner** (class) — 559
+- **Request** (call) — 1511
+- **RollbackGuard** (call) — 399
+- **RollbackScanner** (call) — 555
+- **RuntimeCapability** (class) — 319
+- **RuntimeError** (call) — 1364
+- **ScrolledText** (call) — 204
+- **SecurityValidator** (class) — 359
+- **SecurityViolation** (class) — 359
+- **ServicesScanner** (call) — 560
+- **SessionActions** (class) — 1202
+- **SessionManagerPoly** (class) — 1202
+- **SessionQueue** (call) — 1355
+- **SessionReader** (class) — 1202
+- **SnapshotScanner** (call) — 591
+- **SourcePriority** (class) — 535
+- **SpreadsheetHandler** (call) — 387
+- **StreamHandler** (call) — 248
+- **StringIO** (call) — 1155
+- **StructuralVisitor** (class) — 563
+- **SystemExit** (call) — 412
+- **SystemStabilizer** (call) — 234
+- **SystemState** (class) — 295
+- **SystemStateSnapshot** (class) — 295
+- **TemporaryDirectory** (call) — 385
+- **TestProjectAuditor** (class) — 1353
+- **TextHandler** (call) — 387
+- **Tk** (call) — 204
+- **TypeError** (call) — 317
+- **ValidationResult** (class) — 318
+- **ValueError** (call) — 375
+- **Verification** (call) — 1082
+- **Worker** (class) — 480
+- **ZipFile** (call) — 1137
+- **_add_dict_object** (call) — 536
+- **_archive** (call) — 434
+- **_ask** (call) — 491
+- **_build_checkpoint_graph** (call) — 499
+- **_cache_get** (call) — 1173
+- **_cache_key** (call) — 1173
+- **_cache_put** (call) — 1173
+- **_call_local_llm** (call) — 493
+- **_check_contract** (call) — 318
+- **_check_one_of** (call) — 318
+- **_check_patch_context** (call) — 318
+- **_clean_html** (call) — 375
+- **_clean_prompt** (call) — 1389
+- **_clean_query** (call) — 616
+- **_convert_to_module_notation** (call) — 440
+- **_dept_name** (call) — 1285
+- **_dispatch** (call) — 434
+- **_execute** (call) — 434
+- **_expand_tokens** (call) — 1173
+- **_extract_archive_path** (call) — 483
+- **_extract_file_path** (call) — 495
+- **_extract_text_pdf** (call) — 385
+- **_failure** (call) — 1201
+- **_fallback** (call) — 434
+- **_files** (call) — 273
+- **_get_connection** (call) — 1441
+- **_get_latest_session_file** (call) — 1202
+- **_get_object_info** (call) — 1389
+- **_hash** (call) — 1133
+- **_list_first** (call) — 1389
+- **_load** (call) — 1164
+- **_load_all** (call) — 1173
+- **_load_progress** (call) — 386
+- **_load_scope** (call) — 562
+- **_load_synonyms** (call) — 1173
+- **_looks_like_code** (call) — 390
+- **_model_for_role** (call) — 322
+- **_neighbors** (call) — 1197
+- **_normalize** (call) — 1133
+- **_now** (function) — 1166
+- **_parse_query** (call) — 1173
+- **_progress_path** (call) — 386
+- **_quarantine** (call) — 434
+- **_read_json** (call) — 270
+- **_read_layer_safe** (call) — 422
+- **_read_text** (call) — 270
+- **_record_text_fields** (call) — 1173
+- **_recycle_dead_workers** (call) — 316
+- **_render_page_to_png** (call) — 386
+- **_resolve_inside_project** (call) — 318
+- **_resolve_route** (call) — 477
+- **_route** (call) — 208
+- **_safe_extract_tar** (call) — 377
+- **_safe_extract_zip** (call) — 377
+- **_save** (call) — 1164
+- **_save_progress** (call) — 386
+- **_sha256** (call) — 386
+- **_simple_ru_stem** (call) — 1173
+- **_success** (call) — 1201
+- **_update_global_checkpoint** (call) — 291
+- **abspath** (call) — 1486
+- **adapter_class** (call) — 346
+- **add** (call) — 586
+- **addHandler** (call) — 249
+- **add_argument** (call) — 417
+- **add_episode** (function) — 1165
+- **add_event** (call) — 448
+- **add_skill** (function) — 1165
+- **all** (call) — 529
+- **allow** (call) — 1338
+- **analyze** (call) — 265
+- **analyze_document** (call) — 1357
+- **analyze_file_impact** (function) — 299
+- **analyze_py** (call) — 1419
+- **any** (call) — 507
+- **append** (call) — 274
+- **as_posix** (call) — 289
+- **asdict** (call) — 351
+- **ask** (call) — 1387
+- **ask_ollama** (call) — 1364
+- **ask_ollama_free_chat** (call) — 241
+- **assemble_context** (call) — 1157
+- **assertEqual** (call) — 1347
+- **atomic_write_json** (call) — 223
+- **auto_repair** (call) — 1505
+- **available_models** (call) — 620
+- **b64encode** (call) — 508
+- **backup_file** (call) — 225
+- **backup_profile** (call) — 1175
+- **bad_path** (call) — 1487
+- **basename** (call) — 283
+- **basicConfig** (call) — 214
+- **bool** (call) — 208
+- **boot_verify** (call) — 202
+- **build** (call) — 281
+- **build_attention_context** (call) — 1124
+- **build_context** (call) — 1158
+- **build_full_context** (call) — 619
+- **build_llm_prompt** (call) — 1159
+- **build_minimal_context** (function) — 289
+- **build_ollama_payload** (call) — 1158
+- **build_payload** (call) — 1159
+- **build_plan** (call) — 464
+- **build_prompt** (call) — 409
+- **build_state** (call) — 223
+- **built_features** (call) — 405
+- **butler_secure_input** (call) — 241
+- **calculate_sha256** (call) — 202
+- **can_handle** (call) — 387
+- **chat** (call) — 1335
+- **check** (call) — 1341
+- **check_bom** (call) — 1520
+- **check_code_layer** (call) — 219
+- **check_loop** (call) — 234
+- **check_ollama_status** (call) — 231
+- **check_output** (call) — 1386
+- **check_py_files** (function) — 1487
+- **check_system** (function) — 248
+- **check_system_integrity** (call) — 1117
+- **choose_model** (function) — 409
+- **classify** (call) — 419
+- **clean_init** (call) — 1505
+- **clean_text** (call) — 620
+- **cleanup** (call) — 1354
+- **clear_screen** (call) — 1363
+- **close** (call) — 364
+- **closure** (call) — 271
+- **collect** (call) — 536
+- **collect_critical_files** (function) — 223
+- **collect_files** (call) — 1419
+- **commit** (call) — 1441
+- **commit_proof** (call) — 399
+- **compile** (call) — 1509
+- **compile_python** (call) — 1475
+- **compress** (call) — 1176
+- **compress_for_llm** (call) — 1159
+- **connect** (call) — 231
+- **consolidate** (call) — 526
+- **copy2** (call) — 223
+- **copyfileobj** (call) — 377
+- **copytree** (call) — 1416
+- **count** (function) — 213
+- **count_bad** (function) — 539
+- **create_architecture_snapshot** (call) — 223
+- **create_message** (call) — 449
+- **create_session** (call) — 1202
+- **create_snapshot** (call) — 225
+- **current** (call) — 499
+- **current_stage** (call) — 1102
+- **current_work** (call) — 405
+- **cursor** (call) — 283
+- **cwd** (call) — 563
+- **dataclass** (call) — 303
+- **db_snapshot** (call) — 1419
+- **debug_dump** (call) — 1158
+- **decide** (call) — 275
+- **decide_next_action** (call) — 1114
+- **decode** (call) — 203
+- **deepcopy** (call) — 317
+- **delete_fact** (function) — 1165
+- **deque** (call) — 472
+- **detect** (call) — 1360
+- **detect_language_by_extension** (call) — 380
+- **determine_role** (call) — 322
+- **dfs** (call) — 1219
+- **dict** (call) — 231
+- **dirname** (call) — 1486
+- **discard** (call) — 1197
+- **discover** (call) — 531
+- **dispatch** (function) — 539
+- **draw** (call) — 213
+- **draw_by_command** (call) — 241
+- **dump** (call) — 393
+- **dumps** (call) — 515
+- **encode** (call) — 1118
+- **endswith** (call) — 471
+- **enqueue** (call) — 261
+- **enrich** (call) — 1192
+- **ensure_changelog** (call) — 1486
+- **enumerate** (call) — 558
+- **episodes_summary** (call) — 405
+- **error** (call) — 214
+- **estimate_tokens** (call) — 1136
+- **evaluate_risk_level** (call) — 299
+- **evaluate_stage_transitions** (call) — 399
+- **evidence** (call) — 512
+- **evidence_doctor** (call) — 611
+- **execute** (call) — 1486
+- **execute_backup** (call) — 1137
+- **execute_employee** (call) — 432
+- **execute_goal** (call) — 1390
+- **execute_repair** (call) — 1486
+- **execute_step** (call) — 348
+- **exists** (call) — 466
+- **exit** (call) — 214
+- **expand** (call) — 1192
+- **explain_paths** (call) — 1179
+- **explain_text** (call) — 1197
+- **extend** (call) — 1475
+- **extract** (call) — 493
+- **extract_facts** (call) — 1347
+- **extract_tags** (call) — 369
+- **extract_text** (call) — 385
+- **extractfile** (call) — 377
+- **fail** (call) — 219
+- **fallback** (call) — 490
+- **fetch_ollama_models** (call) — 1358
+- **fetchall** (call) — 364
+- **fetchone** (call) — 368
+- **field** (call) — 1082
+- **file_sha256** (function) — 219
+- **find_documents** (call) — 369
+- **findall** (call) — 539
+- **fingerprint** (call) — 1117
+- **float** (call) — 1197
+- **flush** (call) — 251
+- **fn** (call) — 435
+- **frozen_modules** (call) — 1395
+- **full_summary** (call) — 476
+- **fullname** (call) — 512
+- **generate** (call) — 267
+- **generate_content** (call) — 1398
+- **generate_plan** (call) — 254
+- **generate_report** (function) — 283
+- **generic_visit** (call) — 566
+- **geometry** (call) — 204
+- **get** (call) — 1098
+- **getLogger** (call) — 1201
+- **get_active_session** (call) — 1202
+- **get_built_features** (call) — 405
+- **get_children** (call) — 524
+- **get_closed_milestones** (call) — 1169
+- **get_current_action_plan** (call) — 1145
+- **get_current_stage** (call) — 405
+- **get_current_work** (call) — 405
+- **get_document_by_index** (call) — 1201
+- **get_episodes_summary** (function) — 1165
+- **get_execution_context** (call) — 619
+- **get_fact** (function) — 1165
+- **get_file_paths** (call) — 365
+- **get_frozen_modules** (call) — 405
+- **get_goals_context** (call) — 619
+- **get_handler** (call) — 1343
+- **get_identity** (call) — 1102
+- **get_last_document** (call) — 1201
+- **get_last_state** (call) — 1114
+- **get_ledger_context** (call) — 619
+- **get_lesson_summary** (call) — 453
+- **get_local_models** (call) — 315
+- **get_model_and_payload** (call) — 630
+- **get_model_payload** (call) — 508
+- **get_models** (call) — 1335
+- **get_modules** (call) — 1102
+- **get_next_work** (call) — 1112
+- **get_parent** (call) — 524
+- **get_recent** (call) — 1157
+- **get_result_count** (call) — 1201
+- **get_results** (call) — 1202
+- **get_selected_object** (call) — 1201
+- **get_skills_summary** (function) — 1165
+- **get_target** (call) — 123
+- **get_tree** (call) — 363
+- **get_unified_context** (call) — 1144
+- **get_user_name** (call) — 218
+- **get_workflow** (call) — 1351
+- **getattr** (call) — 116
+- **getcwd** (call) — 631
+- **gethostname** (call) — 1429
+- **getmembers** (call) — 377
+- **getnames** (call) — 377
+- **getpid** (call) — 1429
+- **getsize** (call) — 363
+- **getvalue** (call) — 1155
+- **glob** (call) — 559
+- **gmtime** (call) — 223
+- **group** (call) — 1169
+- **guarded_write** (function) — 225
+- **handle** (call) — 434
+- **handle_chat** (function) — 414
+- **handle_command** (call) — 123
+- **handle_draw** (function) — 1364
+- **handle_request** (call) — 251
+- **has_type** (function) — 525
+- **has_work** (call) — 357
+- **hasattr** (call) — 1352
+- **head** (call) — 630
+- **heal_profile** (call) — 1175
+- **health_check** (call) — 234
+- **hello** (function) — 1375
+- **hexdigest** (call) — 222
+- **identity** (call) — 1102
+- **ignored** (call) — 567
+- **import_module** (call) — 268
+- **incoming** (call) — 1199
+- **index** (call) — 625
+- **info** (call) — 1285
+- **infolist** (call) — 377
+- **init_system** (call) — 1495
+- **inject_into_prompt** (call) — 218
+- **input** (call) — 409
+- **insert** (call) — 1141
+- **inspect_folders** (call) — 209
+- **installed_models** (call) — 1386
+- **int** (call) — 285
+- **interpret** (call) — 308
+- **invalidate_caches** (call) — 219
+- **is_absolute** (call) — 440
+- **is_allowed** (call) — 512
+- **is_already_proposed** (call) — 1133
+- **is_dir** (call) — 1427
+- **is_done** (call) — 1117
+- **is_draw_command** (call) — 1358
+- **is_empty** (call) — 1355
+- **is_file** (call) — 607
+- **is_ignored** (call) — 1520
+- **is_stuck** (call) — 1118
+- **isdir** (call) — 363
+- **isfile** (call) — 377
+- **isinstance** (call) — 1119
+- **isoformat** (call) — 364
+- **items** (call) — 1440
+- **iter** (call) — 1429
+- **iterdir** (call) — 221
+- **join** (call) — 388
+- **json** (call) — 315
+- **keys** (call) — 297
+- **last** (call) — 294
+- **latest_rollback** (call) — 1475
+- **latest_rollback_has_factory** (function) — 1487
+- **len** (call) — 409
+- **list** (call) — 295
+- **list_episodes** (function) — 1165
+- **list_facts** (function) — 1165
+- **list_skills** (function) — 1165
+- **list_snapshots** (call) — 1476
+- **listdir** (call) — 371
+- **listen** (call) — 217
+- **listener** (call) — 210
+- **literal** (call) — 512
+- **ljust** (call) — 539
+- **load** (call) — 124
+- **load_latest_context** (call) — 1202
+- **load_ledger** (call) — 1168
+- **load_observations** (call) — 1168
+- **load_page** (call) — 1350
+- **load_profile** (call) — 1165
+- **load_state** (call) — 1117
+- **loads** (call) — 562
+- **log** (call) — 235
+- **log_event** (call) — 1158
+- **looks_like_code** (call) — 385
+- **lower** (call) — 413
+- **lstrip** (call) — 620
+- **main** (function) — 408
+- **mainloop** (call) — 204
+- **makedirs** (call) — 221
+- **mark_done** (call) — 1117
+- **match** (call) — 1169
+- **max** (call) — 231
+- **md5** (call) — 221
+- **merge** (call) — 536
+- **min** (call) — 386
+- **mkdir** (call) — 414
+- **module_to_path** (function) — 289
+- **modules** (call) — 1102
+- **most_common** (call) — 314
+- **move** (call) — 235
+- **move_to_active** (call) — 235
+- **move_to_processing** (call) — 362
+- **namelist** (call) — 377
+- **names** (call) — 1081
+- **neighbours** (call) — 1199
+- **next** (call) — 318
+- **next_id** (call) — 523
+- **next_work** (call) — 405
+- **normalize** (call) — 1192
+- **normalize_tags** (call) — 508
+- **normalize_to_module** (call) — 299
+- **now** (call) — 1158
+- **open** (call) — 1417
+- **outgoing** (call) — 1199
+- **pack** (call) — 204
+- **parse** (call) — 1119
+- **parse_args** (call) — 417
+- **parse_file** (function) — 513
+- **parse_line** (call) — 448
+- **parse_model_response** (call) — 508
+- **parse_python_file** (call) — 568
+- **patch_file** (call) — 352
+- **pick_light_model** (function) — 1335
+- **plan** (call) — 305
+- **pop** (call) — 223
+- **popleft** (call) — 472
+- **post** (call) — 1385
+- **powershell** (call) — 309
+- **pp** (call) — 261
+- **pprint** (call) — 281
+- **preview_replace** (call) — 1345
+- **print** (call) — 1335
+- **print_components** (call) — 1088
+- **print_exc** (call) — 1493
+- **print_footer** (call) — 1088
+- **print_header** (call) — 1088
+- **print_models** (function) — 1335
+- **print_report** (call) — 1155
+- **print_status** (call) — 418
+- **process** (call) — 208
+- **process_file** (call) — 207
+- **process_once** (call) — 1485
+- **process_report** (call) — 255
+- **project_identity** (call) — 1277
+- **propose_change** (call) — 1118
+- **push** (call) — 1355
+- **py_compile** (call) — 225
+- **python** (call) — 309
+- **raise_for_status** (call) — 491
+- **range** (call) — 386
+- **rank** (call) — 1192
+- **read** (call) — 222
+- **read_bytes** (call) — 1417
+- **read_csv** (call) — 388
+- **read_excel** (call) — 388
+- **read_limited** (call) — 289
+- **read_queue** (call) — 1495
+- **read_text** (call) — 222
+- **read_text_safe** (call) — 222
+- **readline** (call) — 251
+- **readlines** (call) — 448
+- **reason** (call) — 324
+- **recall** (call) — 447
+- **reconfigure** (call) — 241
+- **reconstruct_context** (call) — 1158
+- **record** (call) — 1348
+- **redirect_stdout** (call) — 1155
+- **register** (call) — 572
+- **register_document** (call) — 630
+- **register_test_job** (call) — 1454
+- **rel** (call) — 568
+- **relative_to** (call) — 222
+- **remember** (call) — 447
+- **remove** (call) — 375
+- **repair** (function) — 1509
+- **replace** (call) — 386
+- **replay_last_n** (call) — 1160
+- **repr** (call) — 1125
+- **reset_and_register** (call) — 1441
+- **resolve** (call) — 399
+- **resolve_file_path** (call) — 508
+- **restore** (call) — 1476
+- **restore_backup** (function) — 225
+- **rglob** (call) — 1475
+- **rmtree** (call) — 223
+- **rollback** (call) — 368
+- **rollback_all** (call) — 352
+- **round** (call) — 1520
+- **route** (call) — 419
+- **rstrip** (call) — 322
+- **run** (call) — 211
+- **run_all** (call) — 209
+- **run_handshake** (call) — 1337
+- **run_health_check** (call) — 1453
+- **run_loop** (call) — 448
+- **run_once** (function) — 358
+- **run_pipeline** (call) — 1485
+- **run_self_test** (call) — 417
+- **run_strategic_step** (call) — 352
+- **run_tests** (call) — 1357
+- **save** (call) — 386
+- **save_file** (call) — 375
+- **save_profile** (call) — 1166
+- **save_state** (call) — 234
+- **scalar** (function) — 1453
+- **scan** (call) — 560
+- **see** (call) — 204
+- **seek** (call) — 448
+- **self_structure_analysis** (call) — 209
+- **send** (call) — 449
+- **set** (call) — 219
+- **setFormatter** (call) — 249
+- **setLevel** (call) — 249
+- **set_fact** (call) — 1486
+- **setdefault** (call) — 524
+- **setup_logger** (call) — 480
+- **setup_mock_data** (call) — 1354
+- **sha256** (call) — 202
+- **sha256_file** (call) — 222
+- **size** (call) — 1355
+- **skills_summary** (call) — 405
+- **skip** (call) — 1417
+- **sleep** (call) — 211
+- **snapshot** (call) — 320
+- **sort** (call) — 1173
+- **sorted** (call) — 1427
+- **split** (call) — 483
+- **splitlines** (call) — 1386
+- **start** (call) — 1118
+- **start_session** (call) — 241
+- **start_system** (function) — 204
+- **startfile** (call) — 371
+- **startswith** (call) — 282
+- **startup** (call) — 224
+- **stat** (call) — 222
+- **status** (call) — 1338
+- **stop_system** (function) — 204
+- **str** (call) — 1423
+- **strftime** (call) — 1416
+- **strip** (call) — 539
+- **sub** (call) — 375
+- **suggest** (call) — 539
+- **sum** (call) — 271
+- **summary** (call) — 1103
+- **system** (call) — 203
+- **tell** (call) — 448
+- **terminate** (call) — 204
+- **time** (call) — 495
+- **title** (call) — 204
+- **to_string** (call) — 388
+- **tokens** (call) — 1192
+- **touch** (call) — 1188
+- **type** (call) — 534
+- **unlink** (call) — 211
+- **update** (call) — 219
+- **upper** (call) — 324
+- **urlopen** (call) — 243
+- **utcnow** (call) — 386
+- **uuid4** (call) — 347
+- **validate** (call) — 359
+- **validate_file_syntax** (call) — 1117
+- **validate_profile** (call) — 1175
+- **values** (call) — 577
+- **vars** (call) — 531
+- **verify** (call) — 339
+- **verify_database** (call) — 219
+- **verify_project_state** (call) — 219
+- **visit** (call) — 563
+- **wait** (call) — 1506
+- **walk** (call) — 1197
+- **with_name** (call) — 1486
+- **with_suffix** (call) — 310
+- **write** (call) — 305
+- **write_audit_log** (call) — 223
+- **write_text** (call) — 417
+
+## ALREADY IMPLEMENTED
+The following capabilities are already implemented and should not be rebuilt:
+### Memory
+- AttentionMemory (call)
+- ExecutionHistory (class)
+- ExecutionMemoryV2 (call)
+- HistoryScanner (class)
+- MemoryAdvisor (class)
+- MemoryCore (call)
+- MemoryDepartment (call)
+- MemoryFacade (class)
+- MemoryFacadeV2 (class)
+- MemoryLayer (call)
+- MemoryLoop (call)
+- MemoryManager (call)
+- MemoryOrchestrator (call)
+- MemoryOrchestratorV2 (class)
+- MemoryReplay (call)
+- MemorySidecar (class)
+- PNGWorkflowMemory (class)
+- ProjectHistory (call)
+- ProjectMemoryLoader (call)
+- SelfHealingMemory (call)
+- SemanticCompressor (class)
+- SemanticConstraintLayer (call)
+- SemanticCore (call)
+- SemanticLayer (class)
+- SemanticMatch (class)
+- SemanticMemory (call)
+- SemanticQueryParser (call)
+- SemanticReasoningEngine (call)
+- SemanticReasoningEngineV2 (call)
+- SemanticRelationsEngine (call)
+- SemanticSearchEngine (call)
+- TestMemoryAdvisor (class)
+- append_memory (call)
+- build_memory_packet (call)
+- get_full_history (call)
+- get_history (call)
+- get_memory_summary (call)
+- get_weighted_memory (call)
+- load_memory_index (call)
+- memory_stats (call)
+- memory_summary (call)
+- project_memory_summary_text (call)
+- rebuild_user_memory (function)
+- route_memory (function)
+- run_memory_guardian (call)
+- save_to_memory (call)
+### Routing
+- AgentRouter (call)
+- CatalogSearchBridge (class)
+- ChatCoreBridge (class)
+- ChatRouterMirror (class)
+- ComfyUIBridge (class)
+- ContextProvider (call)
+- Dispatcher (call)
+- DispatcherAgent (call)
+- DispatcherBridge (class)
+- DispatcherScanner (call)
+- DreamDispatcherAdapter (class)
+- FactoryCoreBridge (call)
+- FakeDispatcher (class)
+- ProviderManager (class)
+- RouterIntegration (class)
+- RouterRegistry (call)
+- SmartDispatcher (call)
+- SmartDispatcherV2 (call)
+- SmartRouter (call)
+- ToolBridge (call)
+### Image
+- ImageDepartment (call)
+- ImageHandler (call)
+- ImageSession (class)
+- OllamaVisionBackend (call)
+- VisionAnalyzer (call)
+- VisionDepartment (call)
+- VisionEngine (class)
+- _ask_artist (call)
+- _build_artist_prompt (call)
+- _encode_image (call)
+- _extract_image_path (call)
+- _extract_scanned_pdf_with_vision (call)
+- _latest_image (call)
+- _select_artist (call)
+- check_comfy_status (call)
+- check_comfyui (call)
+- generate_image (call)
+- image_to_string (call)
+- process_image (function)
+### Execution
+- AgentLoopExecutor (class)
+- ExecutionPolicy (call)
+- Executor (call)
+- ExecutorFactory (class)
+- PolicyLoader (class)
+- PolicyRegistry (class)
+- PolicyValidator (class)
+- Recipe (call)
+- RecipeBuilder (call)
+- RecipeExecutor (class)
+- RecipeGenerator (call)
+- RecipeLoader (class)
+- RecipeQueueWatcher (call)
+- RecipeStep (class)
+- RecipeValidator (class)
+- RecipeWriter (class)
+- ScopePolicy (call)
+- TaskContractBuilder (call)
+- TaskFeeder (class)
+- TaskPlanner (class)
+- TaskRunner (class)
+- build_planning_recipe (call)
+- complete_task (call)
+- completed_recipes (call)
+- consolidate_completed_task (call)
+- default_policy (call)
+- executor (call)
+- failed_recipes (call)
+- fetch_task (call)
+- get_next_task (call)
+- pending_recipes (call)
+- process_agent_task (call)
+- run_guarded_task (function)
+- run_task (call)
+- sample_executor (function)
+### Knowledge
+- CatalogManager (class)
+- EngineeringObjectCatalog (call)
+- HybridResolver (call)
+- ReferenceResolver (call)
+- Resolver (class)
+- SearchDepartment (call)
+- full_text_search (call)
+- get_preferences (call)
+- rebuild_search_index (call)
+- search (call)
+- search_by_entity (call)
+- search_by_tag (call)
+- search_by_text (call)
+- search_event (call)
+- show_catalog (call)
+- test_catalog_update (function)
+- test_fts5_search (call)
+- update_search_context (call)
+### Architecture
+- ExecutionRegistry (class)
+- ExecutionRegistryDiscoveryAgent (class)
+- GoalsRegistryDiscoveryAgent (class)
+- HandlerRegistry (call)
+- Lock (call)
+- ManifestLoader (class)
+- PassportCommandHandler (call)
+- PassportDiscoveryAgent (class)
+- PassportReport (class)
+- PassportScanner (class)
+- ProjectPassportLoader (class)
+- RLock (call)
+- RegistryBrain (call)
+- RegistryDiscoveryAgent (class)
+- RegistryLoader (class)
+- RegistryReaderAgent (class)
+- RegistryScanner (call)
+- RegistryValidator (class)
+- RuntimeCapabilityRegistry (class)
+- _load_raw_passport (call)
+- _save_passport (call)
+- _save_registry (call)
+- _save_state_unlocked (call)
+- detect_deadlock (call)
+- get_passport_string (call)
+- inspect_manifest_models (call)
+- load_execution_registry (call)
+- load_goals_registry (call)
+- load_lock_source (call)
+- load_manifest (function)
+- load_passport (call)
+- load_registry (call)
+- passport_summary (call)
+- rebuild_lock_manifest (call)
+- registry_info (call)
+- run_guardian (call)
+- verify_lock_manifest (call)
+### Audit
+- ButlerContextBuilder (class)
+- DependencyAnalyzer (call)
+- DependencyClosure (call)
+- DependencyGraph (class)
+- ProjectContextBuilder (call)
+- get_pixmap (call)
+- roadmap (call)
+### Core
+- ArchitectBootstrap (call)
+- BootstrapCore (class)
+- CoreBackupWorker (call)
+- CoreKernel (class)
+- CoreOrchestrator (call)
+- FrozenCoreGuard (class)
+- LoopOrchestratorV3_EXEC_V2 (class)
+- LoopOrchestratorV3_MASTER_TRUTH (class)
+- MainOrchestrator (class)
+- Orchestrator (call)
+- score (call)
+- score_event (call)
+### Agents
+- AgentPlanner (class)
+- AgentPlannerV2 (call)
+- ArchitectAgent (call)
+- ArchiveDepartment (call)
+- AudioDepartment (call)
+- BaseDepartment (class)
+- CodingDepartment (call)
+- Department (class)
+- DocumentsDepartment (call)
+- EngineeringAgent (class)
+- OpenDocumentDepartment (class)
+- ProjectDocumentationDepartment (call)
+- ProjectStateDiscoveryAgent (class)
+- RuntimeDepartmentsDiscoveryAgent (class)
+- TextDepartment (class)
+- VideoDepartment (call)
+- _execute_department (call)
+### Other
+- AntiLoopBudget (call)
+- ArchiveHandler (call)
+- Archiver (class)
+- ArgumentParser (call)
+- AuditScanner (call)
+- AutomaticVerifier (class)
+- AutonomousLoop (class)
+- BaseExecutionAdapter (class)
+- BaseHandler (class)
+- ButlerDiagnostics (class)
+- ButlerDreamManager (class)
+- ButlerHarness (class)
+- ButlerInteractiveChat (call)
+- ButlerMcpServer (class)
+- ButlerOSAdapter (call)
+- ButlerSessionManager (class)
+- ButlerSystem (call)
+- Button (call)
+- CallVisitor (class)
+- ChangeRequestManager (call)
+- Client (call)
+- CodeHandler (call)
+- Colors (class)
+- CompileGuard (call)
+- ConflictResolution (call)
+- Constraints (call)
+- ContextBudgetManager (call)
+- ConversationContextEngine (class)
+- Counter (call)
+- DPSVDK (class)
+- Document (call)
+- DocxHandler (call)
+- EngineeringEvidence (call)
+- EngineeringEvidenceCollection (call)
+- EngineeringObject (class)
+- EngineeringObjectIdentifier (class)
+- EngineeringObjectRelationship (class)
+- EngineeringPipeline (call)
+- EventBus (class)
+- EvidenceConsolidation (call)
+- ExecutionContext (call)
+- ExecutionLoop (call)
+- ExecutionMonitor (class)
+- ExecutionResult (call)
+- ExecutionScanner (call)
+- ExecutionState (class)
+- Fallback (call)
+- FallbackController (call)
+- FeedbackValidatorV2 (class)
+- FileHandler (call)
+- FileNotFoundError (call)
+- Formatter (call)
+- Goal (class)
+- GoalAnalyzer (call)
+- GoalInterpreter (class)
+- GoalLoopEngine (call)
+- GoalsScanner (call)
+- HarnessScanner (call)
+- InlineCodeEditor (call)
+- IntegrationTestGuard (class)
+- KeyError (call)
+- Label (call)
+- LedgerScanner (call)
+- LocalFeedbackValidatorV2 (class)
+- Matrix (call)
+- MessageNetwork (call)
+- NotImplementedError (call)
+- OCRBackend (call)
+- ObjectMerge (class)
+- ObservationLayer (call)
+- PDFHandler (call)
+- PDFOCRPipeline (class)
+- Path (call)
+- PdfReader (call)
+- Planner (call)
+- PlannerDecisionEngine (call)
+- PlannerEngine (class)
+- PlannerFacade (class)
+- PlannerPipeline (call)
+- Popen (call)
+- PowerShellExecutionAdapter (class)
+- ProfessorAdapter (call)
+- ProjectAuditor (call)
+- ProjectState (call)
+- ProjectStateScanner (class)
+- PurePosixPath (call)
+- PythonExecutionAdapter (class)
+- QueueManager (class)
+- ReasoningPath (class)
+- Relation (class)
+- ReportsScanner (class)
+- Request (call)
+- RollbackGuard (call)
+- RollbackScanner (call)
+- RuntimeCapability (class)
+- RuntimeError (call)
+- ScrolledText (call)
+- SecurityValidator (class)
+- SecurityViolation (class)
+- ServicesScanner (call)
+- SessionActions (class)
+- SessionManagerPoly (class)
+- SessionQueue (call)
+- SessionReader (class)
+- SnapshotScanner (call)
+- SourcePriority (class)
+- SpreadsheetHandler (call)
+- StreamHandler (call)
+- StringIO (call)
+- StructuralVisitor (class)
+- SystemExit (call)
+- SystemStabilizer (call)
+- SystemState (class)
+- SystemStateSnapshot (class)
+- TemporaryDirectory (call)
+- TestProjectAuditor (class)
+- TextHandler (call)
+- Tk (call)
+- TypeError (call)
+- ValidationResult (class)
+- ValueError (call)
+- Verification (call)
+- Worker (class)
+- ZipFile (call)
+- _add_dict_object (call)
+- _archive (call)
+- _ask (call)
+- _build_checkpoint_graph (call)
+- _cache_get (call)
+- _cache_key (call)
+- _cache_put (call)
+- _call_local_llm (call)
+- _check_contract (call)
+- _check_one_of (call)
+- _check_patch_context (call)
+- _clean_html (call)
+- _clean_prompt (call)
+- _clean_query (call)
+- _convert_to_module_notation (call)
+- _dept_name (call)
+- _dispatch (call)
+- _execute (call)
+- _expand_tokens (call)
+- _extract_archive_path (call)
+- _extract_file_path (call)
+- _extract_text_pdf (call)
+- _failure (call)
+- _fallback (call)
+- _files (call)
+- _get_connection (call)
+- _get_latest_session_file (call)
+- _get_object_info (call)
+- _hash (call)
+- _list_first (call)
+- _load (call)
+- _load_all (call)
+- _load_progress (call)
+- _load_scope (call)
+- _load_synonyms (call)
+- _looks_like_code (call)
+- _model_for_role (call)
+- _neighbors (call)
+- _normalize (call)
+- _now (function)
+- _parse_query (call)
+- _progress_path (call)
+- _quarantine (call)
+- _read_json (call)
+- _read_layer_safe (call)
+- _read_text (call)
+- _record_text_fields (call)
+- _recycle_dead_workers (call)
+- _render_page_to_png (call)
+- _resolve_inside_project (call)
+- _resolve_route (call)
+- _route (call)
+- _safe_extract_tar (call)
+- _safe_extract_zip (call)
+- _save (call)
+- _save_progress (call)
+- _sha256 (call)
+- _simple_ru_stem (call)
+- _success (call)
+- _update_global_checkpoint (call)
+- abspath (call)
+- adapter_class (call)
+- add (call)
+- addHandler (call)
+- add_argument (call)
+- add_episode (function)
+- add_event (call)
+- add_skill (function)
+- all (call)
+- allow (call)
+- analyze (call)
+- analyze_document (call)
+- analyze_file_impact (function)
+- analyze_py (call)
+- any (call)
+- append (call)
+- as_posix (call)
+- asdict (call)
+- ask (call)
+- ask_ollama (call)
+- ask_ollama_free_chat (call)
+- assemble_context (call)
+- assertEqual (call)
+- atomic_write_json (call)
+- auto_repair (call)
+- available_models (call)
+- b64encode (call)
+- backup_file (call)
+- backup_profile (call)
+- bad_path (call)
+- basename (call)
+- basicConfig (call)
+- bool (call)
+- boot_verify (call)
+- build (call)
+- build_attention_context (call)
+- build_context (call)
+- build_full_context (call)
+- build_llm_prompt (call)
+- build_minimal_context (function)
+- build_ollama_payload (call)
+- build_payload (call)
+- build_plan (call)
+- build_prompt (call)
+- build_state (call)
+- built_features (call)
+- butler_secure_input (call)
+- calculate_sha256 (call)
+- can_handle (call)
+- chat (call)
+- check (call)
+- check_bom (call)
+- check_code_layer (call)
+- check_loop (call)
+- check_ollama_status (call)
+- check_output (call)
+- check_py_files (function)
+- check_system (function)
+- check_system_integrity (call)
+- choose_model (function)
+- classify (call)
+- clean_init (call)
+- clean_text (call)
+- cleanup (call)
+- clear_screen (call)
+- close (call)
+- closure (call)
+- collect (call)
+- collect_critical_files (function)
+- collect_files (call)
+- commit (call)
+- commit_proof (call)
+- compile (call)
+- compile_python (call)
+- compress (call)
+- compress_for_llm (call)
+- connect (call)
+- consolidate (call)
+- copy2 (call)
+- copyfileobj (call)
+- copytree (call)
+- count (function)
+- count_bad (function)
+- create_architecture_snapshot (call)
+- create_message (call)
+- create_session (call)
+- create_snapshot (call)
+- current (call)
+- current_stage (call)
+- current_work (call)
+- cursor (call)
+- cwd (call)
+- dataclass (call)
+- db_snapshot (call)
+- debug_dump (call)
+- decide (call)
+- decide_next_action (call)
+- decode (call)
+- deepcopy (call)
+- delete_fact (function)
+- deque (call)
+- detect (call)
+- detect_language_by_extension (call)
+- determine_role (call)
+- dfs (call)
+- dict (call)
+- dirname (call)
+- discard (call)
+- discover (call)
+- dispatch (function)
+- draw (call)
+- draw_by_command (call)
+- dump (call)
+- dumps (call)
+- encode (call)
+- endswith (call)
+- enqueue (call)
+- enrich (call)
+- ensure_changelog (call)
+- enumerate (call)
+- episodes_summary (call)
+- error (call)
+- estimate_tokens (call)
+- evaluate_risk_level (call)
+- evaluate_stage_transitions (call)
+- evidence (call)
+- evidence_doctor (call)
+- execute (call)
+- execute_backup (call)
+- execute_employee (call)
+- execute_goal (call)
+- execute_repair (call)
+- execute_step (call)
+- exists (call)
+- exit (call)
+- expand (call)
+- explain_paths (call)
+- explain_text (call)
+- extend (call)
+- extract (call)
+- extract_facts (call)
+- extract_tags (call)
+- extract_text (call)
+- extractfile (call)
+- fail (call)
+- fallback (call)
+- fetch_ollama_models (call)
+- fetchall (call)
+- fetchone (call)
+- field (call)
+- file_sha256 (function)
+- find_documents (call)
+- findall (call)
+- fingerprint (call)
+- float (call)
+- flush (call)
+- fn (call)
+- frozen_modules (call)
+- full_summary (call)
+- fullname (call)
+- generate (call)
+- generate_content (call)
+- generate_plan (call)
+- generate_report (function)
+- generic_visit (call)
+- geometry (call)
+- get (call)
+- getLogger (call)
+- get_active_session (call)
+- get_built_features (call)
+- get_children (call)
+- get_closed_milestones (call)
+- get_current_action_plan (call)
+- get_current_stage (call)
+- get_current_work (call)
+- get_document_by_index (call)
+- get_episodes_summary (function)
+- get_execution_context (call)
+- get_fact (function)
+- get_file_paths (call)
+- get_frozen_modules (call)
+- get_goals_context (call)
+- get_handler (call)
+- get_identity (call)
+- get_last_document (call)
+- get_last_state (call)
+- get_ledger_context (call)
+- get_lesson_summary (call)
+- get_local_models (call)
+- get_model_and_payload (call)
+- get_model_payload (call)
+- get_models (call)
+- get_modules (call)
+- get_next_work (call)
+- get_parent (call)
+- get_recent (call)
+- get_result_count (call)
+- get_results (call)
+- get_selected_object (call)
+- get_skills_summary (function)
+- get_target (call)
+- get_tree (call)
+- get_unified_context (call)
+- get_user_name (call)
+- get_workflow (call)
+- getattr (call)
+- getcwd (call)
+- gethostname (call)
+- getmembers (call)
+- getnames (call)
+- getpid (call)
+- getsize (call)
+- getvalue (call)
+- glob (call)
+- gmtime (call)
+- group (call)
+- guarded_write (function)
+- handle (call)
+- handle_chat (function)
+- handle_command (call)
+- handle_draw (function)
+- handle_request (call)
+- has_type (function)
+- has_work (call)
+- hasattr (call)
+- head (call)
+- heal_profile (call)
+- health_check (call)
+- hello (function)
+- hexdigest (call)
+- identity (call)
+- ignored (call)
+- import_module (call)
+- incoming (call)
+- index (call)
+- info (call)
+- infolist (call)
+- init_system (call)
+- inject_into_prompt (call)
+- input (call)
+- insert (call)
+- inspect_folders (call)
+- installed_models (call)
+- int (call)
+- interpret (call)
+- invalidate_caches (call)
+- is_absolute (call)
+- is_allowed (call)
+- is_already_proposed (call)
+- is_dir (call)
+- is_done (call)
+- is_draw_command (call)
+- is_empty (call)
+- is_file (call)
+- is_ignored (call)
+- is_stuck (call)
+- isdir (call)
+- isfile (call)
+- isinstance (call)
+- isoformat (call)
+- items (call)
+- iter (call)
+- iterdir (call)
+- join (call)
+- json (call)
+- keys (call)
+- last (call)
+- latest_rollback (call)
+- latest_rollback_has_factory (function)
+- len (call)
+- list (call)
+- list_episodes (function)
+- list_facts (function)
+- list_skills (function)
+- list_snapshots (call)
+- listdir (call)
+- listen (call)
+- listener (call)
+- literal (call)
+- ljust (call)
+- load (call)
+- load_latest_context (call)
+- load_ledger (call)
+- load_observations (call)
+- load_page (call)
+- load_profile (call)
+- load_state (call)
+- loads (call)
+- log (call)
+- log_event (call)
+- looks_like_code (call)
+- lower (call)
+- lstrip (call)
+- main (function)
+- mainloop (call)
+- makedirs (call)
+- mark_done (call)
+- match (call)
+- max (call)
+- md5 (call)
+- merge (call)
+- min (call)
+- mkdir (call)
+- module_to_path (function)
+- modules (call)
+- most_common (call)
+- move (call)
+- move_to_active (call)
+- move_to_processing (call)
+- namelist (call)
+- names (call)
+- neighbours (call)
+- next (call)
+- next_id (call)
+- next_work (call)
+- normalize (call)
+- normalize_tags (call)
+- normalize_to_module (call)
+- now (call)
+- open (call)
+- outgoing (call)
+- pack (call)
+- parse (call)
+- parse_args (call)
+- parse_file (function)
+- parse_line (call)
+- parse_model_response (call)
+- parse_python_file (call)
+- patch_file (call)
+- pick_light_model (function)
+- plan (call)
+- pop (call)
+- popleft (call)
+- post (call)
+- powershell (call)
+- pp (call)
+- pprint (call)
+- preview_replace (call)
+- print (call)
+- print_components (call)
+- print_exc (call)
+- print_footer (call)
+- print_header (call)
+- print_models (function)
+- print_report (call)
+- print_status (call)
+- process (call)
+- process_file (call)
+- process_once (call)
+- process_report (call)
+- project_identity (call)
+- propose_change (call)
+- push (call)
+- py_compile (call)
+- python (call)
+- raise_for_status (call)
+- range (call)
+- rank (call)
+- read (call)
+- read_bytes (call)
+- read_csv (call)
+- read_excel (call)
+- read_limited (call)
+- read_queue (call)
+- read_text (call)
+- read_text_safe (call)
+- readline (call)
+- readlines (call)
+- reason (call)
+- recall (call)
+- reconfigure (call)
+- reconstruct_context (call)
+- record (call)
+- redirect_stdout (call)
+- register (call)
+- register_document (call)
+- register_test_job (call)
+- rel (call)
+- relative_to (call)
+- remember (call)
+- remove (call)
+- repair (function)
+- replace (call)
+- replay_last_n (call)
+- repr (call)
+- reset_and_register (call)
+- resolve (call)
+- resolve_file_path (call)
+- restore (call)
+- restore_backup (function)
+- rglob (call)
+- rmtree (call)
+- rollback (call)
+- rollback_all (call)
+- round (call)
+- route (call)
+- rstrip (call)
+- run (call)
+- run_all (call)
+- run_handshake (call)
+- run_health_check (call)
+- run_loop (call)
+- run_once (function)
+- run_pipeline (call)
+- run_self_test (call)
+- run_strategic_step (call)
+- run_tests (call)
+- save (call)
+- save_file (call)
+- save_profile (call)
+- save_state (call)
+- scalar (function)
+- scan (call)
+- see (call)
+- seek (call)
+- self_structure_analysis (call)
+- send (call)
+- set (call)
+- setFormatter (call)
+- setLevel (call)
+- set_fact (call)
+- setdefault (call)
+- setup_logger (call)
+- setup_mock_data (call)
+- sha256 (call)
+- sha256_file (call)
+- size (call)
+- skills_summary (call)
+- skip (call)
+- sleep (call)
+- snapshot (call)
+- sort (call)
+- sorted (call)
+- split (call)
+- splitlines (call)
+- start (call)
+- start_session (call)
+- start_system (function)
+- startfile (call)
+- startswith (call)
+- startup (call)
+- stat (call)
+- status (call)
+- stop_system (function)
+- str (call)
+- strftime (call)
+- strip (call)
+- sub (call)
+- suggest (call)
+- sum (call)
+- summary (call)
+- system (call)
+- tell (call)
+- terminate (call)
+- time (call)
+- title (call)
+- to_string (call)
+- tokens (call)
+- touch (call)
+- type (call)
+- unlink (call)
+- update (call)
+- upper (call)
+- urlopen (call)
+- utcnow (call)
+- uuid4 (call)
+- validate (call)
+- validate_file_syntax (call)
+- validate_profile (call)
+- values (call)
+- vars (call)
+- verify (call)
+- verify_database (call)
+- verify_project_state (call)
+- visit (call)
+- wait (call)
+- walk (call)
+- with_name (call)
+- with_suffix (call)
+- write (call)
+- write_audit_log (call)
+- write_text (call)
+
+## DO NOT BUILD AGAIN
+The following components are already present and should not be recreated:
+- Inspector0_PhysicalMap
+- Inspector1_EntityMap
+- Inspector2_ImportMap
+- Inspector3_RegistrationAST
+- Inspector4_CallGraph
+- LinkMapBuilder
+- DependencyModelBuilder
+- All capabilities listed above

@@ -1,0 +1,53 @@
+﻿{
+    "version":  "1.0",
+    "guardians":  {
+                      "Gate":  {
+                                   "enabled":  true,
+                                   "state":  "MANDATORY",
+                                   "script":  "gate.ps1",
+                                   "requires":  [
+
+                                                ]
+                               },
+                      "Candidate":  {
+                                        "enabled":  true,
+                                        "state":  "MANDATORY",
+                                        "script":  "candidate.ps1",
+                                        "requires":  [
+                                                         "Gate"
+                                                     ]
+                                    },
+                      "Preview":  {
+                                      "enabled":  false,
+                                      "state":  "OFF",
+                                      "script":  "preview.ps1",
+                                      "requires":  [
+                                                       "Candidate"
+                                                   ]
+                                  },
+                      "Validator":  {
+                                        "enabled":  true,
+                                        "state":  "SHADOW",
+                                        "script":  "validator.ps1",
+                                        "requires":  [
+                                                         "Candidate"
+                                                     ]
+                                    },
+                      "Safety":  {
+                                     "enabled":  false,
+                                     "state":  "OFF",
+                                     "script":  "safety.ps1",
+                                     "requires":  [
+                                                      "Validator"
+                                                  ]
+                                 },
+                      "Confidence":  {
+                                         "enabled":  false,
+                                         "state":  "OFF",
+                                         "script":  "confidence.ps1",
+                                         "requires":  [
+
+                                                      ]
+                                     }
+                  }
+}

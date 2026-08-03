@@ -1,0 +1,2 @@
+BUTLER_ACCEPTANCE_DOCUMENT
+Safe project acceptance fixture.

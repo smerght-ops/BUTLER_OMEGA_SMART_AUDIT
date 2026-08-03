@@ -1,0 +1,127 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "name": "create",
+      "contract_complete": true,
+      "department": "ARCHIVE",
+      "ok": true,
+      "error": null,
+      "metadata": {
+        "action": "create",
+        "source": "C:\\Test\\ArchiveContractProbe_7420d75efe194d2f966326d16f04e454\\source",
+        "output": "C:\\Test\\ArchiveContractProbe_7420d75efe194d2f966326d16f04e454\\dest\\probe.zip",
+        "file_count": 2,
+        "folder_count": 2
+      }
+    },
+    {
+      "name": "target_exists",
+      "contract_complete": true,
+      "department": "ARCHIVE",
+      "ok": false,
+      "error": "ARCHIVE_TARGET_EXISTS",
+      "metadata": {
+        "target": "C:\\Test\\ArchiveContractProbe_7420d75efe194d2f966326d16f04e454\\dest\\probe.zip"
+      }
+    },
+    {
+      "name": "inspect",
+      "contract_complete": true,
+      "department": "ARCHIVE",
+      "ok": true,
+      "error": null,
+      "metadata": {
+        "action": "inspect",
+        "source": "C:\\Test\\ArchiveContractProbe_7420d75efe194d2f966326d16f04e454\\dest\\probe.zip",
+        "read_only": true,
+        "file_count": 2,
+        "folder_count": 2,
+        "entries": [
+          {
+            "path": "nested/",
+            "type": "folder",
+            "size": 0
+          },
+          {
+            "path": "nested/empty/",
+            "type": "folder",
+            "size": 0
+          },
+          {
+            "path": "nested/child.json",
+            "type": "file",
+            "size": 11
+          },
+          {
+            "path": "root.txt",
+            "type": "file",
+            "size": 4
+          }
+        ]
+      }
+    },
+    {
+      "name": "extract",
+      "contract_complete": true,
+      "department": "ARCHIVE",
+      "ok": true,
+      "error": null,
+      "metadata": {
+        "action": "extract",
+        "source": "C:\\Test\\ArchiveContractProbe_7420d75efe194d2f966326d16f04e454\\dest\\probe.zip",
+        "output": "C:\\Test\\ArchiveContractProbe_7420d75efe194d2f966326d16f04e454\\extracted",
+        "file_count": 2,
+        "folder_count": 2
+      }
+    },
+    {
+      "name": "extract_conflict",
+      "contract_complete": true,
+      "department": "ARCHIVE",
+      "ok": false,
+      "error": "ARCHIVE_EXTRACT_CONFLICT",
+      "metadata": {
+        "conflicts": [
+          "C:\\Test\\ArchiveContractProbe_7420d75efe194d2f966326d16f04e454\\conflict\\root.txt"
+        ]
+      }
+    },
+    {
+      "name": "archive_not_found",
+      "contract_complete": true,
+      "department": "ARCHIVE",
+      "ok": false,
+      "error": "ARCHIVE_NOT_FOUND",
+      "metadata": {
+        "source": "C:\\Test\\ArchiveContractProbe_7420d75efe194d2f966326d16f04e454\\missing.zip"
+      }
+    },
+    {
+      "name": "source_not_found",
+      "contract_complete": true,
+      "department": "ARCHIVE",
+      "ok": false,
+      "error": "ARCHIVE_SOURCE_NOT_FOUND",
+      "metadata": {
+        "source": "C:\\Test\\ArchiveContractProbe_7420d75efe194d2f966326d16f04e454\\missing"
+      }
+    },
+    {
+      "name": "relative_rejected",
+      "contract_complete": true,
+      "department": "ARCHIVE",
+      "ok": false,
+      "error": "ARCHIVE_PATH_NOT_ABSOLUTE",
+      "metadata": {
+        "path": "relative.zip"
+      }
+    }
+  ],
+  "evidence": {
+    "hashes_match": true,
+    "empty_folder_preserved": true,
+    "conflict_sentinel_preserved": true,
+    "conflict_partial_extract_absent": true
+  }
+}

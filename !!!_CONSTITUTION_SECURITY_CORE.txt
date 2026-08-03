@@ -1,0 +1,8 @@
+BUTLER OMEGA
+
+КОНСТИТУЦИЯ
+БЕЗОПАСНОСТЬ
+ЯДРО
+
+Главный запуск:
+!!!_00_READ_CONSTITUTION_THEN_START.bat

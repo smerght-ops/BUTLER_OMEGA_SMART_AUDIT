@@ -1,0 +1,13 @@
+{
+  "id": "CR_000_TEST",
+  "title": "Image Department OS Production Pipeline Integration",
+  "target_files": [
+    "A_04_AGENTS/ImageDepartment/runner.py"
+  ],
+  "operation": "modify",
+  "risk": "low",
+  "rollback_required": false,
+  "compile_required": true,
+  "test_required": false,
+  "description": "Overridden default contract for secure direct IMAGE execution."
+}

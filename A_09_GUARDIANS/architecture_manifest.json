@@ -1,0 +1,32 @@
+﻿{
+  "dispatcher": {
+    "required_methods": [
+      "_execute_department",
+      "dispatch"
+    ],
+    "required_calls": [
+      "self.harness.execute"
+    ],
+    "required_imports": [
+      "ButlerHarness",
+      "SemanticMemory"
+    ]
+  },
+
+  "reference_resolver": {
+    "required_methods": [
+      "_success",
+      "_failure",
+      "resolve"
+    ],
+
+    "required_constants": [
+      "STATUS_OK",
+      "ERR_EMPTY_QUERY",
+      "ERR_EMPTY_CONTEXT",
+      "ERR_NO_MATCH",
+      "ERR_INDEX_OUT_OF_RANGE",
+      "ERR_NO_SELECTED_OBJECT"
+    ]
+  }
+}

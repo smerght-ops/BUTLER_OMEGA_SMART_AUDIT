@@ -1,0 +1,44 @@
+﻿{
+    "ReferenceResolver":  {
+                              "count":  0,
+                              "lastBone":  "",
+                              "lastWrite":  "",
+                              "sha256":  ""
+                          },
+    "DocumentsDepartment":  {
+                                "count":  0,
+                                "lastBone":  "",
+                                "lastWrite":  "",
+                                "sha256":  ""
+                            },
+    "Passport":  {
+                     "count":  0,
+                     "lastBone":  "",
+                     "lastWrite":  "",
+                     "sha256":  ""
+                 },
+    "Dispatcher":  {
+                       "count":  1,
+                       "lastBone":  "Dispatcher_bone_20260626_182912.py",
+                       "lastWrite":  "2026-06-26 17:08:13",
+                       "sha256":  "367833D569B407D0E83ADE261902B05CC8882C6A2AAACFED283E9D7E5BCDB365"
+                   },
+    "SearchDepartment":  {
+                             "count":  0,
+                             "lastBone":  "",
+                             "lastWrite":  "",
+                             "sha256":  ""
+                         },
+    "OpenDocumentDepartment":  {
+                                   "count":  0,
+                                   "lastBone":  "",
+                                   "lastWrite":  "",
+                                   "sha256":  ""
+                               },
+    "Harness":  {
+                    "count":  0,
+                    "lastBone":  "",
+                    "lastWrite":  "",
+                    "sha256":  ""
+                }
+}

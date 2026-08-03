@@ -1,7 +1,8 @@
-import sys, os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-import config
+from A_01_CORE.manifest_loader import ManifestLoader
+
 def main():
-    print('[BILLS] ����� ������...')
+    config = ManifestLoader.load()
+    print('[BILLS] Поиск и анализ счетов запущен.')
+
 if __name__ == '__main__':
     main()

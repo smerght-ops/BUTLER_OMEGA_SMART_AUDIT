@@ -1,0 +1,17 @@
+{
+  "version": "1.2.0",
+  "critical": [
+    "documents.file_hash exists",
+    "documents.filepath exists",
+    "documents.status exists",
+    "no duplicate non-empty file_hash",
+    "CatalogManager must not use INSERT OR REPLACE",
+    "Professor must not overwrite file_hash with empty value"
+  ],
+  "recommended": [
+    "PROJECT_STATE.json is fresh",
+    "worker_heartbeat table exists",
+    "all worker heartbeats are alive",
+    "CHANGELOG.md is updated after architecture changes"
+  ]
+}

@@ -18,9 +18,10 @@ class ManifestLoader:
                 f"Manifest не найден: {manifest_path}"
             )
 
+        # Меняем кодировку на utf-8-sig, чтобы навсегда защитить ядро от невидимого BOM Windows
         with open(
             manifest_path,
             "r",
-            encoding="utf-8"
+            encoding="utf-8-sig"
         ) as f:
             return json.load(f)

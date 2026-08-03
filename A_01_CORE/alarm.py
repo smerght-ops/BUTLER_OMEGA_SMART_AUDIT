@@ -1,7 +1,8 @@
-import sys, os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-import config
+from A_01_CORE.manifest_loader import ManifestLoader
+
 def main():
-    print('[ALARM] Система контроля включена.')
+    config = ManifestLoader.load()
+    print('[ALARM] РЎРёСЃС‚РµРјР° РєРѕРЅС‚СЂРѕР»СЏ Рё Р±РµР·РѕРїР°СЃРЅРѕСЃС‚Рё РІРєР»СЋС‡РµРЅР°.')
+
 if __name__ == '__main__':
     main()

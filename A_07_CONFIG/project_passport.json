@@ -1,0 +1,91 @@
+﻿{
+    "project_identity": {
+        "name": "BUTLER_OMEGA_SMART",
+        "version": "1.2_DK01",
+        "current_stage": "ROADMAP_7_1_STAGE_4_DESKTOP_AUTOMATION"
+    },
+    "project_state": {
+        "main_roadmap": {
+            "name": "ROADMAP_7_1_BUTLER_OMEGA_SMART",
+            "milestone": "STAGE_4_DESKTOP_AUTOMATION",
+            "status": "ACTIVE_DEVELOPMENT"
+        },
+        "agent_core_roadmap": {
+            "name": "BUTLER_AGENT_CORE_EXPERIMENTAL_ROADMAP_1_0",
+            "milestone": "STAGE_6_INTEGRATION",
+            "status": "CERTIFIED"
+        },
+        "last_stable": {
+            "main": "STAGE_3_TASK_EXECUTION_LAYER",
+            "agent_core": "STAGE_6_INTEGRATION"
+        },
+        "next_work": {
+            "main": "CONTINUE_STAGE_4_DESKTOP_AUTOMATION",
+            "agent_core": "EXPLICITLY_CONFIRMED_POST_CERTIFICATION_MILESTONE_REQUIRED"
+        }
+    },
+    "environment_boundaries": {
+        "allowed_root": "C:\\Users\\KOS\\Desktop\\Butler_Agent\\BUTLER_OMEGA_SMART",
+        "os_target": "Windows_NT",
+        "encoding_standard": "UTF-8_NO_BOM"
+    },
+    "architecture_freeze": {
+        "frozen_modules": [
+            "A_03_ORCHESTRATION\\chat_router.py",
+            "A_01_CORE"
+        ],
+        "active_modules": [
+            "A_03_ORCHESTRATION\\butler_os_adapter.py",
+            "A_07_MEMORY\\profile_manager.py",
+            "A_07_CONFIG\\project_passport.json"
+        ]
+    },
+    "roadmap_pointer": {
+        "current_task": "STAGE_4_DESKTOP_AUTOMATION",
+        "next_task": "CONTINUE_STAGE_4_DESKTOP_AUTOMATION"
+    },
+    "current_runtime_classification": {
+        "type": "DETERMINISTIC_WORKFLOW_ENGINE",
+        "status": "PROVEN"
+    },
+    "execution_proof_map": {
+        "single_task_execution": "PROVEN",
+        "multi_task_execution": "PROVEN",
+        "phase_transition_evolution": "PROVEN",
+        "change_request_ledger": "PROVEN",
+        "execution_registry_tracking": "PROVEN",
+        "image_pipeline_routing": "PROVEN",
+        "text_roles_dispatch": "PROVEN",
+        "runtime_harness_harness_commit": "PROVEN",
+        "runtime_harness_integration": "PROVEN_VIA_SERVICE_CONTRACT",
+        "l2_session_memory": "PROVEN_IMPLEMENTED",
+        "l5_semantic_memory": "PROVEN_IMPLEMENTED",
+        "draft_commit_engine": "ARCHITECTURALLY_REJECTED_CR_MODEL_SUFFICIENT",
+        "anti_loop_budget": "PROVEN_VIA_EXECUTION_MEMORY_V2",
+        "fallback_controller": "PROVEN_DYNAMIC_FAILOVER_ROUTER",
+        "search_department_routing": "PROVEN",
+        "catalog_search_bridge": "PROVEN",
+        "catalog_db_retrieval": "PROVEN_ID_171_BLUE_WHALE",
+        "4.24_write_api": "OK",
+        "4.24_active_sync_proof": "RUNNING_AUTOMATICALLY",
+        "search_case_normalization": "PROVEN",
+        "architect_agent_vertical": "PROVEN_OFFICIAL_RUNTIME"
+    },
+    "known_limitations": {
+        "auto_rollback_engine": "NOT_IMPLEMENTED_LAB_ONLY",
+        "auto_commit_engine": "NOT_IMPLEMENTED_PASS_THROUGH"
+    },
+    "architecture_registry": {
+        "registered_components": [
+            "BUTLER_OS",
+            "SMART_DISPATCHER_V2",
+            "BUTLER_HARNESS",
+            "GENIE_FOUNDATION",
+            "PROJECT_REGISTRY",
+            "PROJECT_STATE"
+        ],
+        "registry_revision": 2,
+        "registry_file": "A_07_CONFIG\\project_registry.json",
+        "registry_status": "ACTIVE"
+    }
+}

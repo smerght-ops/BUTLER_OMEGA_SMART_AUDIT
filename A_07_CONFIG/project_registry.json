@@ -1,0 +1,63 @@
+﻿{
+    "registry_info":  {
+                          "version":  "1.0",
+                          "status":  "INITIALIZED",
+                          "registry_revision":  3
+                      },
+    "modules":  [
+                    {
+                        "name":  "BUTLER_OS",
+                        "status":  "REGISTERED",
+                        "verification":  "VERIFIED"
+                    },
+                    {
+                        "name":  "SMART_DISPATCHER_V2",
+                        "status":  "REGISTERED",
+                        "verification":  "VERIFIED"
+                    },
+                    {
+                        "name":  "BUTLER_HARNESS",
+                        "status":  "REGISTERED",
+                        "verification":  "VERIFIED"
+                    },
+                    {
+                        "name":  "GENIE_FOUNDATION",
+                        "status":  "REGISTERED",
+                        "verification":  "VERIFIED"
+                    },
+                    {
+                        "name":  "PROJECT_STATE",
+                        "status":  "REGISTERED",
+                        "verification":  "VERIFIED"
+                    },
+                    {
+                        "name":  "PROJECT_REGISTRY",
+                        "status":  "REGISTERED",
+                        "verification":  "VERIFIED"
+                    }
+                ],
+    "departments":  [
+
+                    ],
+    "services":  [
+
+                 ],
+    "capabilities":  [
+
+                     ],
+    "engineering":  [
+
+                    ],
+    "runtime":  [
+
+                ],
+    "laws":  [
+
+             ],
+    "milestones":  [
+
+                   ],
+    "experiments":  [
+
+                    ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "CR_RUNTIME_AUTOMATION",
+  "title": "Runtime Autonomous State Advancement",
+  "target_files": [
+    "A_07_MEMORY/goals_registry.json",
+    "A_07_MEMORY/execution_registry.json"
+  ],
+  "operation": "modify",
+  "risk": "low",
+  "rollback_required": false,
+  "compile_required": false,
+  "test_required": false,
+  "description": "Permanent service contract for LoopOrchestratorV3 deterministic state evolution."
+}

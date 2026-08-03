@@ -1,0 +1,342 @@
+{
+  "A_01_CORE.butler_drawer": [
+    "A_01_CORE.agent_interface"
+  ],
+  "A_02_MANAGERS.catalog_manager": [
+    "A_01_CORE.agent_interface",
+    "A_01_CORE.diagnostic_tool",
+    "A_01_CORE.mcp_server",
+    "A_01_CORE.orchestrator",
+    "A_01_CORE.register_report",
+    "A_01_CORE.system_guardian",
+    "A_01_CORE.test_db",
+    "A_04_AGENTS.professor"
+  ],
+  "A_04_AGENTS.professor": [
+    "A_01_CORE.agent_interface",
+    "A_03_ORCHESTRATION.worker",
+    "A_03_ORCHESTRATION.worker_backup",
+    "A_04_AGENTS.run_professor_daemon"
+  ],
+  "os": [
+    "A_01_CORE.agent_interface",
+    "A_01_CORE.butler_drawer",
+    "A_01_CORE.diagnostic_tool",
+    "A_01_CORE.flow_monitor",
+    "A_01_CORE.healthcheck",
+    "A_01_CORE.memory_guardian",
+    "A_01_CORE.orchestrator",
+    "A_01_CORE.project_indexer",
+    "A_01_CORE.project_state_builder",
+    "A_01_CORE.system_guardian",
+    "A_02_MANAGERS.audit_reporter",
+    "A_02_MANAGERS.memory_manager",
+    "A_02_MANAGERS.smart_dispatcher",
+    "A_03_ORCHESTRATION.chat_router",
+    "A_03_ORCHESTRATION.chat_router_v2",
+    "A_04_AGENTS.run_professor_daemon"
+  ],
+  "pathlib": [
+    "A_01_CORE.agent_interface",
+    "A_01_CORE.bootstrap_guard",
+    "A_01_CORE.butler_ui",
+    "A_01_CORE.config_loader",
+    "A_01_CORE.core_kernel",
+    "A_01_CORE.diagnostic_tool",
+    "A_01_CORE.execution_loop",
+    "A_01_CORE.flow_monitor",
+    "A_01_CORE.healthcheck",
+    "A_01_CORE.logger_config",
+    "A_01_CORE.manifest_loader",
+    "A_01_CORE.memory_core",
+    "A_01_CORE.memory_guardian",
+    "A_01_CORE.orchestrator",
+    "A_01_CORE.project_indexer",
+    "A_01_CORE.project_state_builder",
+    "A_01_CORE.run",
+    "A_01_CORE.safety_gate",
+    "A_01_CORE.self_healing_loop",
+    "A_01_CORE.system_guardian",
+    "A_01_CORE.system_stabilizer",
+    "A_01_CORE.task_feeder",
+    "A_01_CORE.test_db",
+    "A_02_MANAGERS.archiver",
+    "A_02_MANAGERS.audit_reporter",
+    "A_02_MANAGERS.catalog_manager",
+    "A_02_MANAGERS.dream_manager",
+    "A_02_MANAGERS.memory_manager",
+    "A_02_MANAGERS.project_guardian",
+    "A_02_MANAGERS.queue_manager",
+    "A_02_MANAGERS.session_manager",
+    "A_02_MANAGERS.tool_bridge",
+    "A_03_ORCHESTRATION.agent_planner",
+    "A_03_ORCHESTRATION.agent_router",
+    "A_03_ORCHESTRATION.chat_router",
+    "A_03_ORCHESTRATION.chat_router_v2",
+    "A_03_ORCHESTRATION.context_builder",
+    "A_03_ORCHESTRATION.dispatcher_bridge",
+    "A_03_ORCHESTRATION.message_network",
+    "A_03_ORCHESTRATION.registry_brain",
+    "A_03_ORCHESTRATION.router_integration",
+    "A_03_ORCHESTRATION.semantic_layer",
+    "A_04_AGENTS.professor",
+    "A_04_AGENTS.VisionDepartment.runner"
+  ],
+  "requests": [
+    "A_01_CORE.agent_interface",
+    "A_02_MANAGERS.provider_manager",
+    "A_02_MANAGERS.smart_dispatcher",
+    "A_03_ORCHESTRATION.chat_router",
+    "A_03_ORCHESTRATION.chat_router_v2",
+    "A_04_AGENTS.professor",
+    "A_04_AGENTS.CodingDepartment.runner",
+    "A_04_AGENTS.TextDepartment.runner",
+    "A_04_AGENTS.VisionDepartment.runner"
+  ],
+  "sys": [
+    "A_01_CORE.agent_interface",
+    "A_01_CORE.bootstrap_guard",
+    "A_01_CORE.diagnostic_tool",
+    "A_01_CORE.event_bus",
+    "A_01_CORE.mcp_server",
+    "A_01_CORE.memory_guardian",
+    "A_01_CORE.project_state_builder",
+    "A_01_CORE.safety_gate",
+    "A_01_CORE.self_healing_loop",
+    "A_01_CORE.system_guardian",
+    "A_02_MANAGERS.provider_manager",
+    "A_03_ORCHESTRATION.chat_router_v2",
+    "A_03_ORCHESTRATION.router_integration",
+    "A_04_AGENTS.run_professor_daemon"
+  ],
+  "A_01_CORE.manifest_loader": [
+    "A_01_CORE.alarm",
+    "A_01_CORE.fix_butler",
+    "A_01_CORE.run",
+    "A_01_CORE.system_guardian",
+    "A_02_MANAGERS.memory_manager",
+    "A_02_MANAGERS.model_registry",
+    "A_02_MANAGERS.provider_manager",
+    "A_02_MANAGERS.queue_manager",
+    "A_04_AGENTS.find_bills",
+    "A_04_AGENTS.CodingDepartment.runner",
+    "A_04_AGENTS.TextDepartment.runner",
+    "A_04_AGENTS.VisionDepartment.runner"
+  ],
+  "hashlib": [
+    "A_01_CORE.bootstrap_guard",
+    "A_01_CORE.memory_guardian",
+    "A_01_CORE.orchestrator",
+    "A_01_CORE.project_indexer",
+    "A_01_CORE.project_state_builder"
+  ],
+  "json": [
+    "A_01_CORE.bootstrap_guard",
+    "A_01_CORE.butler_drawer",
+    "A_01_CORE.config_loader",
+    "A_01_CORE.core_kernel",
+    "A_01_CORE.execution_loop",
+    "A_01_CORE.healthcheck",
+    "A_01_CORE.manifest_loader",
+    "A_01_CORE.mcp_server",
+    "A_01_CORE.memory_core",
+    "A_01_CORE.memory_guardian",
+    "A_01_CORE.project_indexer",
+    "A_01_CORE.project_state_builder",
+    "A_01_CORE.safety_gate",
+    "A_01_CORE.system_stabilizer",
+    "A_01_CORE.task_feeder",
+    "A_02_MANAGERS.project_guardian",
+    "A_02_MANAGERS.session_manager",
+    "A_02_MANAGERS.tool_bridge",
+    "A_03_ORCHESTRATION.agent_planner",
+    "A_03_ORCHESTRATION.autonomous_loop",
+    "A_03_ORCHESTRATION.chat_router",
+    "A_03_ORCHESTRATION.chat_router_v2",
+    "A_03_ORCHESTRATION.dispatcher_bridge",
+    "A_03_ORCHESTRATION.message_network",
+    "A_03_ORCHESTRATION.planner",
+    "A_03_ORCHESTRATION.registry_brain",
+    "A_03_ORCHESTRATION.semantic_layer",
+    "A_04_AGENTS.professor"
+  ],
+  "py_compile": [
+    "A_01_CORE.bootstrap_guard",
+    "A_01_CORE.memory_guardian"
+  ],
+  "time": [
+    "A_01_CORE.butler_drawer",
+    "A_01_CORE.execution_loop",
+    "A_01_CORE.flow_monitor",
+    "A_01_CORE.memory_guardian",
+    "A_01_CORE.project_state_builder",
+    "A_01_CORE.safety_gate",
+    "A_01_CORE.system_stabilizer",
+    "A_01_CORE.task_feeder",
+    "A_02_MANAGERS.catalog_manager",
+    "A_02_MANAGERS.queue_manager",
+    "A_02_MANAGERS.smart_dispatcher",
+    "A_03_ORCHESTRATION.chat_router",
+    "A_03_ORCHESTRATION.chat_router_v2",
+    "A_04_AGENTS.run_professor_daemon",
+    "A_04_AGENTS.CodingDepartment.runner",
+    "A_04_AGENTS.TextDepartment.runner",
+    "A_04_AGENTS.VisionDepartment.runner"
+  ],
+  "urllib.request": [
+    "A_01_CORE.butler_drawer"
+  ],
+  "subprocess": [
+    "A_01_CORE.butler_ui",
+    "A_01_CORE.safety_gate",
+    "A_01_CORE.self_healing_loop"
+  ],
+  "tkinter": [
+    "A_01_CORE.butler_ui"
+  ],
+  "A_03_ORCHESTRATION.semantic_layer": [
+    "A_01_CORE.chat_core_bridge",
+    "A_01_CORE.core_kernel",
+    "A_01_CORE.core_orchestrator",
+    "A_03_ORCHESTRATION.chat_router_mirror"
+  ],
+  "A_07_MEMORY.profile_manager": [
+    "A_01_CORE.chat_core_bridge",
+    "A_01_CORE.memory_core",
+    "A_03_ORCHESTRATION.chat_router_mirror"
+  ],
+  "A_01_CORE.memory_core": [
+    "A_01_CORE.core_orchestrator"
+  ],
+  "datetime": [
+    "A_01_CORE.execution_loop",
+    "A_01_CORE.flow_monitor",
+    "A_01_CORE.project_indexer",
+    "A_01_CORE.task_feeder",
+    "A_02_MANAGERS.audit_reporter",
+    "A_03_ORCHESTRATION.message_network",
+    "A_03_ORCHESTRATION.planner"
+  ],
+  "logging": [
+    "A_01_CORE.healthcheck",
+    "A_01_CORE.logger_config"
+  ],
+  "A_01_CORE.orchestrator": [
+    "A_01_CORE.mcp_server"
+  ],
+  "importlib": [
+    "A_01_CORE.memory_guardian"
+  ],
+  "socket": [
+    "A_01_CORE.memory_guardian",
+    "A_01_CORE.project_state_builder"
+  ],
+  "sqlite3": [
+    "A_01_CORE.memory_guardian",
+    "A_01_CORE.register_report",
+    "A_01_CORE.system_guardian",
+    "A_02_MANAGERS.audit_reporter",
+    "A_02_MANAGERS.catalog_manager",
+    "A_02_MANAGERS.queue_manager",
+    "A_02_MANAGERS.tool_bridge",
+    "A_03_ORCHESTRATION.test_worker"
+  ],
+  "ast": [
+    "A_01_CORE.project_indexer",
+    "A_02_MANAGERS.project_guardian"
+  ],
+  "shutil": [
+    "A_01_CORE.project_state_builder",
+    "A_01_CORE.safety_gate",
+    "A_01_CORE.task_feeder",
+    "A_02_MANAGERS.archiver",
+    "A_03_ORCHESTRATION.dispatcher_bridge",
+    "A_04_AGENTS.professor"
+  ],
+  "A_01_CORE.safety_gate": [
+    "A_01_CORE.self_healing_loop"
+  ],
+  "A_02_MANAGERS.smart_dispatcher": [
+    "A_01_CORE.self_healing_loop"
+  ],
+  "A_02_MANAGERS.provider_manager": [
+    "A_01_CORE.system_guardian"
+  ],
+  "contextlib": [
+    "A_01_CORE.system_guardian"
+  ],
+  "re": [
+    "A_02_MANAGERS.smart_dispatcher",
+    "A_02_MANAGERS.tool_bridge",
+    "A_03_ORCHESTRATION.agent_router",
+    "A_03_ORCHESTRATION.chat_router",
+    "A_04_AGENTS.professor",
+    "A_04_AGENTS.CodingDepartment.runner",
+    "A_04_AGENTS.TextDepartment.runner",
+    "A_04_AGENTS.VisionDepartment.runner"
+  ],
+  "uuid": [
+    "A_02_MANAGERS.smart_dispatcher",
+    "A_03_ORCHESTRATION.message_network"
+  ],
+  "A_01_CORE.config_loader": [
+    "A_02_MANAGERS.tool_bridge"
+  ],
+  "argparse": [
+    "A_03_ORCHESTRATION.chat_router",
+    "A_03_ORCHESTRATION.chat_router_v2"
+  ],
+  "LAB_COMFY_BRIDGE_V2": [
+    "A_03_ORCHESTRATION.chat_router_v2"
+  ],
+  "A_01_CORE.core_orchestrator": [
+    "A_03_ORCHESTRATION.factory_core_bridge"
+  ],
+  "A_03_ORCHESTRATION.agent_router": [
+    "A_03_ORCHESTRATION.router_integration",
+    "A_03_ORCHESTRATION.worker"
+  ],
+  "A_03_ORCHESTRATION.router_registry": [
+    "A_03_ORCHESTRATION.router_integration",
+    "A_03_ORCHESTRATION.worker"
+  ],
+  "A_03_ORCHESTRATION.worker": [
+    "A_03_ORCHESTRATION.test_worker"
+  ],
+  "A_01_CORE.logger_config": [
+    "A_03_ORCHESTRATION.worker",
+    "A_03_ORCHESTRATION.worker_backup"
+  ],
+  "A_02_MANAGERS.queue_manager": [
+    "A_03_ORCHESTRATION.worker",
+    "A_03_ORCHESTRATION.worker_backup"
+  ],
+  "A_03_HANDLERS.registry": [
+    "A_04_AGENTS.professor"
+  ],
+  "A_03_HANDLERS.vision_engine": [
+    "A_04_AGENTS.professor"
+  ],
+  "A_07_MEMORY.semantic_memory": [
+    "A_04_AGENTS.professor"
+  ],
+  "base64": [
+    "A_04_AGENTS.professor",
+    "A_04_AGENTS.VisionDepartment.runner"
+  ],
+  "A_04_AGENTS.base_department": [
+    "A_04_AGENTS.ArchiveDepartment.runner",
+    "A_04_AGENTS.AudioDepartment.runner",
+    "A_04_AGENTS.CodingDepartment.runner",
+    "A_04_AGENTS.TextDepartment.runner",
+    "A_04_AGENTS.VideoDepartment.runner",
+    "A_04_AGENTS.VisionDepartment.runner"
+  ],
+  "runner": [
+    "A_04_AGENTS.CodingDepartment.DISPATCHER"
+  ],
+  "A_02_MANAGERS.model_registry": [
+    "A_04_AGENTS.TextDepartment.runner",
+    "A_04_AGENTS.VisionDepartment.runner"
+  ]
+}

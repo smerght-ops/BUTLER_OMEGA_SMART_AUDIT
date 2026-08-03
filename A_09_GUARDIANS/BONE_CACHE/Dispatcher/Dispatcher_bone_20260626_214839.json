@@ -1,0 +1,10 @@
+﻿{
+    "role":  "Dispatcher",
+    "source":  ".\\A_02_MANAGERS\\smart_dispatcher_v2.py",
+    "bone":  ".\\A_09_GUARDIANS\\BONE_CACHE\\Dispatcher\\Dispatcher_bone_20260626_214839.py",
+    "created":  "2026-06-26 21:48:39",
+    "sha256":  "367833D569B407D0E83ADE261902B05CC8882C6A2AAACFED283E9D7E5BCDB365",
+    "reason":  "Before critical modification",
+    "max_bones":  5,
+    "genie":  "WATCHDOG_BONE_WRITER_4.30.2"
+}

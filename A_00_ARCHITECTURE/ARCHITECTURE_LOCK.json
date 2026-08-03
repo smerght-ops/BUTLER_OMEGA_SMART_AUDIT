@@ -1,0 +1,54 @@
+{
+  "architecture_version": "1.2.0",
+  "critical_components": [
+    {
+      "path": "A_01_CORE/memory_guardian.py",
+      "module": "A_01_CORE.memory_guardian",
+      "safe_import": true
+    },
+    {
+      "path": "A_01_CORE/project_state_builder.py",
+      "module": "A_01_CORE.project_state_builder",
+      "safe_import": true
+    },
+    {
+      "path": "A_01_CORE/bootstrap_guard.py",
+      "module": "A_01_CORE.bootstrap_guard",
+      "safe_import": true
+    },
+    {
+      "path": "A_01_CORE/orchestrator.py",
+      "module": "A_01_CORE.orchestrator",
+      "safe_import": true
+    },
+    {
+      "path": "A_02_MANAGERS/catalog_manager.py",
+      "module": "A_02_MANAGERS.catalog_manager",
+      "safe_import": true
+    },
+    {
+      "path": "A_04_AGENTS/professor.py",
+      "module": "A_04_AGENTS.professor",
+      "safe_import": true
+    }
+  ],
+  "required_columns": {
+    "documents": [
+      "id",
+      "filepath",
+      "file_hash",
+      "status",
+      "summary",
+      "tags",
+      "registered_at",
+      "updated_at"
+    ]
+  },
+  "required_tables": [
+    "documents",
+    "worker_heartbeat"
+  ],
+  "guardian_self_sha256": "6be98be9d007cf8e10126df0237e09147e8fa11d546c808480c7d3fc1a149152",
+  "state_file_sha256": "5516116ec47f76df890853cdd8ed80725312c957b6649eca4b4480e9ab2ee5dc",
+  "lock_signature": "1e6748053b50862b97608da2f0fa12b93ac7d534b2ca36fd94675d7ac9dae1b0"
+}

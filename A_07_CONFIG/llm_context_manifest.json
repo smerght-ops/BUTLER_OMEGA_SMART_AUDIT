@@ -1,0 +1,56 @@
+{
+  "target_file": "base_department.py",
+  "target_module": "A_04_AGENTS.base_department",
+  "risk_level": "CRITICAL_INFRASTRUCTURE",
+  "affected_count": 6,
+  "requires_rollback": true,
+  "max_file_chars": 60000,
+  "max_package_chars": 240000,
+  "package_chars": 13826,
+  "files_added": [
+    {
+      "role": "TARGET",
+      "module": "A_04_AGENTS.base_department",
+      "path": "A_04_AGENTS/base_department.py",
+      "chars": 387
+    },
+    {
+      "role": "AFFECTED",
+      "module": "A_04_AGENTS.ArchiveDepartment.runner",
+      "path": "A_04_AGENTS/ArchiveDepartment/runner.py",
+      "chars": 384
+    },
+    {
+      "role": "AFFECTED",
+      "module": "A_04_AGENTS.AudioDepartment.runner",
+      "path": "A_04_AGENTS/AudioDepartment/runner.py",
+      "chars": 380
+    },
+    {
+      "role": "AFFECTED",
+      "module": "A_04_AGENTS.CodingDepartment.runner",
+      "path": "A_04_AGENTS/CodingDepartment/runner.py",
+      "chars": 2650
+    },
+    {
+      "role": "AFFECTED",
+      "module": "A_04_AGENTS.TextDepartment.runner",
+      "path": "A_04_AGENTS/TextDepartment/runner.py",
+      "chars": 3962
+    },
+    {
+      "role": "AFFECTED",
+      "module": "A_04_AGENTS.VideoDepartment.runner",
+      "path": "A_04_AGENTS/VideoDepartment/runner.py",
+      "chars": 380
+    },
+    {
+      "role": "AFFECTED",
+      "module": "A_04_AGENTS.VisionDepartment.runner",
+      "path": "A_04_AGENTS/VisionDepartment/runner.py",
+      "chars": 4647
+    }
+  ],
+  "files_missing": [],
+  "output": "C:\\Users\\KOS\\Desktop\\Butler_Agent\\BUTLER_OMEGA\\A_07_CONFIG\\llm_context_package.md"
+}

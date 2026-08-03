@@ -1,0 +1,349 @@
+{
+  "before_any_change.py": [],
+  "cleanup_rollback_points.py": [],
+  "create_snapshot.py": [],
+  "harness_patcher.py": [],
+  "health_check.py": [],
+  "INIT_OMEGA.py": [
+    "A_02_MANAGERS.catalog_manager"
+  ],
+  "inspect_db.py": [],
+  "patch_memory.py": [],
+  "restore_everything.py": [],
+  "restore_full_project.py": [],
+  "restore_snapshot.py": [],
+  "RUN_PIPELINE.py": [
+    "A_01_CORE.orchestrator",
+    "A_03_ORCHESTRATION.worker"
+  ],
+  "RUN_PIPELINE_V12.py": [
+    "A_01_CORE.memory_guardian",
+    "A_01_CORE.orchestrator",
+    "A_01_CORE.project_state_builder",
+    "A_03_ORCHESTRATION.worker"
+  ],
+  "START_BUTLER_CORE.py": [
+    "A_01_CORE.core_orchestrator",
+    "A_01_CORE.execution_loop",
+    "A_01_CORE.system_stabilizer",
+    "A_03_ORCHESTRATION.message_network",
+    "A_03_ORCHESTRATION.registry_brain",
+    "A_07_MEMORY.self_healing_memory"
+  ],
+  "START_BUTLER_SYSTEM.py": [
+    "A_01_CORE.execution_loop",
+    "A_01_CORE.system_stabilizer",
+    "A_03_ORCHESTRATION.message_network",
+    "A_03_ORCHESTRATION.registry_brain",
+    "A_07_MEMORY.self_healing_memory"
+  ],
+  "START_SAFE_LAUNCH.py": [],
+  "system_doctor.py": [],
+  "A_00_ARCHIVE_SCRIPTS\\requeue.py": [],
+  "A_00_ARCHIVE_SCRIPTS\\temp_update.py": [],
+  "A_00_HEALER_UNIT\\temp_test.py": [
+    "A_01_CORE.manifest_loader"
+  ],
+  "A_01_CORE\\alarm.py": [
+    "A_01_CORE.manifest_loader"
+  ],
+  "A_01_CORE\\bootstrap_guard.py": [],
+  "A_01_CORE\\butler_drawer.py": [],
+  "A_01_CORE\\butler_ui.py": [],
+  "A_01_CORE\\chat_core_bridge.py": [
+    "A_03_ORCHESTRATION.semantic_layer",
+    "A_07_MEMORY.profile_manager"
+  ],
+  "A_01_CORE\\config_loader.py": [],
+  "A_01_CORE\\core_kernel.py": [
+    "A_03_ORCHESTRATION.semantic_layer"
+  ],
+  "A_01_CORE\\core_orchestrator.py": [
+    "A_01_CORE.memory_core",
+    "A_03_ORCHESTRATION.semantic_layer"
+  ],
+  "A_01_CORE\\diagnostic_tool.py": [
+    "A_02_MANAGERS.catalog_manager"
+  ],
+  "A_01_CORE\\event_bus.py": [],
+  "A_01_CORE\\execution_loop.py": [],
+  "A_01_CORE\\fix_butler.py": [
+    "A_01_CORE.manifest_loader"
+  ],
+  "A_01_CORE\\flow_monitor.py": [],
+  "A_01_CORE\\healthcheck.py": [],
+  "A_01_CORE\\logger_config.py": [],
+  "A_01_CORE\\manifest_loader.py": [],
+  "A_01_CORE\\mcp_server.py": [
+    "A_01_CORE.orchestrator",
+    "A_02_MANAGERS.catalog_manager"
+  ],
+  "A_01_CORE\\memory_core.py": [
+    "A_07_MEMORY.profile_manager"
+  ],
+  "A_01_CORE\\orchestrator.py": [
+    "A_02_MANAGERS.catalog_manager"
+  ],
+  "A_01_CORE\\run.py": [
+    "A_01_CORE.manifest_loader"
+  ],
+  "A_01_CORE\\safety_gate.py": [],
+  "A_01_CORE\\self_healing_loop.py": [
+    "A_01_CORE.safety_gate",
+    "A_02_MANAGERS.smart_dispatcher"
+  ],
+  "A_01_CORE\\system_doctor.py": [],
+  "A_01_CORE\\system_guardian.py": [
+    "A_01_CORE.manifest_loader",
+    "A_02_MANAGERS.catalog_manager",
+    "A_02_MANAGERS.provider_manager"
+  ],
+  "A_01_CORE\\system_stabilizer.py": [],
+  "A_01_CORE\\task_feeder.py": [],
+  "A_01_CORE\\test_db.py": [
+    "A_02_MANAGERS.catalog_manager"
+  ],
+  "A_01_CORE\\__init__.py": [],
+  "A_02_MANAGERS\\archiver.py": [],
+  "A_02_MANAGERS\\context_builder.py": [],
+  "A_02_MANAGERS\\department_registry.py": [],
+  "A_02_MANAGERS\\impact_analyzer.py": [],
+  "A_02_MANAGERS\\memory_manager.py": [
+    "A_01_CORE.manifest_loader"
+  ],
+  "A_02_MANAGERS\\model_registry.py": [
+    "A_01_CORE.manifest_loader"
+  ],
+  "A_02_MANAGERS\\project_guardian.py": [],
+  "A_02_MANAGERS\\provider_manager.py": [
+    "A_01_CORE.manifest_loader"
+  ],
+  "A_02_MANAGERS\\queue_manager.py": [
+    "A_01_CORE.manifest_loader"
+  ],
+  "A_02_MANAGERS\\smart_dispatcher.py": [],
+  "A_02_MANAGERS\\tool_bridge.py": [
+    "A_01_CORE.config_loader"
+  ],
+  "A_02_MANAGERS\\__init__.py": [],
+  "A_03_ENGINES\\__init__.py": [],
+  "A_03_HANDLERS\\archive_handler.py": [
+    "A_03_HANDLERS.base_handler"
+  ],
+  "A_03_HANDLERS\\base_handler.py": [],
+  "A_03_HANDLERS\\code_detector.py": [],
+  "A_03_HANDLERS\\code_handler.py": [
+    "A_03_HANDLERS.base_handler",
+    "A_03_HANDLERS.code_detector"
+  ],
+  "A_03_HANDLERS\\docx_handler.py": [
+    "A_03_HANDLERS.base_handler"
+  ],
+  "A_03_HANDLERS\\image_handler.py": [
+    "A_03_HANDLERS.base_handler",
+    "A_03_HANDLERS.vision_engine"
+  ],
+  "A_03_HANDLERS\\ocr_backend.py": [],
+  "A_03_HANDLERS\\ollama_vision_backend.py": [],
+  "A_03_HANDLERS\\pdf_handler.py": [
+    "A_03_HANDLERS.base_handler",
+    "A_03_HANDLERS.code_detector",
+    "A_03_HANDLERS.vision_engine"
+  ],
+  "A_03_HANDLERS\\pdf_ocr_pipeline.py": [
+    "A_03_HANDLERS.vision_engine"
+  ],
+  "A_03_HANDLERS\\registry.py": [
+    "A_03_HANDLERS.archive_handler",
+    "A_03_HANDLERS.code_handler",
+    "A_03_HANDLERS.docx_handler",
+    "A_03_HANDLERS.image_handler",
+    "A_03_HANDLERS.pdf_handler",
+    "A_03_HANDLERS.spreadsheet_handler",
+    "A_03_HANDLERS.text_handler"
+  ],
+  "A_03_HANDLERS\\spreadsheet_handler.py": [
+    "A_03_HANDLERS.base_handler"
+  ],
+  "A_03_HANDLERS\\text_handler.py": [
+    "A_03_HANDLERS.base_handler"
+  ],
+  "A_03_HANDLERS\\vision_analyzer.py": [
+    "A_03_HANDLERS.vision_engine"
+  ],
+  "A_03_HANDLERS\\vision_engine.py": [
+    "A_03_HANDLERS.ocr_backend",
+    "A_03_HANDLERS.ollama_vision_backend"
+  ],
+  "A_03_HANDLERS\\__init__.py": [],
+  "A_03_ORCHESTRATION\\agent_planner.py": [],
+  "A_03_ORCHESTRATION\\agent_router.BAK_20260623_113044.py": [],
+  "A_03_ORCHESTRATION\\autonomous_loop.py": [],
+  "A_03_ORCHESTRATION\\chat_router.before_hybrid_connect_20260618.py": [],
+  "A_03_ORCHESTRATION\\chat_router.HYBRID_WORK.before_import.py": [],
+  "A_03_ORCHESTRATION\\chat_router.HYBRID_WORK.before_real_import.py": [],
+  "A_03_ORCHESTRATION\\chat_router.STABLE_BEFORE_HYBRID.py": [],
+  "A_03_ORCHESTRATION\\chat_router.WORKING_RUSSIAN_OK.py": [],
+  "A_03_ORCHESTRATION\\chat_router_mirror.py": [
+    "A_03_ORCHESTRATION.semantic_layer",
+    "A_07_MEMORY.profile_manager"
+  ],
+  "A_03_ORCHESTRATION\\chat_router_test_restore.py": [],
+  "A_03_ORCHESTRATION\\context_builder.BEFORE_CHAT_MODE.py": [],
+  "A_03_ORCHESTRATION\\dispatcher_bridge.py": [],
+  "A_03_ORCHESTRATION\\factory_core_bridge.py": [
+    "A_01_CORE.core_orchestrator"
+  ],
+  "A_03_ORCHESTRATION\\memory_loop.py": [],
+  "A_03_ORCHESTRATION\\message_network.py": [],
+  "A_03_ORCHESTRATION\\orchestrator.py": [],
+  "A_03_ORCHESTRATION\\planner.py": [],
+  "A_03_ORCHESTRATION\\registry_brain.py": [],
+  "A_03_ORCHESTRATION\\router_integration.BACKUP_4_11_3.py": [
+    "A_03_ORCHESTRATION.agent_router",
+    "A_03_ORCHESTRATION.passport_commands",
+    "A_03_ORCHESTRATION.router_registry"
+  ],
+  "A_03_ORCHESTRATION\\semantic_layer.py": [],
+  "A_03_ORCHESTRATION\\test_worker.py": [
+    "A_03_ORCHESTRATION.worker"
+  ],
+  "A_03_ORCHESTRATION\\worker_backup.py": [
+    "A_01_CORE.logger_config",
+    "A_02_MANAGERS.queue_manager",
+    "A_04_AGENTS.professor"
+  ],
+  "A_03_ORCHESTRATION\\__init__.py": [],
+  "A_04_AGENTS\\find_bills.py": [
+    "A_01_CORE.manifest_loader"
+  ],
+  "A_04_AGENTS\\professor.py": [
+    "A_02_MANAGERS.catalog_manager",
+    "A_03_HANDLERS.registry",
+    "A_03_HANDLERS.vision_engine",
+    "A_07_MEMORY.semantic_memory"
+  ],
+  "A_04_AGENTS\\run_professor_daemon.py": [
+    "A_04_AGENTS.professor"
+  ],
+  "A_04_AGENTS\\__init__.py": [],
+  "A_04_AGENTS_BACKUP\\find_bills.py": [
+    "A_01_CORE.manifest_loader"
+  ],
+  "A_04_AGENTS_BACKUP\\__init__.py": [],
+  "A_05_STORAGE\\__init__.py": [],
+  "A_07_CONFIG\\__init__.py": [],
+  "A_07_MEMORY\\agent_runtime.py": [
+    "A_03_ORCHESTRATION.butler_harness",
+    "A_07_MEMORY.agent_planner",
+    "A_07_MEMORY.change_request_manager",
+    "A_07_MEMORY.execution_registry",
+    "A_07_MEMORY.goal_loop_engine"
+  ],
+  "A_07_MEMORY\\memory_advisor.py": [
+    "A_07_MEMORY.search_engine"
+  ],
+  "A_07_MEMORY\\memory_layer.py": [
+    "A_02_MANAGERS.session_manager",
+    "A_03_ORCHESTRATION.context_builder"
+  ],
+  "A_07_MEMORY\\profile_sync.py": [],
+  "A_07_MEMORY\\search_engine.py": [],
+  "A_07_MEMORY\\self_healing_memory.py": [],
+  "A_09_TESTS\\handshake_test.py": [
+    "A_02_MANAGERS.catalog_manager",
+    "A_02_MANAGERS.memory_manager",
+    "A_02_MANAGERS.provider_manager"
+  ],
+  "A_09_TESTS\\test_departments.py": [
+    "A_04_AGENTS.ArchiveDepartment.runner",
+    "A_04_AGENTS.AudioDepartment.runner",
+    "A_04_AGENTS.CodingDepartment.runner",
+    "A_04_AGENTS.ImageDepartment.runner",
+    "A_04_AGENTS.MemoryDepartment.runner",
+    "A_04_AGENTS.TextDepartment.runner",
+    "A_04_AGENTS.VideoDepartment.runner",
+    "A_04_AGENTS.VisionDepartment.runner"
+  ],
+  "A_09_TESTS\\test_handlers.py": [
+    "A_03_HANDLERS.registry"
+  ],
+  "A_09_TESTS\\test_memory_advisor.py": [
+    "A_04_COMPONENTS.MemoryAdvisor.memory_advisor"
+  ],
+  "A_09_TESTS\\test_pdf_ocr_pipeline.py": [
+    "A_03_HANDLERS.pdf_ocr_pipeline"
+  ],
+  "A_09_TESTS\\test_pdf_render.py": [],
+  "A_09_TESTS\\test_project_auditor.py": [
+    "A_04_COMPONENTS.ProjectAuditor.project_auditor"
+  ],
+  "A_09_TESTS\\test_search_engine.py": [
+    "A_07_MEMORY.search_engine"
+  ],
+  "A_09_TESTS\\test_vision_analyzer.py": [
+    "A_03_HANDLERS.vision_analyzer"
+  ],
+  "A_09_TESTS\\__init__.py": [],
+  "A_00_RESTORE\\CHECKPOINT_IMAGE_LINK_OK_20260616_192929\\runner.py": [
+    "A_04_AGENTS.base_department"
+  ],
+  "A_00_RESTORE\\CHECKPOINT_IMAGE_LINK_OK_20260616_192943\\runner.py": [
+    "A_04_AGENTS.base_department"
+  ],
+  "A_00_RESTORE\\SEARCH_ENGINE_BACKUPS\\search_engine_20260610_115441.py": [],
+  "A_02_MANAGERS\\Planner\\__init__.py": [],
+  "A_02_MANAGERS\\TaskRunner\\ExecutionAdapters\\__init__.py": [],
+  "A_03_ENGINES\\Vision_Engine\\vision_tool.py": [
+    "A_01_CORE.manifest_loader"
+  ],
+  "A_03_ENGINES\\Vision_Engine\\__init__.py": [],
+  "A_03_ORCHESTRATION\\ConversationContext\\__init__.py": [],
+  "A_03_ORCHESTRATION\\ConversationContext\\ImageSession\\__init__.py": [],
+  "A_04_AGENTS\\ArchiveDepartment\\__init__.py": [],
+  "A_04_AGENTS\\AudioDepartment\\runner.py": [
+    "A_04_AGENTS.base_department"
+  ],
+  "A_04_AGENTS\\AudioDepartment\\__init__.py": [],
+  "A_04_AGENTS\\ChatDepartment\\__init__.py": [],
+  "A_04_AGENTS\\CodingDepartment\\DISPATCHER.py": [],
+  "A_04_AGENTS\\CodingDepartment\\__init__.py": [],
+  "A_04_AGENTS\\DocumentsDepartment\\__init__.py": [],
+  "A_04_AGENTS\\DocumentsDepartment.BAK_20260703_124909\\__init__.py": [],
+  "A_04_AGENTS\\ExternalDepartment\\__init__.py": [],
+  "A_04_AGENTS\\ImageDepartment\\__init__.py": [],
+  "A_04_AGENTS\\MemoryDepartment\\runner.py": [
+    "A_04_AGENTS.base_department"
+  ],
+  "A_04_AGENTS\\MemoryDepartment\\__init__.py": [],
+  "A_04_AGENTS\\OCRDepartment\\__init__.py": [],
+  "A_04_AGENTS\\OpenDocumentDepartment\\runner.py": [
+    "A_04_AGENTS.base_department",
+    "A_07_MEMORY.SESSION.reference_resolver"
+  ],
+  "A_04_AGENTS\\ProjectDocumentationDepartment\\__init__.py": [],
+  "A_04_AGENTS\\TextDepartment\\runner.before_memory_context.py": [
+    "A_01_CORE.manifest_loader",
+    "A_02_MANAGERS.model_registry",
+    "A_04_AGENTS.base_department"
+  ],
+  "A_04_AGENTS\\TextDepartment\\runner.before_text_roles.py": [
+    "A_01_CORE.manifest_loader",
+    "A_02_MANAGERS.model_registry",
+    "A_04_AGENTS.base_department"
+  ],
+  "A_04_AGENTS\\TextDepartment\\__init__.py": [],
+  "A_04_AGENTS\\VideoDepartment\\runner.py": [
+    "A_04_AGENTS.base_department"
+  ],
+  "A_04_AGENTS\\VideoDepartment\\__init__.py": [],
+  "A_04_AGENTS\\VisionDepartment\\__init__.py": [],
+  "A_04_AGENTS\\VoiceDepartment\\__init__.py": [],
+  "A_04_AGENTS\\ProjectDocumentationDepartment\\Core_BACKUP_UTF8SIG\\__init__.py": [],
+  "A_04_COMPONENTS\\MemoryAdvisor\\memory_advisor.py": [],
+  "A_04_COMPONENTS\\ProjectAuditor\\project_auditor.py": [],
+  "A_10_BUTLER_OS\\00_PRODUCTION\\core\\chat_router_WORKING_COPY.py": [],
+  "A_10_BUTLER_OS\\00_PRODUCTION\\core\\department_contract.py": [],
+  "A_10_BUTLER_OS\\00_PRODUCTION\\core\\smart_router.py": [],
+  "A_10_BUTLER_OS\\00_PRODUCTION\\providers\\model_registry.py": []
+}

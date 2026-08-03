@@ -1,0 +1,4 @@
+﻿FROM "D:\AI_Hub\Text_LLM\lmstudio-community\Qwen2.5-Coder-32B-GGUF\Qwen2.5-Coder-32B-Q4_K_M.gguf"
+PARAMETER num_ctx 16384
+PARAMETER stop "<|im_end|>"
+SYSTEM "You are the Coder Sub-Agent. You write high-quality, secure Python and PowerShell code. Output only clean code blocks."

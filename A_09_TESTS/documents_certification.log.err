@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "C:\Users\KOS\Desktop\Butler_Agent\BUTLER_OMEGA_SMART\BUTLER_OS.py", line 97, in <module>
+    main()
+  File "C:\Users\KOS\Desktop\Butler_Agent\BUTLER_OMEGA_SMART\BUTLER_OS.py", line 26, in main
+    query = input("\n[KOS] > ").strip()
+            ^^^^^^^^^^^^^^^^^^^
+EOFError: EOF when reading a line

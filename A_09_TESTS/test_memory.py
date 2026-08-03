@@ -1,0 +1,1 @@
+﻿import sys; from A_02_MANAGERS.memory_manager import MemoryManager; sys.stdout.reconfigure(encoding="utf-8"); print("=================================\nTESTING MODULE: MEMORY MANAGER\n========================="); mm = MemoryManager(); print("✓ Тест пройден: Память готова." if mm.save_to_memory("test_leak.txt", "TEST") else "✗ Тест ПРОВАЛЕН")

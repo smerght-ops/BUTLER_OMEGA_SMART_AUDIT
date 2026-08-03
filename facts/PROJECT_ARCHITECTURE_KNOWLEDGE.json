@@ -1,0 +1,280 @@
+{
+  "generated": "2026-07-18T12:44:09.033224Z",
+  "version": "3.1",
+  "status": "FACTUAL_ONLY",
+  "generator": "Inspector-Discovery_v3_1_TEST.py",
+  "role": "aggregate_existing_inspector_facts_without_decisions",
+  "source_policy": "ACTIVE_PATHS_ONLY; LIVE_SOURCE_REMAINS_AUTHORITATIVE",
+  "sources": {
+    "PhysicalMap": {
+      "path": "Inspector0_PhysicalMap.json",
+      "exists": true,
+      "loaded": true,
+      "modified_utc": "2026-07-18T12:44:06.083476+00:00",
+      "generated_utc": "2026-07-18T12:44:06Z",
+      "schema": "physical_map",
+      "generator": "Inspector0_PhysicalMap"
+    },
+    "EntityMap": {
+      "path": "Inspector1_EntityMap.json",
+      "exists": true,
+      "loaded": true,
+      "modified_utc": "2026-07-18T12:44:06.582869+00:00",
+      "generated_utc": "2026-07-18T12:44:06.501524Z",
+      "schema": "entity_map",
+      "generator": "Inspector1_EntityMap"
+    },
+    "ImportMap": {
+      "path": "Inspector2_ImportMap.json",
+      "exists": true,
+      "loaded": true,
+      "modified_utc": "2026-07-18T12:44:07.482471+00:00",
+      "generated_utc": "2026-07-18T12:44:07.472507Z",
+      "schema": "import_map",
+      "generator": "Inspector2_ImportMap"
+    },
+    "RegistrationAST": {
+      "path": "Inspector3_RegistrationAST.json",
+      "exists": true,
+      "loaded": true,
+      "modified_utc": "2026-07-18T12:44:07.873051+00:00",
+      "generated_utc": "2026-07-18T12:44:07.871397Z",
+      "schema": "registration_ast",
+      "generator": "Inspector3_RegistrationAST"
+    },
+    "CallGraph": {
+      "path": "Inspector4_CallGraph.json",
+      "exists": true,
+      "loaded": true,
+      "modified_utc": "2026-07-18T12:44:08.323008+00:00",
+      "generated_utc": "2026-07-18T12:44:08.265562Z",
+      "schema": "call_graph",
+      "generator": "Inspector4_CallGraph"
+    },
+    "LinkMap": {
+      "path": "LinkMap.json",
+      "exists": true,
+      "loaded": true,
+      "modified_utc": "2026-07-18T12:44:08.683229+00:00",
+      "generated_utc": "2026-07-18T12:44:08.579997Z",
+      "schema": "link_map",
+      "generator": "LinkMapBuilder"
+    },
+    "DependencyModel": {
+      "path": "DependencyModel.json",
+      "exists": true,
+      "loaded": true,
+      "modified_utc": "2026-07-18T12:44:08.856310+00:00",
+      "generated_utc": "2026-07-18T12:44:08.747906Z",
+      "schema": "dependency_model",
+      "generator": "DependencyModelBuilder"
+    },
+    "ExecutionRegistry": {
+      "path": "A_07_CONFIG/execution_registry.json",
+      "exists": true,
+      "loaded": true,
+      "modified_utc": "2026-06-22T09:15:16.662341+00:00",
+      "generated_utc": null,
+      "schema": null,
+      "generator": null
+    },
+    "GoalsRegistry": {
+      "path": "A_07_CONFIG/goals_registry.json",
+      "exists": true,
+      "loaded": true,
+      "modified_utc": "2026-07-05T11:02:54.667439+00:00",
+      "generated_utc": null,
+      "schema": null,
+      "generator": null
+    },
+    "ProjectPassport": {
+      "path": "A_07_CONFIG/project_passport.json",
+      "exists": true,
+      "loaded": true,
+      "modified_utc": "2026-07-18T12:09:23.640221+00:00",
+      "generated_utc": null,
+      "schema": null,
+      "generator": null
+    },
+    "UnifiedFacts": {
+      "path": "UnifiedInspectorFacts.json",
+      "exists": true,
+      "loaded": true,
+      "modified_utc": "2026-07-18T12:44:07.077197+00:00",
+      "generated_utc": "2026-07-18T12:44:06.993123Z",
+      "schema": "entity_map",
+      "generator": "Inspector1_EntityMap"
+    }
+  },
+  "summary": {
+    "physical_files": 3653,
+    "entity_files": 518,
+    "imports": 2063,
+    "registrations": 13,
+    "calls": 21711,
+    "links": 23787,
+    "dependency_nodes": 2182,
+    "dependency_edges": 23787,
+    "department_classes": 17,
+    "inspector_classes": 8
+  },
+  "facts": {
+    "department_class_candidates": [
+      [
+        "ArchiveDepartment",
+        "A_04_AGENTS/ArchiveDepartment/runner.py"
+      ],
+      [
+        "AudioDepartment",
+        "A_04_AGENTS/AudioDepartment/runner.py"
+      ],
+      [
+        "BaseDepartment",
+        "A_04_AGENTS/base_department.py"
+      ],
+      [
+        "BrowserDepartment",
+        "A_04_AGENTS/BrowserDepartment/runner.py"
+      ],
+      [
+        "CodingDepartment",
+        "A_04_AGENTS/CodingDepartment/runner.py"
+      ],
+      [
+        "CodingDepartment",
+        "A_06_WORKSPACE/runner_CodingDepartment_CURRENT.py"
+      ],
+      [
+        "Department",
+        "A_10_BUTLER_OS/00_PRODUCTION/core/department_contract.py"
+      ],
+      [
+        "DocumentsDepartment",
+        "A_04_AGENTS/DocumentsDepartment/runner.py"
+      ],
+      [
+        "FilesystemDepartment",
+        "A_04_AGENTS/FilesystemDepartment/runner.py"
+      ],
+      [
+        "HomeDepartment",
+        "A_04_AGENTS/HomeDepartment/runner.py"
+      ],
+      [
+        "ImageDepartment",
+        "A_04_AGENTS/ImageDepartment/runner.py"
+      ],
+      [
+        "MemoryDepartment",
+        "A_04_AGENTS/MemoryDepartment/runner.py"
+      ],
+      [
+        "OpenDocumentDepartment",
+        "A_04_AGENTS/OpenDocumentDepartment/runner.py"
+      ],
+      [
+        "ProjectDocumentationDepartment",
+        "A_04_AGENTS/ProjectDocumentationDepartment/runner.py"
+      ],
+      [
+        "SearchDepartment",
+        "A_04_AGENTS/SearchDepartment/runner.py"
+      ],
+      [
+        "TextDepartment",
+        "A_04_AGENTS/TextDepartment/runner.py"
+      ],
+      [
+        "TextDepartment",
+        "A_06_WORKSPACE/runner_TextDepartment_CURRENT.py"
+      ],
+      [
+        "VideoDepartment",
+        "A_04_AGENTS/VideoDepartment/runner.py"
+      ],
+      [
+        "VisionDepartment",
+        "A_04_AGENTS/VisionDepartment/runner.py"
+      ]
+    ],
+    "inspector_class_candidates": [
+      [
+        "BaseInspector",
+        "BaseInspector.py"
+      ],
+      [
+        "Inspector1_EntityMap",
+        "Inspector1_EntityMap.py"
+      ],
+      [
+        "Inspector2_ImportMap",
+        "Inspector2_ImportMap.py"
+      ],
+      [
+        "Inspector3_RegistrationAST",
+        "Inspector3_RegistrationAST.py"
+      ],
+      [
+        "Inspector3_RegistrationMap",
+        "Inspector3_RegistrationMap.py"
+      ],
+      [
+        "Inspector4_CallGraph",
+        "Inspector4_CallGraph.py"
+      ],
+      [
+        "Inspector5_DependencyGraph",
+        "Inspector5_DependencyGraph.py"
+      ],
+      [
+        "Inspector5_LinkMap",
+        "Inspector5_LinkMap.py"
+      ]
+    ],
+    "inspector_layer": [
+      {
+        "name": "Inspector0 PhysicalMap",
+        "generator": "Inspector0_PhysicalMap.py",
+        "output": "Inspector0_PhysicalMap.json"
+      },
+      {
+        "name": "Inspector1 EntityMap",
+        "generator": "Inspector1_EntityMap.py",
+        "output": "Inspector1_EntityMap.json"
+      },
+      {
+        "name": "Inspector2 ImportMap",
+        "generator": "Inspector2_ImportMap.py",
+        "output": "Inspector2_ImportMap.json"
+      },
+      {
+        "name": "Inspector3 RegistrationAST",
+        "generator": "Inspector3_RegistrationAST.py",
+        "output": "Inspector3_RegistrationAST.json"
+      },
+      {
+        "name": "Inspector4 CallGraph",
+        "generator": "Inspector4_CallGraph.py",
+        "output": "Inspector4_CallGraph.json"
+      },
+      {
+        "name": "Inspector5 LinkMap",
+        "generator": "Inspector5_LinkMap.py",
+        "output": "Inspector5_LinkMap.json"
+      },
+      {
+        "name": "DependencyModel",
+        "generator": "DependencyModelBuilder.py",
+        "output": "DependencyModel.json"
+      },
+      {
+        "name": "UnifiedInspectorFacts",
+        "generator": "Inspector1_EntityMap.py",
+        "output": "UnifiedInspectorFacts.json"
+      }
+    ]
+  },
+  "consumers": [
+    "A_02_MANAGERS/ArchitectAgent/context_provider.py"
+  ]
+}

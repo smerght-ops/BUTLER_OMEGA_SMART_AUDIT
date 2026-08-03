@@ -1,0 +1,24 @@
+{
+  "active_goal": "BUTLER_RECIPE_LIBRARY",
+  "current_phase": "ROADMAP_6_PHASE_4_RECIPES",
+  "subgoals": [
+    {
+      "id": "ROADMAP_6_PHASE_4_RECIPES",
+      "status": "COMPLETED",
+      "tasks": [
+        {
+          "id": "task_verify_contour",
+          "status": "COMPLETED"
+        },
+        {
+          "id": "task_run_full_audit",
+          "status": "COMPLETED"
+        }
+      ]
+    }
+  ],
+  "weights": {
+    "stability": 1.0,
+    "autonomy": 0.6
+  }
+}

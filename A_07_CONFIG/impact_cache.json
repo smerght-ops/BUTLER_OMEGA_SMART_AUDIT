@@ -1,0 +1,15 @@
+{
+  "target_file": "base_department.py",
+  "target_module": "A_04_AGENTS.base_department",
+  "risk_level": "CRITICAL_INFRASTRUCTURE",
+  "affected_count": 6,
+  "affected_modules": [
+    "A_04_AGENTS.ArchiveDepartment.runner",
+    "A_04_AGENTS.AudioDepartment.runner",
+    "A_04_AGENTS.CodingDepartment.runner",
+    "A_04_AGENTS.TextDepartment.runner",
+    "A_04_AGENTS.VideoDepartment.runner",
+    "A_04_AGENTS.VisionDepartment.runner"
+  ],
+  "requires_rollback": true
+}

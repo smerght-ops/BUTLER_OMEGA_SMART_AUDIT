@@ -1,0 +1,262 @@
+﻿{
+  "generated": "2026-07-06T18:31:12",
+  "count": 64,
+  "records": [
+    {
+      "file": "GENIE_PASSPORT_V1.txt",
+      "keyword": "passport"
+    },
+    {
+      "file": "AUDIT_PACKS/A_07_CONFIG_part_002.md",
+      "keyword": "config"
+    },
+    {
+      "file": "AUDIT_PACKS/A_07_CONFIG_part_003.md",
+      "keyword": "config"
+    },
+    {
+      "file": "AUDIT_PACKS/A_07_CONFIG_part_004.md",
+      "keyword": "config"
+    },
+    {
+      "file": "AUDIT_PACKS/A_07_CONFIG_part_019.md",
+      "keyword": "config"
+    },
+    {
+      "file": "A_00_ARCHITECTURE/PROJECT_STATE.json",
+      "keyword": "project_state"
+    },
+    {
+      "file": "A_00_ARCHIVE_SCRIPTS/check_config.py",
+      "keyword": "config"
+    },
+    {
+      "file": "A_01_CORE/config_loader.py",
+      "keyword": "config"
+    },
+    {
+      "file": "A_01_CORE/logger_config.py",
+      "keyword": "config"
+    },
+    {
+      "file": "A_01_CORE/project_state_builder.py",
+      "keyword": "project_state"
+    },
+    {
+      "file": "A_01_CORE_BACKUP/config_loader.py",
+      "keyword": "config"
+    },
+    {
+      "file": "A_01_CORE_BACKUP/logger_config.py",
+      "keyword": "config"
+    },
+    {
+      "file": "A_03_ORCHESTRATION/passport_commands.py",
+      "keyword": "passport"
+    },
+    {
+      "file": "A_03_ORCHESTRATION/test_passport_adapter.py",
+      "keyword": "passport"
+    },
+    {
+      "file": "A_07_CONFIG/passport_report.py",
+      "keyword": "passport"
+    },
+    {
+      "file": "A_07_CONFIG/project_passport.json",
+      "keyword": "passport"
+    },
+    {
+      "file": "A_07_CONFIG/project_passport_loader.py",
+      "keyword": "passport"
+    },
+    {
+      "file": "A_07_CONFIG/project_state.py",
+      "keyword": "project_state"
+    },
+    {
+      "file": "A_07_CONFIG/project_state_v2.py",
+      "keyword": "project_state"
+    },
+    {
+      "file": "A_08_LOGS/PASSPORT_MEMORY_SEARCH.txt",
+      "keyword": "passport"
+    },
+    {
+      "file": "A_09_GUARDIANS/genie_passport_state.json",
+      "keyword": "passport"
+    },
+    {
+      "file": "A_09_GUARDIANS/genie_passport_sync.ps1",
+      "keyword": "passport"
+    },
+    {
+      "file": "facts/configs.json",
+      "keyword": "config"
+    },
+    {
+      "file": "A_00_ARCHITECTURE/SNAPSHOTS/snapshot_20260609_235135/PROJECT_STATE.json",
+      "keyword": "project_state"
+    },
+    {
+      "file": "A_00_ARCHITECTURE/SNAPSHOTS/snapshot_20260610_000227/PROJECT_STATE.json",
+      "keyword": "project_state"
+    },
+    {
+      "file": "A_00_ARCHITECTURE/SNAPSHOTS/snapshot_20260610_000822/PROJECT_STATE.json",
+      "keyword": "project_state"
+    },
+    {
+      "file": "A_00_ARCHITECTURE/SNAPSHOTS/snapshot_20260610_000903/PROJECT_STATE.json",
+      "keyword": "project_state"
+    },
+    {
+      "file": "A_00_ARCHITECTURE/SNAPSHOTS/snapshot_20260610_002628/PROJECT_STATE.json",
+      "keyword": "project_state"
+    },
+    {
+      "file": "A_00_ARCHITECTURE/SNAPSHOTS/snapshot_20260610_012438/PROJECT_STATE.json",
+      "keyword": "project_state"
+    },
+    {
+      "file": "A_00_ARCHITECTURE/SNAPSHOTS/snapshot_20260610_024100/PROJECT_STATE.json",
+      "keyword": "project_state"
+    },
+    {
+      "file": "A_00_ARCHITECTURE/SNAPSHOTS/snapshot_20260615_110126/PROJECT_STATE.json",
+      "keyword": "project_state"
+    },
+    {
+      "file": "A_00_ARCHITECTURE/SNAPSHOTS/snapshot_20260615_110714/PROJECT_STATE.json",
+      "keyword": "project_state"
+    },
+    {
+      "file": "A_00_ARCHITECTURE/SNAPSHOTS/snapshot_20260615_111150/PROJECT_STATE.json",
+      "keyword": "project_state"
+    },
+    {
+      "file": "A_00_ARCHITECTURE/SNAPSHOTS/snapshot_20260615_111341/PROJECT_STATE.json",
+      "keyword": "project_state"
+    },
+    {
+      "file": "A_00_ARCHITECTURE/SNAPSHOTS/snapshot_20260615_111828/PROJECT_STATE.json",
+      "keyword": "project_state"
+    },
+    {
+      "file": "A_00_ARCHITECTURE/SNAPSHOTS/snapshot_20260615_114122/PROJECT_STATE.json",
+      "keyword": "project_state"
+    },
+    {
+      "file": "A_00_ARCHITECTURE/SNAPSHOTS/snapshot_20260615_114258/PROJECT_STATE.json",
+      "keyword": "project_state"
+    },
+    {
+      "file": "A_00_ARCHITECTURE/SNAPSHOTS/snapshot_20260625_050657/PROJECT_STATE.json",
+      "keyword": "project_state"
+    },
+    {
+      "file": "A_00_ARCHITECTURE/SNAPSHOTS/snapshot_20260625_050745/PROJECT_STATE.json",
+      "keyword": "project_state"
+    },
+    {
+      "file": "A_00_ARCHITECTURE/SNAPSHOTS/snapshot_20260625_122032/PROJECT_STATE.json",
+      "keyword": "project_state"
+    },
+    {
+      "file": "A_00_SNAPSHOTS/A_00_ARCHITECTURE/SNAPSHOTS/snapshot_20260609_235135/PROJECT_STATE.json",
+      "keyword": "project_state"
+    },
+    {
+      "file": "A_00_SNAPSHOTS/A_00_ARCHITECTURE/SNAPSHOTS/snapshot_20260610_000227/PROJECT_STATE.json",
+      "keyword": "project_state"
+    },
+    {
+      "file": "A_00_SNAPSHOTS/A_00_ARCHITECTURE/SNAPSHOTS/snapshot_20260610_000822/PROJECT_STATE.json",
+      "keyword": "project_state"
+    },
+    {
+      "file": "A_00_SNAPSHOTS/A_00_ARCHITECTURE/SNAPSHOTS/snapshot_20260610_000903/PROJECT_STATE.json",
+      "keyword": "project_state"
+    },
+    {
+      "file": "A_00_SNAPSHOTS/A_00_ARCHITECTURE/SNAPSHOTS/snapshot_20260610_002628/PROJECT_STATE.json",
+      "keyword": "project_state"
+    },
+    {
+      "file": "A_00_SNAPSHOTS/A_00_ARCHITECTURE/SNAPSHOTS/snapshot_20260610_012438/PROJECT_STATE.json",
+      "keyword": "project_state"
+    },
+    {
+      "file": "A_00_SNAPSHOTS/A_00_ARCHITECTURE/SNAPSHOTS/snapshot_20260610_024100/PROJECT_STATE.json",
+      "keyword": "project_state"
+    },
+    {
+      "file": "A_00_SNAPSHOTS/A_00_ARCHITECTURE/SNAPSHOTS/snapshot_20260609_235135/snapshot_20260609_235135/PROJECT_STATE.json",
+      "keyword": "project_state"
+    },
+    {
+      "file": "A_00_SNAPSHOTS/A_00_ARCHITECTURE/SNAPSHOTS/snapshot_20260610_000227/snapshot_20260610_000227/PROJECT_STATE.json",
+      "keyword": "project_state"
+    },
+    {
+      "file": "A_00_SNAPSHOTS/A_00_ARCHITECTURE/SNAPSHOTS/snapshot_20260610_000822/snapshot_20260610_000822/PROJECT_STATE.json",
+      "keyword": "project_state"
+    },
+    {
+      "file": "A_00_SNAPSHOTS/A_00_ARCHITECTURE/SNAPSHOTS/snapshot_20260610_000903/snapshot_20260610_000903/PROJECT_STATE.json",
+      "keyword": "project_state"
+    },
+    {
+      "file": "A_00_SNAPSHOTS/A_00_ARCHITECTURE/SNAPSHOTS/snapshot_20260610_002628/snapshot_20260610_002628/PROJECT_STATE.json",
+      "keyword": "project_state"
+    },
+    {
+      "file": "A_00_SNAPSHOTS/A_00_ARCHITECTURE/SNAPSHOTS/snapshot_20260610_012438/snapshot_20260610_012438/PROJECT_STATE.json",
+      "keyword": "project_state"
+    },
+    {
+      "file": "A_00_SNAPSHOTS/A_00_ARCHITECTURE/SNAPSHOTS/snapshot_20260610_024100/snapshot_20260610_024100/PROJECT_STATE.json",
+      "keyword": "project_state"
+    },
+    {
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/config_scanner.py",
+      "keyword": "config"
+    },
+    {
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/config_scanner.py",
+      "keyword": "config"
+    },
+    {
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/Discovery/passport_discovery_agent.py",
+      "keyword": "passport"
+    },
+    {
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/Discovery/project_state_discovery_agent.py",
+      "keyword": "project_state"
+    },
+    {
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/Scanners/passport_scanner.py",
+      "keyword": "passport"
+    },
+    {
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/Scanners/project_state_scanner.py",
+      "keyword": "project_state"
+    },
+    {
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/Discovery/passport_discovery_agent.py",
+      "keyword": "passport"
+    },
+    {
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/Discovery/project_state_discovery_agent.py",
+      "keyword": "project_state"
+    },
+    {
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/Scanners/passport_scanner.py",
+      "keyword": "passport"
+    },
+    {
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/Scanners/project_state_scanner.py",
+      "keyword": "project_state"
+    }
+  ]
+}

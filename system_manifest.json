@@ -1,0 +1,22 @@
+﻿{
+    "project_name": "BUTLER_OMEGA",
+    "version": "1.0",
+    "author": "Victor",
+    "vision_model": "qwen2.5-vl:latest",
+    "analysis_model": "qwen35-ru:latest",
+    "coder_model": "DeepSeek-Coder-V2-Lite-Instruct-Q6_K:latest",
+    "fallback_model": "codestral:latest",
+    "matrix_maturity": {
+        "v1.0_foundation": "COMPLETED",
+        "v1.1_management": "IN_PROGRESS",
+        "v1.2_agent_layer": "PLANNED"
+    },
+    "paths": {
+        "core": "A_01_CORE",
+        "managers": "A_02_MANAGERS",
+        "engines": "A_03_ENGINES",
+        "agents": "A_04_AGENTS",
+        "workspace": "A_06_WORKSPACE",
+        "logs": "A_08_LOGS"
+    }
+}

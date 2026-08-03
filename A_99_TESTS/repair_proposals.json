@@ -1,0 +1,635 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-07-13T18:28:37",
+  "source_analysis_timestamp": "20260713_182837",
+  "proposal_count": 18,
+  "automatic_application": false,
+  "proposals": [
+    {
+      "proposal_id": "RP-0001",
+      "problem_id": "GE-0502",
+      "problem_text": "Linked or repeated answers are inconsistent",
+      "problem_type": "CONFLICT",
+      "root_cause": "knowledge_source_exposure",
+      "truth_sources": [
+        "PASSPORT_SUMMARY.md",
+        "A_00_ARCHITECTURE/PROJECT_STATE.json",
+        "ROADMAP_6_0_BUTLER_OMEGA_SMART_UPDATED.md"
+      ],
+      "source_reference": {
+        "file": "PASSPORT_SUMMARY.md",
+        "line": null,
+        "document": "PASSPORT_SUMMARY.md"
+      },
+      "proposed_fix": "Предложить MemoryDepartment явно экспонировать существующий источник истины в Self Knowledge ответе; отсутствующие факты не придумывать.",
+      "candidate_target": "A_04_AGENTS/MemoryDepartment/runner.py",
+      "confidence": 80,
+      "requires_human_confirmation": true,
+      "applied_to_working_project": false,
+      "validation_status": "REJECTED",
+      "validation_errors": [
+        "Human confirmation is required before any production change",
+        "Conflict count did not decrease in the isolated proposal-only validation"
+      ],
+      "validation_date": "2026-07-13T18:32:56",
+      "sandbox_path": "A_99_TESTS\\reports\\self_knowledge_validation\\20260713_182838"
+    },
+    {
+      "proposal_id": "RP-0002",
+      "problem_id": "GE-0503",
+      "problem_text": "Official routing mismatch: expected MEMORY, actual ['HOME']",
+      "problem_type": "CONFLICT",
+      "root_cause": "routing_before_memory",
+      "truth_sources": [
+        "PASSPORT_SUMMARY.md",
+        "A_00_ARCHITECTURE/PROJECT_STATE.json",
+        "ROADMAP_6_0_BUTLER_OMEGA_SMART_UPDATED.md"
+      ],
+      "source_reference": {
+        "file": "PASSPORT_SUMMARY.md",
+        "line": null,
+        "document": "PASSPORT_SUMMARY.md"
+      },
+      "proposed_fix": "Не добавлять данные в MemoryDepartment автоматически. Проверить приоритет существующего маршрута для этой формулировки; после ручного решения убедиться, что запрос достигает MemoryDepartment, который уже читает заявленные источники.",
+      "candidate_target": "A_04_AGENTS/MemoryDepartment/runner.py",
+      "confidence": 80,
+      "requires_human_confirmation": true,
+      "applied_to_working_project": false,
+      "validation_status": "REJECTED",
+      "validation_errors": [
+        "Human confirmation is required before any production change",
+        "Candidate target MemoryDepartment cannot correct a request intercepted before MemoryDepartment",
+        "Conflict count did not decrease in the isolated proposal-only validation"
+      ],
+      "validation_date": "2026-07-13T18:32:56",
+      "sandbox_path": "A_99_TESTS\\reports\\self_knowledge_validation\\20260713_182838"
+    },
+    {
+      "proposal_id": "RP-0003",
+      "problem_id": "GE-0504",
+      "problem_text": "Linked or repeated answers are inconsistent",
+      "problem_type": "CONFLICT",
+      "root_cause": "knowledge_source_exposure",
+      "truth_sources": [
+        "PASSPORT_SUMMARY.md",
+        "A_00_ARCHITECTURE/PROJECT_STATE.json",
+        "ROADMAP_6_0_BUTLER_OMEGA_SMART_UPDATED.md"
+      ],
+      "source_reference": {
+        "file": "PASSPORT_SUMMARY.md",
+        "line": null,
+        "document": "PASSPORT_SUMMARY.md"
+      },
+      "proposed_fix": "Предложить MemoryDepartment явно экспонировать существующий источник истины в Self Knowledge ответе; отсутствующие факты не придумывать.",
+      "candidate_target": "A_04_AGENTS/MemoryDepartment/runner.py",
+      "confidence": 80,
+      "requires_human_confirmation": true,
+      "applied_to_working_project": false,
+      "validation_status": "REJECTED",
+      "validation_errors": [
+        "Human confirmation is required before any production change",
+        "Conflict count did not decrease in the isolated proposal-only validation"
+      ],
+      "validation_date": "2026-07-13T18:32:56",
+      "sandbox_path": "A_99_TESTS\\reports\\self_knowledge_validation\\20260713_182838"
+    },
+    {
+      "proposal_id": "RP-0004",
+      "problem_id": "GE-0510",
+      "problem_text": "Linked or repeated answers are inconsistent",
+      "problem_type": "CONFLICT",
+      "root_cause": "knowledge_source_exposure",
+      "truth_sources": [
+        "PASSPORT_SUMMARY.md",
+        "A_00_ARCHITECTURE/PROJECT_STATE.json",
+        "ROADMAP_6_0_BUTLER_OMEGA_SMART_UPDATED.md"
+      ],
+      "source_reference": {
+        "file": "PASSPORT_SUMMARY.md",
+        "line": null,
+        "document": "PASSPORT_SUMMARY.md"
+      },
+      "proposed_fix": "Предложить MemoryDepartment явно экспонировать существующий источник истины в Self Knowledge ответе; отсутствующие факты не придумывать.",
+      "candidate_target": "A_04_AGENTS/MemoryDepartment/runner.py",
+      "confidence": 80,
+      "requires_human_confirmation": true,
+      "applied_to_working_project": false,
+      "validation_status": "REJECTED",
+      "validation_errors": [
+        "Human confirmation is required before any production change",
+        "Conflict count did not decrease in the isolated proposal-only validation"
+      ],
+      "validation_date": "2026-07-13T18:32:56",
+      "sandbox_path": "A_99_TESTS\\reports\\self_knowledge_validation\\20260713_182838"
+    },
+    {
+      "proposal_id": "RP-0005",
+      "problem_id": "GE-0511",
+      "problem_text": "Official routing mismatch: expected MEMORY, actual ['HOME']",
+      "problem_type": "CONFLICT",
+      "root_cause": "routing_before_memory",
+      "truth_sources": [
+        "PASSPORT_SUMMARY.md",
+        "A_00_ARCHITECTURE/PROJECT_STATE.json",
+        "ROADMAP_6_0_BUTLER_OMEGA_SMART_UPDATED.md"
+      ],
+      "source_reference": {
+        "file": "PASSPORT_SUMMARY.md",
+        "line": null,
+        "document": "PASSPORT_SUMMARY.md"
+      },
+      "proposed_fix": "Не добавлять данные в MemoryDepartment автоматически. Проверить приоритет существующего маршрута для этой формулировки; после ручного решения убедиться, что запрос достигает MemoryDepartment, который уже читает заявленные источники.",
+      "candidate_target": "A_04_AGENTS/MemoryDepartment/runner.py",
+      "confidence": 80,
+      "requires_human_confirmation": true,
+      "applied_to_working_project": false,
+      "validation_status": "REJECTED",
+      "validation_errors": [
+        "Human confirmation is required before any production change",
+        "Candidate target MemoryDepartment cannot correct a request intercepted before MemoryDepartment",
+        "Conflict count did not decrease in the isolated proposal-only validation"
+      ],
+      "validation_date": "2026-07-13T18:32:56",
+      "sandbox_path": "A_99_TESTS\\reports\\self_knowledge_validation\\20260713_182838"
+    },
+    {
+      "proposal_id": "RP-0006",
+      "problem_id": "GE-0512",
+      "problem_text": "Linked or repeated answers are inconsistent",
+      "problem_type": "CONFLICT",
+      "root_cause": "knowledge_source_exposure",
+      "truth_sources": [
+        "PASSPORT_SUMMARY.md",
+        "A_00_ARCHITECTURE/PROJECT_STATE.json",
+        "ROADMAP_6_0_BUTLER_OMEGA_SMART_UPDATED.md"
+      ],
+      "source_reference": {
+        "file": "PASSPORT_SUMMARY.md",
+        "line": null,
+        "document": "PASSPORT_SUMMARY.md"
+      },
+      "proposed_fix": "Предложить MemoryDepartment явно экспонировать существующий источник истины в Self Knowledge ответе; отсутствующие факты не придумывать.",
+      "candidate_target": "A_04_AGENTS/MemoryDepartment/runner.py",
+      "confidence": 80,
+      "requires_human_confirmation": true,
+      "applied_to_working_project": false,
+      "validation_status": "REJECTED",
+      "validation_errors": [
+        "Human confirmation is required before any production change",
+        "Conflict count did not decrease in the isolated proposal-only validation"
+      ],
+      "validation_date": "2026-07-13T18:32:56",
+      "sandbox_path": "A_99_TESTS\\reports\\self_knowledge_validation\\20260713_182838"
+    },
+    {
+      "proposal_id": "RP-0007",
+      "problem_id": "GE-0518",
+      "problem_text": "Linked or repeated answers are inconsistent",
+      "problem_type": "CONFLICT",
+      "root_cause": "knowledge_source_exposure",
+      "truth_sources": [
+        "PASSPORT_SUMMARY.md",
+        "A_00_ARCHITECTURE/PROJECT_STATE.json",
+        "ROADMAP_6_0_BUTLER_OMEGA_SMART_UPDATED.md"
+      ],
+      "source_reference": {
+        "file": "PASSPORT_SUMMARY.md",
+        "line": null,
+        "document": "PASSPORT_SUMMARY.md"
+      },
+      "proposed_fix": "Предложить MemoryDepartment явно экспонировать существующий источник истины в Self Knowledge ответе; отсутствующие факты не придумывать.",
+      "candidate_target": "A_04_AGENTS/MemoryDepartment/runner.py",
+      "confidence": 80,
+      "requires_human_confirmation": true,
+      "applied_to_working_project": false,
+      "validation_status": "REJECTED",
+      "validation_errors": [
+        "Human confirmation is required before any production change",
+        "Conflict count did not decrease in the isolated proposal-only validation"
+      ],
+      "validation_date": "2026-07-13T18:32:56",
+      "sandbox_path": "A_99_TESTS\\reports\\self_knowledge_validation\\20260713_182838"
+    },
+    {
+      "proposal_id": "RP-0008",
+      "problem_id": "GE-0519",
+      "problem_text": "Official routing mismatch: expected MEMORY, actual ['HOME']",
+      "problem_type": "CONFLICT",
+      "root_cause": "routing_before_memory",
+      "truth_sources": [
+        "PASSPORT_SUMMARY.md",
+        "A_00_ARCHITECTURE/PROJECT_STATE.json",
+        "ROADMAP_6_0_BUTLER_OMEGA_SMART_UPDATED.md"
+      ],
+      "source_reference": {
+        "file": "PASSPORT_SUMMARY.md",
+        "line": null,
+        "document": "PASSPORT_SUMMARY.md"
+      },
+      "proposed_fix": "Не добавлять данные в MemoryDepartment автоматически. Проверить приоритет существующего маршрута для этой формулировки; после ручного решения убедиться, что запрос достигает MemoryDepartment, который уже читает заявленные источники.",
+      "candidate_target": "A_04_AGENTS/MemoryDepartment/runner.py",
+      "confidence": 80,
+      "requires_human_confirmation": true,
+      "applied_to_working_project": false,
+      "validation_status": "REJECTED",
+      "validation_errors": [
+        "Human confirmation is required before any production change",
+        "Candidate target MemoryDepartment cannot correct a request intercepted before MemoryDepartment",
+        "Conflict count did not decrease in the isolated proposal-only validation"
+      ],
+      "validation_date": "2026-07-13T18:32:56",
+      "sandbox_path": "A_99_TESTS\\reports\\self_knowledge_validation\\20260713_182838"
+    },
+    {
+      "proposal_id": "RP-0009",
+      "problem_id": "GE-0520",
+      "problem_text": "Linked or repeated answers are inconsistent",
+      "problem_type": "CONFLICT",
+      "root_cause": "knowledge_source_exposure",
+      "truth_sources": [
+        "PASSPORT_SUMMARY.md",
+        "A_00_ARCHITECTURE/PROJECT_STATE.json",
+        "ROADMAP_6_0_BUTLER_OMEGA_SMART_UPDATED.md"
+      ],
+      "source_reference": {
+        "file": "PASSPORT_SUMMARY.md",
+        "line": null,
+        "document": "PASSPORT_SUMMARY.md"
+      },
+      "proposed_fix": "Предложить MemoryDepartment явно экспонировать существующий источник истины в Self Knowledge ответе; отсутствующие факты не придумывать.",
+      "candidate_target": "A_04_AGENTS/MemoryDepartment/runner.py",
+      "confidence": 80,
+      "requires_human_confirmation": true,
+      "applied_to_working_project": false,
+      "validation_status": "REJECTED",
+      "validation_errors": [
+        "Human confirmation is required before any production change",
+        "Conflict count did not decrease in the isolated proposal-only validation"
+      ],
+      "validation_date": "2026-07-13T18:32:56",
+      "sandbox_path": "A_99_TESTS\\reports\\self_knowledge_validation\\20260713_182838"
+    },
+    {
+      "proposal_id": "RP-0010",
+      "problem_id": "GE-0526",
+      "problem_text": "Linked or repeated answers are inconsistent",
+      "problem_type": "CONFLICT",
+      "root_cause": "knowledge_source_exposure",
+      "truth_sources": [
+        "PASSPORT_SUMMARY.md",
+        "A_00_ARCHITECTURE/PROJECT_STATE.json",
+        "ROADMAP_6_0_BUTLER_OMEGA_SMART_UPDATED.md"
+      ],
+      "source_reference": {
+        "file": "PASSPORT_SUMMARY.md",
+        "line": null,
+        "document": "PASSPORT_SUMMARY.md"
+      },
+      "proposed_fix": "Предложить MemoryDepartment явно экспонировать существующий источник истины в Self Knowledge ответе; отсутствующие факты не придумывать.",
+      "candidate_target": "A_04_AGENTS/MemoryDepartment/runner.py",
+      "confidence": 80,
+      "requires_human_confirmation": true,
+      "applied_to_working_project": false,
+      "validation_status": "REJECTED",
+      "validation_errors": [
+        "Human confirmation is required before any production change",
+        "Conflict count did not decrease in the isolated proposal-only validation"
+      ],
+      "validation_date": "2026-07-13T18:32:56",
+      "sandbox_path": "A_99_TESTS\\reports\\self_knowledge_validation\\20260713_182838"
+    },
+    {
+      "proposal_id": "RP-0011",
+      "problem_id": "GE-0527",
+      "problem_text": "Official routing mismatch: expected MEMORY, actual ['HOME']",
+      "problem_type": "CONFLICT",
+      "root_cause": "routing_before_memory",
+      "truth_sources": [
+        "PASSPORT_SUMMARY.md",
+        "A_00_ARCHITECTURE/PROJECT_STATE.json",
+        "ROADMAP_6_0_BUTLER_OMEGA_SMART_UPDATED.md"
+      ],
+      "source_reference": {
+        "file": "PASSPORT_SUMMARY.md",
+        "line": null,
+        "document": "PASSPORT_SUMMARY.md"
+      },
+      "proposed_fix": "Не добавлять данные в MemoryDepartment автоматически. Проверить приоритет существующего маршрута для этой формулировки; после ручного решения убедиться, что запрос достигает MemoryDepartment, который уже читает заявленные источники.",
+      "candidate_target": "A_04_AGENTS/MemoryDepartment/runner.py",
+      "confidence": 80,
+      "requires_human_confirmation": true,
+      "applied_to_working_project": false,
+      "validation_status": "REJECTED",
+      "validation_errors": [
+        "Human confirmation is required before any production change",
+        "Candidate target MemoryDepartment cannot correct a request intercepted before MemoryDepartment",
+        "Conflict count did not decrease in the isolated proposal-only validation"
+      ],
+      "validation_date": "2026-07-13T18:32:56",
+      "sandbox_path": "A_99_TESTS\\reports\\self_knowledge_validation\\20260713_182838"
+    },
+    {
+      "proposal_id": "RP-0012",
+      "problem_id": "GE-0528",
+      "problem_text": "Linked or repeated answers are inconsistent",
+      "problem_type": "CONFLICT",
+      "root_cause": "knowledge_source_exposure",
+      "truth_sources": [
+        "PASSPORT_SUMMARY.md",
+        "A_00_ARCHITECTURE/PROJECT_STATE.json",
+        "ROADMAP_6_0_BUTLER_OMEGA_SMART_UPDATED.md"
+      ],
+      "source_reference": {
+        "file": "PASSPORT_SUMMARY.md",
+        "line": null,
+        "document": "PASSPORT_SUMMARY.md"
+      },
+      "proposed_fix": "Предложить MemoryDepartment явно экспонировать существующий источник истины в Self Knowledge ответе; отсутствующие факты не придумывать.",
+      "candidate_target": "A_04_AGENTS/MemoryDepartment/runner.py",
+      "confidence": 80,
+      "requires_human_confirmation": true,
+      "applied_to_working_project": false,
+      "validation_status": "REJECTED",
+      "validation_errors": [
+        "Human confirmation is required before any production change",
+        "Conflict count did not decrease in the isolated proposal-only validation"
+      ],
+      "validation_date": "2026-07-13T18:32:56",
+      "sandbox_path": "A_99_TESTS\\reports\\self_knowledge_validation\\20260713_182838"
+    },
+    {
+      "proposal_id": "RP-0013",
+      "problem_id": "GE-0534",
+      "problem_text": "Linked or repeated answers are inconsistent",
+      "problem_type": "CONFLICT",
+      "root_cause": "knowledge_source_exposure",
+      "truth_sources": [
+        "PASSPORT_SUMMARY.md",
+        "A_00_ARCHITECTURE/PROJECT_STATE.json",
+        "ROADMAP_6_0_BUTLER_OMEGA_SMART_UPDATED.md"
+      ],
+      "source_reference": {
+        "file": "PASSPORT_SUMMARY.md",
+        "line": null,
+        "document": "PASSPORT_SUMMARY.md"
+      },
+      "proposed_fix": "Предложить MemoryDepartment явно экспонировать существующий источник истины в Self Knowledge ответе; отсутствующие факты не придумывать.",
+      "candidate_target": "A_04_AGENTS/MemoryDepartment/runner.py",
+      "confidence": 80,
+      "requires_human_confirmation": true,
+      "applied_to_working_project": false,
+      "validation_status": "REJECTED",
+      "validation_errors": [
+        "Human confirmation is required before any production change",
+        "Conflict count did not decrease in the isolated proposal-only validation"
+      ],
+      "validation_date": "2026-07-13T18:32:56",
+      "sandbox_path": "A_99_TESTS\\reports\\self_knowledge_validation\\20260713_182838"
+    },
+    {
+      "proposal_id": "RP-0014",
+      "problem_id": "GE-0535",
+      "problem_text": "Official routing mismatch: expected MEMORY, actual ['HOME']",
+      "problem_type": "CONFLICT",
+      "root_cause": "routing_before_memory",
+      "truth_sources": [
+        "PASSPORT_SUMMARY.md",
+        "A_00_ARCHITECTURE/PROJECT_STATE.json",
+        "ROADMAP_6_0_BUTLER_OMEGA_SMART_UPDATED.md"
+      ],
+      "source_reference": {
+        "file": "PASSPORT_SUMMARY.md",
+        "line": null,
+        "document": "PASSPORT_SUMMARY.md"
+      },
+      "proposed_fix": "Не добавлять данные в MemoryDepartment автоматически. Проверить приоритет существующего маршрута для этой формулировки; после ручного решения убедиться, что запрос достигает MemoryDepartment, который уже читает заявленные источники.",
+      "candidate_target": "A_04_AGENTS/MemoryDepartment/runner.py",
+      "confidence": 80,
+      "requires_human_confirmation": true,
+      "applied_to_working_project": false,
+      "validation_status": "REJECTED",
+      "validation_errors": [
+        "Human confirmation is required before any production change",
+        "Candidate target MemoryDepartment cannot correct a request intercepted before MemoryDepartment",
+        "Conflict count did not decrease in the isolated proposal-only validation"
+      ],
+      "validation_date": "2026-07-13T18:32:56",
+      "sandbox_path": "A_99_TESTS\\reports\\self_knowledge_validation\\20260713_182838"
+    },
+    {
+      "proposal_id": "RP-0015",
+      "problem_id": "GE-0536",
+      "problem_text": "Linked or repeated answers are inconsistent",
+      "problem_type": "CONFLICT",
+      "root_cause": "knowledge_source_exposure",
+      "truth_sources": [
+        "PASSPORT_SUMMARY.md",
+        "A_00_ARCHITECTURE/PROJECT_STATE.json",
+        "ROADMAP_6_0_BUTLER_OMEGA_SMART_UPDATED.md"
+      ],
+      "source_reference": {
+        "file": "PASSPORT_SUMMARY.md",
+        "line": null,
+        "document": "PASSPORT_SUMMARY.md"
+      },
+      "proposed_fix": "Предложить MemoryDepartment явно экспонировать существующий источник истины в Self Knowledge ответе; отсутствующие факты не придумывать.",
+      "candidate_target": "A_04_AGENTS/MemoryDepartment/runner.py",
+      "confidence": 80,
+      "requires_human_confirmation": true,
+      "applied_to_working_project": false,
+      "validation_status": "REJECTED",
+      "validation_errors": [
+        "Human confirmation is required before any production change",
+        "Conflict count did not decrease in the isolated proposal-only validation"
+      ],
+      "validation_date": "2026-07-13T18:32:56",
+      "sandbox_path": "A_99_TESTS\\reports\\self_knowledge_validation\\20260713_182838"
+    },
+    {
+      "proposal_id": "RP-0016",
+      "problem_id": "GE-0542",
+      "problem_text": "Linked or repeated answers are inconsistent",
+      "problem_type": "CONFLICT",
+      "root_cause": "knowledge_source_exposure",
+      "truth_sources": [
+        "PASSPORT_SUMMARY.md",
+        "A_00_ARCHITECTURE/PROJECT_STATE.json",
+        "ROADMAP_6_0_BUTLER_OMEGA_SMART_UPDATED.md"
+      ],
+      "source_reference": {
+        "file": "PASSPORT_SUMMARY.md",
+        "line": null,
+        "document": "PASSPORT_SUMMARY.md"
+      },
+      "proposed_fix": "Предложить MemoryDepartment явно экспонировать существующий источник истины в Self Knowledge ответе; отсутствующие факты не придумывать.",
+      "candidate_target": "A_04_AGENTS/MemoryDepartment/runner.py",
+      "confidence": 80,
+      "requires_human_confirmation": true,
+      "applied_to_working_project": false,
+      "validation_status": "REJECTED",
+      "validation_errors": [
+        "Human confirmation is required before any production change",
+        "Conflict count did not decrease in the isolated proposal-only validation"
+      ],
+      "validation_date": "2026-07-13T18:32:56",
+      "sandbox_path": "A_99_TESTS\\reports\\self_knowledge_validation\\20260713_182838"
+    },
+    {
+      "proposal_id": "RP-0017",
+      "problem_id": "GE-0543",
+      "problem_text": "Official routing mismatch: expected MEMORY, actual ['HOME']",
+      "problem_type": "CONFLICT",
+      "root_cause": "routing_before_memory",
+      "truth_sources": [
+        "PASSPORT_SUMMARY.md",
+        "A_00_ARCHITECTURE/PROJECT_STATE.json",
+        "ROADMAP_6_0_BUTLER_OMEGA_SMART_UPDATED.md"
+      ],
+      "source_reference": {
+        "file": "PASSPORT_SUMMARY.md",
+        "line": null,
+        "document": "PASSPORT_SUMMARY.md"
+      },
+      "proposed_fix": "Не добавлять данные в MemoryDepartment автоматически. Проверить приоритет существующего маршрута для этой формулировки; после ручного решения убедиться, что запрос достигает MemoryDepartment, который уже читает заявленные источники.",
+      "candidate_target": "A_04_AGENTS/MemoryDepartment/runner.py",
+      "confidence": 80,
+      "requires_human_confirmation": true,
+      "applied_to_working_project": false,
+      "validation_status": "REJECTED",
+      "validation_errors": [
+        "Human confirmation is required before any production change",
+        "Candidate target MemoryDepartment cannot correct a request intercepted before MemoryDepartment",
+        "Conflict count did not decrease in the isolated proposal-only validation"
+      ],
+      "validation_date": "2026-07-13T18:32:56",
+      "sandbox_path": "A_99_TESTS\\reports\\self_knowledge_validation\\20260713_182838"
+    },
+    {
+      "proposal_id": "RP-0018",
+      "problem_id": "GE-0544",
+      "problem_text": "Linked or repeated answers are inconsistent",
+      "problem_type": "CONFLICT",
+      "root_cause": "knowledge_source_exposure",
+      "truth_sources": [
+        "PASSPORT_SUMMARY.md",
+        "A_00_ARCHITECTURE/PROJECT_STATE.json",
+        "ROADMAP_6_0_BUTLER_OMEGA_SMART_UPDATED.md"
+      ],
+      "source_reference": {
+        "file": "PASSPORT_SUMMARY.md",
+        "line": null,
+        "document": "PASSPORT_SUMMARY.md"
+      },
+      "proposed_fix": "Предложить MemoryDepartment явно экспонировать существующий источник истины в Self Knowledge ответе; отсутствующие факты не придумывать.",
+      "candidate_target": "A_04_AGENTS/MemoryDepartment/runner.py",
+      "confidence": 80,
+      "requires_human_confirmation": true,
+      "applied_to_working_project": false,
+      "validation_status": "REJECTED",
+      "validation_errors": [
+        "Human confirmation is required before any production change",
+        "Conflict count did not decrease in the isolated proposal-only validation"
+      ],
+      "validation_date": "2026-07-13T18:32:56",
+      "sandbox_path": "A_99_TESTS\\reports\\self_knowledge_validation\\20260713_182838"
+    }
+  ],
+  "validation_summary": {
+    "sandbox": "A_99_TESTS\\reports\\self_knowledge_validation\\20260713_182838",
+    "candidate_compiled": true,
+    "fast": {
+      "exit_code": 0,
+      "stdout_tail": [
+        "[ PROGRESS_TIMELINE            ] PASS",
+        "[ GOAL_PROGRESS                ] PASS",
+        "[ PLANNER_GENERATE             ] PASS",
+        "[ PLANNER_GET                  ] PASS",
+        "[ PLANNER_OPTIMIZE             ] PASS",
+        "[ GOAL_DELETE                  ] PASS",
+        "[ SELF_KNOWLEDGE_CAPABILITIES  ] PASS",
+        "[ SELF_KNOWLEDGE_DEPARTMENTS   ] PASS",
+        "[ SELF_KNOWLEDGE_DONE          ] PASS",
+        "[ SELF_KNOWLEDGE_PENDING       ] PASS",
+        "[ SELF_MEMORY_ARCHITECTURE     ] PASS",
+        "[ SELF_DEPARTMENT_CONTENTS     ] PASS",
+        "[ SELF_PROJECT                 ] PASS",
+        "[ MEMORY_PROFILE               ] PASS",
+        "[ MEMORY_COLOR                 ] PASS",
+        "[ SEARCH_PASSPORT              ] PASS",
+        "[ ROUTE_IMAGE                  ] PASS",
+        "[ ROUTE_TEXT                   ] PASS",
+        "[ ROUTE_CODING                 ] PASS",
+        "[ ROUTE_SEARCH                 ] PASS",
+        "----------------------------------------------------------------------",
+        "PASS: 36",
+        "FAIL: 0",
+        "CONTROLLED_ERROR: 0",
+        "SKIP: 0",
+        "TOTAL: 36",
+        "----------------------------------------------------------------------",
+        "ALL SCENARIOS PASSED: YES",
+        "EXIT CODE: 0",
+        "======================================================================"
+      ],
+      "stderr_tail": [],
+      "counts": {
+        "PASS": 36,
+        "FAIL": 0,
+        "CONTROLLED_ERROR": 0,
+        "SKIP": 0
+      },
+      "all_scenarios_passed": true
+    },
+    "full": {
+      "exit_code": 0,
+      "stdout_tail": [
+        "[ SELF_PROJECT                 ] PASS",
+        "[ MEMORY_WRITE                 ] PASS",
+        "[ MEMORY_PERSISTENCE           ] PASS",
+        "[ CHAT_POEM                    ] PASS",
+        "[ CHAT_SELF_INFO               ] PASS",
+        "[ CODING_HELLO_WORLD           ] PASS",
+        "[ SEARCH_PASSPORT              ] PASS",
+        "[ OPEN_FIRST                   ] PASS",
+        "[ VISION_EXISTING              ] PASS",
+        "[ VISION_MISSING               ] PASS",
+        "[ VISION_UNSUPPORTED           ] PASS",
+        "[ DOCUMENTS_EXISTING           ] PASS",
+        "[ DOCUMENTS_MISSING            ] PASS",
+        "[ ARCHIVE_EXISTING             ] PASS",
+        "[ AUDIO                        ] SKIP",
+        "[ VIDEO                        ] SKIP",
+        "[ IMAGE_INITIAL                ] PASS",
+        "[ IMAGE_CONTINUATION_1         ] PASS",
+        "[ IMAGE_CONTINUATION_2         ] PASS",
+        "[ IMAGE_WATERFALL              ] PASS",
+        "----------------------------------------------------------------------",
+        "PASS: 47",
+        "FAIL: 0",
+        "CONTROLLED_ERROR: 0",
+        "SKIP: 2",
+        "TOTAL: 49",
+        "----------------------------------------------------------------------",
+        "ALL SCENARIOS PASSED: YES",
+        "EXIT CODE: 0",
+        "======================================================================"
+      ],
+      "stderr_tail": [],
+      "counts": {
+        "PASS": 47,
+        "FAIL": 0,
+        "CONTROLLED_ERROR": 0,
+        "SKIP": 2
+      },
+      "all_scenarios_passed": true
+    },
+    "repeated_exam_exit_code": 0,
+    "score_before": 99.34,
+    "score_after": 99.34,
+    "conflicts_before": 12,
+    "conflicts_after": 12,
+    "validated": 0,
+    "rejected": 18,
+    "working_project_modified": false
+  }
+}

@@ -1,0 +1,185 @@
+# Full Capability Registry (FIXED) — Butler
+Generated: 2026-07-07T22:55:42.934389Z
+Total capabilities found: 7298
+
+## Implemented capabilities (from AST + JSON registries)
+- **Dispatcher** (constructor)
+  - Source: A_02_MANAGERS_BACKUP/dispatcher.py (line 33)
+  - Consumers: 1
+- **agents@FullCapabilityRegistry_FIXED.json** (registry_entry)
+  - Source: FullCapabilityRegistry_FIXED.json (line ?)
+  - Consumers: 0
+- **agents@system_manifest.json** (registry_entry)
+  - Source: system_manifest.json (line ?)
+  - Consumers: 0
+- **capabilities@A_00_ARCHITECTURE\BUTLER_CAPABILITY_AUDIT.json** (registry_entry)
+  - Source: A_00_ARCHITECTURE\BUTLER_CAPABILITY_AUDIT.json (line ?)
+  - Consumers: 0
+- **capabilities@A_07_CONFIG\project_registry.json** (registry_entry)
+  - Source: A_07_CONFIG\project_registry.json (line ?)
+  - Consumers: 0
+- **capabilities@Butler_SelfAudit_Report.json** (registry_entry)
+  - Source: Butler_SelfAudit_Report.json (line ?)
+  - Consumers: 0
+- **capabilities@CapabilityRegistry.json** (registry_entry)
+  - Source: CapabilityRegistry.json (line ?)
+  - Consumers: 0
+- **capabilities@FullCapabilityRegistry.json** (registry_entry)
+  - Source: FullCapabilityRegistry.json (line ?)
+  - Consumers: 0
+- **capabilities@FullCapabilityRegistry_FIXED.json** (registry_entry)
+  - Source: FullCapabilityRegistry_FIXED.json (line ?)
+  - Consumers: 0
+- **components@Butler_SelfAudit_Report.json** (registry_entry)
+  - Source: Butler_SelfAudit_Report.json (line ?)
+  - Consumers: 0
+- **components@FullCapabilityRegistry.json** (registry_entry)
+  - Source: FullCapabilityRegistry.json (line ?)
+  - Consumers: 0
+- **components@FullCapabilityRegistry_FIXED.json** (registry_entry)
+  - Source: FullCapabilityRegistry_FIXED.json (line ?)
+  - Consumers: 0
+- **departments@A_07_CONFIG\project_registry.json** (registry_entry)
+  - Source: A_07_CONFIG\project_registry.json (line ?)
+  - Consumers: 0
+- **departments@FullCapabilityRegistry_FIXED.json** (registry_entry)
+  - Source: FullCapabilityRegistry_FIXED.json (line ?)
+  - Consumers: 0
+- **engines@FullCapabilityRegistry_FIXED.json** (registry_entry)
+  - Source: FullCapabilityRegistry_FIXED.json (line ?)
+  - Consumers: 0
+- **engines@system_manifest.json** (registry_entry)
+  - Source: system_manifest.json (line ?)
+  - Consumers: 0
+- **entry@Butler_CapabilityAudit.json:AgentLoopExecutor@Butler_CapabilityAudit.json** (registry_entry)
+  - Source: Butler_CapabilityAudit.json (line ?)
+  - Consumers: 0
+- **entry@Butler_CapabilityAudit.json:AgentPlanner@Butler_CapabilityAudit.json** (registry_entry)
+  - Source: Butler_CapabilityAudit.json (line ?)
+  - Consumers: 0
+- **entry@Butler_CapabilityAudit.json:AgentPlannerV2@Butler_CapabilityAudit.json** (registry_entry)
+  - Source: Butler_CapabilityAudit.json (line ?)
+  - Consumers: 0
+- **entry@Butler_CapabilityAudit.json:AgentRouter@Butler_CapabilityAudit.json** (registry_entry)
+  - Source: Butler_CapabilityAudit.json (line ?)
+  - Consumers: 0
+- **entry@Butler_CapabilityAudit.json:ArchitectAgent@Butler_CapabilityAudit.json** (registry_entry)
+  - Source: Butler_CapabilityAudit.json (line ?)
+  - Consumers: 0
+- **entry@Butler_CapabilityAudit.json:ArchiveDepartment@Butler_CapabilityAudit.json** (registry_entry)
+  - Source: Butler_CapabilityAudit.json (line ?)
+  - Consumers: 0
+- **entry@Butler_CapabilityAudit.json:AttentionMemory@Butler_CapabilityAudit.json** (registry_entry)
+  - Source: Butler_CapabilityAudit.json (line ?)
+  - Consumers: 0
+- **entry@Butler_CapabilityAudit.json:AudioDepartment@Butler_CapabilityAudit.json** (registry_entry)
+  - Source: Butler_CapabilityAudit.json (line ?)
+  - Consumers: 0
+- **entry@Butler_CapabilityAudit.json:AuditScanner@Butler_CapabilityAudit.json** (registry_entry)
+  - Source: Butler_CapabilityAudit.json (line ?)
+  - Consumers: 0
+- **entry@Butler_CapabilityAudit.json:BaseDepartment@Butler_CapabilityAudit.json** (registry_entry)
+  - Source: Butler_CapabilityAudit.json (line ?)
+  - Consumers: 0
+- **entry@Butler_CapabilityAudit.json:ButlerContextBuilder@Butler_CapabilityAudit.json** (registry_entry)
+  - Source: Butler_CapabilityAudit.json (line ?)
+  - Consumers: 0
+- **entry@Butler_CapabilityAudit.json:ButlerDiagnostics@Butler_CapabilityAudit.json** (registry_entry)
+  - Source: Butler_CapabilityAudit.json (line ?)
+  - Consumers: 0
+- **entry@Butler_CapabilityAudit.json:ButlerDreamManager@Butler_CapabilityAudit.json** (registry_entry)
+  - Source: Butler_CapabilityAudit.json (line ?)
+  - Consumers: 0
+- **entry@Butler_CapabilityAudit.json:ButlerInteractiveChat@Butler_CapabilityAudit.json** (registry_entry)
+  - Source: Butler_CapabilityAudit.json (line ?)
+  - Consumers: 0
+- **entry@Butler_CapabilityAudit.json:ButlerMcpServer@Butler_CapabilityAudit.json** (registry_entry)
+  - Source: Butler_CapabilityAudit.json (line ?)
+  - Consumers: 0
+- **entry@Butler_CapabilityAudit.json:ButlerSessionManager@Butler_CapabilityAudit.json** (registry_entry)
+  - Source: Butler_CapabilityAudit.json (line ?)
+  - Consumers: 0
+- **entry@Butler_CapabilityAudit.json:CatalogManager@Butler_CapabilityAudit.json** (registry_entry)
+  - Source: Butler_CapabilityAudit.json (line ?)
+  - Consumers: 0
+- **entry@Butler_CapabilityAudit.json:CatalogSearchBridge@Butler_CapabilityAudit.json** (registry_entry)
+  - Source: Butler_CapabilityAudit.json (line ?)
+  - Consumers: 0
+- **entry@Butler_CapabilityAudit.json:ChangeRequestManager@Butler_CapabilityAudit.json** (registry_entry)
+  - Source: Butler_CapabilityAudit.json (line ?)
+  - Consumers: 0
+- **entry@Butler_CapabilityAudit.json:ChatCoreBridge@Butler_CapabilityAudit.json** (registry_entry)
+  - Source: Butler_CapabilityAudit.json (line ?)
+  - Consumers: 0
+- **entry@Butler_CapabilityAudit.json:ChatRouterMirror@Butler_CapabilityAudit.json** (registry_entry)
+  - Source: Butler_CapabilityAudit.json (line ?)
+  - Consumers: 0
+- **entry@Butler_CapabilityAudit.json:CodingDepartment@Butler_CapabilityAudit.json** (registry_entry)
+  - Source: Butler_CapabilityAudit.json (line ?)
+  - Consumers: 0
+- **entry@Butler_CapabilityAudit.json:Colors@Butler_CapabilityAudit.json** (registry_entry)
+  - Source: Butler_CapabilityAudit.json (line ?)
+  - Consumers: 0
+- **entry@Butler_CapabilityAudit.json:ComfyUIBridge@Butler_CapabilityAudit.json** (registry_entry)
+  - Source: Butler_CapabilityAudit.json (line ?)
+  - Consumers: 0
+- **entry@Butler_CapabilityAudit.json:ContextBudgetManager@Butler_CapabilityAudit.json** (registry_entry)
+  - Source: Butler_CapabilityAudit.json (line ?)
+  - Consumers: 0
+- **entry@Butler_CapabilityAudit.json:CoreKernel@Butler_CapabilityAudit.json** (registry_entry)
+  - Source: Butler_CapabilityAudit.json (line ?)
+  - Consumers: 0
+- **entry@Butler_CapabilityAudit.json:CoreOrchestrator@Butler_CapabilityAudit.json** (registry_entry)
+  - Source: Butler_CapabilityAudit.json (line ?)
+  - Consumers: 0
+- **entry@Butler_CapabilityAudit.json:Department@Butler_CapabilityAudit.json** (registry_entry)
+  - Source: Butler_CapabilityAudit.json (line ?)
+  - Consumers: 0
+- **entry@Butler_CapabilityAudit.json:DependencyAnalyzer@Butler_CapabilityAudit.json** (registry_entry)
+  - Source: Butler_CapabilityAudit.json (line ?)
+  - Consumers: 0
+- **entry@Butler_CapabilityAudit.json:Dispatcher@Butler_CapabilityAudit.json** (registry_entry)
+  - Source: Butler_CapabilityAudit.json (line ?)
+  - Consumers: 0
+- **entry@Butler_CapabilityAudit.json:DispatcherAgent@Butler_CapabilityAudit.json** (registry_entry)
+  - Source: Butler_CapabilityAudit.json (line ?)
+  - Consumers: 0
+- **entry@Butler_CapabilityAudit.json:DispatcherBridge@Butler_CapabilityAudit.json** (registry_entry)
+  - Source: Butler_CapabilityAudit.json (line ?)
+  - Consumers: 0
+- **entry@Butler_CapabilityAudit.json:DispatcherScanner@Butler_CapabilityAudit.json** (registry_entry)
+  - Source: Butler_CapabilityAudit.json (line ?)
+  - Consumers: 0
+- **entry@Butler_CapabilityAudit.json:DocumentsDepartment@Butler_CapabilityAudit.json** (registry_entry)
+  - Source: Butler_CapabilityAudit.json (line ?)
+  - Consumers: 0
+... and 7248 more
+
+## Passport vs Reality
+The following capabilities are declared in the passport but not found:
+- project_identity
+- environment_boundaries
+- architecture_freeze
+- roadmap_pointer
+- current_runtime_classification
+- execution_proof_map
+- known_limitations
+- architecture_registry
+
+## Statistics
+- **Nodes in dependency model:** 1499
+- **Edges in dependency model:** 11976
+- **Capabilities found:** 7298
+- **Capabilities declared in passport:** 8
+- **Missing from passport:** 8
+- **Additional JSON files with registry data:** 80
+
+## Artifacts used
+- Inspector0_PhysicalMap.json
+- Inspector1_EntityMap.json
+- Inspector2_ImportMap.json
+- Inspector3_RegistrationAST.json
+- Inspector4_CallGraph.json
+- LinkMap.json
+- DependencyModel.json
+- All JSON files (except excluded)

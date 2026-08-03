@@ -1,0 +1,2030 @@
+{
+  "before_any_change.py": {
+    "imports": [
+      "datetime",
+      "pathlib",
+      "shutil"
+    ],
+    "classes": [],
+    "functions": []
+  },
+  "cleanup_rollback_points.py": {
+    "imports": [
+      "pathlib",
+      "shutil"
+    ],
+    "classes": [],
+    "functions": []
+  },
+  "create_snapshot.py": {
+    "imports": [
+      "hashlib",
+      "json",
+      "os",
+      "pathlib",
+      "shutil",
+      "socket",
+      "time"
+    ],
+    "classes": [],
+    "functions": [
+      "sha256"
+    ]
+  },
+  "harness_patcher.py": {
+    "imports": [],
+    "classes": [],
+    "functions": []
+  },
+  "health_check.py": {
+    "imports": [
+      "pathlib",
+      "sqlite3"
+    ],
+    "classes": [],
+    "functions": [
+      "run_health_check",
+      "scalar"
+    ]
+  },
+  "INIT_OMEGA.py": {
+    "imports": [
+      "A_02_MANAGERS.catalog_manager",
+      "pathlib",
+      "sys"
+    ],
+    "classes": [],
+    "functions": [
+      "register_test_job"
+    ]
+  },
+  "inspect_db.py": {
+    "imports": [
+      "os",
+      "sqlite3"
+    ],
+    "classes": [],
+    "functions": [
+      "show_catalog"
+    ]
+  },
+  "patch_memory.py": {
+    "imports": [
+      "pathlib"
+    ],
+    "classes": [],
+    "functions": []
+  },
+  "restore_everything.py": {
+    "imports": [
+      "pathlib",
+      "shutil",
+      "sys"
+    ],
+    "classes": [],
+    "functions": []
+  },
+  "restore_full_project.py": {
+    "imports": [
+      "datetime",
+      "pathlib",
+      "shutil",
+      "subprocess",
+      "sys"
+    ],
+    "classes": [],
+    "functions": [
+      "compile_python",
+      "latest_rollback",
+      "restore"
+    ]
+  },
+  "restore_snapshot.py": {
+    "imports": [
+      "json",
+      "pathlib",
+      "shutil",
+      "subprocess",
+      "sys"
+    ],
+    "classes": [],
+    "functions": [
+      "list_snapshots",
+      "restore"
+    ]
+  },
+  "RUN_PIPELINE.py": {
+    "imports": [
+      "A_01_CORE.orchestrator",
+      "A_03_ORCHESTRATION.worker",
+      "time"
+    ],
+    "classes": [],
+    "functions": [
+      "run_pipeline"
+    ]
+  },
+  "RUN_PIPELINE_V12.py": {
+    "imports": [
+      "A_01_CORE.memory_guardian",
+      "A_01_CORE.orchestrator",
+      "A_01_CORE.project_state_builder",
+      "A_03_ORCHESTRATION.worker",
+      "os",
+      "pathlib",
+      "shutil",
+      "sqlite3",
+      "sys",
+      "time"
+    ],
+    "classes": [],
+    "functions": [
+      "ensure_changelog",
+      "execute_repair",
+      "main",
+      "run_pipeline"
+    ]
+  },
+  "START_BUTLER_CORE.py": {
+    "imports": [
+      "A_01_CORE.core_orchestrator",
+      "A_01_CORE.execution_loop",
+      "A_01_CORE.system_stabilizer",
+      "A_03_ORCHESTRATION.message_network",
+      "A_03_ORCHESTRATION.registry_brain",
+      "A_07_MEMORY.self_healing_memory",
+      "time"
+    ],
+    "classes": [
+      "BootstrapCore"
+    ],
+    "functions": [
+      "__init__",
+      "health_check",
+      "init_system",
+      "run"
+    ]
+  },
+  "START_BUTLER_SYSTEM.py": {
+    "imports": [
+      "A_01_CORE.execution_loop",
+      "A_01_CORE.system_stabilizer",
+      "A_03_ORCHESTRATION.message_network",
+      "A_03_ORCHESTRATION.registry_brain",
+      "A_07_MEMORY.self_healing_memory",
+      "time"
+    ],
+    "classes": [
+      "ButlerSystem"
+    ],
+    "functions": [
+      "__init__",
+      "clean_init",
+      "run"
+    ]
+  },
+  "START_SAFE_LAUNCH.py": {
+    "imports": [
+      "pathlib",
+      "subprocess",
+      "time"
+    ],
+    "classes": [],
+    "functions": [
+      "start"
+    ]
+  },
+  "system_doctor.py": {
+    "imports": [
+      "json",
+      "pathlib",
+      "py_compile",
+      "shutil",
+      "sqlite3",
+      "subprocess",
+      "sys"
+    ],
+    "classes": [],
+    "functions": [
+      "main",
+      "repair"
+    ]
+  },
+  "A_00_ARCHIVE_SCRIPTS\\requeue.py": {
+    "imports": [
+      "sqlite3"
+    ],
+    "classes": [],
+    "functions": []
+  },
+  "A_00_ARCHIVE_SCRIPTS\\temp_update.py": {
+    "imports": [
+      "sqlite3"
+    ],
+    "classes": [],
+    "functions": []
+  },
+  "A_00_HEALER_UNIT\\temp_test.py": {
+    "imports": [
+      "A_01_CORE.manifest_loader"
+    ],
+    "classes": [],
+    "functions": [
+      "main"
+    ]
+  },
+  "A_01_CORE\\alarm.py": {
+    "imports": [
+      "A_01_CORE.manifest_loader"
+    ],
+    "classes": [],
+    "functions": [
+      "main"
+    ]
+  },
+  "A_01_CORE\\bootstrap_guard.py": {
+    "imports": [
+      "hashlib",
+      "json",
+      "pathlib",
+      "py_compile",
+      "sys"
+    ],
+    "classes": [],
+    "functions": [
+      "boot_verify",
+      "calculate_sha256"
+    ]
+  },
+  "A_01_CORE\\butler_drawer.py": {
+    "imports": [
+      "json",
+      "os",
+      "time",
+      "urllib.request"
+    ],
+    "classes": [],
+    "functions": [
+      "draw_by_command"
+    ]
+  },
+  "A_01_CORE\\butler_ui.py": {
+    "imports": [
+      "pathlib",
+      "subprocess",
+      "tkinter"
+    ],
+    "classes": [],
+    "functions": [
+      "log",
+      "start_system",
+      "stop_system"
+    ]
+  },
+  "A_01_CORE\\chat_core_bridge.py": {
+    "imports": [
+      "A_03_ORCHESTRATION.semantic_layer",
+      "A_07_MEMORY.profile_manager"
+    ],
+    "classes": [
+      "ChatCoreBridge"
+    ],
+    "functions": [
+      "__init__",
+      "process"
+    ]
+  },
+  "A_01_CORE\\config_loader.py": {
+    "imports": [
+      "json",
+      "pathlib"
+    ],
+    "classes": [],
+    "functions": [
+      "load_manifest"
+    ]
+  },
+  "A_01_CORE\\core_kernel.py": {
+    "imports": [
+      "A_03_ORCHESTRATION.semantic_layer",
+      "json",
+      "pathlib"
+    ],
+    "classes": [
+      "CoreKernel"
+    ],
+    "functions": [
+      "__init__",
+      "process_file",
+      "safe_route"
+    ]
+  },
+  "A_01_CORE\\core_orchestrator.py": {
+    "imports": [
+      "A_01_CORE.memory_core",
+      "A_03_ORCHESTRATION.semantic_layer"
+    ],
+    "classes": [
+      "CoreOrchestrator"
+    ],
+    "functions": [
+      "__init__",
+      "_route",
+      "process"
+    ]
+  },
+  "A_01_CORE\\diagnostic_tool.py": {
+    "imports": [
+      "A_02_MANAGERS.catalog_manager",
+      "os",
+      "pathlib",
+      "sys"
+    ],
+    "classes": [
+      "ButlerDiagnostics",
+      "Colors"
+    ],
+    "functions": [
+      "__init__",
+      "inspect_folders",
+      "print_check",
+      "run_all",
+      "self_structure_analysis",
+      "test_fts5_search"
+    ]
+  },
+  "A_01_CORE\\event_bus.py": {
+    "imports": [
+      "sys"
+    ],
+    "classes": [
+      "EventBus"
+    ],
+    "functions": [
+      "publish",
+      "subscribe"
+    ]
+  },
+  "A_01_CORE\\execution_loop.py": {
+    "imports": [
+      "datetime",
+      "json",
+      "pathlib",
+      "time"
+    ],
+    "classes": [
+      "ExecutionLoop"
+    ],
+    "functions": [
+      "__init__",
+      "execute",
+      "fetch_task",
+      "run"
+    ]
+  },
+  "A_01_CORE\\fix_butler.py": {
+    "imports": [
+      "A_01_CORE.manifest_loader"
+    ],
+    "classes": [],
+    "functions": [
+      "main"
+    ]
+  },
+  "A_01_CORE\\flow_monitor.py": {
+    "imports": [
+      "datetime",
+      "os",
+      "pathlib",
+      "time"
+    ],
+    "classes": [],
+    "functions": [
+      "count",
+      "draw"
+    ]
+  },
+  "A_01_CORE\\healthcheck.py": {
+    "imports": [
+      "json",
+      "logging",
+      "os",
+      "pathlib"
+    ],
+    "classes": [],
+    "functions": [
+      "check_system"
+    ]
+  },
+  "A_01_CORE\\logger_config.py": {
+    "imports": [
+      "logging",
+      "pathlib"
+    ],
+    "classes": [],
+    "functions": [
+      "setup_logger"
+    ]
+  },
+  "A_01_CORE\\manifest_loader.py": {
+    "imports": [
+      "json",
+      "pathlib"
+    ],
+    "classes": [
+      "ManifestLoader"
+    ],
+    "functions": [
+      "load"
+    ]
+  },
+  "A_01_CORE\\mcp_server.py": {
+    "imports": [
+      "A_01_CORE.orchestrator",
+      "A_02_MANAGERS.catalog_manager",
+      "json",
+      "sys"
+    ],
+    "classes": [
+      "ButlerMcpServer"
+    ],
+    "functions": [
+      "__init__",
+      "handle_request",
+      "listen"
+    ]
+  },
+  "A_01_CORE\\memory_core.py": {
+    "imports": [
+      "A_07_MEMORY.profile_manager",
+      "json",
+      "pathlib"
+    ],
+    "classes": [
+      "MemoryCore"
+    ],
+    "functions": [
+      "__init__",
+      "build_memory_packet",
+      "get_preferences",
+      "get_user_name",
+      "inject_into_prompt"
+    ]
+  },
+  "A_01_CORE\\orchestrator.py": {
+    "imports": [
+      "A_02_MANAGERS.catalog_manager",
+      "hashlib",
+      "os",
+      "pathlib"
+    ],
+    "classes": [
+      "MainOrchestrator"
+    ],
+    "functions": [
+      "__init__",
+      "run"
+    ]
+  },
+  "A_01_CORE\\run.py": {
+    "imports": [
+      "A_01_CORE.manifest_loader",
+      "pathlib"
+    ],
+    "classes": [],
+    "functions": [
+      "startup"
+    ]
+  },
+  "A_01_CORE\\safety_gate.py": {
+    "imports": [
+      "json",
+      "pathlib",
+      "shutil",
+      "subprocess",
+      "sys",
+      "time"
+    ],
+    "classes": [],
+    "functions": [
+      "backup_file",
+      "create_snapshot",
+      "guarded_write",
+      "log",
+      "py_compile",
+      "restore_backup"
+    ]
+  },
+  "A_01_CORE\\self_healing_loop.py": {
+    "imports": [
+      "A_01_CORE.safety_gate",
+      "A_02_MANAGERS.smart_dispatcher",
+      "pathlib",
+      "subprocess",
+      "sys"
+    ],
+    "classes": [],
+    "functions": []
+  },
+  "A_01_CORE\\system_doctor.py": {
+    "imports": [],
+    "classes": [],
+    "functions": []
+  },
+  "A_01_CORE\\system_guardian.py": {
+    "imports": [
+      "A_01_CORE.manifest_loader",
+      "A_02_MANAGERS.catalog_manager",
+      "A_02_MANAGERS.provider_manager",
+      "contextlib",
+      "os",
+      "pathlib",
+      "sqlite3",
+      "sys"
+    ],
+    "classes": [],
+    "functions": [
+      "run_guardian"
+    ]
+  },
+  "A_01_CORE\\system_stabilizer.py": {
+    "imports": [
+      "json",
+      "pathlib",
+      "time"
+    ],
+    "classes": [
+      "SystemStabilizer"
+    ],
+    "functions": [
+      "__init__",
+      "check_loop",
+      "emergency_rollback",
+      "health_check",
+      "load_state",
+      "save_state"
+    ]
+  },
+  "A_01_CORE\\task_feeder.py": {
+    "imports": [
+      "datetime",
+      "json",
+      "pathlib",
+      "shutil",
+      "time"
+    ],
+    "classes": [
+      "TaskFeeder"
+    ],
+    "functions": [
+      "__init__",
+      "fetch_task",
+      "log",
+      "move_to_active",
+      "run"
+    ]
+  },
+  "A_01_CORE\\test_db.py": {
+    "imports": [
+      "A_02_MANAGERS.catalog_manager",
+      "pathlib"
+    ],
+    "classes": [],
+    "functions": [
+      "test_catalog_update"
+    ]
+  },
+  "A_01_CORE\\__init__.py": {
+    "imports": [],
+    "classes": [],
+    "functions": []
+  },
+  "A_02_MANAGERS\\archiver.py": {
+    "imports": [
+      "pathlib",
+      "shutil"
+    ],
+    "classes": [
+      "Archiver"
+    ],
+    "functions": [
+      "__init__",
+      "move_to_processing"
+    ]
+  },
+  "A_02_MANAGERS\\context_builder.py": {
+    "imports": [
+      "json",
+      "pathlib"
+    ],
+    "classes": [],
+    "functions": [
+      "build_minimal_context",
+      "module_to_path",
+      "read_limited"
+    ]
+  },
+  "A_02_MANAGERS\\department_registry.py": {
+    "imports": [],
+    "classes": [],
+    "functions": []
+  },
+  "A_02_MANAGERS\\impact_analyzer.py": {
+    "imports": [
+      "json",
+      "os",
+      "pathlib"
+    ],
+    "classes": [],
+    "functions": [
+      "analyze_file_impact",
+      "evaluate_risk_level",
+      "normalize_to_module"
+    ]
+  },
+  "A_02_MANAGERS\\memory_manager.py": {
+    "imports": [
+      "A_01_CORE.manifest_loader",
+      "os",
+      "pathlib"
+    ],
+    "classes": [
+      "MemoryManager"
+    ],
+    "functions": [
+      "__init__",
+      "save_to_memory"
+    ]
+  },
+  "A_02_MANAGERS\\model_registry.py": {
+    "imports": [
+      "A_01_CORE.manifest_loader"
+    ],
+    "classes": [],
+    "functions": []
+  },
+  "A_02_MANAGERS\\project_guardian.py": {
+    "imports": [
+      "ast",
+      "json",
+      "pathlib"
+    ],
+    "classes": [],
+    "functions": []
+  },
+  "A_02_MANAGERS\\provider_manager.py": {
+    "imports": [
+      "A_01_CORE.manifest_loader",
+      "requests",
+      "sys"
+    ],
+    "classes": [
+      "ProviderManager"
+    ],
+    "functions": [
+      "__init__",
+      "check_ollama_status",
+      "get_local_models",
+      "inspect_manifest_models"
+    ]
+  },
+  "A_02_MANAGERS\\queue_manager.py": {
+    "imports": [
+      "A_01_CORE.manifest_loader",
+      "pathlib",
+      "sqlite3",
+      "time"
+    ],
+    "classes": [
+      "QueueManager"
+    ],
+    "functions": [
+      "__init__",
+      "_get_connection",
+      "_recycle_dead_workers",
+      "get_next_task"
+    ]
+  },
+  "A_02_MANAGERS\\smart_dispatcher.py": {
+    "imports": [
+      "os",
+      "re",
+      "requests",
+      "time",
+      "uuid"
+    ],
+    "classes": [
+      "SmartDispatcher"
+    ],
+    "functions": [
+      "__init__",
+      "_model_for_role",
+      "determine_role",
+      "execute_employee"
+    ]
+  },
+  "A_02_MANAGERS\\tool_bridge.py": {
+    "imports": [
+      "A_01_CORE.config_loader",
+      "json",
+      "pathlib",
+      "re",
+      "sqlite3"
+    ],
+    "classes": [
+      "ToolBridge"
+    ],
+    "functions": [
+      "__init__",
+      "extract_tags",
+      "find_documents",
+      "get_file_paths"
+    ]
+  },
+  "A_02_MANAGERS\\__init__.py": {
+    "imports": [],
+    "classes": [],
+    "functions": []
+  },
+  "A_03_ENGINES\\__init__.py": {
+    "imports": [],
+    "classes": [],
+    "functions": []
+  },
+  "A_03_HANDLERS\\archive_handler.py": {
+    "imports": [
+      "A_03_HANDLERS.base_handler",
+      "gzip",
+      "pathlib",
+      "shutil",
+      "tarfile",
+      "tempfile",
+      "zipfile"
+    ],
+    "classes": [
+      "ArchiveHandler"
+    ],
+    "functions": [
+      "_safe_extract_tar",
+      "_safe_extract_zip",
+      "can_handle",
+      "extract"
+    ]
+  },
+  "A_03_HANDLERS\\base_handler.py": {
+    "imports": [
+      "abc",
+      "pathlib"
+    ],
+    "classes": [
+      "BaseHandler"
+    ],
+    "functions": [
+      "can_handle",
+      "extract"
+    ]
+  },
+  "A_03_HANDLERS\\code_detector.py": {
+    "imports": [
+      "re"
+    ],
+    "classes": [],
+    "functions": [
+      "detect_language_by_extension",
+      "looks_like_code"
+    ]
+  },
+  "A_03_HANDLERS\\code_handler.py": {
+    "imports": [
+      "A_03_HANDLERS.base_handler",
+      "A_03_HANDLERS.code_detector",
+      "pathlib"
+    ],
+    "classes": [
+      "CodeHandler"
+    ],
+    "functions": [
+      "extract"
+    ]
+  },
+  "A_03_HANDLERS\\docx_handler.py": {
+    "imports": [
+      "A_03_HANDLERS.base_handler",
+      "docx",
+      "pathlib"
+    ],
+    "classes": [
+      "DocxHandler"
+    ],
+    "functions": [
+      "extract"
+    ]
+  },
+  "A_03_HANDLERS\\image_handler.py": {
+    "imports": [
+      "A_03_HANDLERS.base_handler",
+      "A_03_HANDLERS.vision_engine",
+      "pathlib"
+    ],
+    "classes": [
+      "ImageHandler"
+    ],
+    "functions": [
+      "__init__",
+      "can_handle",
+      "extract"
+    ]
+  },
+  "A_03_HANDLERS\\ocr_backend.py": {
+    "imports": [
+      "PIL",
+      "pathlib",
+      "pytesseract"
+    ],
+    "classes": [
+      "OCRBackend"
+    ],
+    "functions": [
+      "analyze"
+    ]
+  },
+  "A_03_HANDLERS\\ollama_vision_backend.py": {
+    "imports": [
+      "base64",
+      "json",
+      "pathlib",
+      "requests"
+    ],
+    "classes": [
+      "OllamaVisionBackend"
+    ],
+    "functions": [
+      "__init__",
+      "analyze"
+    ]
+  },
+  "A_03_HANDLERS\\pdf_handler.py": {
+    "imports": [
+      "A_03_HANDLERS.base_handler",
+      "A_03_HANDLERS.code_detector",
+      "A_03_HANDLERS.vision_engine",
+      "PyPDF2",
+      "fitz",
+      "pathlib",
+      "tempfile"
+    ],
+    "classes": [
+      "PDFHandler"
+    ],
+    "functions": [
+      "_extract_scanned_pdf_with_vision",
+      "_extract_text_pdf",
+      "can_handle",
+      "extract"
+    ]
+  },
+  "A_03_HANDLERS\\pdf_ocr_pipeline.py": {
+    "imports": [
+      "A_03_HANDLERS.vision_engine",
+      "datetime",
+      "fitz",
+      "hashlib",
+      "json",
+      "pathlib",
+      "tempfile"
+    ],
+    "classes": [
+      "PDFOCRPipeline"
+    ],
+    "functions": [
+      "__init__",
+      "_load_progress",
+      "_progress_path",
+      "_render_page_to_png",
+      "_save_progress",
+      "_sha256",
+      "process"
+    ]
+  },
+  "A_03_HANDLERS\\registry.py": {
+    "imports": [
+      "A_03_HANDLERS.archive_handler",
+      "A_03_HANDLERS.code_handler",
+      "A_03_HANDLERS.docx_handler",
+      "A_03_HANDLERS.image_handler",
+      "A_03_HANDLERS.pdf_handler",
+      "A_03_HANDLERS.spreadsheet_handler",
+      "A_03_HANDLERS.text_handler",
+      "pathlib"
+    ],
+    "classes": [
+      "HandlerRegistry"
+    ],
+    "functions": [
+      "__init__",
+      "get_handler"
+    ]
+  },
+  "A_03_HANDLERS\\spreadsheet_handler.py": {
+    "imports": [
+      "A_03_HANDLERS.base_handler",
+      "pandas",
+      "pathlib"
+    ],
+    "classes": [
+      "SpreadsheetHandler"
+    ],
+    "functions": [
+      "extract"
+    ]
+  },
+  "A_03_HANDLERS\\text_handler.py": {
+    "imports": [
+      "A_03_HANDLERS.base_handler",
+      "pathlib"
+    ],
+    "classes": [
+      "TextHandler"
+    ],
+    "functions": [
+      "extract"
+    ]
+  },
+  "A_03_HANDLERS\\vision_analyzer.py": {
+    "imports": [
+      "A_03_HANDLERS.vision_engine",
+      "pathlib"
+    ],
+    "classes": [
+      "VisionAnalyzer"
+    ],
+    "functions": [
+      "__init__",
+      "_looks_like_code",
+      "analyze",
+      "analyze_code_screenshot",
+      "analyze_document",
+      "analyze_schematic"
+    ]
+  },
+  "A_03_HANDLERS\\vision_engine.py": {
+    "imports": [
+      "A_03_HANDLERS.ocr_backend",
+      "A_03_HANDLERS.ollama_vision_backend",
+      "pathlib"
+    ],
+    "classes": [
+      "VisionEngine"
+    ],
+    "functions": [
+      "__init__",
+      "analyze"
+    ]
+  },
+  "A_03_HANDLERS\\__init__.py": {
+    "imports": [],
+    "classes": [],
+    "functions": []
+  },
+  "A_03_ORCHESTRATION\\agent_planner.py": {
+    "imports": [
+      "json",
+      "pathlib"
+    ],
+    "classes": [
+      "AgentPlanner"
+    ],
+    "functions": [
+      "__init__",
+      "create_plan",
+      "load_unfinished_plan",
+      "save_checkpoint"
+    ]
+  },
+  "A_03_ORCHESTRATION\\agent_router.BAK_20260623_113044.py": {
+    "imports": [
+      "pathlib",
+      "re"
+    ],
+    "classes": [
+      "AgentRouter"
+    ],
+    "functions": [
+      "route"
+    ]
+  },
+  "A_03_ORCHESTRATION\\autonomous_loop.py": {
+    "imports": [
+      "json"
+    ],
+    "classes": [
+      "AutonomousLoop"
+    ],
+    "functions": [
+      "execute"
+    ]
+  },
+  "A_03_ORCHESTRATION\\chat_router.before_hybrid_connect_20260618.py": {
+    "imports": [
+      "argparse",
+      "json",
+      "os",
+      "pathlib",
+      "re",
+      "requests",
+      "time"
+    ],
+    "classes": [],
+    "functions": [
+      "ask_ollama",
+      "check_comfyui",
+      "choose_model",
+      "clear_screen",
+      "fetch_ollama_models",
+      "handle_chat",
+      "handle_draw",
+      "is_draw_command",
+      "main",
+      "print_status",
+      "run_self_test"
+    ]
+  },
+  "A_03_ORCHESTRATION\\chat_router.HYBRID_WORK.before_import.py": {
+    "imports": [
+      "argparse",
+      "json",
+      "os",
+      "pathlib",
+      "re",
+      "requests",
+      "time"
+    ],
+    "classes": [],
+    "functions": [
+      "ask_ollama",
+      "check_comfyui",
+      "choose_model",
+      "clear_screen",
+      "fetch_ollama_models",
+      "handle_chat",
+      "handle_draw",
+      "is_draw_command",
+      "main",
+      "print_status",
+      "run_self_test"
+    ]
+  },
+  "A_03_ORCHESTRATION\\chat_router.HYBRID_WORK.before_real_import.py": {
+    "imports": [
+      "argparse",
+      "json",
+      "os",
+      "pathlib",
+      "re",
+      "requests",
+      "time"
+    ],
+    "classes": [],
+    "functions": [
+      "ask_ollama",
+      "check_comfyui",
+      "choose_model",
+      "clear_screen",
+      "fetch_ollama_models",
+      "handle_chat",
+      "handle_draw",
+      "is_draw_command",
+      "main",
+      "print_status",
+      "run_self_test"
+    ]
+  },
+  "A_03_ORCHESTRATION\\chat_router.STABLE_BEFORE_HYBRID.py": {
+    "imports": [
+      "argparse",
+      "json",
+      "os",
+      "pathlib",
+      "re",
+      "requests",
+      "time"
+    ],
+    "classes": [],
+    "functions": [
+      "ask_ollama",
+      "check_comfyui",
+      "choose_model",
+      "clear_screen",
+      "fetch_ollama_models",
+      "handle_chat",
+      "handle_draw",
+      "is_draw_command",
+      "main",
+      "print_status",
+      "run_self_test"
+    ]
+  },
+  "A_03_ORCHESTRATION\\chat_router.WORKING_RUSSIAN_OK.py": {
+    "imports": [
+      "argparse",
+      "json",
+      "os",
+      "pathlib",
+      "re",
+      "requests",
+      "time"
+    ],
+    "classes": [],
+    "functions": [
+      "ask_ollama",
+      "check_comfyui",
+      "choose_model",
+      "clear_screen",
+      "fetch_ollama_models",
+      "handle_chat",
+      "handle_draw",
+      "is_draw_command",
+      "main",
+      "print_status",
+      "run_self_test"
+    ]
+  },
+  "A_03_ORCHESTRATION\\chat_router_mirror.py": {
+    "imports": [
+      "A_03_ORCHESTRATION.semantic_layer",
+      "A_07_MEMORY.profile_manager"
+    ],
+    "classes": [
+      "ChatRouterMirror"
+    ],
+    "functions": [
+      "__init__",
+      "route"
+    ]
+  },
+  "A_03_ORCHESTRATION\\chat_router_test_restore.py": {
+    "imports": [
+      "argparse",
+      "json",
+      "os",
+      "pathlib",
+      "re",
+      "requests",
+      "time"
+    ],
+    "classes": [],
+    "functions": [
+      "ask_ollama",
+      "check_comfyui",
+      "choose_model",
+      "clear_screen",
+      "fetch_ollama_models",
+      "handle_chat",
+      "handle_draw",
+      "is_draw_command",
+      "main",
+      "print_status",
+      "run_self_test"
+    ]
+  },
+  "A_03_ORCHESTRATION\\context_builder.BEFORE_CHAT_MODE.py": {
+    "imports": [
+      "pathlib"
+    ],
+    "classes": [
+      "ButlerContextBuilder"
+    ],
+    "functions": [
+      "__init__",
+      "_read_layer_safe",
+      "assemble_context"
+    ]
+  },
+  "A_03_ORCHESTRATION\\dispatcher_bridge.py": {
+    "imports": [
+      "json",
+      "pathlib",
+      "shutil"
+    ],
+    "classes": [
+      "DispatcherBridge"
+    ],
+    "functions": [
+      "__init__",
+      "fetch_task",
+      "log"
+    ]
+  },
+  "A_03_ORCHESTRATION\\factory_core_bridge.py": {
+    "imports": [
+      "A_01_CORE.core_orchestrator"
+    ],
+    "classes": [
+      "FactoryCoreBridge"
+    ],
+    "functions": [
+      "__init__",
+      "_archive",
+      "_dispatch",
+      "_execute",
+      "_fallback",
+      "_quarantine",
+      "handle"
+    ]
+  },
+  "A_03_ORCHESTRATION\\memory_loop.py": {
+    "imports": [],
+    "classes": [
+      "MemoryLoop"
+    ],
+    "functions": [
+      "__init__",
+      "recall",
+      "remember"
+    ]
+  },
+  "A_03_ORCHESTRATION\\message_network.py": {
+    "imports": [
+      "datetime",
+      "json",
+      "pathlib",
+      "uuid"
+    ],
+    "classes": [
+      "MessageNetwork"
+    ],
+    "functions": [
+      "__init__",
+      "ack",
+      "create_message",
+      "read_queue",
+      "send"
+    ]
+  },
+  "A_03_ORCHESTRATION\\orchestrator.py": {
+    "imports": [],
+    "classes": [
+      "Orchestrator"
+    ],
+    "functions": [
+      "__init__",
+      "run"
+    ]
+  },
+  "A_03_ORCHESTRATION\\planner.py": {
+    "imports": [
+      "datetime",
+      "json"
+    ],
+    "classes": [
+      "Planner"
+    ],
+    "functions": [
+      "build_plan"
+    ]
+  },
+  "A_03_ORCHESTRATION\\registry_brain.py": {
+    "imports": [
+      "json",
+      "pathlib"
+    ],
+    "classes": [
+      "RegistryBrain"
+    ],
+    "functions": [
+      "__init__",
+      "list_departments",
+      "load",
+      "route",
+      "save",
+      "update_department"
+    ]
+  },
+  "A_03_ORCHESTRATION\\router_integration.BACKUP_4_11_3.py": {
+    "imports": [
+      "A_03_ORCHESTRATION.agent_router",
+      "A_03_ORCHESTRATION.passport_commands",
+      "A_03_ORCHESTRATION.router_registry",
+      "pathlib",
+      "sys"
+    ],
+    "classes": [
+      "RouterIntegration"
+    ],
+    "functions": [
+      "__init__",
+      "dispatch"
+    ]
+  },
+  "A_03_ORCHESTRATION\\semantic_layer.py": {
+    "imports": [
+      "json",
+      "pathlib"
+    ],
+    "classes": [
+      "SemanticLayer"
+    ],
+    "functions": [
+      "classify"
+    ]
+  },
+  "A_03_ORCHESTRATION\\test_worker.py": {
+    "imports": [
+      "A_03_ORCHESTRATION.worker",
+      "sqlite3"
+    ],
+    "classes": [],
+    "functions": []
+  },
+  "A_03_ORCHESTRATION\\worker_backup.py": {
+    "imports": [
+      "A_01_CORE.logger_config",
+      "A_02_MANAGERS.queue_manager",
+      "A_04_AGENTS.professor"
+    ],
+    "classes": [
+      "Worker"
+    ],
+    "functions": [
+      "__init__",
+      "process_once"
+    ]
+  },
+  "A_03_ORCHESTRATION\\__init__.py": {
+    "imports": [],
+    "classes": [],
+    "functions": []
+  },
+  "A_04_AGENTS\\find_bills.py": {
+    "imports": [
+      "A_01_CORE.manifest_loader"
+    ],
+    "classes": [],
+    "functions": [
+      "main"
+    ]
+  },
+  "A_04_AGENTS\\professor.py": {
+    "imports": [
+      "A_02_MANAGERS.catalog_manager",
+      "A_03_HANDLERS.registry",
+      "A_03_HANDLERS.vision_engine",
+      "A_07_MEMORY.semantic_memory",
+      "base64",
+      "json",
+      "pathlib",
+      "re",
+      "requests",
+      "shutil"
+    ],
+    "classes": [
+      "DispatcherAgent"
+    ],
+    "functions": [
+      "__init__",
+      "_process_image_with_vision",
+      "append_memory",
+      "build_prompt",
+      "execute_employee",
+      "get_model_payload",
+      "normalize_tags",
+      "parse_model_response",
+      "process_agent_task",
+      "resolve_file_path"
+    ]
+  },
+  "A_04_AGENTS\\run_professor_daemon.py": {
+    "imports": [
+      "A_04_AGENTS.professor",
+      "os",
+      "sys",
+      "time"
+    ],
+    "classes": [],
+    "functions": []
+  },
+  "A_04_AGENTS\\__init__.py": {
+    "imports": [],
+    "classes": [],
+    "functions": []
+  },
+  "A_04_AGENTS_BACKUP\\find_bills.py": {
+    "imports": [
+      "A_01_CORE.manifest_loader"
+    ],
+    "classes": [],
+    "functions": [
+      "main"
+    ]
+  },
+  "A_04_AGENTS_BACKUP\\__init__.py": {
+    "imports": [],
+    "classes": [],
+    "functions": []
+  },
+  "A_05_STORAGE\\__init__.py": {
+    "imports": [],
+    "classes": [],
+    "functions": []
+  },
+  "A_07_CONFIG\\__init__.py": {
+    "imports": [],
+    "classes": [],
+    "functions": []
+  },
+  "A_07_MEMORY\\agent_runtime.py": {
+    "imports": [
+      "A_03_ORCHESTRATION.butler_harness",
+      "A_07_MEMORY.agent_planner",
+      "A_07_MEMORY.change_request_manager",
+      "A_07_MEMORY.execution_registry",
+      "A_07_MEMORY.goal_loop_engine",
+      "hashlib",
+      "json",
+      "pathlib",
+      "subprocess",
+      "sys",
+      "time"
+    ],
+    "classes": [
+      "LocalFeedbackValidatorV2",
+      "LoopOrchestratorV3_MASTER_TRUTH"
+    ],
+    "functions": [
+      "__init__",
+      "__init__",
+      "check_system_integrity",
+      "fingerprint",
+      "load_state",
+      "runtime_executor",
+      "start",
+      "validate_file_syntax"
+    ]
+  },
+  "A_07_MEMORY\\memory_advisor.py": {
+    "imports": [
+      "A_07_MEMORY.search_engine",
+      "pathlib",
+      "sys"
+    ],
+    "classes": [
+      "MemoryAdvisor"
+    ],
+    "functions": [
+      "__init__",
+      "analyze"
+    ]
+  },
+  "A_07_MEMORY\\memory_layer.py": {
+    "imports": [
+      "A_02_MANAGERS.session_manager",
+      "A_03_ORCHESTRATION.context_builder"
+    ],
+    "classes": [
+      "MemoryLayer"
+    ],
+    "functions": [
+      "__init__",
+      "build_prompt"
+    ]
+  },
+  "A_07_MEMORY\\profile_sync.py": {
+    "imports": [
+      "datetime",
+      "json",
+      "pathlib"
+    ],
+    "classes": [],
+    "functions": [
+      "_now",
+      "load_profile",
+      "rebuild_user_memory",
+      "save_profile",
+      "set_fact"
+    ]
+  },
+  "A_07_MEMORY\\search_engine.py": {
+    "imports": [
+      "json",
+      "pathlib",
+      "pymorphy3",
+      "re",
+      "time"
+    ],
+    "classes": [
+      "SemanticSearchEngine"
+    ],
+    "functions": [
+      "__init__",
+      "_cache_get",
+      "_cache_key",
+      "_cache_put",
+      "_expand_tokens",
+      "_load_all",
+      "_load_synonyms",
+      "_normalize",
+      "_parse_query",
+      "_record_text_fields",
+      "_simple_ru_stem",
+      "cache_stats",
+      "memory_stats",
+      "search",
+      "search_by_entity",
+      "search_by_path",
+      "search_by_tag"
+    ]
+  },
+  "A_07_MEMORY\\self_healing_memory.py": {
+    "imports": [
+      "datetime",
+      "json",
+      "pathlib"
+    ],
+    "classes": [
+      "SelfHealingMemory"
+    ],
+    "functions": [
+      "__init__",
+      "auto_repair",
+      "backup_profile",
+      "heal_profile",
+      "validate_profile"
+    ]
+  },
+  "A_09_TESTS\\handshake_test.py": {
+    "imports": [
+      "A_02_MANAGERS.catalog_manager",
+      "A_02_MANAGERS.memory_manager",
+      "A_02_MANAGERS.provider_manager",
+      "pathlib",
+      "sys"
+    ],
+    "classes": [],
+    "functions": [
+      "run_handshake"
+    ]
+  },
+  "A_09_TESTS\\test_departments.py": {
+    "imports": [
+      "A_04_AGENTS.ArchiveDepartment.runner",
+      "A_04_AGENTS.AudioDepartment.runner",
+      "A_04_AGENTS.CodingDepartment.runner",
+      "A_04_AGENTS.ImageDepartment.runner",
+      "A_04_AGENTS.MemoryDepartment.runner",
+      "A_04_AGENTS.TextDepartment.runner",
+      "A_04_AGENTS.VideoDepartment.runner",
+      "A_04_AGENTS.VisionDepartment.runner"
+    ],
+    "classes": [],
+    "functions": []
+  },
+  "A_09_TESTS\\test_handlers.py": {
+    "imports": [
+      "A_03_HANDLERS.registry",
+      "pathlib",
+      "sys"
+    ],
+    "classes": [],
+    "functions": []
+  },
+  "A_09_TESTS\\test_memory_advisor.py": {
+    "imports": [
+      "A_04_COMPONENTS.MemoryAdvisor.memory_advisor",
+      "unittest"
+    ],
+    "classes": [
+      "TestMemoryAdvisor"
+    ],
+    "functions": [
+      "test_empty"
+    ]
+  },
+  "A_09_TESTS\\test_pdf_ocr_pipeline.py": {
+    "imports": [
+      "A_03_HANDLERS.pdf_ocr_pipeline",
+      "pathlib",
+      "sys"
+    ],
+    "classes": [],
+    "functions": [
+      "run_tests"
+    ]
+  },
+  "A_09_TESTS\\test_pdf_render.py": {
+    "imports": [
+      "fitz"
+    ],
+    "classes": [],
+    "functions": []
+  },
+  "A_09_TESTS\\test_project_auditor.py": {
+    "imports": [
+      "A_04_COMPONENTS.ProjectAuditor.project_auditor",
+      "unittest"
+    ],
+    "classes": [
+      "TestProjectAuditor"
+    ],
+    "functions": [
+      "test_stub"
+    ]
+  },
+  "A_09_TESTS\\test_search_engine.py": {
+    "imports": [
+      "A_07_MEMORY.search_engine",
+      "json",
+      "os",
+      "pathlib",
+      "sys"
+    ],
+    "classes": [],
+    "functions": [
+      "cleanup",
+      "run_tests",
+      "setup_mock_data"
+    ]
+  },
+  "A_09_TESTS\\test_vision_analyzer.py": {
+    "imports": [
+      "A_03_HANDLERS.vision_analyzer",
+      "sys"
+    ],
+    "classes": [],
+    "functions": [
+      "run_tests"
+    ]
+  },
+  "A_09_TESTS\\__init__.py": {
+    "imports": [],
+    "classes": [],
+    "functions": []
+  },
+  "A_00_RESTORE\\CHECKPOINT_IMAGE_LINK_OK_20260616_192929\\runner.py": {
+    "imports": [
+      "A_04_AGENTS.base_department",
+      "pathlib",
+      "requests",
+      "shutil",
+      "subprocess",
+      "time",
+      "uuid"
+    ],
+    "classes": [
+      "ImageDepartment"
+    ],
+    "functions": [
+      "__init__",
+      "_build_checkpoint_graph",
+      "_clean_prompt",
+      "_get_object_info",
+      "_latest_image",
+      "_list_first",
+      "can_handle",
+      "execute"
+    ]
+  },
+  "A_00_RESTORE\\CHECKPOINT_IMAGE_LINK_OK_20260616_192943\\runner.py": {
+    "imports": [
+      "A_04_AGENTS.base_department",
+      "json",
+      "pathlib",
+      "requests",
+      "shutil",
+      "subprocess",
+      "time",
+      "uuid"
+    ],
+    "classes": [
+      "ImageDepartment"
+    ],
+    "functions": [
+      "__init__",
+      "_build_checkpoint_graph",
+      "_clean_prompt",
+      "_get_object_info",
+      "_latest_image",
+      "_list_first",
+      "can_handle",
+      "execute"
+    ]
+  },
+  "A_00_RESTORE\\SEARCH_ENGINE_BACKUPS\\search_engine_20260610_115441.py": {
+    "imports": [
+      "json",
+      "pathlib",
+      "re",
+      "time"
+    ],
+    "classes": [
+      "SemanticSearchEngine"
+    ],
+    "functions": [
+      "__init__",
+      "_expand_tokens",
+      "_load_all",
+      "_load_synonyms",
+      "_normalize",
+      "_parse_query",
+      "_record_text_fields",
+      "_simple_ru_stem",
+      "search",
+      "search_by_entity",
+      "search_by_path",
+      "search_by_tag"
+    ]
+  },
+  "A_02_MANAGERS\\Planner\\__init__.py": {
+    "imports": [],
+    "classes": [],
+    "functions": []
+  },
+  "A_02_MANAGERS\\TaskRunner\\ExecutionAdapters\\__init__.py": {
+    "imports": [],
+    "classes": [],
+    "functions": []
+  },
+  "A_03_ENGINES\\Vision_Engine\\vision_tool.py": {
+    "imports": [
+      "A_01_CORE.manifest_loader"
+    ],
+    "classes": [],
+    "functions": [
+      "main"
+    ]
+  },
+  "A_03_ENGINES\\Vision_Engine\\__init__.py": {
+    "imports": [],
+    "classes": [],
+    "functions": []
+  },
+  "A_03_ORCHESTRATION\\ConversationContext\\__init__.py": {
+    "imports": [],
+    "classes": [],
+    "functions": []
+  },
+  "A_03_ORCHESTRATION\\ConversationContext\\ImageSession\\__init__.py": {
+    "imports": [],
+    "classes": [],
+    "functions": []
+  },
+  "A_04_AGENTS\\ArchiveDepartment\\__init__.py": {
+    "imports": [],
+    "classes": [],
+    "functions": []
+  },
+  "A_04_AGENTS\\AudioDepartment\\runner.py": {
+    "imports": [
+      "A_04_AGENTS.base_department"
+    ],
+    "classes": [
+      "AudioDepartment"
+    ],
+    "functions": [
+      "can_handle",
+      "execute"
+    ]
+  },
+  "A_04_AGENTS\\AudioDepartment\\__init__.py": {
+    "imports": [],
+    "classes": [],
+    "functions": []
+  },
+  "A_04_AGENTS\\ChatDepartment\\__init__.py": {
+    "imports": [],
+    "classes": [],
+    "functions": []
+  },
+  "A_04_AGENTS\\CodingDepartment\\DISPATCHER.py": {
+    "imports": [
+      "runner"
+    ],
+    "classes": [],
+    "functions": [
+      "can_handle",
+      "execute",
+      "fallback"
+    ]
+  },
+  "A_04_AGENTS\\CodingDepartment\\__init__.py": {
+    "imports": [],
+    "classes": [],
+    "functions": []
+  },
+  "A_04_AGENTS\\DocumentsDepartment\\__init__.py": {
+    "imports": [],
+    "classes": [],
+    "functions": []
+  },
+  "A_04_AGENTS\\DocumentsDepartment.BAK_20260703_124909\\__init__.py": {
+    "imports": [],
+    "classes": [],
+    "functions": []
+  },
+  "A_04_AGENTS\\ExternalDepartment\\__init__.py": {
+    "imports": [],
+    "classes": [],
+    "functions": []
+  },
+  "A_04_AGENTS\\ImageDepartment\\__init__.py": {
+    "imports": [],
+    "classes": [],
+    "functions": []
+  },
+  "A_04_AGENTS\\MemoryDepartment\\runner.py": {
+    "imports": [
+      "A_04_AGENTS.base_department",
+      "pathlib"
+    ],
+    "classes": [
+      "MemoryDepartment"
+    ],
+    "functions": [
+      "__init__",
+      "can_handle",
+      "execute"
+    ]
+  },
+  "A_04_AGENTS\\MemoryDepartment\\__init__.py": {
+    "imports": [],
+    "classes": [],
+    "functions": []
+  },
+  "A_04_AGENTS\\OCRDepartment\\__init__.py": {
+    "imports": [],
+    "classes": [],
+    "functions": []
+  },
+  "A_04_AGENTS\\OpenDocumentDepartment\\runner.py": {
+    "imports": [
+      "A_04_AGENTS.base_department",
+      "A_07_MEMORY.SESSION.reference_resolver",
+      "logging",
+      "pathlib",
+      "time"
+    ],
+    "classes": [
+      "OpenDocumentDepartment"
+    ],
+    "functions": [
+      "__init__",
+      "can_handle",
+      "execute"
+    ]
+  },
+  "A_04_AGENTS\\ProjectDocumentationDepartment\\__init__.py": {
+    "imports": [],
+    "classes": [],
+    "functions": []
+  },
+  "A_04_AGENTS\\TextDepartment\\runner.before_memory_context.py": {
+    "imports": [
+      "A_01_CORE.manifest_loader",
+      "A_02_MANAGERS.model_registry",
+      "A_04_AGENTS.base_department",
+      "re",
+      "requests",
+      "time"
+    ],
+    "classes": [
+      "TextDepartment"
+    ],
+    "functions": [
+      "__init__",
+      "available_models",
+      "can_handle",
+      "clean_text",
+      "execute"
+    ]
+  },
+  "A_04_AGENTS\\TextDepartment\\runner.before_text_roles.py": {
+    "imports": [
+      "A_01_CORE.manifest_loader",
+      "A_02_MANAGERS.model_registry",
+      "A_04_AGENTS.base_department",
+      "re",
+      "requests",
+      "time"
+    ],
+    "classes": [
+      "TextDepartment"
+    ],
+    "functions": [
+      "__init__",
+      "available_models",
+      "can_handle",
+      "clean_text",
+      "execute"
+    ]
+  },
+  "A_04_AGENTS\\TextDepartment\\__init__.py": {
+    "imports": [],
+    "classes": [],
+    "functions": []
+  },
+  "A_04_AGENTS\\VideoDepartment\\runner.py": {
+    "imports": [
+      "A_04_AGENTS.base_department"
+    ],
+    "classes": [
+      "VideoDepartment"
+    ],
+    "functions": [
+      "can_handle",
+      "execute"
+    ]
+  },
+  "A_04_AGENTS\\VideoDepartment\\__init__.py": {
+    "imports": [],
+    "classes": [],
+    "functions": []
+  },
+  "A_04_AGENTS\\VisionDepartment\\__init__.py": {
+    "imports": [],
+    "classes": [],
+    "functions": []
+  },
+  "A_04_AGENTS\\VoiceDepartment\\__init__.py": {
+    "imports": [],
+    "classes": [],
+    "functions": []
+  },
+  "A_04_AGENTS\\ProjectDocumentationDepartment\\Core_BACKUP_UTF8SIG\\__init__.py": {
+    "imports": [],
+    "classes": [],
+    "functions": []
+  },
+  "A_04_COMPONENTS\\MemoryAdvisor\\memory_advisor.py": {
+    "imports": [],
+    "classes": [
+      "MemoryAdvisor"
+    ],
+    "functions": [
+      "__init__",
+      "extract_facts"
+    ]
+  },
+  "A_04_COMPONENTS\\ProjectAuditor\\project_auditor.py": {
+    "imports": [],
+    "classes": [
+      "ProjectAuditor"
+    ],
+    "functions": [
+      "__init__",
+      "run"
+    ]
+  },
+  "A_10_BUTLER_OS\\00_PRODUCTION\\core\\chat_router_WORKING_COPY.py": {
+    "imports": [
+      "argparse",
+      "json",
+      "os",
+      "pathlib",
+      "re",
+      "requests",
+      "time"
+    ],
+    "classes": [],
+    "functions": [
+      "ask_ollama",
+      "check_comfyui",
+      "choose_model",
+      "clear_screen",
+      "fetch_ollama_models",
+      "handle_chat",
+      "handle_draw",
+      "is_draw_command",
+      "main",
+      "print_status",
+      "run_self_test"
+    ]
+  },
+  "A_10_BUTLER_OS\\00_PRODUCTION\\core\\department_contract.py": {
+    "imports": [
+      "abc"
+    ],
+    "classes": [
+      "Department"
+    ],
+    "functions": [
+      "can_handle",
+      "execute",
+      "fallback"
+    ]
+  },
+  "A_10_BUTLER_OS\\00_PRODUCTION\\core\\smart_router.py": {
+    "imports": [
+      "pathlib"
+    ],
+    "classes": [
+      "SmartRouter"
+    ],
+    "functions": [
+      "detect"
+    ]
+  },
+  "A_10_BUTLER_OS\\00_PRODUCTION\\providers\\model_registry.py": {
+    "imports": [],
+    "classes": [],
+    "functions": []
+  }
+}

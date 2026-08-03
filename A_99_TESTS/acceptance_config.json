@@ -1,0 +1,599 @@
+{
+    "version":  "1.0",
+    "official_entry":  "A_03_ORCHESTRATION.dispatcher_bridge_v2.dispatch",
+    "storage":  [
+                    "A_05_STORAGE/user_profile.json",
+                    "A_05_STORAGE/USER_MEMORY.md",
+                    "A_05_STORAGE/checkpoint.md",
+                    "A_05_STORAGE/session_history.jsonl",
+                    "A_07_MEMORY/MEMORY_INDEX.jsonl",
+                    "A_07_CONFIG/execution_registry.json",
+                    "A_07_MEMORY/goals_registry.json",
+                    "A_07_MEMORY/plans_registry.json",
+                    "A_07_MEMORY/reminders_registry.json",
+                    "A_07_MEMORY/SESSION/test_sessions"
+                ],
+    "scenarios":  [
+                      {
+                          "name":  "GOAL_CREATE",
+                          "kind":  "goal_manager",
+                          "operation":  "create_goal",
+                          "modes":  [
+                                        "fast",
+                                        "full"
+                                    ],
+                          "enabled":  true,
+                          "expected_department":  "GOAL_MANAGER",
+                          "timeout":  30,
+                          "critical":  true,
+                          "requires_provider":  false,
+                          "cleanup":  "restore_storage",
+                          "command":  "goal create acceptance goal"
+                      },
+                      {
+                          "name":  "GOAL_GET",
+                          "kind":  "goal_manager",
+                          "operation":  "get_goal",
+                          "modes":  [
+                                        "fast",
+                                        "full"
+                                    ],
+                          "enabled":  true,
+                          "expected_department":  "GOAL_MANAGER",
+                          "timeout":  30,
+                          "critical":  true,
+                          "requires_provider":  false,
+                          "cleanup":  "restore_storage",
+                          "command":  "goal get acceptance goal"
+                      },
+                      {
+                          "name":  "GOAL_LIST",
+                          "kind":  "goal_manager",
+                          "operation":  "list_goals",
+                          "modes":  [
+                                        "fast",
+                                        "full"
+                                    ],
+                          "enabled":  true,
+                          "expected_department":  "GOAL_MANAGER",
+                          "timeout":  30,
+                          "critical":  true,
+                          "requires_provider":  false,
+                          "cleanup":  "restore_storage",
+                          "command":  "goal list"
+                      },
+                      {
+                          "name":  "GOAL_UPDATE",
+                          "kind":  "goal_manager",
+                          "operation":  "update_goal",
+                          "modes":  [
+                                        "fast",
+                                        "full"
+                                    ],
+                          "enabled":  true,
+                          "expected_department":  "GOAL_MANAGER",
+                          "timeout":  30,
+                          "critical":  true,
+                          "requires_provider":  false,
+                          "cleanup":  "restore_storage",
+                          "command":  "goal update acceptance goal"
+                      },
+                      {
+                          "name":  "GOAL_ADD_TASK",
+                          "kind":  "goal_manager",
+                          "operation":  "add_task_to_goal",
+                          "modes":  [
+                                        "fast",
+                                        "full"
+                                    ],
+                          "enabled":  true,
+                          "expected_department":  "GOAL_MANAGER",
+                          "timeout":  30,
+                          "critical":  true,
+                          "requires_provider":  false,
+                          "cleanup":  "restore_storage",
+                          "command":  "goal add task acceptance task"
+                      },
+                      {
+                          "name":  "PRIORITY_CALCULATE",
+                          "modes":  ["fast", "full"],
+                          "enabled":  true,
+                          "expected_department":  "GOAL_MANAGER",
+                          "contains":  ["Приоритет задачи"],
+                          "timeout":  30,
+                          "critical":  true,
+                          "requires_provider":  false,
+                          "cleanup":  "restore_storage",
+                          "command":  "priority calculate latest"
+                      },
+                      {
+                          "name":  "PRIORITY_LIST",
+                          "modes":  ["fast", "full"],
+                          "enabled":  true,
+                          "expected_department":  "GOAL_MANAGER",
+                          "contains":  ["Приоритетный список задач"],
+                          "timeout":  30,
+                          "critical":  true,
+                          "requires_provider":  false,
+                          "cleanup":  "restore_storage",
+                          "command":  "priority list acceptance goal"
+                      },
+                      {
+                          "name":  "PRIORITY_NEXT",
+                          "modes":  ["fast", "full"],
+                          "enabled":  true,
+                          "expected_department":  "GOAL_MANAGER",
+                          "contains":  ["Следующая задача"],
+                          "timeout":  30,
+                          "critical":  true,
+                          "requires_provider":  false,
+                          "cleanup":  "restore_storage",
+                          "command":  "priority next acceptance goal"
+                      },
+                      {
+                          "name":  "REMINDER_SET",
+                          "modes":  ["fast", "full"],
+                          "enabled":  true,
+                          "expected_department":  "GOAL_MANAGER",
+                          "contains":  ["Напоминание создано"],
+                          "timeout":  30,
+                          "critical":  true,
+                          "requires_provider":  false,
+                          "cleanup":  "restore_storage",
+                          "command":  "reminder set latest now acceptance reminder"
+                      },
+                      {
+                          "name":  "REMINDER_LIST",
+                          "modes":  ["fast", "full"],
+                          "enabled":  true,
+                          "expected_department":  "GOAL_MANAGER",
+                          "contains":  ["Напоминаний: 1"],
+                          "timeout":  30,
+                          "critical":  true,
+                          "requires_provider":  false,
+                          "cleanup":  "restore_storage",
+                          "command":  "reminder list"
+                      },
+                      {
+                          "name":  "REMINDER_CHECK",
+                          "modes":  ["fast", "full"],
+                          "enabled":  true,
+                          "expected_department":  "GOAL_MANAGER",
+                          "contains":  ["Активных напоминаний: 1"],
+                          "timeout":  30,
+                          "critical":  true,
+                          "requires_provider":  false,
+                          "cleanup":  "restore_storage",
+                          "command":  "reminder check"
+                      },
+                      {
+                          "name":  "REMINDER_ACKNOWLEDGE",
+                          "modes":  ["fast", "full"],
+                          "enabled":  true,
+                          "expected_department":  "GOAL_MANAGER",
+                          "contains":  ["Напоминание подтверждено"],
+                          "timeout":  30,
+                          "critical":  true,
+                          "requires_provider":  false,
+                          "cleanup":  "restore_storage",
+                          "command":  "reminder acknowledge latest"
+                      },
+                      {
+                          "name":  "PROGRESS_UPDATE",
+                          "modes":  [
+                                        "fast",
+                                        "full"
+                                    ],
+                          "enabled":  true,
+                          "expected_department":  "GOAL_MANAGER",
+                          "timeout":  30,
+                          "critical":  true,
+                          "requires_provider":  false,
+                          "cleanup":  "restore_storage",
+                          "command":  "progress update latest completed"
+                      },
+                      {
+                          "name":  "PROGRESS_GET",
+                          "modes":  [
+                                        "fast",
+                                        "full"
+                                    ],
+                          "enabled":  true,
+                          "expected_department":  "GOAL_MANAGER",
+                          "timeout":  30,
+                          "critical":  true,
+                          "requires_provider":  false,
+                          "cleanup":  "restore_storage",
+                          "command":  "progress get acceptance goal"
+                      },
+                      {
+                          "name":  "PROGRESS_TIMELINE",
+                          "modes":  [
+                                        "fast",
+                                        "full"
+                                    ],
+                          "enabled":  true,
+                          "expected_department":  "GOAL_MANAGER",
+                          "timeout":  30,
+                          "critical":  true,
+                          "requires_provider":  false,
+                          "cleanup":  "restore_storage",
+                          "command":  "progress timeline acceptance goal"
+                      },
+                      {
+                          "name":  "GOAL_PROGRESS",
+                          "kind":  "goal_manager",
+                          "operation":  "get_goal_progress",
+                          "modes":  [
+                                        "fast",
+                                        "full"
+                                    ],
+                          "enabled":  true,
+                          "expected_department":  "GOAL_MANAGER",
+                          "timeout":  30,
+                          "critical":  true,
+                          "requires_provider":  false,
+                          "cleanup":  "restore_storage",
+                          "command":  "goal progress acceptance goal"
+                      },
+                      {
+                          "name":  "PLANNER_GENERATE",
+                          "modes":  [
+                                        "fast",
+                                        "full"
+                                    ],
+                          "enabled":  true,
+                          "expected_department":  "GOAL_MANAGER",
+                          "timeout":  30,
+                          "critical":  true,
+                          "requires_provider":  false,
+                          "cleanup":  "restore_storage",
+                          "command":  "plan generate acceptance goal"
+                      },
+                      {
+                          "name":  "PLANNER_GET",
+                          "modes":  [
+                                        "fast",
+                                        "full"
+                                    ],
+                          "enabled":  true,
+                          "expected_department":  "GOAL_MANAGER",
+                          "timeout":  30,
+                          "critical":  true,
+                          "requires_provider":  false,
+                          "cleanup":  "restore_storage",
+                          "command":  "plan get latest"
+                      },
+                      {
+                          "name":  "PLANNER_OPTIMIZE",
+                          "modes":  [
+                                        "fast",
+                                        "full"
+                                    ],
+                          "enabled":  true,
+                          "expected_department":  "GOAL_MANAGER",
+                          "timeout":  30,
+                          "critical":  true,
+                          "requires_provider":  false,
+                          "cleanup":  "restore_storage",
+                          "command":  "plan optimize latest"
+                      },
+                      {
+                          "name":  "GOAL_DELETE",
+                          "kind":  "goal_manager",
+                          "operation":  "delete_goal",
+                          "modes":  [
+                                        "fast",
+                                        "full"
+                                    ],
+                          "enabled":  true,
+                          "expected_department":  "GOAL_MANAGER",
+                          "timeout":  30,
+                          "critical":  true,
+                          "requires_provider":  false,
+                          "cleanup":  "restore_storage",
+                          "command":  "goal delete acceptance goal"
+                      },
+                      {
+                          "name":  "SELF_KNOWLEDGE_CAPABILITIES",
+                          "modes":  ["fast", "full"],
+                          "enabled":  true,
+                          "expected_department":  "MEMORY",
+                          "contains":  ["Возможности по Capability Audit"],
+                          "timeout":  30,
+                          "critical":  true,
+                          "requires_provider":  false,
+                          "cleanup":  "restore_storage",
+                          "command":  "Что ты умеешь?"
+                      },
+                      {
+                          "name":  "SELF_KNOWLEDGE_DEPARTMENTS",
+                          "modes":  ["fast", "full"],
+                          "enabled":  true,
+                          "expected_department":  "PROJECT_DOCUMENTATION",
+                          "contains":  ["Полный состав Department", "FilesystemDepartment"],
+                          "timeout":  30,
+                          "critical":  true,
+                          "requires_provider":  false,
+                          "cleanup":  "restore_storage",
+                          "command":  "Какие Department существуют?"
+                      },
+                      {
+                          "name":  "SELF_KNOWLEDGE_DONE",
+                          "modes":  ["fast", "full"],
+                          "enabled":  true,
+                          "expected_department":  "MEMORY",
+                          "contains":  ["Завершённые статусы"],
+                          "timeout":  30,
+                          "critical":  true,
+                          "requires_provider":  false,
+                          "cleanup":  "restore_storage",
+                          "command":  "Что уже сделано?"
+                      },
+                      {
+                          "name":  "SELF_KNOWLEDGE_PENDING",
+                          "modes":  ["fast", "full"],
+                          "enabled":  true,
+                          "expected_department":  "MEMORY",
+                          "contains":  ["Незавершённые пункты"],
+                          "timeout":  30,
+                          "critical":  true,
+                          "requires_provider":  false,
+                          "cleanup":  "restore_storage",
+                          "command":  "Что осталось?"
+                      },
+                      {
+                          "name":  "SELF_MEMORY_ARCHITECTURE",
+                          "modes":  ["fast", "full"],
+                          "enabled":  true,
+                          "expected_department":  "MEMORY",
+                          "contains":  ["Архитектура памяти"],
+                          "timeout":  30,
+                          "critical":  true,
+                          "requires_provider":  false,
+                          "cleanup":  "restore_storage",
+                          "command":  "Какая у тебя память?"
+                      },
+                      {
+                          "name":  "SELF_DEPARTMENT_CONTENTS",
+                          "modes":  ["fast", "full"],
+                          "enabled":  true,
+                          "expected_department":  "MEMORY",
+                          "contains":  ["Назначение Department", "Возможности по Inspector", "Ограничения"],
+                          "timeout":  30,
+                          "critical":  true,
+                          "requires_provider":  false,
+                          "cleanup":  "restore_storage",
+                          "command":  "Что находится внутри MemoryDepartment?"
+                      },
+                      {
+                          "name":  "SELF_PROJECT",
+                          "modes":  ["fast", "full"],
+                          "enabled":  true,
+                          "expected_department":  "MEMORY",
+                          "contains":  ["Проект", "Acceptance"],
+                          "timeout":  30,
+                          "critical":  true,
+                          "requires_provider":  false,
+                          "cleanup":  "restore_storage",
+                          "command":  "Что ты знаешь о своём проекте?"
+                      },
+                      {
+                          "name":  "MEMORY_PROFILE",
+                          "modes":  [
+                                        "fast",
+                                        "full"
+                                    ],
+                          "enabled":  true,
+                          "command":  "Как меня зовут?",
+                          "expected_department":  "MEMORY",
+                          "contains":  [
+                                           "Виктор"
+                                       ],
+                          "timeout":  30,
+                          "critical":  true,
+                          "requires_provider":  false,
+                          "cleanup":  "restore_storage"
+                      },
+                      {
+                          "name":  "MEMORY_COLOR",
+                          "modes":  [
+                                        "fast",
+                                        "full"
+                                    ],
+                          "enabled":  true,
+                          "command":  "Какой мой любимый цвет?",
+                          "expected_department":  "MEMORY",
+                          "contains":  [
+                                           "зелёный"
+                                       ],
+                          "timeout":  30,
+                          "critical":  true,
+                          "requires_provider":  false,
+                          "cleanup":  "restore_storage"
+                      },
+                      {
+                          "name":  "MEMORY_GENERAL",
+                          "modes":  [
+                                        "full"
+                                    ],
+                          "enabled":  true,
+                          "command":  "Что ты помнишь обо мне?",
+                          "expected_department":  "MEMORY",
+                          "contains":  [
+                                           "Виктор"
+                                       ],
+                          "timeout":  30,
+                          "critical":  true,
+                          "requires_provider":  false,
+                          "cleanup":  "restore_storage"
+                      },
+                      {
+                          "name":  "CHAT_POEM",
+                          "modes":  [
+                                        "full"
+                                    ],
+                          "enabled":  true,
+                          "command":  "напиши стих",
+                          "expected_department":  "CHAT",
+                          "contains":  [
+
+                                       ],
+                          "timeout":  180,
+                          "critical":  true,
+                          "requires_provider":  true,
+                          "cleanup":  "none"
+                      },
+                      {
+                          "name":  "CHAT_SELF_INFO",
+                          "modes":  [
+                                        "full"
+                                    ],
+                          "enabled":  true,
+                          "command":  "что ты знаешь о себе?",
+                          "expected_department":  "CHAT",
+                          "contains":  [
+
+                                       ],
+                          "timeout":  180,
+                          "critical":  true,
+                          "requires_provider":  true,
+                          "cleanup":  "none"
+                      },
+                      {
+                          "name":  "CODING_HELLO_WORLD",
+                          "modes":  [
+                                        "full"
+                                    ],
+                          "enabled":  true,
+                          "command":  "напиши Python-программу hello world",
+                          "expected_department":  "CODING",
+                          "contains":  [
+                                           "print"
+                                       ],
+                          "timeout":  180,
+                          "critical":  true,
+                          "requires_provider":  true,
+                          "cleanup":  "none"
+                      },
+                      {
+                          "name":  "SEARCH_PASSPORT",
+                          "modes":  [
+                                        "fast",
+                                        "full"
+                                    ],
+                          "enabled":  true,
+                          "command":  "найди паспорт",
+                          "expected_department":  "SEARCH",
+                          "contains":  [
+
+                                       ],
+                          "timeout":  30,
+                          "critical":  true,
+                          "requires_provider":  false,
+                          "cleanup":  "restore_storage"
+                      },
+                      {
+                          "name":  "OPEN_FIRST",
+                          "modes":  [
+                                        "full"
+                                    ],
+                          "enabled":  true,
+                          "command":  "открой первый",
+                          "expected_department":  "OPEN_DOCUMENT",
+                          "contains":  [
+
+                                       ],
+                          "allowed_errors":  [
+                                                 "FILE_NOT_FOUND"
+                                             ],
+                          "timeout":  30,
+                          "critical":  true,
+                          "requires_provider":  false,
+                          "cleanup":  "restore_storage"
+                      },
+                      {
+                          "name":  "VISION_EXISTING",
+                          "modes":  [
+                                        "full"
+                                    ],
+                          "enabled":  true,
+                          "command":  "что на фото",
+                          "expected_department":  "VISION",
+                          "contains":  [
+
+                                       ],
+                          "timeout":  180,
+                          "critical":  true,
+                          "requires_provider":  true,
+                          "fixture":  "A_99_TESTS/fixtures/vision_test_image.png",
+                          "cleanup":  "none"
+                      },
+                      {
+                          "name":  "DOCUMENTS_EXISTING",
+                          "modes":  [
+                                        "full"
+                                    ],
+                          "enabled":  true,
+                          "command":  "прочитай документ",
+                          "expected_department":  "DOCUMENTS",
+                          "contains":  [
+                                           "BUTLER_ACCEPTANCE_DOCUMENT"
+                                       ],
+                          "timeout":  180,
+                          "critical":  true,
+                          "requires_provider":  false,
+                          "fixture":  "A_99_TESTS/fixtures/document_test.txt",
+                          "cleanup":  "none"
+                      },
+                      {
+                          "name":  "ARCHIVE_EXISTING",
+                          "modes":  [
+                                        "full"
+                                    ],
+                          "enabled":  true,
+                          "command":  "открой этот ZIP",
+                          "expected_department":  "ARCHIVE",
+                          "contains":  [
+
+                                       ],
+                          "timeout":  60,
+                          "critical":  false,
+                          "requires_provider":  false,
+                          "fixture":  "A_99_TESTS/fixtures/archive_test.zip",
+                          "cleanup":  "none"
+                      },
+                      {
+                          "name":  "AUDIO",
+                          "modes":  [
+                                        "full"
+                                    ],
+                          "enabled":  true,
+                          "command":  "создай аудио",
+                          "expected_department":  "AUDIO",
+                          "contains":  [
+
+                                       ],
+                          "timeout":  30,
+                          "critical":  false,
+                          "requires_provider":  true,
+                          "cleanup":  "none"
+                      },
+                      {
+                          "name":  "VIDEO",
+                          "modes":  [
+                                        "full"
+                                    ],
+                          "enabled":  true,
+                          "command":  "создай видео",
+                          "expected_department":  "VIDEO",
+                          "contains":  [
+
+                                       ],
+                          "timeout":  30,
+                          "critical":  false,
+                          "requires_provider":  true,
+                          "cleanup":  "none"
+                      }
+                  ]
+}

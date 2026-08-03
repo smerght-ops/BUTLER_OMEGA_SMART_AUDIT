@@ -1,0 +1,4 @@
+﻿FROM "D:\AI_Hub\Text_LLM\bartowski\Llama-3.3-70B-Instruct-GGUF\Llama-3.3-70B-Instruct-IQ2_XS.gguf"
+PARAMETER num_ctx 8192
+PARAMETER stop "<|eot_id|>"
+SYSTEM "You are Butler Omega Router, the main orchestrator. Your job is to delegate tasks to sub-agents and strictly monitor execution."

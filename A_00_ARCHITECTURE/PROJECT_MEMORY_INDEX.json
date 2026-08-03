@@ -1,0 +1,42 @@
+{
+  "project": "BUTLER_OMEGA_SMART",
+  "memory_index_version": "1.0",
+  "generated_at": 1781952872,
+  "source": "ROADMAP_STATUS.md",
+  "who_am_i": {
+    "name": "BUTLER_OMEGA_SMART",
+    "version": "1.2_DK01"
+  },
+  "built": [
+    "ACTIVE_SYSTEM",
+    "CONTROL_MAP",
+    "SEMANTIC_MEMORY",
+    "SKILL_MEMORY",
+    "SKILL_INDEX",
+    "SKILL_ROUTER",
+    "IMAGE_ROUTING",
+    "CODING_ROUTING",
+    "DEPARTMENT_DISPATCH"
+  ],
+  "frozen": [
+    "A_03_ORCHESTRATION/chat_router.py",
+    "A_01_CORE"
+  ],
+  "current_work": [
+    "PROJECT_PASSPORT",
+    "PROJECT_PASSPORT_LOADER",
+    "PROJECT_MEMORY_INDEX"
+  ],
+  "next_work": [
+    "CONVENTIONS.md",
+    "BUTLER_HARNESS",
+    "DRAFT_COMMIT",
+    "ANTI_LOOP_BUDGET",
+    "OBSERVATION_LAYER",
+    "FALLBACK_CONTROLLER",
+    "SESSION_QUEUE",
+    "PNG_WORKFLOW_MEMORY",
+    "INLINE_CODE_EDITOR",
+    "DPS_VDK"
+  ]
+}

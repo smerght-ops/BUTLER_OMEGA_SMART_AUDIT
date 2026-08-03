@@ -1,69 +1,58 @@
-import os
+﻿import os
 import sqlite3
-import sys
+from pathlib import Path
 from datetime import datetime
 
-# Установка кодировки для корректного отображения в терминале
-sys.stdout.reconfigure(encoding='utf-8')
-
-# Абсолютный путь к корню проекта (папка BUTLER_OMEGA)
-ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-
-# Абсолютный путь к файлу отчета
-REPORT_FILE = os.path.join(os.path.dirname(__file__), "../A_08_LOGS/project_report.txt")
-
-# Путь к базе данных
-DB_PATH = os.path.join(os.path.dirname(__file__), "../A_05_STORAGE/catalog.db")
-
-def get_tree(path, indent=""):
-    tree = ""
-    try:
-        items = sorted(os.listdir(path))
-        for item in items:
-            if item in ['A_08_LOGS', 'A_05_STORAGE']: continue
-            full_path = os.path.join(path, item)
-            if os.path.isdir(full_path):
-                tree += f"{indent}[DIR] {item}\n"
-                tree += get_tree(full_path, indent + "  |-- ")
-            else:
-                size = os.path.getsize(full_path) / 1024
-                tree += f"{indent}{item} ({size:.1f} KB)\n"
-    except Exception as e:
-        tree += f"{indent}Ошибка доступа: {e}\n"
-    return tree
+DB_PATH = Path("A_05_STORAGE/catalog.db")
+REPORT_DIR = Path("A_06_WORKSPACE/reports")
+REPORT_DIR.mkdir(parents=True, exist_ok=True)
 
 def generate_report():
-    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    
-    # 1. Структура и дерево
-    report = f"ОТЧЕТ АУДИТА СИСТЕМЫ\nДата: {timestamp}\n\n--- СТРУКТУРА ---\n{get_tree(ROOT)}"
-    
-    # 2. Зарегистрированные файлы из базы
-    report += "\n--- ЗАРЕГИСТРИРОВАННЫЕ ФАЙЛЫ (DB) ---\n"
-    if os.path.exists(DB_PATH):
-        with sqlite3.connect(DB_PATH) as conn:
-            cursor = conn.execute("SELECT path, tag FROM files")
-            for row in cursor.fetchall():
-                report += f"Файл: {row[0]} | Тег: {row[1]}\n"
-    else:
-        report += "База данных не найдена.\n"
-    
-    # 3. Код
-    report += "\n--- ВЫТЯЖКА КОДА ---\n"
-    for root, _, files in os.walk(ROOT):
-        for file in files:
-            if file.endswith(".py"):
-                path = os.path.join(root, file)
-                report += f"\n[FILE: {path}]\n"
-                try:
-                    with open(path, 'r', encoding='utf-8') as f:
-                        report += f.read() + "\n"
-                except Exception as e:
-                    report += f"Ошибка чтения файла: {e}\n"
-    
-    with open(REPORT_FILE, 'w', encoding='utf-8') as f:
-        f.write(report)
-    print(f"✓ Отчет создан: {REPORT_FILE}")
+    report = []
+    report.append("=" * 60)
+    report.append("BUTLER OMEGA DOCUMENT AUDIT REPORT")
+    report.append(f"Generated: {datetime.now().isoformat(timespec='seconds')}")
+    report.append("=" * 60)
+    report.append("")
+
+    if not DB_PATH.exists():
+        report.append("❌ catalog.db не найден.")
+        return "\n".join(report)
+
+    conn = sqlite3.connect(DB_PATH)
+    cur = conn.cursor()
+
+    rows = cur.execute("""
+        SELECT id, filepath, file_hash, status, summary, tags, is_legacy, registered_at, updated_at
+        FROM documents
+        ORDER BY id DESC
+    """).fetchall()
+
+    report.append(f"Всего документов: {len(rows)}")
+    report.append("")
+
+    for row in rows:
+        doc_id, filepath, file_hash, status, summary, tags, is_legacy, registered_at, updated_at = row
+        report.append("-" * 60)
+        report.append(f"ID       : {doc_id}")
+        report.append(f"Файл     : {os.path.basename(filepath)}")
+        report.append(f"Путь     : {filepath}")
+        report.append(f"Хэш      : {file_hash or '[EMPTY]'}")
+        report.append(f"Статус   : {status}")
+        report.append(f"Legacy   : {bool(is_legacy)}")
+        report.append(f"Теги     : {tags or ''}")
+        report.append(f"Summary  : {summary or ''}")
+        report.append(f"Created  : {registered_at}")
+        report.append(f"Updated  : {updated_at}")
+
+    conn.close()
+
+    return "\n".join(report)
 
 if __name__ == "__main__":
-    generate_report()
+    text = generate_report()
+    out = REPORT_DIR / "DOCUMENT_AUDIT_REPORT.txt"
+    out.write_text(text, encoding="utf-8")
+    print(text)
+    print()
+    print(f"✓ Отчёт сохранён: {out}")

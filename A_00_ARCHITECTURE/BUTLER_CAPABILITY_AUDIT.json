@@ -1,0 +1,1850 @@
+﻿{
+    "project":  "BUTLER_OMEGA",
+    "python_files_scanned":  68,
+    "database":  {
+                     "exists":  true,
+                     "tables":  [
+                                    "documents",
+                                    "sqlite_sequence",
+                                    "documents_fts",
+                                    "documents_fts_data",
+                                    "documents_fts_idx",
+                                    "documents_fts_content",
+                                    "documents_fts_docsize",
+                                    "documents_fts_config",
+                                    "jobs"
+                                ],
+                     "documents_columns":  [
+                                               "id",
+                                               "filepath",
+                                               "file_hash",
+                                               "status",
+                                               "summary",
+                                               "tags",
+                                               "registered_at",
+                                               "updated_at",
+                                               "is_legacy"
+                                           ],
+                     "documents_count":  22,
+                     "status_counts":  [
+                                           [
+                                               "completed",
+                                               22
+                                           ]
+                                       ],
+                     "legacy_count":  4,
+                     "modern_without_hash":  0
+                 },
+    "core_modules":  {
+                         "A_01_CORE/memory_guardian.py":  {
+                                                              "exists":  true,
+                                                              "classes":  [
+
+                                                                          ],
+                                                              "functions":  [
+                                                                                "file_sha256",
+                                                                                "write_audit_log",
+                                                                                "fail",
+                                                                                "verify_lock_manifest",
+                                                                                "verify_project_state",
+                                                                                "auto_migrate_legacy_records",
+                                                                                "verify_database",
+                                                                                "check_code_layer",
+                                                                                "run_memory_guardian"
+                                                                            ],
+                                                              "parse_error":  null
+                                                          },
+                         "A_01_CORE/project_state_builder.py":  {
+                                                                    "exists":  true,
+                                                                    "classes":  [
+
+                                                                                ],
+                                                                    "functions":  [
+                                                                                      "file_sha256",
+                                                                                      "atomic_write_json",
+                                                                                      "write_audit_log",
+                                                                                      "load_lock_source",
+                                                                                      "create_architecture_snapshot",
+                                                                                      "rebuild_lock_manifest",
+                                                                                      "collect_critical_files",
+                                                                                      "build_state"
+                                                                                  ],
+                                                                    "parse_error":  null
+                                                                },
+                         "A_01_CORE/orchestrator.py":  {
+                                                           "exists":  true,
+                                                           "classes":  [
+                                                                           "MainOrchestrator"
+                                                                       ],
+                                                           "functions":  [
+                                                                             "__init__",
+                                                                             "run"
+                                                                         ],
+                                                           "parse_error":  null
+                                                       },
+                         "A_02_MANAGERS/catalog_manager.py":  {
+                                                                  "exists":  true,
+                                                                  "classes":  [
+                                                                                  "CatalogManager"
+                                                                              ],
+                                                                  "functions":  [
+                                                                                    "__init__",
+                                                                                    "register_document",
+                                                                                    "full_text_search"
+                                                                                ],
+                                                                  "parse_error":  null
+                                                              },
+                         "A_02_MANAGERS/queue_manager.py":  {
+                                                                "exists":  true,
+                                                                "classes":  [
+                                                                                "QueueManager"
+                                                                            ],
+                                                                "functions":  [
+                                                                                  "__init__",
+                                                                                  "_get_connection",
+                                                                                  "get_next_task",
+                                                                                  "_recycle_dead_workers"
+                                                                              ],
+                                                                "parse_error":  null
+                                                            },
+                         "A_03_ORCHESTRATION/worker.py":  {
+                                                              "exists":  true,
+                                                              "classes":  [
+                                                                              "Worker"
+                                                                          ],
+                                                              "functions":  [
+                                                                                "__init__",
+                                                                                "process_once"
+                                                                            ],
+                                                              "parse_error":  null
+                                                          },
+                         "A_04_AGENTS/professor.py":  {
+                                                          "exists":  true,
+                                                          "classes":  [
+                                                                          "DispatcherAgent"
+                                                                      ],
+                                                          "functions":  [
+                                                                            "__init__",
+                                                                            "get_model_and_payload",
+                                                                            "process_agent_task"
+                                                                        ],
+                                                          "parse_error":  null
+                                                      },
+                         "A_02_MANAGERS/provider_manager.py":  {
+                                                                   "exists":  true,
+                                                                   "classes":  [
+                                                                                   "ProviderManager"
+                                                                               ],
+                                                                   "functions":  [
+                                                                                     "__init__",
+                                                                                     "check_ollama_status",
+                                                                                     "get_local_models",
+                                                                                     "inspect_manifest_models"
+                                                                                 ],
+                                                                   "parse_error":  null
+                                                               },
+                         "health_check.py":  {
+                                                 "exists":  true,
+                                                 "classes":  [
+
+                                                             ],
+                                                 "functions":  [
+                                                                   "scalar",
+                                                                   "run_health_check"
+                                                               ],
+                                                 "parse_error":  null
+                                             },
+                         "system_doctor.py":  {
+                                                  "exists":  true,
+                                                  "classes":  [
+
+                                                              ],
+                                                  "functions":  [
+                                                                    "repair",
+                                                                    "main"
+                                                                ],
+                                                  "parse_error":  null
+                                              },
+                         "restore_snapshot.py":  {
+                                                     "exists":  true,
+                                                     "classes":  [
+
+                                                                 ],
+                                                     "functions":  [
+                                                                       "list_snapshots",
+                                                                       "restore"
+                                                                   ],
+                                                     "parse_error":  null
+                                                 }
+                     },
+    "capabilities":  {
+                         "protection":  [
+                                            "Memory Guardian / self-test",
+                                            "Project State Builder / architecture snapshots"
+                                        ],
+                         "pipeline":  [
+                                          "Incoming scan -\u003e queue -\u003e worker pipeline"
+                                      ],
+                         "document_processing":  [
+                                                     "Professor summary/tags extraction"
+                                                 ],
+                         "vision_ocr":  [
+                                            "VisionEngine v3 Hybrid operational",
+                                            "Ollama Vision backend integrated",
+                                            "OCR and image understanding available"
+                                        ],
+                         "memory":  [
+                                        "MEMORY.txt legacy log",
+                                        "MEMORY_INDEX.jsonl semantic index",
+                                        "Semantic memory operational"
+                                    ],
+                         "search":  [
+                                        "SQLite catalog search",
+                                        "SemanticSearchEngine available",
+                                        "Partial tag/entity matching",
+                                        "Score-based ranking"
+                                    ],
+                         "agents":  [
+                                        "Professor Agent",
+                                        "VisionEngine v3 Hybrid"
+                                    ],
+                         "problems":  [
+                                          "audit_reporter.py may require modernization",
+                                          "Legacy archive contains historical records only"
+                                      ]
+                     },
+    "modules":  [
+                    {
+                        "path":  "A_00_HEALER_UNIT\\temp_test.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "A_01_CORE.manifest_loader"
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+                                          "main"
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_01_CORE\\__init__.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_01_CORE\\agent_interface.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "A_01_CORE.butler_drawer",
+                                        "os",
+                                        "sys",
+                                        "pathlib",
+                                        "requests",
+                                        "A_02_MANAGERS.catalog_manager",
+                                        "A_04_AGENTS.professor"
+                                    ],
+                        "classes":  [
+                                        "ButlerInteractiveChat"
+                                    ],
+                        "functions":  [
+                                          "butler_secure_input",
+                                          "__init__",
+                                          "ask_ollama_free_chat",
+                                          "start_session"
+                                      ],
+                        "uses_ollama":  true,
+                        "uses_sqlite":  false,
+                        "uses_requests":  true,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_01_CORE\\alarm.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "A_01_CORE.manifest_loader"
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+                                          "main"
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_01_CORE\\bootstrap_guard.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "sys",
+                                        "hashlib",
+                                        "py_compile",
+                                        "pathlib",
+                                        "json"
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+                                          "calculate_sha256",
+                                          "boot_verify"
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_01_CORE\\butler_drawer.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+
+                                      ],
+                        "uses_ollama":  true,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  "invalid non-printable character U+FEFF (\u003cunknown\u003e, line 1)"
+                    },
+                    {
+                        "path":  "A_01_CORE\\config_loader.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "json",
+                                        "pathlib"
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+                                          "load_manifest"
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_01_CORE\\diagnostic_tool.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  "invalid non-printable character U+FEFF (\u003cunknown\u003e, line 1)"
+                    },
+                    {
+                        "path":  "A_01_CORE\\event_bus.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "sys"
+                                    ],
+                        "classes":  [
+                                        "EventBus"
+                                    ],
+                        "functions":  [
+                                          "subscribe",
+                                          "publish"
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_01_CORE\\fix_butler.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "A_01_CORE.manifest_loader"
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+                                          "main"
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_01_CORE\\healthcheck.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "os",
+                                        "json",
+                                        "logging",
+                                        "pathlib"
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+                                          "check_system"
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_01_CORE\\logger_config.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "logging",
+                                        "pathlib"
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+                                          "setup_logger"
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_01_CORE\\manifest_loader.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "json",
+                                        "pathlib"
+                                    ],
+                        "classes":  [
+                                        "ManifestLoader"
+                                    ],
+                        "functions":  [
+                                          "load"
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_01_CORE\\mcp_server.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "sys",
+                                        "json",
+                                        "A_02_MANAGERS.catalog_manager",
+                                        "A_01_CORE.orchestrator"
+                                    ],
+                        "classes":  [
+                                        "ButlerMcpServer"
+                                    ],
+                        "functions":  [
+                                          "__init__",
+                                          "listen",
+                                          "handle_request"
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_01_CORE\\memory_guardian.before_superhardcore.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "json",
+                                        "sqlite3",
+                                        "py_compile",
+                                        "hashlib",
+                                        "uuid",
+                                        "time",
+                                        "socket",
+                                        "os",
+                                        "sys",
+                                        "importlib",
+                                        "pathlib"
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+                                          "file_sha256",
+                                          "fail",
+                                          "verify_lock_manifest",
+                                          "verify_project_state",
+                                          "verify_database",
+                                          "check_code_layer",
+                                          "run_memory_guardian"
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  true,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_01_CORE\\memory_guardian.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "json",
+                                        "sqlite3",
+                                        "py_compile",
+                                        "hashlib",
+                                        "time",
+                                        "socket",
+                                        "os",
+                                        "sys",
+                                        "importlib",
+                                        "pathlib"
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+                                          "file_sha256",
+                                          "write_audit_log",
+                                          "fail",
+                                          "verify_lock_manifest",
+                                          "verify_project_state",
+                                          "auto_migrate_legacy_records",
+                                          "verify_database",
+                                          "check_code_layer",
+                                          "run_memory_guardian"
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  true,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_01_CORE\\orchestrator.before_filepath_patch.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "os",
+                                        "pathlib",
+                                        "A_02_MANAGERS.catalog_manager"
+                                    ],
+                        "classes":  [
+                                        "MainOrchestrator"
+                                    ],
+                        "functions":  [
+                                          "__init__",
+                                          "run"
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_01_CORE\\orchestrator.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "os",
+                                        "hashlib",
+                                        "pathlib",
+                                        "A_02_MANAGERS.catalog_manager"
+                                    ],
+                        "classes":  [
+                                        "MainOrchestrator"
+                                    ],
+                        "functions":  [
+                                          "__init__",
+                                          "run"
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_01_CORE\\project_state_builder.broken_20260610_000227.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  true,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  "expected an indented block after \u0027if\u0027 statement on line 81 (\u003cunknown\u003e, line 82)"
+                    },
+                    {
+                        "path":  "A_01_CORE\\project_state_builder.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "json",
+                                        "sys",
+                                        "hashlib",
+                                        "time",
+                                        "socket",
+                                        "os",
+                                        "shutil",
+                                        "pathlib"
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+                                          "file_sha256",
+                                          "atomic_write_json",
+                                          "write_audit_log",
+                                          "load_lock_source",
+                                          "create_architecture_snapshot",
+                                          "rebuild_lock_manifest",
+                                          "collect_critical_files",
+                                          "build_state"
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_01_CORE\\register_report.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "A_02_MANAGERS.catalog_manager",
+                                        "sqlite3"
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+                                          "process_report"
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  true,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_01_CORE\\run.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "pathlib",
+                                        "A_01_CORE.manifest_loader"
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+                                          "startup"
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_01_CORE\\system_guardian.before_queue_patch.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "sys",
+                                        "os",
+                                        "sqlite3",
+                                        "contextlib",
+                                        "pathlib",
+                                        "A_01_CORE.manifest_loader",
+                                        "A_02_MANAGERS.provider_manager",
+                                        "A_02_MANAGERS.catalog_manager"
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+                                          "run_guardian"
+                                      ],
+                        "uses_ollama":  true,
+                        "uses_sqlite":  true,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  true,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_01_CORE\\system_guardian.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "sys",
+                                        "os",
+                                        "sqlite3",
+                                        "contextlib",
+                                        "pathlib",
+                                        "A_01_CORE.manifest_loader",
+                                        "A_02_MANAGERS.provider_manager",
+                                        "A_02_MANAGERS.catalog_manager",
+                                        "sqlite3"
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+                                          "run_guardian"
+                                      ],
+                        "uses_ollama":  true,
+                        "uses_sqlite":  true,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  true,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_01_CORE\\test_db.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "A_02_MANAGERS.catalog_manager",
+                                        "pathlib"
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+                                          "test_catalog_update"
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_02_MANAGERS\\__init__.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_02_MANAGERS\\archiver.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "shutil",
+                                        "pathlib"
+                                    ],
+                        "classes":  [
+                                        "Archiver"
+                                    ],
+                        "functions":  [
+                                          "__init__",
+                                          "move_to_processing"
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_02_MANAGERS\\audit_reporter.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "os",
+                                        "sqlite3",
+                                        "sys",
+                                        "datetime",
+                                        "pathlib"
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+                                          "get_tree",
+                                          "generate_report"
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  true,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_02_MANAGERS\\catalog_manager.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "sqlite3",
+                                        "pathlib",
+                                        "time"
+                                    ],
+                        "classes":  [
+                                        "CatalogManager"
+                                    ],
+                        "functions":  [
+                                          "__init__",
+                                          "register_document",
+                                          "full_text_search"
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  true,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_02_MANAGERS\\memory_manager.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "os",
+                                        "pathlib",
+                                        "A_01_CORE.manifest_loader"
+                                    ],
+                        "classes":  [
+                                        "MemoryManager"
+                                    ],
+                        "functions":  [
+                                          "__init__",
+                                          "save_to_memory"
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_02_MANAGERS\\provider_manager.backup.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+
+                                      ],
+                        "uses_ollama":  true,
+                        "uses_sqlite":  false,
+                        "uses_requests":  true,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  true,
+                        "parse_error":  "invalid non-printable character U+FEFF (\u003cunknown\u003e, line 1)"
+                    },
+                    {
+                        "path":  "A_02_MANAGERS\\provider_manager.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "requests",
+                                        "sys",
+                                        "A_01_CORE.manifest_loader"
+                                    ],
+                        "classes":  [
+                                        "ProviderManager"
+                                    ],
+                        "functions":  [
+                                          "__init__",
+                                          "check_ollama_status",
+                                          "get_local_models",
+                                          "inspect_manifest_models"
+                                      ],
+                        "uses_ollama":  true,
+                        "uses_sqlite":  false,
+                        "uses_requests":  true,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  true,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_02_MANAGERS\\queue_manager.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "sqlite3",
+                                        "time",
+                                        "pathlib",
+                                        "A_01_CORE.manifest_loader"
+                                    ],
+                        "classes":  [
+                                        "QueueManager"
+                                    ],
+                        "functions":  [
+                                          "__init__",
+                                          "_get_connection",
+                                          "get_next_task",
+                                          "_recycle_dead_workers"
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  true,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_02_MANAGERS\\tool_bridge.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  true,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  "invalid non-printable character U+FEFF (\u003cunknown\u003e, line 1)"
+                    },
+                    {
+                        "path":  "A_03_ENGINES\\__init__.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_03_ENGINES\\Generation_Engine\\comfy_bridge.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  true,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  true,
+                        "parse_error":  "invalid non-printable character U+FEFF (\u003cunknown\u003e, line 1)"
+                    },
+                    {
+                        "path":  "A_03_ENGINES\\Vision_Engine\\__init__.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_03_ENGINES\\Vision_Engine\\GO.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  true,
+                        "parse_error":  "invalid non-printable character U+FEFF (\u003cunknown\u003e, line 1)"
+                    },
+                    {
+                        "path":  "A_03_ENGINES\\Vision_Engine\\vision_tool.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "A_01_CORE.manifest_loader"
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+                                          "main"
+                                      ],
+                        "uses_ollama":  true,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  true,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_03_EXECUTORS\\executor.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  "invalid non-printable character U+FEFF (\u003cunknown\u003e, line 1)"
+                    },
+                    {
+                        "path":  "A_03_ORCHESTRATION\\__init__.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_03_ORCHESTRATION\\test_worker.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "sqlite3",
+                                        "A_03_ORCHESTRATION.worker"
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  true,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_03_ORCHESTRATION\\worker.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "A_04_AGENTS.professor",
+                                        "A_02_MANAGERS.queue_manager",
+                                        "A_01_CORE.logger_config"
+                                    ],
+                        "classes":  [
+                                        "Worker"
+                                    ],
+                        "functions":  [
+                                          "__init__",
+                                          "process_once"
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_04_AGENTS\\__init__.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_04_AGENTS\\find_bills.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "A_01_CORE.manifest_loader"
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+                                          "main"
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_04_AGENTS\\professor.before_json_patch.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "json",
+                                        "requests",
+                                        "base64",
+                                        "os",
+                                        "pandas",
+                                        "docx",
+                                        "hashlib",
+                                        "shutil",
+                                        "pathlib",
+                                        "A_02_MANAGERS.catalog_manager"
+                                    ],
+                        "classes":  [
+                                        "DispatcherAgent"
+                                    ],
+                        "functions":  [
+                                          "__init__",
+                                          "get_model_and_payload",
+                                          "process_agent_task"
+                                      ],
+                        "uses_ollama":  true,
+                        "uses_sqlite":  false,
+                        "uses_requests":  true,
+                        "uses_pandas":  true,
+                        "uses_docx":  true,
+                        "uses_vision":  true,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_04_AGENTS\\professor.before_path_fix.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "json",
+                                        "requests",
+                                        "base64",
+                                        "os",
+                                        "pandas",
+                                        "docx",
+                                        "hashlib",
+                                        "shutil",
+                                        "pathlib",
+                                        "A_02_MANAGERS.catalog_manager"
+                                    ],
+                        "classes":  [
+                                        "DispatcherAgent"
+                                    ],
+                        "functions":  [
+                                          "__init__",
+                                          "get_model_and_payload",
+                                          "process_agent_task"
+                                      ],
+                        "uses_ollama":  true,
+                        "uses_sqlite":  false,
+                        "uses_requests":  true,
+                        "uses_pandas":  true,
+                        "uses_docx":  true,
+                        "uses_vision":  true,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_04_AGENTS\\professor.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "json",
+                                        "requests",
+                                        "base64",
+                                        "os",
+                                        "pandas",
+                                        "docx",
+                                        "hashlib",
+                                        "shutil",
+                                        "pathlib",
+                                        "A_02_MANAGERS.catalog_manager"
+                                    ],
+                        "classes":  [
+                                        "DispatcherAgent"
+                                    ],
+                        "functions":  [
+                                          "__init__",
+                                          "get_model_and_payload",
+                                          "process_agent_task"
+                                      ],
+                        "uses_ollama":  true,
+                        "uses_sqlite":  false,
+                        "uses_requests":  true,
+                        "uses_pandas":  true,
+                        "uses_docx":  true,
+                        "uses_vision":  true,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_04_AGENTS\\run_professor_daemon.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  "invalid non-printable character U+FEFF (\u003cunknown\u003e, line 1)"
+                    },
+                    {
+                        "path":  "A_05_STORAGE\\__init__.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_07_CONFIG\\__init__.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_09_TESTS\\__init__.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_09_TESTS\\handshake_test.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "sys",
+                                        "pathlib",
+                                        "A_02_MANAGERS.provider_manager",
+                                        "A_02_MANAGERS.catalog_manager",
+                                        "A_02_MANAGERS.memory_manager"
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+                                          "run_handshake"
+                                      ],
+                        "uses_ollama":  true,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "A_09_TESTS\\test_catalog.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  "invalid non-printable character U+FEFF (\u003cunknown\u003e, line 1)"
+                    },
+                    {
+                        "path":  "A_09_TESTS\\test_memory.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  "invalid non-printable character U+FEFF (\u003cunknown\u003e, line 1)"
+                    },
+                    {
+                        "path":  "A_09_TESTS\\test_professor.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  "invalid non-printable character U+FEFF (\u003cunknown\u003e, line 1)"
+                    },
+                    {
+                        "path":  "A_09_TESTS\\test_vision.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  true,
+                        "parse_error":  "invalid non-printable character U+FEFF (\u003cunknown\u003e, line 1)"
+                    },
+                    {
+                        "path":  "butler_capability_audit.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "ast",
+                                        "json",
+                                        "sqlite3",
+                                        "pathlib"
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+                                          "read_text",
+                                          "analyze_py",
+                                          "collect_files",
+                                          "db_snapshot",
+                                          "main"
+                                      ],
+                        "uses_ollama":  true,
+                        "uses_sqlite":  true,
+                        "uses_requests":  true,
+                        "uses_pandas":  true,
+                        "uses_docx":  true,
+                        "uses_vision":  true,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "FIX_QUEUE.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  true,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  true,
+                        "uses_vision":  false,
+                        "parse_error":  "invalid non-printable character U+FEFF (\u003cunknown\u003e, line 1)"
+                    },
+                    {
+                        "path":  "health_check.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "sqlite3",
+                                        "pathlib"
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+                                          "scalar",
+                                          "run_health_check"
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  true,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "INIT_OMEGA.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  "invalid non-printable character U+FEFF (\u003cunknown\u003e, line 1)"
+                    },
+                    {
+                        "path":  "inspect_db.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "sqlite3",
+                                        "os"
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+                                          "show_catalog"
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  true,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "restore_snapshot.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "json",
+                                        "shutil",
+                                        "subprocess",
+                                        "sys",
+                                        "pathlib"
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+                                          "list_snapshots",
+                                          "restore"
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "RUN_PIPELINE.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "time",
+                                        "A_01_CORE.orchestrator",
+                                        "A_03_ORCHESTRATION.worker"
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+                                          "run_pipeline"
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "RUN_PIPELINE_V12.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "sys",
+                                        "os",
+                                        "pathlib",
+                                        "sys",
+                                        "pathlib",
+                                        "sys",
+                                        "time",
+                                        "sqlite3",
+                                        "shutil",
+                                        "pathlib",
+                                        "A_01_CORE.memory_guardian",
+                                        "A_01_CORE.project_state_builder",
+                                        "A_01_CORE.orchestrator",
+                                        "A_03_ORCHESTRATION.worker"
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+                                          "ensure_changelog",
+                                          "execute_repair",
+                                          "run_pipeline",
+                                          "main"
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  true,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "system_doctor.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+                                        "json",
+                                        "sqlite3",
+                                        "py_compile",
+                                        "sys",
+                                        "subprocess",
+                                        "shutil",
+                                        "pathlib"
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+                                          "repair",
+                                          "main"
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  true,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  null
+                    },
+                    {
+                        "path":  "test_api_gen.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  false,
+                        "parse_error":  "invalid non-printable character U+FEFF (\u003cunknown\u003e, line 1)"
+                    },
+                    {
+                        "path":  "TEST_OCR.py",
+                        "encoding":  "utf-8-sig",
+                        "read_error":  null,
+                        "imports":  [
+
+                                    ],
+                        "classes":  [
+
+                                    ],
+                        "functions":  [
+
+                                      ],
+                        "uses_ollama":  false,
+                        "uses_sqlite":  false,
+                        "uses_requests":  false,
+                        "uses_pandas":  false,
+                        "uses_docx":  false,
+                        "uses_vision":  true,
+                        "parse_error":  "invalid non-printable character U+FEFF (\u003cunknown\u003e, line 1)"
+                    }
+                ]
+}

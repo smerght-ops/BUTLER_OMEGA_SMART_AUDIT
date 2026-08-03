@@ -1,11 +1,29 @@
 {
-  "version": "1.0.0-foundation",
+  "version": "1.1.0-management",
   "schema_version": 1,
-
   "workspace": "A_06_WORKSPACE",
   "storage": "A_05_STORAGE",
   "logs": "A_08_LOGS",
-
+  "paths": {
+    "db": "A_05_STORAGE/catalog.db"
+  },
   "ollama_url": "http://127.0.0.1:11434/api/chat",
-  "vision_model": "qwen2.5vl:7b"
+  "vision_model": "qwen2.5-vl:latest",
+  "analysis_model": "qwen36-butler:latest",
+  "coder_model": "DeepSeek-Coder-V2-Lite-Instruct-Q6_K:latest",
+  "fallback_model": "codestral:latest",
+  "debug": true,
+  "document_statuses": [
+    "new",
+    "queued",
+    "processing",
+    "completed",
+    "failed",
+    "archived"
+  ],
+  "matrix_maturity": {
+    "v1.0_foundation": "DONE",
+    "v1.1_management": "IN_PROGRESS",
+    "v1.2_agent_layer": "PLANNED"
+  }
 }

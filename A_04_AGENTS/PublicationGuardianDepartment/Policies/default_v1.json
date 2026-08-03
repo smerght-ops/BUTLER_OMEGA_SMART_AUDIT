@@ -1,0 +1,39 @@
+{
+  "author": "Butler Omega Security",
+  "binary": {
+    "allowed_extensions": [".png", ".jpg", ".jpeg", ".gif", ".pdf"],
+    "denied_extensions": [".exe", ".dll", ".com", ".scr", ".msi", ".model", ".bin"],
+    "max_size_bytes": 10485760,
+    "unknown_severity": "WARNING"
+  },
+  "checksum": "d222e6ba5aa8fd5f421577488c483329f69ec72ff7c4fd1c4f31b86b4d9daf2b",
+  "configuration": {
+    "denied_names": [".env", ".env.local", ".env.production", "credentials.*", "secret.*", "private.*", "token.*", "password.*", "config.local.*", "settings.local.*"]
+  },
+  "created_at": "2026-08-03T00:00:00Z",
+  "policy_id": "butler-publication-default",
+  "privacy_patterns": [
+    {"id": "email", "pattern": "\\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,}\\b", "severity": "WARNING"},
+    {"id": "phone", "pattern": "(?<!\\d)(?:\\+?7|8)[ -]?\\(?\\d{3}\\)?[ -]?\\d{3}[ -]?\\d{2}[ -]?\\d{2}(?!\\d)", "severity": "WARNING"},
+    {"id": "bank_card", "pattern": "(?<!\\d)(?:\\d[ -]?){15,18}\\d(?!\\d)", "severity": "HIGH"},
+    {"id": "passport_ru", "pattern": "(?<!\\d)\\d{2}[ -]?\\d{2}[ -]?\\d{6}(?!\\d)", "severity": "HIGH"}
+  ],
+  "required_inspectors": ["configuration", "secrets", "privacy", "binary", "git", "whitelist", "policy"],
+  "rules": [
+    {"category": "DENY", "id": "private_paths", "path": "**/private/**", "priority": 100, "recommendation": "Удалите внутренний материал из объекта публикации."},
+    {"category": "WARNING", "id": "internal_docs", "path": "**/internal/**", "priority": 50, "recommendation": "Подтвердите допустимость публикации внутреннего документа."}
+  ],
+  "secret_patterns": [
+    {"id": "private_key", "pattern": "-----BEGIN (?:RSA |OPENSSH |EC |DSA )?PRIVATE KEY-----", "severity": "BLOCK"},
+    {"id": "bearer_token", "pattern": "\\bBearer\\s+[A-Za-z0-9._~+/-]{12,}={0,2}", "severity": "BLOCK"},
+    {"id": "jwt", "pattern": "\\beyJ[A-Za-z0-9_-]{8,}\\.[A-Za-z0-9_-]{8,}\\.[A-Za-z0-9_-]{8,}\\b", "severity": "BLOCK"},
+    {"id": "openai_key", "pattern": "\\bsk-(?:proj-)?[A-Za-z0-9_-]{20,}\\b", "severity": "BLOCK"},
+    {"id": "anthropic_key", "pattern": "\\bsk-ant-[A-Za-z0-9_-]{20,}\\b", "severity": "BLOCK"},
+    {"id": "google_key", "pattern": "\\bAIza[0-9A-Za-z_-]{30,}\\b", "severity": "BLOCK"},
+    {"id": "aws_access_key", "pattern": "\\b(?:AKIA|ASIA)[A-Z0-9]{16}\\b", "severity": "BLOCK"},
+    {"id": "generic_assignment", "pattern": "(?i)\\b(?:api[_-]?key|oauth[_-]?token|access[_-]?token|client[_-]?secret|password)\\s*[:=]\\s*[\"']?[A-Za-z0-9_./+~=-]{12,}", "severity": "CRITICAL"}
+  ],
+  "updated_at": "2026-08-03T00:00:00Z",
+  "version": "1.0",
+  "whitelist": {"paths": ["docs/examples/**"]}
+}

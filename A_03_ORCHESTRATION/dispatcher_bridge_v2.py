@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 from A_02_MANAGERS.smart_dispatcher_v2 import SmartDispatcherV2
 from A_02_MANAGERS.Planner.planner_engine import PlannerEngine

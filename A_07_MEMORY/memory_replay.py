@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 from A_07_MEMORY.memory_facade_v2 import MemoryFacadeV2
 

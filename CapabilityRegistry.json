@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated_at": "2026-08-04T19:01:39+03:00",
+  "generated_at": "2026-08-04T19:32:19+03:00",
   "capabilities": [
     {
       "id": "archive_create_archive_archive",
@@ -234,42 +234,48 @@
       ]
     },
     {
-      "id": "engineering_review_change_verification_unknown",
+      "id": "engineering_review_audit_project",
       "department": "ENGINEERING_REVIEW",
-      "action": "change_verification",
-      "object": "unknown",
+      "action": "audit",
+      "object": "project",
       "input": "text",
       "output": "text",
-      "confidence": "unknown",
+      "confidence": "confirmed",
       "aliases": [
-        "change verification",
-        "engineering_review"
-      ]
-    },
-    {
-      "id": "engineering_review_engineering_review_unknown",
-      "department": "ENGINEERING_REVIEW",
-      "action": "engineering_review",
-      "object": "unknown",
-      "input": "text",
-      "output": "text",
-      "confidence": "unknown",
-      "aliases": [
-        "engineering review",
-        "engineering_review"
-      ]
-    },
-    {
-      "id": "engineering_review_project_audit_unknown",
-      "department": "ENGINEERING_REVIEW",
-      "action": "project_audit",
-      "object": "unknown",
-      "input": "text",
-      "output": "text",
-      "confidence": "unknown",
-      "aliases": [
+        "audit",
+        "audit project",
         "engineering_review",
         "project audit"
+      ]
+    },
+    {
+      "id": "engineering_review_review_engineering",
+      "department": "ENGINEERING_REVIEW",
+      "action": "review",
+      "object": "engineering",
+      "input": "text",
+      "output": "text",
+      "confidence": "confirmed",
+      "aliases": [
+        "engineering review",
+        "engineering_review",
+        "review",
+        "review engineering"
+      ]
+    },
+    {
+      "id": "engineering_review_verify_changes",
+      "department": "ENGINEERING_REVIEW",
+      "action": "verify",
+      "object": "changes",
+      "input": "text",
+      "output": "text",
+      "confidence": "confirmed",
+      "aliases": [
+        "change verification",
+        "engineering_review",
+        "verify",
+        "verify changes"
       ]
     },
     {
@@ -332,29 +338,18 @@
       ]
     },
     {
-      "id": "home_butler_identity_unknown",
+      "id": "home_describe_butler_identity",
       "department": "HOME",
-      "action": "butler_identity",
-      "object": "unknown",
+      "action": "describe",
+      "object": "butler_identity",
       "input": "text",
       "output": "path",
-      "confidence": "unknown",
+      "confidence": "confirmed",
       "aliases": [
         "butler identity",
+        "describe",
+        "describe butler identity",
         "home"
-      ]
-    },
-    {
-      "id": "home_inventory_unknown",
-      "department": "HOME",
-      "action": "inventory",
-      "object": "unknown",
-      "input": "text",
-      "output": "path",
-      "confidence": "unknown",
-      "aliases": [
-        "home",
-        "inventory"
       ]
     },
     {
@@ -370,6 +365,21 @@
         "home",
         "launch confirmed program",
         "запусти confirmed program"
+      ]
+    },
+    {
+      "id": "home_list_home_inventory",
+      "department": "HOME",
+      "action": "list",
+      "object": "home_inventory",
+      "input": "text",
+      "output": "path",
+      "confidence": "confirmed",
+      "aliases": [
+        "home",
+        "inventory",
+        "list",
+        "list home inventory"
       ]
     },
     {
@@ -540,14 +550,16 @@
       ]
     },
     {
-      "id": "project_documentation_architect_question_unknown",
+      "id": "project_documentation_answer_architectural_question",
       "department": "PROJECT_DOCUMENTATION",
-      "action": "architect_question",
-      "object": "unknown",
+      "action": "answer",
+      "object": "architectural_question",
       "input": "text",
       "output": "path",
-      "confidence": "unknown",
+      "confidence": "confirmed",
       "aliases": [
+        "answer",
+        "answer architectural question",
         "architect question",
         "project_documentation"
       ]
@@ -599,15 +611,32 @@
       ]
     },
     {
-      "id": "repository_knowledge_engineering_query_unknown",
+      "id": "repository_knowledge_query_engineering_knowledge",
       "department": "REPOSITORY_KNOWLEDGE",
-      "action": "engineering_query",
-      "object": "unknown",
+      "action": "query",
+      "object": "engineering_knowledge",
       "input": "text",
       "output": "text",
-      "confidence": "unknown",
+      "confidence": "confirmed",
       "aliases": [
         "engineering query",
+        "query",
+        "query engineering knowledge",
+        "repository_knowledge"
+      ]
+    },
+    {
+      "id": "repository_knowledge_query_repository_knowledge",
+      "department": "REPOSITORY_KNOWLEDGE",
+      "action": "query",
+      "object": "repository_knowledge",
+      "input": "text",
+      "output": "text",
+      "confidence": "confirmed",
+      "aliases": [
+        "query",
+        "query repository knowledge",
+        "repository knowledge",
         "repository_knowledge"
       ]
     },
@@ -624,19 +653,6 @@
         "report architecture",
         "repository_knowledge",
         "сформируй отчёт architecture"
-      ]
-    },
-    {
-      "id": "repository_knowledge_repository_knowledge_unknown",
-      "department": "REPOSITORY_KNOWLEDGE",
-      "action": "repository_knowledge",
-      "object": "unknown",
-      "input": "text",
-      "output": "text",
-      "confidence": "unknown",
-      "aliases": [
-        "repository knowledge",
-        "repository_knowledge"
       ]
     },
     {
@@ -751,14 +767,16 @@
       ]
     },
     {
-      "id": "video_video_frame_sampling_unknown",
+      "id": "video_sample_video_frames",
       "department": "VIDEO",
-      "action": "video_frame_sampling",
-      "object": "unknown",
+      "action": "sample",
+      "object": "video_frames",
       "input": "path",
       "output": "text",
-      "confidence": "unknown",
+      "confidence": "confirmed",
       "aliases": [
+        "sample",
+        "sample video frames",
         "video",
         "video frame sampling"
       ]

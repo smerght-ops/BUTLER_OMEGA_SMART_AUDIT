@@ -85,6 +85,18 @@ TYPE_MARKERS = {
     "text": ("text", "summary", "report", "explanation", "memory", "fact"),
 }
 
+CAPABILITY_OVERRIDES = {
+    "change_verification": ("verify", "changes", "confirmed"),
+    "engineering_review": ("review", "engineering", "confirmed"),
+    "project_audit": ("audit", "project", "confirmed"),
+    "butler_identity": ("describe", "butler_identity", "confirmed"),
+    "inventory": ("list", "home_inventory", "confirmed"),
+    "architect_question": ("answer", "architectural_question", "confirmed"),
+    "engineering_query": ("query", "engineering_knowledge", "confirmed"),
+    "repository_knowledge": ("query", "repository_knowledge", "confirmed"),
+    "video_frame_sampling": ("sample", "video_frames", "confirmed"),
+}
+
 
 def _literal(node: ast.AST):
     try:
@@ -119,6 +131,9 @@ def _department_hint(class_name: str) -> str:
 
 
 def _parse_capability(raw: str, class_name: str) -> tuple[str, str, str]:
+    override = CAPABILITY_OVERRIDES.get(_snake(raw))
+    if override is not None:
+        return override
     tokens = _tokens(raw)
     action_index = next((index for index, token in enumerate(tokens) if token in ACTION_WORDS), None)
     if action_index is None:

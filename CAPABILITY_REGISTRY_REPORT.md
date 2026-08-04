@@ -2,11 +2,11 @@
 
 - Department найдено: 18
 - Capability найдено: 53
-- unknown object: 9
+- unknown object: 0
 - inferred capability: 0
 - duplicate capability: 0
 - missing department: 0
-- confirmed capability: 44
+- confirmed capability: 53
 
 ## Department без CAPABILITIES
 
@@ -14,15 +14,7 @@
 
 ## Unknown и inferred
 
-- `engineering_review_change_verification_unknown`: object=unknown, confidence=unknown
-- `engineering_review_engineering_review_unknown`: object=unknown, confidence=unknown
-- `engineering_review_project_audit_unknown`: object=unknown, confidence=unknown
-- `home_butler_identity_unknown`: object=unknown, confidence=unknown
-- `home_inventory_unknown`: object=unknown, confidence=unknown
-- `project_documentation_architect_question_unknown`: object=unknown, confidence=unknown
-- `repository_knowledge_engineering_query_unknown`: object=unknown, confidence=unknown
-- `repository_knowledge_repository_knowledge_unknown`: object=unknown, confidence=unknown
-- `video_video_frame_sampling_unknown`: object=unknown, confidence=unknown
+- отсутствуют
 
 ## Предупреждения
 

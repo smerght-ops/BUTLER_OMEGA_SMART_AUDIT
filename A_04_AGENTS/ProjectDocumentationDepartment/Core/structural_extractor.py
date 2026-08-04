@@ -1,10 +1,15 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
+"""Structural extractor — uses RepositoryKnowledgeDepartment for file enumeration.
+
+Uses the approved gateway-backed canonical Python file inventory.
+"""
 
 import ast
 import json
 from pathlib import Path
 from datetime import datetime
-from scope_loader import is_allowed
+
+from A_03_ORCHESTRATION.repository_knowledge_gateway import list_repository_files
 
 ROOT = Path.cwd()
 
@@ -83,27 +88,20 @@ class StructuralVisitor(ast.NodeVisitor):
     visit_AsyncFunctionDef = visit_FunctionDef
 
 
-for py in ROOT.rglob("*.py"):
+py_files_rel = list_repository_files(ROOT, ".py")
 
-    rel = py.relative_to(ROOT).as_posix()
-
-    if not is_allowed(rel):
-        continue
-
+for rel in py_files_rel:
     try:
-
-        text = py.read_text(
+        text = (ROOT / rel).read_text(
             encoding="utf-8-sig",
             errors="replace"
         )
-
         tree = ast.parse(text)
-
     except Exception:
         continue
 
     StructuralVisitor(
-        str(py.relative_to(ROOT)).replace("\\","/")
+        str(Path(rel).relative_to(ROOT)).replace("\\", "/") if not Path(rel).is_absolute() else rel.replace("\\", "/")
     ).visit(tree)
 
 (OUT / "structure.json").write_text(
@@ -119,9 +117,8 @@ for py in ROOT.rglob("*.py"):
     encoding="utf-8"
 )
 
-print("="*70)
+print("=" * 70)
 print("STRUCTURAL EXTRACTOR READY")
-print("="*70)
+print("=" * 70)
 print("Evidence :", len(records))
 print("Output   :", OUT / "structure.json")
-

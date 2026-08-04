@@ -1,7 +1,9 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 import ast
 from pathlib import Path
+
+from A_03_ORCHESTRATION.repository_knowledge_gateway import query_repository
 
 SCAN_SCOPE = (
     "A_01_CORE",
@@ -16,10 +18,10 @@ class DependencyGraph:
         self.root = Path(root or Path.cwd())
 
     def _files(self):
-        for folder in SCAN_SCOPE:
-            p = self.root / folder
-            if p.exists():
-                yield from p.rglob("*.py")
+        payload = query_repository(self.root, "list_files", filters={"type": "File", "extension": ".py"})
+        for item in payload["data"]["matches"]:
+            if any(item["file"].startswith(folder + "/") for folder in SCAN_SCOPE):
+                yield self.root / item["file"]
 
     def build(self):
 

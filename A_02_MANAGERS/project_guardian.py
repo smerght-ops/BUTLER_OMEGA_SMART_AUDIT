@@ -1,101 +1,34 @@
 # -*- coding: utf-8 -*-
 
-import ast
 import json
 from pathlib import Path
 
+from A_03_ORCHESTRATION.repository_knowledge_gateway import query_repository
+
 ROOT = Path(__file__).resolve().parent.parent
-
-SCAN_DIRS = [
-    "A_01_CORE",
-    "A_02_MANAGERS",
-    "A_03_ORCHESTRATION",
-    "A_04_AGENTS"
-]
-
-graph = {}
+canonical = query_repository(ROOT, "get_index")["data"]
+file_nodes = {node["identifier"]: node for node in canonical["nodes"] if node.get("type") == "File"}
+graph = {node.get("module") or node["file"]: [] for node in file_nodes.values()}
 reverse = {}
 
-for folder in SCAN_DIRS:
-
-    d = ROOT / folder
-
-    if not d.exists():
+for edge in canonical["edges"]:
+    if edge.get("edge_type") != "imports" or edge.get("source") not in file_nodes:
         continue
+    source_node = file_nodes[edge["source"]]
+    source = source_node.get("module") or source_node["file"]
+    target = edge.get("target", "")
+    graph[source].append(target)
+    reverse.setdefault(target, []).append(source)
 
-    for py in d.rglob("*.py"):
-
-        if "__pycache__" in py.parts:
-            continue
-
-        mod = ".".join(py.relative_to(ROOT).with_suffix("").parts)
-
-        graph[mod] = []
-
-for folder in SCAN_DIRS:
-
-    d = ROOT / folder
-
-    if not d.exists():
-        continue
-
-    for py in d.rglob("*.py"):
-
-        if "__pycache__" in py.parts:
-            continue
-
-        mod = ".".join(py.relative_to(ROOT).with_suffix("").parts)
-
-        try:
-
-            tree = ast.parse(
-                py.read_text(
-                    encoding="utf-8",
-                    errors="ignore"
-                )
-            )
-
-        except Exception:
-            continue
-
-        deps = []
-
-        for node in ast.walk(tree):
-
-            if isinstance(node, ast.Import):
-
-                for n in node.names:
-
-                    deps.append(n.name)
-
-            elif isinstance(node, ast.ImportFrom):
-
-                if node.module:
-
-                    deps.append(node.module)
-
-        deps = sorted(set(deps))
-
-        graph[mod] = deps
-
-        for dep in deps:
-
-            reverse.setdefault(dep, [])
-
-            if mod not in reverse[dep]:
-                reverse[dep].append(mod)
-
+graph = {key: sorted(set(value)) for key, value in graph.items()}
+reverse = {key: sorted(set(value)) for key, value in reverse.items()}
 cfg = ROOT / "A_07_CONFIG"
 cfg.mkdir(exist_ok=True)
-
 (graph_path := cfg / "dependency_map.json").write_text(
-    json.dumps(graph, ensure_ascii=False, indent=2),
-    encoding="utf-8"
+    json.dumps(graph, ensure_ascii=False, indent=2), encoding="utf-8"
 )
-
 (reverse_path := cfg / "dependency_reverse.json").write_text(
-    json.dumps(reverse, ensure_ascii=False, indent=2),
-    encoding="utf-8"
+    json.dumps(reverse, ensure_ascii=False, indent=2), encoding="utf-8"
 )
 
 print("=" * 60)

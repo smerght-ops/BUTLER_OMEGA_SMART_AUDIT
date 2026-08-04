@@ -20,6 +20,8 @@ from A_04_AGENTS.ProjectDocumentationDepartment.runner import ProjectDocumentati
 from A_04_AGENTS.HomeDepartment.runner import HomeDepartment
 from A_04_AGENTS.BrowserDepartment.runner import BrowserDepartment
 from A_04_AGENTS.PublicationGuardianDepartment.runner import PublicationGuardianDepartment
+from A_04_AGENTS.RepositoryKnowledgeDepartment.runner import RepositoryKnowledgeDepartment
+from A_04_AGENTS.EngineeringReviewDepartment.runner import EngineeringReviewDepartment
 from A_07_MEMORY.semantic_memory import SemanticMemory
 from A_07_MEMORY.semantic_reasoning_engine import SemanticReasoningEngine
 from A_03_ORCHESTRATION.butler_harness import ButlerHarness
@@ -48,6 +50,8 @@ class SmartDispatcherV2:
             # Publication inspection is a mandatory security gate and must be
             # registered before broad operational departments.
             PublicationGuardianDepartment(),
+            RepositoryKnowledgeDepartment(),
+            EngineeringReviewDepartment(),
             ProjectDocumentationDepartment(),
             BrowserDepartment(),
             ImageDepartment(),
@@ -335,6 +339,12 @@ class SmartDispatcherV2:
         # remains a hard FAULT_BLOCK.
         if "publication_request" in context:
             return self._dispatch_publication_guardian(query, context)
+
+        # Repository engineering knowledge has a narrow canonical owner. It
+        # precedes the broader PROJECT_SELF_KNOWLEDGE compatibility route.
+        repository_department = self._find_dept_by_name("REPOSITORY_KNOWLEDGE")
+        if repository_department and repository_department.can_handle(query, context=context):
+            return self._execute_department(repository_department, query, context=context)
 
         if "memory_packet" not in context:
             try:

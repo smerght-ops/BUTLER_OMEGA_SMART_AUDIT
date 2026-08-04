@@ -10,6 +10,8 @@ DEPARTMENTS = {
     "TEXT":     "A_04_AGENTS.TextDepartment.runner.TextDepartment",
     "VIDEO":    "A_04_AGENTS.VideoDepartment.runner.VideoDepartment",
     "ARCHIVE":  "A_04_AGENTS.ArchiveDepartment.runner.ArchiveDepartment",
+    "REPOSITORY_KNOWLEDGE": "A_04_AGENTS.RepositoryKnowledgeDepartment.runner.RepositoryKnowledgeDepartment",
+    "ENGINEERING_REVIEW": "A_04_AGENTS.EngineeringReviewDepartment.runner.EngineeringReviewDepartment",
     "CHAT":     None,
     "ROUTER":   None,
 }

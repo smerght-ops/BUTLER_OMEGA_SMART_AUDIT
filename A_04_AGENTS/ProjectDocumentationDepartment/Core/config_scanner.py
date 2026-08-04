@@ -1,14 +1,14 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
+"""Config scanner — uses RepositoryKnowledgeDepartment for file enumeration.
+
+Uses the approved gateway-backed canonical file inventory.
+"""
 
 import json
-import sys
 from pathlib import Path
 from datetime import datetime
 
-# Подключаем единый scope_loader
-current_dir = Path(__file__).resolve().parent
-sys.path.append(str(current_dir))
-from scope_loader import is_allowed
+from A_03_ORCHESTRATION.repository_knowledge_gateway import list_repository_files
 
 ROOT = Path.cwd()
 
@@ -25,29 +25,26 @@ KEYWORDS = [
     ".env"
 ]
 
-for f in ROOT.rglob("*"):
 
-    if not f.is_file():
-        continue
-
-    rel_path = str(f.relative_to(ROOT)).replace("\\","/")
-
-    # ЕДИНАЯ ТОЧКА ФИЛЬТРАЦИИ
-    if not is_allowed(rel_path):
-        continue
-
-    name = f.name.lower()
-
+def _matches_keywords(rel_path):
+    """Check if a file path matches any config keyword."""
+    name = Path(rel_path).name.lower()
     for k in KEYWORDS:
-
         if k in name:
+            return True
+    return False
 
-            records.append({
-                "file": rel_path,
-                "keyword": k
-            })
 
-(OUT/"configs.json").write_text(
+all_files_rel = list_repository_files(ROOT)
+
+for rel_path in all_files_rel:
+    if _matches_keywords(rel_path):
+        records.append({
+            "file": rel_path,
+            "keyword": next((k for k in KEYWORDS if k in Path(rel_path).name.lower()), "")
+        })
+
+(OUT / "configs.json").write_text(
     json.dumps(
         {
             "generated": datetime.now().isoformat(timespec="seconds"),
@@ -60,8 +57,8 @@ for f in ROOT.rglob("*"):
     encoding="utf-8-sig"
 )
 
-print("="*70)
+print("=" * 70)
 print("CONFIG SCANNER READY")
-print("="*70)
-print("Configs :",len(records))
-print("Output  :",OUT/"configs.json")
+print("=" * 70)
+print("Configs :", len(records))
+print("Output  :", OUT / "configs.json")

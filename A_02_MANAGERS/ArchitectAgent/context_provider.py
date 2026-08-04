@@ -6,6 +6,8 @@ import re
 from datetime import datetime, timezone
 from pathlib import Path
 
+from A_03_ORCHESTRATION.repository_knowledge_gateway import query_repository
+
 
 class ContextProvider:
     """Query-focused, read-only architectural evidence for ArchitectAgent."""
@@ -128,36 +130,32 @@ class ContextProvider:
     def _python_index(self):
         if self._python_cache is not None:
             return self._python_cache
+        canonical = query_repository(self.root, "get_index")["data"]
+        nodes = canonical["nodes"]
+        edges = canonical["edges"]
+        symbols_by_owner = {}
+        for node in nodes:
+            if node.get("type") == "File":
+                continue
+            symbols_by_owner.setdefault(node.get("owner"), []).append(node)
         rows = []
-        for path in self.root.rglob("*.py"):
-            rel_path = path.relative_to(self.root)
-            if any(part in self.EXCLUDED_PARTS for part in rel_path.parts):
+        for node in nodes:
+            rel = node.get("file")
+            if node.get("type") != "File" or not str(rel).endswith(".py"):
                 continue
-            rel = rel_path.as_posix()
-            try:
-                text = path.read_text(encoding="utf-8-sig", errors="ignore")
-                tree = ast.parse(text)
-            except (OSError, SyntaxError, UnicodeError):
+            if any(part in self.EXCLUDED_PARTS for part in Path(rel).parts):
                 continue
-            classes, functions, imports, calls, registrations = [], [], [], [], []
-            for node in ast.walk(tree):
-                if isinstance(node, ast.ClassDef):
-                    classes.append(node.name)
-                elif isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
-                    functions.append(node.name)
-                elif isinstance(node, ast.Import):
-                    imports.extend(alias.name for alias in node.names)
-                elif isinstance(node, ast.ImportFrom) and node.module:
-                    imports.append(node.module)
-                elif isinstance(node, ast.Call):
-                    callee = node.func.id if isinstance(node.func, ast.Name) else node.func.attr if isinstance(node.func, ast.Attribute) else ""
-                    if callee:
-                        calls.append(callee)
-                        if callee.startswith("register") or callee in {"add_handler", "add_route", "include_router", "Dispatcher"}:
-                            registrations.append(callee)
-            rows.append({"path": rel, "module": rel[:-3].replace("/", "."), "classes": classes,
-                         "functions": functions, "imports": imports, "calls": calls,
-                         "registrations": registrations, "size": path.stat().st_size})
+            owned = symbols_by_owner.get(node.get("identifier"), [])
+            related = [edge for edge in edges if edge.get("source") == node.get("identifier")]
+            rows.append({"path": rel, "module": rel[:-3].replace("/", "."),
+                         "classes": [item["name"] for item in owned if item.get("type") in {
+                             "Class", "Department", "Manager", "Handler", "Engine", "Gateway", "Coordinator"
+                         }],
+                         "functions": [item["name"] for item in owned if item.get("type") == "Function"],
+                         "imports": [edge.get("target", "") for edge in related if edge.get("edge_type") == "imports"],
+                         "calls": [edge.get("target", "") for edge in related if edge.get("edge_type") == "calls"],
+                         "registrations": [edge.get("target", "") for edge in related if "register" in edge.get("edge_type", "")],
+                         "size": node.get("metadata", {}).get("size", 0)})
         self._python_cache = rows
         return rows
 
@@ -170,16 +168,11 @@ class ContextProvider:
 
     def _knowledge_context(self, query, runtime):
         rows = self._python_index()
-        all_files = []
+        all_files = query_repository(self.root, "list_files", filters={"type": "File"})["data"]["matches"]
         by_area = {}
-        for path in self.root.rglob("*"):
-            if not path.is_file():
-                continue
-            rel_path = path.relative_to(self.root)
-            if any(part in self.EXCLUDED_PARTS for part in rel_path.parts):
-                continue
-            rel = rel_path.as_posix()
-            all_files.append(rel)
+        for item in all_files:
+            rel = item["file"]
+            rel_path = Path(rel)
             area = rel_path.parts[0] if rel_path.parts else "."
             by_area[area] = by_area.get(area, 0) + 1
         terms = self._query_terms(query)

@@ -1,15 +1,15 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
+"""AST call parser — uses RepositoryKnowledgeDepartment for file enumeration.
+
+Uses the approved gateway-backed canonical Python file inventory.
+"""
 
 import ast
 import json
-import sys
 from pathlib import Path
 from datetime import datetime
 
-# Подключаем единый scope_loader
-current_dir = Path(__file__).resolve().parent
-sys.path.append(str(current_dir))
-from scope_loader import is_allowed
+from A_03_ORCHESTRATION.repository_knowledge_gateway import list_repository_files
 
 ROOT = Path.cwd()
 
@@ -17,6 +17,7 @@ OUT_DIR = ROOT / "facts"
 OUT_DIR.mkdir(exist_ok=True)
 
 OUT_FILE = OUT_DIR / "calls.json"
+
 
 class CallVisitor(ast.NodeVisitor):
 
@@ -49,10 +50,6 @@ class CallVisitor(ast.NodeVisitor):
         return "<dynamic>"
 
     def evidence(self, typ, node, value):
-
-        if isinstance(value, str) and not is_allowed(value.replace("\\","/")):
-            return
-
         self.calls.append({
             "type": typ,
             "file": self.filename,
@@ -87,20 +84,16 @@ class CallVisitor(ast.NodeVisitor):
                 self.evidence("write_text", node, arg)
         self.generic_visit(node)
 
+
+py_files_rel = list_repository_files(ROOT, ".py")
+
 records = []
 
-for py in ROOT.rglob("*.py"):
-
-    rel_path = str(py.relative_to(ROOT)).replace("\\","/")
-
-    # ЕДИНАЯ ТОЧКА ФИЛЬТРАЦИИ
-    if not is_allowed(rel_path):
-        continue
-
+for rel_path in py_files_rel:
     try:
-        text = py.read_text(encoding="utf-8-sig")
+        text = (ROOT / rel_path).read_text(encoding="utf-8-sig")
     except UnicodeDecodeError:
-        text = py.read_text(
+        text = (ROOT / rel_path).read_text(
             encoding="utf-8-sig",
             errors="replace"
         )
@@ -126,10 +119,9 @@ OUT_FILE.write_text(
     encoding="utf-8-sig"
 )
 
-print("="*70)
+print("=" * 70)
 print("CALL GRAPH READY")
-print("="*70)
-print("Evidence :",len(records))
-print("Output   :",OUT_FILE)
-
+print("=" * 70)
+print("Evidence :", len(records))
+print("Output   :", OUT_FILE)
 

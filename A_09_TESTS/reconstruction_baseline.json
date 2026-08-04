@@ -1,0 +1,358 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-04T08:09:24.855805+00:00",
+  "git": {
+    "branch": "main",
+    "commit": "3f57959267ae7d08a1baff7cf692738e7efd0e28",
+    "status": [
+      "?? BIONIC_EXECUTION_MODEL.md",
+      "?? BUTLER_PERMISSION_ARCHITECTURE.md"
+    ]
+  },
+  "environment": {
+    "python_executables": [
+      {
+        "path": "C:\\Users\\KOS\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "version": "3.12.13"
+      },
+      {
+        "path": "C:/Program Files/LibreOffice/program/python.exe",
+        "version": "3.12.13"
+      },
+      {
+        "path": "C:/Program Files/Blender Foundation/Blender 5.1/5.1/python/bin/python.exe",
+        "version": "3.13.9"
+      }
+    ],
+    "available_dependencies": [
+      "PIL (Codex)",
+      "numpy (Codex/Blender)",
+      "requests (Blender)"
+    ],
+    "missing_dependencies": [
+      "pytest (all)",
+      "requests (Codex)",
+      "sounddevice",
+      "scipy"
+    ]
+  },
+  "launchers": [
+    {
+      "path": "START_BUTLER_OS.ps1",
+      "status": "ACTIVE_PRODUCTION_CANDIDATE",
+      "evidence": {
+        "source_path": "START_BUTLER_OS.ps1",
+        "line": 119,
+        "symbol": "BUTLER_OS.py invocation",
+        "evidence_type": "STATIC_SOURCE",
+        "confidence": "HIGH"
+      }
+    },
+    {
+      "path": "START_BUTLER_CORE.py",
+      "status": "ACTIVE_COMPATIBILITY",
+      "evidence": {
+        "source_path": "START_BUTLER_CORE.py",
+        "line": 1,
+        "symbol": "module entry point",
+        "evidence_type": "STATIC_SOURCE",
+        "confidence": "MEDIUM"
+      }
+    },
+    {
+      "path": "START_BUTLER_SYSTEM.py",
+      "status": "ACTIVE_COMPATIBILITY",
+      "evidence": {
+        "source_path": "START_BUTLER_SYSTEM.py",
+        "line": 1,
+        "symbol": "module entry point",
+        "evidence_type": "STATIC_SOURCE",
+        "confidence": "MEDIUM"
+      }
+    }
+  ],
+  "entry_points": [
+    {
+      "path": "BUTLER_OS.py",
+      "symbol": "main",
+      "evidence": {
+        "source_path": "BUTLER_OS.py",
+        "line": 132,
+        "symbol": "main",
+        "evidence_type": "STATIC_AST",
+        "confidence": "HIGH"
+      }
+    },
+    {
+      "path": "A_02_MANAGERS/TaskRunner/runner_loop.py",
+      "symbol": "module __main__",
+      "evidence": {
+        "source_path": "START_BUTLER_OS.ps1",
+        "line": 108,
+        "symbol": "runner_loop",
+        "evidence_type": "LAUNCHER_TRACE",
+        "confidence": "HIGH"
+      }
+    }
+  ],
+  "production_runtime_chain": [
+    {
+      "order": 1,
+      "component": "START_BUTLER_OS.ps1",
+      "evidence": {
+        "source_path": "START_BUTLER_OS.ps1",
+        "line": 1,
+        "symbol": "launcher",
+        "evidence_type": "STATIC_TRACE",
+        "confidence": "HIGH"
+      }
+    },
+    {
+      "order": 2,
+      "component": "RunnerLoop parallel worker",
+      "evidence": {
+        "source_path": "START_BUTLER_OS.ps1",
+        "line": 108,
+        "symbol": "runner_loop",
+        "evidence_type": "STATIC_TRACE",
+        "confidence": "HIGH"
+      }
+    },
+    {
+      "order": 3,
+      "component": "BUTLER_OS.py",
+      "evidence": {
+        "source_path": "START_BUTLER_OS.ps1",
+        "line": 119,
+        "symbol": "BUTLER_OS.py",
+        "evidence_type": "STATIC_TRACE",
+        "confidence": "HIGH"
+      }
+    },
+    {
+      "order": 4,
+      "component": "AgentCoreCoordinator.execute",
+      "evidence": {
+        "source_path": "BUTLER_OS.py",
+        "line": 88,
+        "symbol": "_agent_core.execute",
+        "evidence_type": "STATIC_AST",
+        "confidence": "HIGH"
+      }
+    },
+    {
+      "order": 5,
+      "component": "dispatcher_bridge_v2.dispatch fallback",
+      "evidence": {
+        "source_path": "BUTLER_OS.py",
+        "line": 92,
+        "symbol": "dispatch",
+        "evidence_type": "STATIC_AST",
+        "confidence": "HIGH"
+      }
+    },
+    {
+      "order": 6,
+      "component": "SmartDispatcherV2.dispatch",
+      "evidence": {
+        "source_path": "A_03_ORCHESTRATION/dispatcher_bridge_v2.py",
+        "line": 31,
+        "symbol": "_dispatcher.dispatch",
+        "evidence_type": "STATIC_AST",
+        "confidence": "HIGH"
+      }
+    },
+    {
+      "order": 7,
+      "component": "ButlerHarness.execute",
+      "evidence": {
+        "source_path": "A_02_MANAGERS/smart_dispatcher_v2.py",
+        "line": 139,
+        "symbol": "harness.execute",
+        "evidence_type": "STATIC_AST",
+        "confidence": "HIGH"
+      }
+    },
+    {
+      "order": 8,
+      "component": "DepartmentExecutionGateway.execute",
+      "evidence": {
+        "source_path": "A_02_MANAGERS/smart_dispatcher_v2.py",
+        "line": 135,
+        "symbol": "department_gateway.execute",
+        "evidence_type": "STATIC_AST",
+        "confidence": "HIGH"
+      }
+    },
+    {
+      "order": 9,
+      "component": "Department.execute",
+      "evidence": {
+        "source_path": "A_03_ORCHESTRATION/permission/gateway.py",
+        "line": 87,
+        "symbol": "department.execute",
+        "evidence_type": "STATIC_AST",
+        "confidence": "HIGH"
+      }
+    }
+  ],
+  "department_registrations": [
+    {
+      "source_path": "A_02_MANAGERS/smart_dispatcher_v2.py",
+      "line": 45,
+      "symbol": "SmartDispatcherV2.departments",
+      "evidence_type": "STATIC_AST",
+      "confidence": "HIGH"
+    },
+    {
+      "source_path": "A_02_MANAGERS/department_registry.py",
+      "line": 3,
+      "symbol": "DEPARTMENTS",
+      "evidence_type": "STATIC_AST",
+      "confidence": "HIGH"
+    },
+    {
+      "source_path": "A_01_CORE/TaskExecutor/capability_executor.py",
+      "line": 171,
+      "symbol": "CapabilityExecutor._sources",
+      "evidence_type": "STATIC_AST",
+      "confidence": "HIGH"
+    }
+  ],
+  "loaded_core_modules": [
+    "A_01_CORE/manifest_loader.py",
+    "A_01_CORE/TaskExecutor/capability_executor.py",
+    "A_01_CORE/TaskExecutor/test_stage5b_artifact_addressing.py",
+    "A_02_MANAGERS/model_registry.py",
+    "A_02_MANAGERS/smart_dispatcher.py",
+    "A_02_MANAGERS/smart_dispatcher_v2.py",
+    "A_03_ORCHESTRATION/agent_core_coordinator.py",
+    "A_03_ORCHESTRATION/butler_harness.py",
+    "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.after_resolver.py",
+    "A_03_ORCHESTRATION/dispatcher_bridge_v2.py",
+    "A_03_ORCHESTRATION/guards/integration_test_guard.py",
+    "A_03_ORCHESTRATION/hybrid_resolver.py",
+    "A_03_ORCHESTRATION/observation_layer.py",
+    "A_03_ORCHESTRATION/permission/gateway.py",
+    "A_03_ORCHESTRATION/registry_brain.py",
+    "A_04_AGENTS/ArchiveDepartment/runner.py",
+    "A_04_AGENTS/AudioDepartment/runner.py",
+    "A_04_AGENTS/base_department.py",
+    "A_04_AGENTS/BrowserDepartment/runner.py",
+    "A_04_AGENTS/CodingDepartment/runner.py",
+    "A_04_AGENTS/DocumentsDepartment/runner.py",
+    "A_04_AGENTS/FilesystemDepartment/file_analyzer.py",
+    "A_04_AGENTS/FilesystemDepartment/runner.py",
+    "A_04_AGENTS/HomeDepartment/runner.py",
+    "A_04_AGENTS/ImageDepartment/runner.py",
+    "A_04_AGENTS/MemoryDepartment/runner.py",
+    "A_04_AGENTS/OpenDocumentDepartment/runner.py",
+    "A_04_AGENTS/ProjectDocumentationDepartment/Core/engineering_pipeline.py",
+    "A_04_AGENTS/ProjectDocumentationDepartment/Core/evidence_doctor.py",
+    "A_04_AGENTS/ProjectDocumentationDepartment/runner.py",
+    "A_04_AGENTS/PublicationGuardianDepartment/runner.py",
+    "A_04_AGENTS/SearchDepartment/runner.py",
+    "A_04_AGENTS/TextDepartment/runner.py",
+    "A_04_AGENTS/VideoDepartment/runner.py",
+    "A_04_AGENTS/VisionDepartment/runner.py",
+    "A_07_CONFIG/passport_report.py",
+    "A_07_CONFIG/project_passport_loader.py",
+    "A_07_CONFIG/project_state.py",
+    "A_07_CONFIG/registry_loader.py",
+    "A_07_MEMORY/agent_planner.py",
+    "A_07_MEMORY/architectural_knowledge_graph.py",
+    "A_07_MEMORY/attention_memory.py",
+    "A_07_MEMORY/catalog_search_bridge.py",
+    "A_07_MEMORY/change_request_manager.py",
+    "A_07_MEMORY/context_budget_manager.py",
+    "A_07_MEMORY/dki_compiler.py",
+    "A_07_MEMORY/execution_registry.py",
+    "A_07_MEMORY/memory_facade.py",
+    "A_07_MEMORY/memory_facade_v2.py",
+    "A_07_MEMORY/memory_orchestrator.py",
+    "A_07_MEMORY/memory_orchestrator_v2.py",
+    "A_07_MEMORY/memory_replay.py",
+    "A_07_MEMORY/profile_manager.py",
+    "A_07_MEMORY/project_history.py",
+    "A_07_MEMORY/search_engine.py",
+    "A_07_MEMORY/self_healing_memory.py",
+    "A_07_MEMORY/semantic_compression.py",
+    "A_07_MEMORY/semantic_core.py",
+    "A_07_MEMORY/semantic_memory.py",
+    "A_07_MEMORY/semantic_query_parser.py",
+    "A_07_MEMORY/semantic_reasoning_engine.py",
+    "A_07_MEMORY/semantic_reasoning_engine_v2.py",
+    "A_07_MEMORY/semantic_relations_engine.py",
+    "A_07_MEMORY/SESSION/reference_resolver.py",
+    "A_07_MEMORY/SESSION/session_manager_poly.py",
+    "BUTLER_OS.py",
+    "START_BUTLER_CORE.py",
+    "START_BUTLER_SYSTEM.py"
+  ],
+  "permission_gateway_status": {
+    "status": "PASS",
+    "tests_passed": 7,
+    "source_path": "A_09_TESTS/test_permission_engine_stage1.py",
+    "evidence_type": "UNIT_TEST",
+    "confidence": "HIGH"
+  },
+  "publication_guardian_status": {
+    "status": "PASS",
+    "tests_passed": 19,
+    "source_path": "A_04_AGENTS/PublicationGuardianDepartment/Tests",
+    "evidence_type": "UNIT_AND_INTEGRATION_TEST",
+    "confidence": "HIGH",
+    "git_publish_guardian": {
+      "status": "UNKNOWN",
+      "reason": "not found in active scoped tree",
+      "confidence": "HIGH"
+    }
+  },
+  "smoke_tests": [
+    {
+      "command": "unittest permission stage1",
+      "status": "PASS",
+      "passed": 7
+    },
+    {
+      "command": "unittest publication guardian unit+integration",
+      "status": "PASS",
+      "passed": 19
+    },
+    {
+      "command": "production launcher",
+      "status": "NOT_RUN",
+      "reason": "starts external services and interactive runtime"
+    }
+  ],
+  "limitations": [
+    "No python/py executable on PATH.",
+    "Codex runtime lacks requests, pytest, sounddevice and scipy.",
+    "Production launcher not executed because it starts Ollama, ComfyUI and worker processes.",
+    "Runtime reachability is static evidence, not live trace.",
+    "GitPublishGuardianDepartment not found."
+  ],
+  "evidence": [
+    {
+      "source_path": "START_BUTLER_OS.ps1",
+      "line": 119,
+      "symbol": "BUTLER_OS.py invocation",
+      "evidence_type": "STATIC_SOURCE",
+      "confidence": "HIGH"
+    },
+    {
+      "source_path": "BUTLER_OS.py",
+      "line": 88,
+      "symbol": "_agent_core.execute",
+      "evidence_type": "STATIC_AST",
+      "confidence": "HIGH"
+    },
+    {
+      "source_path": "A_03_ORCHESTRATION/dispatcher_bridge_v2.py",
+      "line": 6,
+      "symbol": "SmartDispatcherV2 construction",
+      "evidence_type": "STATIC_AST",
+      "confidence": "HIGH"
+    }
+  ]
+}

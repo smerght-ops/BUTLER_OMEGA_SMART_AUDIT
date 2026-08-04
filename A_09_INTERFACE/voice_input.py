@@ -61,12 +61,14 @@ def _record_until_user_stops(fs=16000, silence_seconds=None):
 
 def _recognize_audio(audio, fs=16000):
     from A_03_ENGINES.Audio_Engine.whisper_engine import create_audio_engine
+    from A_03_ORCHESTRATION.permission import DepartmentExecutionGateway
     from A_04_AGENTS.AudioDepartment.runner import AudioDepartment
     stamp = datetime.now().strftime("%Y-%m-%d_%H%M%S_%f")
     wav_path = _voice_inbox() / f".{stamp}_processing.wav"
     wavfile.write(str(wav_path), fs, audio)
     try:
-        result = AudioDepartment().execute(
+        result = DepartmentExecutionGateway().execute(
+            AudioDepartment(),
             "распознай речь",
             context={"attachments": [str(wav_path)], "audio_engine": create_audio_engine()},
         )

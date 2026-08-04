@@ -23,6 +23,7 @@ from A_04_AGENTS.PublicationGuardianDepartment.runner import PublicationGuardian
 from A_07_MEMORY.semantic_memory import SemanticMemory
 from A_07_MEMORY.semantic_reasoning_engine import SemanticReasoningEngine
 from A_03_ORCHESTRATION.butler_harness import ButlerHarness
+from A_03_ORCHESTRATION.permission import DepartmentExecutionGateway
 from A_02_MANAGERS.smart_dispatcher import SmartDispatcher
 from A_02_MANAGERS.goal_manager import GoalManager
 from A_07_MEMORY.memory_orchestrator_v2 import MemoryOrchestratorV2
@@ -36,6 +37,7 @@ class SmartDispatcherV2:
         self.reasoning_engine = SemanticReasoningEngine()
         self._last_semantic_intent = None
         self.harness = ButlerHarness()
+        self.department_gateway = DepartmentExecutionGateway()
         self.chat_provider = SmartDispatcher()
         self.memory_orchestrator = MemoryOrchestratorV2(token_budget=1200)
         self.task_executor = TaskExecutor()
@@ -175,9 +177,9 @@ class SmartDispatcherV2:
         def executor():
 
             try:
-                return dept.execute(query, context=context)
+                return self.department_gateway.execute(dept, query, context=context)
             except TypeError:
-                return dept.execute(query)
+                return self.department_gateway.execute(dept, query)
 
         harness_result = self.harness.execute(
             department_name=self._dept_name(dept),

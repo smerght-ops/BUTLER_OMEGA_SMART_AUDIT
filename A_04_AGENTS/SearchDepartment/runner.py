@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 import time
 import re
 from pathlib import Path
@@ -316,7 +316,10 @@ class SearchDepartment(BaseDepartment):
                 "BROWSER_SEARCH_CANCELLED", "LocalFirstSearch",
                 stage="web_search_cancelled", query=topic,
             )
-        result = self.browser.execute(f"Найди в интернете {topic}")
+        from A_03_ORCHESTRATION.permission import DepartmentExecutionGateway
+        result = DepartmentExecutionGateway().execute(
+            self.browser, f"Найди в интернете {topic}"
+        )
         metadata = dict(result.get("metadata") or {})
         metadata.update({"local_first": True, "confirmation": "accepted"})
         result["metadata"] = metadata

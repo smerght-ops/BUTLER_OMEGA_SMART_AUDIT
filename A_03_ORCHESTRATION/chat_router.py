@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 import argparse
 import json
@@ -155,12 +155,15 @@ def handle_draw(text, models):
         # === ЧИСТЫЙ АРХИТЕКТУРНЫЙ МОСТ ВЕХИ 4.15.4 ===
         try:
             from A_03_ORCHESTRATION.dispatcher_bridge_v2 import dispatch
+            from A_03_ORCHESTRATION.permission import DepartmentExecutionGateway
             from A_04_AGENTS.ImageDepartment.runner import ImageDepartment
             print("\n[*] Роутер: Активирую контур IMAGE напрямую...")
             
-            # Вызываем напрямую ImageDepartment, минуя блокировки харнаса для этого CR
+            # Image уже выбран: вызываем его через permission gateway
             img_dept = ImageDepartment()
-            dispatch_result = img_dept.execute(f"нарисуй {result}")
+            dispatch_result = DepartmentExecutionGateway().execute(
+                img_dept, f"нарисуй {result}"
+            )
             
             print("\n" + "="*50)
             print("[✓] РЕЗУЛЬТАТ ГЕНЕРАЦИИ КОНТУРА:")

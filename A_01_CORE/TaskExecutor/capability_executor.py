@@ -12,6 +12,7 @@ from CapabilityRegistry import CapabilityRegistry
 
 from .execution_context import ExecutionContext
 from A_07_MEMORY.semantic_memory import SemanticMemory
+from A_03_ORCHESTRATION.permission import DepartmentExecutionGateway
 
 
 class CapabilityExecutor:
@@ -23,6 +24,7 @@ class CapabilityExecutor:
         self._departments = {}
         self._department_sources = None
         self.skill_memory = SemanticMemory()
+        self.department_gateway = DepartmentExecutionGateway()
         self.journal_dir = self.root / "A_05_STORAGE" / "tasks"
         self.journal_dir.mkdir(parents=True, exist_ok=True)
 
@@ -66,7 +68,9 @@ class CapabilityExecutor:
                 last_failure = None
                 for attempt in range(1, 3):
                     call_context["retry_attempt"] = attempt
-                    candidate = department.execute(query, context=call_context)
+                    candidate = self.department_gateway.execute(
+                        department, query, context=call_context
+                    )
                     result = candidate
                     if isinstance(candidate, dict) and candidate.get("ok"):
                         break
@@ -111,7 +115,8 @@ class CapabilityExecutor:
         verification = []
         try:
             vision = self._department("VISION")
-            check = vision.execute(
+            check = self.department_gateway.execute(
+                vision,
                 "Проверь созданный визуальный артефакт и перечисли объективные дефекты.",
                 context={"attachments": [str(path)], "verification_mode": True},
             )
@@ -121,14 +126,16 @@ class CapabilityExecutor:
             if has_defect:
                 corrected_context = dict(call_context)
                 corrected_context["vision_feedback"] = check.get("text")
-                corrected = creator.execute(
+                corrected = self.department_gateway.execute(
+                    creator,
                     f"{query}\nИсправь подтверждённые Vision-дефекты: {check.get('text', '')}",
                     context=corrected_context,
                 )
                 if corrected.get("ok"):
                     result = corrected
                     path = self._output(corrected)
-                    recheck = vision.execute(
+                    recheck = self.department_gateway.execute(
+                        vision,
                         "Повторно проверь исправленный визуальный артефакт.",
                         context={"attachments": [str(path)], "verification_mode": True},
                     )

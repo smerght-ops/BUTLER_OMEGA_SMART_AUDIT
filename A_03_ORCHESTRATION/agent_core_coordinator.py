@@ -11,7 +11,7 @@ from typing import Callable
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
-from CapabilityRegistry import CapabilityRegistry
+from tools.inspectors.CapabilityRegistry import CapabilityRegistry
 
 
 class AgentCoreUnavailable(RuntimeError):

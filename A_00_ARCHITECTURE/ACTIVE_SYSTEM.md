@@ -1,39 +1,24 @@
-﻿# BUTLER OMEGA SMART - ACTIVE SYSTEM
+# Butler Omega Smart — Active Production System
 
-ENTRY POINT
-A_03_ORCHESTRATION/chat_router.py
+Главный источник истины: `A_00_ARCHITECTURE/PRODUCTION_ARCHITECTURE.json`.
 
-MAIN DISPATCHER
-A_02_MANAGERS/smart_dispatcher_v2.py
+## Runtime
 
-ACTIVE DEPARTMENTS
-- CodingDepartment
-- ImageDepartment
-- VisionDepartment
-- TextDepartment
-- MemoryDepartment
-- VideoDepartment
-- AudioDepartment
-- ArchiveDepartment
+`START_BUTLER_OS.ps1 → BUTLER_OS.py → AgentCoreCoordinator → dispatcher_bridge_v2 → SmartDispatcherV2 → ButlerHarness → DepartmentExecutionGateway → PermissionEngine → Department`
 
-ACTIVE MEMORY
-A_07_MEMORY
+Остановка: `STOP_BUTLER_OS.ps1`, только по session-owned PID из
+`A_08_LOGS/runtime/active_session.json`.
 
-ACTIVE PROVIDER
-A_02_MANAGERS/provider_manager.py
+## Production ownership
 
-ACTIVE ORCHESTRATION
-A_03_ORCHESTRATION
+- Dispatcher: `SmartDispatcherV2`.
+- Chat/model provider: `A_02_MANAGERS.smart_dispatcher.SmartDispatcher` (`ACTIVE_SUPPORT`).
+- Department table: `A_02_MANAGERS/department_registry.py`.
+- Memory coordinator: `MemoryOrchestratorV2`.
+- Project Knowledge: `RepositoryKnowledgeDepartment` через `repository_knowledge_gateway`.
+- Engineering gate: `Run-EngineeringReview.ps1 -Full -Detailed`.
+- Runtime contract: `RUNTIME_CONTRACT.json`.
+- Memory contract: `MEMORY_CONTRACT.json`.
 
-LEGACY COMPONENTS
-- A_04_AGENTS/professor.py
-- A_04_AGENTS/run_professor_daemon.py
-- A_02_MANAGERS/smart_dispatcher.py
-- A_02_MANAGERS/dream_manager.py
-
-RULE
-Все новые изменения вносятся только через:
-chat_router.py
-→ smart_dispatcher_v2.py
-→ Department
-→ provider_manager.py
+`chat_router.py` имеет статус `LEGACY` и не является production entry point.
+`A_10_BUTLER_OS` имеет статус `ACTIVE_SUPPORT`, а не отдельного runtime.

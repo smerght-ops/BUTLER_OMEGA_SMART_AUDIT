@@ -39,9 +39,9 @@ try {
     $DetailedValue = if ($Detailed) { "True" } else { "False" }
     $PreviousErrorPreference = $ErrorActionPreference
     $ErrorActionPreference = "Continue"
-    & $PythonExe -c "from A_04_AGENTS.EngineeringReviewDepartment.checker import run_full_review, print_report; print_report(run_full_review(mode='$Mode', detailed=$DetailedValue))" 2>&1
+    & $PythonExe -c "import sys; from A_04_AGENTS.EngineeringReviewDepartment.checker import run_full_review, print_report; r=run_full_review(mode='$Mode', detailed=$DetailedValue); print_report(r); sys.exit(0 if r['overall']=='PASS' else 1)" 2>&1
     $ErrorActionPreference = $PreviousErrorPreference
-    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+    if ($LASTEXITCODE -ne 0) { exit 1 }
 
     Write-Host ""
     Write-Host "--- Engineering Review Complete ---" -ForegroundColor Green
@@ -50,5 +50,5 @@ try {
 catch {
     Write-Host "ERROR: Engineering review failed:" -ForegroundColor Red
     Write-Host $_.Exception.Message -ForegroundColor Red
-    exit 1
+    exit 2
 }

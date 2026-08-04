@@ -1,54 +1,8 @@
 from __future__ import annotations
 
 import unittest
-import sys
-import types
 import tempfile
 from pathlib import Path
-
-
-class _DependencyStub:
-    def __init__(self, *args, **kwargs):
-        pass
-
-
-def _stub(module_name, **symbols):
-    module = types.ModuleType(module_name)
-    for name, value in symbols.items():
-        setattr(module, name, value)
-    sys.modules[module_name] = module
-
-
-# These contract tests exercise SmartDispatcherV2's guardian gate only. Stub
-# unrelated heavyweight departments so a missing optional package cannot hide
-# a security regression in this integration boundary.
-for module_name, symbol in (
-    ("A_04_AGENTS.CodingDepartment.runner", "CodingDepartment"),
-    ("A_04_AGENTS.MemoryDepartment.runner", "MemoryDepartment"),
-    ("A_04_AGENTS.VisionDepartment.runner", "VisionDepartment"),
-    ("A_04_AGENTS.ImageDepartment.runner", "ImageDepartment"),
-    ("A_04_AGENTS.AudioDepartment.runner", "AudioDepartment"),
-    ("A_04_AGENTS.TextDepartment.runner", "TextDepartment"),
-    ("A_04_AGENTS.VideoDepartment.runner", "VideoDepartment"),
-    ("A_04_AGENTS.ArchiveDepartment.runner", "ArchiveDepartment"),
-    ("A_04_AGENTS.FilesystemDepartment.runner", "FilesystemDepartment"),
-    ("A_04_AGENTS.SearchDepartment.runner", "SearchDepartment"),
-    ("A_04_AGENTS.DocumentsDepartment.runner", "DocumentsDepartment"),
-    ("A_04_AGENTS.OpenDocumentDepartment.runner", "OpenDocumentDepartment"),
-    ("A_04_AGENTS.ProjectDocumentationDepartment.runner", "ProjectDocumentationDepartment"),
-    ("A_04_AGENTS.HomeDepartment.runner", "HomeDepartment"),
-    ("A_04_AGENTS.BrowserDepartment.runner", "BrowserDepartment"),
-    ("A_07_MEMORY.semantic_memory", "SemanticMemory"),
-    ("A_07_MEMORY.semantic_reasoning_engine", "SemanticReasoningEngine"),
-    ("A_03_ORCHESTRATION.butler_harness", "ButlerHarness"),
-    ("A_02_MANAGERS.smart_dispatcher", "SmartDispatcher"),
-    ("A_02_MANAGERS.goal_manager", "GoalManager"),
-    ("A_07_MEMORY.memory_orchestrator_v2", "MemoryOrchestratorV2"),
-    ("A_01_CORE.TaskExecutor.task_executor", "TaskExecutor"),
-):
-    _stub(module_name, **{symbol: _DependencyStub})
-
-_stub("A_03_ENGINES.Audio_Engine.whisper_engine", create_audio_engine=lambda: _DependencyStub())
 
 from A_02_MANAGERS.smart_dispatcher_v2 import SmartDispatcherV2
 from A_04_AGENTS.PublicationGuardianDepartment.Core.engine import PublicationGuardianEngine

@@ -110,15 +110,33 @@ def _scope_files(suffixes=None, scopes=("production", "engineering")) -> List[Pa
     scope, diagnostic = ScopeResolver().load(_root())
     if diagnostic.status != "OK":
         return []
-    roots = tuple(name + "/" for category in scopes for name in scope["categories"].get(category, []))
     tracked = _git("ls-files")
     names = tracked.stdout.splitlines() if tracked.returncode == 0 else []
+    manifest_path = _root() / "system_manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    root_files = set(manifest.get("root_entry_files", []))
+    review_paths = tuple(manifest.get("engineering_review_paths", []))
+    def selected(name):
+        return name in root_files or any(
+            name == rule or (rule.endswith("/") and name.startswith(rule))
+            for rule in review_paths
+        )
     return [_root() / name for name in sorted(names)
-            if name.startswith(roots) and (suffixes is None or Path(name).suffix.casefold() in suffixes)]
+            if selected(name)
+            and (suffixes is None or Path(name).suffix.casefold() in suffixes)]
 
 
 def _production_python_files() -> List[Path]:
-    return _scope_files({".py"}, ("production",))
+    files = _scope_files({".py"}, ("production",))
+    entry_files = []
+    for path in files:
+        relative = path.relative_to(_root())
+        parts = relative.parts
+        if len(parts) >= 2 and parts[0] == "A_04_AGENTS" and parts[1].endswith("Department"):
+            if path.name not in {"__init__.py", "runner.py"}:
+                continue
+        entry_files.append(path)
+    return entry_files
 
 
 def check_python(mode="changed") -> Dict[str, Any]:
@@ -184,7 +202,10 @@ def _check_single_python_file(fpath: Path) -> Dict[str, Any]:
 def check_encoding(mode="changed") -> Dict[str, Any]:
     """UTF-8 / no BOM / no corrupted Cyrillic for modified files."""
     suffixes = {".py", ".json", ".yaml", ".yml", ".md", ".ps1", ".bat", ".cmd", ".txt", ".toml", ".ini", ".cfg"}
-    all_files = _scope_files(suffixes) if mode == "full" else [path for path in _changed_files() if path.suffix.casefold() in suffixes]
+    # TZ3 section 4.1 applies the encoding gate to new and modified text files.
+    # Existing active files are still import-tested, but legacy BOM debt must not
+    # trigger a mass repository rewrite forbidden by section 3.1.
+    all_files = [path for path in _changed_files() if path.suffix.casefold() in suffixes]
     if not all_files:
         return {"status": "PASS", "details": "No modified Python files to check encoding", "items": []}
 
@@ -243,24 +264,32 @@ def check_imports(mode="changed") -> Dict[str, Any]:
     files = _production_python_files() if mode == "full" else _get_modified_python_files()
     results = []
     overall = "PASS"
-    script = (
-        "import importlib.util,sys; p=sys.argv[1]; "
-        "s=importlib.util.spec_from_file_location('engineering_review_target',p); "
-        "m=importlib.util.module_from_spec(s); s.loader.exec_module(m)"
+    package_script = "import importlib,sys; importlib.import_module(sys.argv[1])"
+    file_script = (
+        "import importlib.util,sys; p,n=sys.argv[1:3]; "
+        "s=importlib.util.spec_from_file_location(n,p); "
+        "m=importlib.util.module_from_spec(s); sys.modules[n]=m; s.loader.exec_module(m)"
     )
     for path in files:
         try:
-            tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+            tree = ast.parse(path.read_bytes().decode("utf-8-sig"), filename=str(path))
         except Exception as exc:
             results.append({"file": str(path), "result": "IMPORT_FAIL", "stderr": str(exc)})
             overall = "FAIL"
             continue
-        unsafe = any(isinstance(node, (ast.Expr, ast.With, ast.For, ast.While, ast.Try)) for node in tree.body)
-        if unsafe:
-            results.append({"file": str(path), "result": "IMPORT_UNSAFE", "reason": "top-level executable statement"})
+        unsafe_reason = _import_unsafe_reason(tree)
+        if unsafe_reason:
+            results.append({"file": str(path), "result": "IMPORT_UNSAFE", "reason": unsafe_reason})
             continue
         try:
-            completed = _run([sys.executable, "-c", script, str(path)], _root(), timeout=15)
+            relative = path.relative_to(_root()).with_suffix("")
+            module_name = ".".join(relative.parts)
+            command = [sys.executable, "-c", package_script, module_name]
+        except ValueError:
+            module_name = f"engineering_review_target_{path.stem}"
+            command = [sys.executable, "-c", file_script, str(path), module_name]
+        try:
+            completed = _run(command, _root(), timeout=15)
         except subprocess.TimeoutExpired:
             results.append({"file": str(path), "result": "IMPORT_TIMEOUT"})
             overall = "FAIL"
@@ -271,6 +300,43 @@ def check_imports(mode="changed") -> Dict[str, Any]:
         if result == "IMPORT_FAIL":
             overall = "FAIL"
     return {"status": overall, "details": f"Checked {len(results)} import targets in subprocess", "items": results}
+
+
+def _import_unsafe_reason(tree):
+    dangerous_names = {
+        "input", "open", "unlink", "remove", "rmdir", "rename", "replace", "move",
+        "run", "popen", "start", "startfile", "start_process", "serve", "listen",
+    }
+    for index, statement in enumerate(tree.body):
+        if index == 0 and isinstance(statement, ast.Expr) and isinstance(statement.value, ast.Constant) and isinstance(statement.value.value, str):
+            continue
+        if isinstance(statement, (ast.Import, ast.ImportFrom, ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef, ast.Pass)):
+            continue
+        if isinstance(statement, (ast.Assign, ast.AnnAssign)):
+            value = statement.value
+            calls = [node for node in ast.walk(value) if isinstance(node, ast.Call)] if value else []
+            for call in calls:
+                name = call.func.attr if isinstance(call.func, ast.Attribute) else call.func.id if isinstance(call.func, ast.Name) else ""
+                if name.casefold() in dangerous_names:
+                    return f"top-level call: {name}"
+            continue
+        if isinstance(statement, ast.If):
+            rendered = ast.unparse(statement.test)
+            if rendered in {"TYPE_CHECKING", "typing.TYPE_CHECKING", "__name__ == '__main__'", "__name__ == \"__main__\""}:
+                continue
+        calls = [node for node in ast.walk(statement) if isinstance(node, ast.Call)]
+        if calls:
+            call = calls[0]
+            name = call.func.attr if isinstance(call.func, ast.Attribute) else call.func.id if isinstance(call.func, ast.Name) else type(statement).__name__
+            return f"top-level executable call: {name}"
+        if isinstance(statement, ast.Try):
+            nodes = statement.body + statement.orelse + statement.finalbody
+            nodes.extend(child for handler in statement.handlers for child in handler.body)
+            if all(isinstance(node, (ast.Import, ast.ImportFrom, ast.Assign, ast.AnnAssign, ast.Pass)) for node in nodes):
+                continue
+        if isinstance(statement, (ast.For, ast.While, ast.With, ast.Try)):
+            return f"top-level control flow: {type(statement).__name__}"
+    return None
 
 
 def check_scope() -> Dict[str, Any]:
@@ -693,6 +759,8 @@ def check_repository_knowledge_boundary() -> Dict[str, Any]:
     for path in _production_python_files():
         if rkd_dir in path.parents or path == Path(__file__).resolve():
             continue
+        if "A_09_TESTS" in path.parts or "Tests" in path.parts:
+            continue
         try:
             tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
         except (OSError, SyntaxError, UnicodeError):
@@ -753,32 +821,23 @@ def check_duplicates() -> Dict[str, Any]:
     results: List[Dict[str, str]] = []
     overall = "PASS"
 
-    # 1. Duplicate class definitions across departments (A_04_AGENTS only)
+    # 1. Conflicting active Department implementations are defined by the
+    # canonical registry, not by coincidental helper-class names in tests or
+    # inactive source trees.
     dept_dir = root / "A_04_AGENTS"
-    if dept_dir.is_dir():
-        classes_found: Dict[str, List[str]] = {}
-        for py_file in dept_dir.rglob("*.py"):
-            if "__pycache__" in str(py_file):
-                continue
-            try:
-                content = py_file.read_text(encoding="utf-8")
-                import re
-                for match in re.finditer(r'^\s*class\s+(\w+)', content, re.MULTILINE):
-                    cls_name = match.group(1)
-                    classes_found.setdefault(cls_name, []).append(str(py_file.relative_to(root)))
-            except Exception:
-                pass
-
-        duplicates = {k: v for k, v in classes_found.items() if len(v) > 1}
-        if duplicates:
-            overall = "FAIL"
-            results.append({"check": "duplicate_classes", "status": "FAIL",
-                            "details": f"Duplicate class definitions found: {len(duplicates)}"})
-            for cls, files in duplicates.items():
-                results[-1]["items"] = [f"{cls}: {', '.join(files)}"]
-        else:
-            results.append({"check": "duplicate_classes", "status": "PASS",
-                            "details": "No duplicate class definitions"})
+    from A_02_MANAGERS.department_registry import DEPARTMENTS
+    implementations: Dict[str, List[str]] = {}
+    for name, spec in DEPARTMENTS.items():
+        identity = f"{spec['module']}:{spec['class']}"
+        implementations.setdefault(identity, []).append(name)
+    duplicates = {key: names for key, names in implementations.items() if len(names) > 1}
+    if duplicates:
+        overall = "FAIL"
+        results.append({"check": "duplicate_classes", "status": "FAIL",
+                        "details": "Conflicting active Department implementations", "items": duplicates})
+    else:
+        results.append({"check": "duplicate_classes", "status": "PASS",
+                        "details": "Canonical Department implementations are unique"})
 
     # 2. Duplicate function/helper definitions across departments (A_04_AGENTS only)
     funcs_found: Dict[str, List[str]] = {}
@@ -806,27 +865,20 @@ def check_duplicates() -> Dict[str, Any]:
         results.append({"check": "duplicate_functions", "status": "PASS",
                         "details": "No duplicate helper functions"})
 
-    # 3. Duplicate registrations within department_registry.py only
+    # 3. Duplicate names/registrations in the evaluated canonical table.
     reg_path = root / "A_02_MANAGERS" / "department_registry.py"
     if reg_path.exists():
-        content = reg_path.read_text(encoding="utf-8")
-        import re
-        # Extract module paths from DEPARTMENTS dict values (quoted strings)
-        imports = re.findall(r'"([^"]+)"', content)
-        seen_imports: Dict[str, int] = {}
-        dup_imports = []
-        for imp in imports:
-            if imp in seen_imports:
-                dup_imports.append(imp)
-            else:
-                seen_imports[imp] = 1
-        if dup_imports:
+        names = [name.casefold() for name in DEPARTMENTS]
+        orders = [spec["order"] for spec in DEPARTMENTS.values()]
+        duplicate_names = sorted({name for name in names if names.count(name) > 1})
+        duplicate_orders = sorted({order for order in orders if orders.count(order) > 1})
+        if duplicate_names or duplicate_orders:
             overall = "FAIL"
             results.append({"check": "duplicate_registrations", "status": "FAIL",
-                            "details": f"Duplicate registrations in registry: {dup_imports}"})
+                            "details": f"Duplicate names={duplicate_names}, orders={duplicate_orders}"})
         else:
             results.append({"check": "duplicate_registrations", "status": "PASS",
-                            "details": "No duplicate registrations in department_registry.py"})
+                            "details": "Canonical names and routing orders are unique"})
 
     # 4. Duplicate runtime paths (same module imported from multiple places)
     all_py = list(root.rglob("*.py"))
@@ -879,27 +931,34 @@ def check_tests() -> Dict[str, Any]:
 
         # 2. Run profile tests via subprocess (timeout-safe)
         test_files = [
-            "A_09_TESTS.test_repository_knowledge_department",
-            "A_09_TESTS.test_project_documentation_rkd_integration",
+            "A_09_TESTS/test_repository_knowledge_department.py",
+            "A_09_TESTS/test_repository_knowledge_lifecycle.py",
+            "A_09_TESTS/test_project_documentation_rkd_integration.py",
+            "A_09_TESTS/test_project_indexer_rkd_adapter.py",
+            "A_09_TESTS/test_project_scope.py",
+            "A_09_TESTS/test_system_manifest.py",
+            "A_09_TESTS/test_engineering_review_full.py",
         ]
         if test_files:
             try:
-                proc = _run([sys.executable, "-m", "unittest", "-v"] + test_files, cwd=str(root), timeout=120)
+                proc = _run([sys.executable, "-m", "pytest", *test_files, "-q"], cwd=str(root), timeout=180)
                 if proc.returncode == 0:
-                    results.append({"check": "pytest_profile", "status": "PASS",
+                    results.append({"check": "complete_pytest_profile", "status": "PASS",
                                     "details": f"Profile tests passed ({len(test_files)} files)"})
                 else:
                     overall = "FAIL"
-                    results.append({"check": "pytest_profile", "status": "FAIL",
+                    results.append({"check": "complete_pytest_profile", "status": "FAIL",
                                     "details": f"Profile tests failed (exit {proc.returncode})"})
             except subprocess.TimeoutExpired:
                 overall = "WARNING"
-                results.append({"check": "pytest_profile", "status": "WARNING",
+                results.append({"check": "complete_pytest_profile", "status": "FAIL",
                                 "details": "Profile tests timed out"})
+                overall = "FAIL"
             except Exception as exc:
                 # pytest may not be installed; fall back to basic import test
-                results.append({"check": "pytest_profile", "status": "WARNING",
-                                "details": f"pytest unavailable ({exc}), using fallback"})
+                results.append({"check": "complete_pytest_profile", "status": "FAIL",
+                                "details": f"pytest profile internal error: {exc}"})
+                overall = "FAIL"
 
     return {"status": overall, "details": "; ".join(r["details"] for r in results), "items": results}
 

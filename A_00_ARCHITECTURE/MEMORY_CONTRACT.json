@@ -1,0 +1,27 @@
+{
+  "schema": "butler.memory-contract.v1",
+  "version": "1.0",
+  "production_orchestrator": "A_07_MEMORY.memory_orchestrator_v2.MemoryOrchestratorV2",
+  "department_interface": "A_04_AGENTS.MemoryDepartment.runner.MemoryDepartment",
+  "types": [
+    {"type": "SESSION", "writer": "MemoryOrchestratorV2", "api": "add_session_event", "storage": "A_05_STORAGE/session_history.jsonl", "lifetime": "session"},
+    {"type": "WORKING", "writer": "MemoryOrchestratorV2", "api": "build_memory_packet", "storage": "in-memory bounded packet", "lifetime": "request"},
+    {"type": "SEMANTIC", "writer": "MemoryOrchestratorV2", "api": "index_semantic", "storage": "A_07_MEMORY semantic storage", "lifetime": "persistent"},
+    {"type": "PERMANENT_USER", "writer": "ProfileManager via MemoryOrchestratorV2", "api": "MemoryDepartment", "storage": "A_05_STORAGE/user_profile.json", "lifetime": "persistent"},
+    {"type": "PROJECT_ARCHITECTURE", "writer": "RepositoryKnowledgeDepartment", "api": "repository_knowledge_gateway", "storage": "immutable RepositoryIndex", "lifetime": "repository version"},
+    {"type": "SPECIALIZED_WORKFLOW", "writer": "MemoryOrchestratorV2", "api": "evolve_knowledge", "storage": "MemoryFacadeV2 controlled knowledge", "lifetime": "versioned"}
+  ],
+  "ownership_rules": [
+    "MemoryDepartment is a user-facing interface and never constructs MemoryFacadeV2 directly",
+    "MemoryOrchestratorV2 is the only production coordinator",
+    "MemoryFacadeV2 owns storage primitives but is not a routable Department",
+    "Project architecture knowledge is owned by RKD and consumed through its Gateway",
+    "Conflict resolution uses versioned evolve/rollback operations"
+  ],
+  "llm_boundary": "A_02_MANAGERS.smart_dispatcher.SmartDispatcher",
+  "legacy_replacements": {
+    "chat_router.ask_ollama": "SmartDispatcher.execute_employee",
+    "architectural_knowledge_graph ROOT.rglob": "repository_knowledge_gateway.get_index",
+    "memory_orchestrator.py": "memory_orchestrator_v2.py"
+  }
+}

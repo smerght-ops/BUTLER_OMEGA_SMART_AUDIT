@@ -1,143 +1,111 @@
-﻿$Host.UI.RawUI.WindowTitle = "BUTLER OMEGA SMART - GREEN START"
-[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
-$ButlerArgs = @($args)
-$OnceMode = $ButlerArgs.Count -gt 0 -and $ButlerArgs[0] -eq "--once"
-Set-Location $PSScriptRoot
-$env:PYTHONIOENCODING = "utf-8"
+[CmdletBinding()]
+param(
+    [switch]$ValidateOnly,
+    [Parameter(ValueFromRemainingArguments = $true)]
+    [string[]]$ButlerArgs
+)
 
-function OK($m){ Write-Host "[OK] $m" -ForegroundColor Green }
-function INFO($m){ Write-Host "[..] $m" -ForegroundColor Cyan }
-function WARN($m){ Write-Host "[!!] $m" -ForegroundColor Yellow }
-function FAIL($m){ Write-Host "[FATAL] $m" -ForegroundColor Red; exit 1 }
+$ErrorActionPreference = "Stop"
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+$ProjectRoot = $PSScriptRoot
+Set-Location -LiteralPath $ProjectRoot
+$StateDirectory = Join-Path $ProjectRoot "A_08_LOGS\runtime"
+$StatePath = Join-Path $StateDirectory "active_session.json"
+$Utf8NoBom = [System.Text.UTF8Encoding]::new($false)
+
+function Write-State([hashtable]$State) {
+    [System.IO.Directory]::CreateDirectory($StateDirectory) | Out-Null
+    $json = $State | ConvertTo-Json -Depth 8
+    [System.IO.File]::WriteAllText($StatePath, $json + [Environment]::NewLine, $Utf8NoBom)
+}
 
 function Resolve-ButlerPython {
-    $checked = [System.Collections.Generic.List[string]]::new()
-    $candidates = [System.Collections.Generic.List[string]]::new()
-    if($env:BUTLER_PYTHON){ $candidates.Add($env:BUTLER_PYTHON) }
-    if($env:VIRTUAL_ENV){ $candidates.Add((Join-Path $env:VIRTUAL_ENV "Scripts\python.exe")) }
-    $pathPython = Get-Command python.exe -ErrorAction SilentlyContinue
-    if($pathPython){ $candidates.Add($pathPython.Source) }
-    $pyLauncher = Get-Command py.exe -ErrorAction SilentlyContinue
-    if($pyLauncher){
-        try {
-            $resolved = & $pyLauncher.Source -3 -c "import sys; print(sys.executable)" 2>$null
-            if($LASTEXITCODE -eq 0 -and $resolved){ $candidates.Add(($resolved | Select-Object -First 1).Trim()) }
-        } catch {}
-    }
-    $candidates.Add((Join-Path $env:LOCALAPPDATA "Python\bin\python.exe"))
-    $candidates.Add((Join-Path $env:LOCALAPPDATA "Programs\Python\Python312\python.exe"))
-    $candidates.Add((Join-Path $env:USERPROFILE ".cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe"))
-    foreach($candidate in ($candidates | Select-Object -Unique)){
-        if([string]::IsNullOrWhiteSpace($candidate)){ continue }
-        $checked.Add($candidate)
-        if(-not (Test-Path -LiteralPath $candidate -PathType Leaf)){ continue }
-        try {
-            # A bare interpreter is not enough: Codex can expose a bundled Python
-            # which has no Butler runtime dependencies.  Validate the dependency
-            # used by the dispatcher/departments before selecting the candidate.
-            & $candidate -c "import sys, requests; raise SystemExit(0 if sys.version_info >= (3, 10) else 1)" 2>$null
-            if($LASTEXITCODE -eq 0){ return (Resolve-Path -LiteralPath $candidate).Path }
-        } catch {}
-    }
-    Write-Host "[FATAL] Working Python 3.10+ was not found." -ForegroundColor Red
-    Write-Host "Checked locations:" -ForegroundColor Red
-    foreach($item in $checked){ Write-Host "  - $item" -ForegroundColor Red }
-    exit 1
-}
-
-function Wait-Port($Name, $Port, $MaxSeconds){
-    $limit = [int]($MaxSeconds / 2)
-    for($i=1; $i -le $limit; $i++){
-        if(Test-NetConnection 127.0.0.1 -Port $Port -InformationLevel Quiet -WarningAction SilentlyContinue){
-            OK "$Name ONLINE on port $Port"
-            return
+    $configured = Join-Path $ProjectRoot ".butler_python_path"
+    if (Test-Path -LiteralPath $configured -PathType Leaf) {
+        $candidate = (Get-Content -LiteralPath $configured -Raw).Trim()
+        if (Test-Path -LiteralPath $candidate -PathType Leaf) {
+            & $candidate -c "import requests,yaml,fitz" 2>$null
+            if ($LASTEXITCODE -eq 0) { return (Resolve-Path -LiteralPath $candidate).Path }
         }
-        INFO "Waiting $Name... [$i/$limit]"
-        Start-Sleep -Seconds 2
     }
-    FAIL "$Name timeout on port $Port"
+    if ($env:BUTLER_PYTHON -and (Test-Path -LiteralPath $env:BUTLER_PYTHON -PathType Leaf)) {
+        & $env:BUTLER_PYTHON -c "import requests,yaml,fitz" 2>$null
+        if ($LASTEXITCODE -eq 0) { return (Resolve-Path -LiteralPath $env:BUTLER_PYTHON).Path }
+    }
+    throw "CANONICAL_PYTHON_UNAVAILABLE"
 }
 
-Clear-Host
+function Test-ServicePort([int]$Port) {
+    return Test-NetConnection 127.0.0.1 -Port $Port -InformationLevel Quiet -WarningAction SilentlyContinue
+}
+
+function Stop-OwnedProcesses([hashtable]$State) {
+    foreach ($entry in @($State.processes)) {
+        if (-not $entry.owned) { continue }
+        $process = Get-Process -Id $entry.pid -ErrorAction SilentlyContinue
+        if ($null -eq $process) { continue }
+        $process.CloseMainWindow() | Out-Null
+        if (-not $process.WaitForExit(3000)) {
+            Stop-Process -Id $entry.pid -Force -ErrorAction SilentlyContinue
+        }
+    }
+}
+
 $PythonExe = Resolve-ButlerPython
-$env:BUTLER_RESOLVED_PYTHON = $PythonExe
-Write-Host "=====================================================" -ForegroundColor Green
-Write-Host "      BUTLER OMEGA SMART - GREEN START BUTTON        " -ForegroundColor Green
-Write-Host "=====================================================" -ForegroundColor Green
-Write-Host "[ROOT] $PWD"
-Write-Host "[PYTHON] $PythonExe"
-Write-Host "[PID] Launcher PowerShell: $PID"
-Write-Host ""
-
-INFO "1/6 STATUS CENTER"
-if(Test-Path ".\STATUS_CENTER_READONLY.ps1"){
-    powershell -NoProfile -ExecutionPolicy Bypass -File ".\STATUS_CENTER_READONLY.ps1"
-} else {
-    WARN "STATUS_CENTER_READONLY.ps1 not found"
+$SessionId = [guid]::NewGuid().ToString("N")
+$state = @{
+    schema = "butler.runtime-session.v1"
+    session_id = $SessionId
+    project_root = $ProjectRoot
+    launcher_pid = $PID
+    created_at = [DateTime]::UtcNow.ToString("o")
+    status = "STARTING"
+    processes = @()
+    external_services = @(
+        @{ name = "Ollama"; mode = $(if (Test-ServicePort 11434) { "EXTERNAL_PREEXISTING" } else { "UNAVAILABLE" }) },
+        @{ name = "ComfyUI"; mode = $(if (Test-ServicePort 8188) { "EXTERNAL_PREEXISTING" } else { "UNAVAILABLE" }) },
+        @{ name = "LM Studio"; mode = "NOT_REQUIRED" },
+        @{ name = "System Guardian"; mode = "NOT_REQUIRED" }
+    )
 }
 
-INFO "2/6 PASSPORT + MEMORY GUARDIAN"
-if(-not (Test-Path ".\A_07_CONFIG\project_passport.json")){
-    FAIL "project_passport.json not found"
+if (Test-Path -LiteralPath $StatePath) {
+    throw "ACTIVE_BUTLER_SESSION_EXISTS: $StatePath"
 }
-OK "Passport detected"
+Write-State $state
 
-$Guardian = & $PythonExe -m A_01_CORE.memory_guardian --self-test 2>&1 | Out-String
-Write-Host $Guardian
-if($LASTEXITCODE -ne 0 -or $Guardian.Contains("FATAL LOCKDOWN")){
-    FAIL "Memory Guardian blocked start"
+if ($ValidateOnly) {
+    $state.status = "VALIDATED"
+    Write-State $state
+    Write-Host "BUTLER_RUNTIME_VALIDATED session=$SessionId python=$PythonExe"
+    Remove-Item -LiteralPath $StatePath -Force
+    exit 0
 }
-OK "Memory Guardian passed"
-
-INFO "3/6 OLLAMA"
-if(-not (Test-NetConnection 127.0.0.1 -Port 11434 -InformationLevel Quiet -WarningAction SilentlyContinue)){
-    Start-Process "C:\Users\KOS\AppData\Local\Programs\Ollama\ollama.exe" -ArgumentList "serve" -WindowStyle Minimized
-}
-Wait-Port "Ollama" 11434 60
-
-INFO "4/6 COMFYUI"
-if(-not (Test-NetConnection 127.0.0.1 -Port 8188 -InformationLevel Quiet -WarningAction SilentlyContinue)){
-    Start-Process "D:\AI_Studio\ComfyUI_windows_portable\python_embeded\python.exe" -ArgumentList "-s ComfyUI\main.py --windows-standalone-build" -WorkingDirectory "D:\AI_Studio\ComfyUI_windows_portable" -WindowStyle Minimized
-}
-Wait-Port "ComfyUI" 8188 120
-
-INFO "5/6 SYSTEM GUARDIAN"
-if(Test-Path ".\A_01_CORE\system_guardian.py"){
-    & $PythonExe ".\A_01_CORE\system_guardian.py"
-} else {
-    WARN "system_guardian.py not found"
-}
-
-INFO "6/6 START BUTLER OS"
-if(-not (Test-Path ".\BUTLER_OS.py")){
-    FAIL "BUTLER_OS.py not found"
-}
-
-Write-Host "=====================================================" -ForegroundColor Green
-Write-Host "              STARTING BUTLER OS                     " -ForegroundColor Green
-Write-Host "=====================================================" -ForegroundColor Green
-
-INFO "Starting RunnerLoop"
-
-$RunnerProcess = Start-Process -FilePath $PythonExe `
-    -ArgumentList "-m A_02_MANAGERS.TaskRunner.runner_loop" `
-    -WorkingDirectory $PSScriptRoot `
-    -WindowStyle Minimized `
-    -PassThru
-Write-Host "[PID] RunnerLoop: $($RunnerProcess.Id)"
-
-Start-Sleep -Seconds 2
 
 try {
-    & $PythonExe ".\BUTLER_OS.py" @ButlerArgs
-    $ButlerExitCode = $LASTEXITCODE
-} finally {
-    if($RunnerProcess -and -not $RunnerProcess.HasExited){
-        Stop-Process -Id $RunnerProcess.Id -Force -ErrorAction SilentlyContinue
-        Write-Host "[OK] RunnerLoop stopped: $($RunnerProcess.Id)"
-    }
-}
+    $runner = Start-Process -FilePath $PythonExe -ArgumentList @("-m", "A_02_MANAGERS.TaskRunner.runner_loop") -WorkingDirectory $ProjectRoot -WindowStyle Hidden -PassThru
+    $state.processes += @{ role = "RunnerLoop"; pid = $runner.Id; command_token = "A_02_MANAGERS.TaskRunner.runner_loop"; owned = $true }
+    Write-State $state
 
-Write-Host ""
-OK "Butler session closed"
-exit $ButlerExitCode
+    $butlerArguments = @(".\BUTLER_OS.py") + @($ButlerArgs | Where-Object { $null -ne $_ -and $_ -ne "" })
+    $butler = Start-Process -FilePath $PythonExe -ArgumentList $butlerArguments -WorkingDirectory $ProjectRoot -WindowStyle Hidden -PassThru
+    $state.processes += @{ role = "ButlerOS"; pid = $butler.Id; command_token = "BUTLER_OS.py"; owned = $true }
+    $state.status = "RUNNING"
+    Write-State $state
+    Write-Host "BUTLER_RUNTIME_STARTED session=$SessionId butler_pid=$($butler.Id) runner_pid=$($runner.Id)"
+    $butler.WaitForExit()
+    $exitCode = $butler.ExitCode
+    $state.status = "STOPPING"
+    Write-State $state
+    Stop-OwnedProcesses $state
+    Remove-Item -LiteralPath $StatePath -Force
+    exit $exitCode
+}
+catch {
+    $state.status = "PARTIAL_START_FAILED"
+    $state.error = $_.Exception.Message
+    Write-State $state
+    Stop-OwnedProcesses $state
+    Remove-Item -LiteralPath $StatePath -Force -ErrorAction SilentlyContinue
+    throw
+}

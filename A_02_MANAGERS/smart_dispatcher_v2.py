@@ -3,31 +3,14 @@
 from datetime import datetime
 from pathlib import Path
 
-from A_04_AGENTS.CodingDepartment.runner import CodingDepartment
-from A_04_AGENTS.MemoryDepartment.runner import MemoryDepartment
-from A_04_AGENTS.VisionDepartment.runner import VisionDepartment
-from A_04_AGENTS.ImageDepartment.runner import ImageDepartment
-from A_04_AGENTS.AudioDepartment.runner import AudioDepartment
 from A_03_ENGINES.Audio_Engine.whisper_engine import create_audio_engine
-from A_04_AGENTS.TextDepartment.runner import TextDepartment
-from A_04_AGENTS.VideoDepartment.runner import VideoDepartment
-from A_04_AGENTS.ArchiveDepartment.runner import ArchiveDepartment
-from A_04_AGENTS.FilesystemDepartment.runner import FilesystemDepartment
-from A_04_AGENTS.SearchDepartment.runner import SearchDepartment
-from A_04_AGENTS.DocumentsDepartment.runner import DocumentsDepartment
-from A_04_AGENTS.OpenDocumentDepartment.runner import OpenDocumentDepartment
-from A_04_AGENTS.ProjectDocumentationDepartment.runner import ProjectDocumentationDepartment
-from A_04_AGENTS.HomeDepartment.runner import HomeDepartment
-from A_04_AGENTS.BrowserDepartment.runner import BrowserDepartment
-from A_04_AGENTS.PublicationGuardianDepartment.runner import PublicationGuardianDepartment
-from A_04_AGENTS.RepositoryKnowledgeDepartment.runner import RepositoryKnowledgeDepartment
-from A_04_AGENTS.EngineeringReviewDepartment.runner import EngineeringReviewDepartment
 from A_07_MEMORY.semantic_memory import SemanticMemory
 from A_07_MEMORY.semantic_reasoning_engine import SemanticReasoningEngine
 from A_03_ORCHESTRATION.butler_harness import ButlerHarness
 from A_03_ORCHESTRATION.permission import DepartmentExecutionGateway
 from A_02_MANAGERS.smart_dispatcher import SmartDispatcher
 from A_02_MANAGERS.goal_manager import GoalManager
+from A_02_MANAGERS.department_registry import instantiate_departments
 from A_07_MEMORY.memory_orchestrator_v2 import MemoryOrchestratorV2
 from A_01_CORE.TaskExecutor.task_executor import TaskExecutor
 
@@ -46,29 +29,8 @@ class SmartDispatcherV2:
         self.audio_engine = create_audio_engine()
 
         # Specialized handlers precede broad HOME/DOCUMENTS handlers.
-        self.departments = [
-            # Publication inspection is a mandatory security gate and must be
-            # registered before broad operational departments.
-            PublicationGuardianDepartment(),
-            RepositoryKnowledgeDepartment(),
-            EngineeringReviewDepartment(),
-            ProjectDocumentationDepartment(),
-            BrowserDepartment(),
-            ImageDepartment(),
-            VideoDepartment(),
-            AudioDepartment(),
-            ArchiveDepartment(),
-            FilesystemDepartment(),
-            GoalManager(),
-            CodingDepartment(),
-            VisionDepartment(),
-            SearchDepartment(),
-            MemoryDepartment(),
-            OpenDocumentDepartment(),
-            DocumentsDepartment(),
-            TextDepartment(),
-            HomeDepartment(),
-        ]
+        self.departments = list(instantiate_departments())
+        self.goal_manager = GoalManager()
 
     def _dept_name(self, dept):
         return str(

@@ -1,0 +1,12 @@
+{
+  "schema": "butler.production-tree-classification.v1",
+  "groups": {
+    "launcher": {"START_BUTLER_OS.ps1": "ACTIVE_PRODUCTION", "STOP_BUTLER_OS.ps1": "ACTIVE_PRODUCTION", "START_BUTLER_RUNTIME_DIAGNOSTIC.bat": "DIAGNOSTIC", "START_BUTLER.ps1": "LEGACY", "START_BUTLER_FULL.ps1": "LEGACY", "START_SAFE_LAUNCH.py": "EXPERIMENTAL", "START_BUTLER_CORE.py": "DEVELOPMENT", "START_BUTLER_SYSTEM.py": "DEVELOPMENT"},
+    "router_bridge": {"A_03_ORCHESTRATION/dispatcher_bridge_v2.py": "ACTIVE_PRODUCTION", "A_03_ORCHESTRATION/dispatcher_bridge.py": "LEGACY", "A_03_ORCHESTRATION/chat_router.py": "LEGACY", "A_03_ORCHESTRATION/chat_router.CLEAN_UTF8.py": "DUPLICATE", "A_03_ORCHESTRATION/chat_router.HYBRID_WORK*": "DUPLICATE", "A_03_ORCHESTRATION/chat_router_mirror.py": "DUPLICATE", "A_03_ORCHESTRATION/chat_router_test_restore.py": "TEST_ARTIFACT"},
+    "memory": {"A_07_MEMORY/memory_orchestrator_v2.py": "ACTIVE_PRODUCTION", "A_07_MEMORY/memory_orchestrator.py": "LEGACY", "A_07_MEMORY/memory_facade_v2.py": "ACTIVE_SUPPORT", "A_07_MEMORY/memory_facade.py": "LEGACY", "A_07_MEMORY/architectural_knowledge_graph.py": "ACTIVE_SUPPORT"},
+    "knowledge_review": {"A_04_AGENTS/RepositoryKnowledgeDepartment": "ACTIVE_PRODUCTION", "A_04_AGENTS/EngineeringReviewDepartment": "ACTIVE_PRODUCTION", "A_01_CORE/project_indexer.py": "ACTIVE_SUPPORT", "tools/inspectors": "DIAGNOSTIC"},
+    "evidence": {"A_09_TESTS": "TEST_ARTIFACT", "A_99_TESTS": "TEST_ARTIFACT", "A_99_TEST_DATA": "TEST_ARTIFACT", "AUDIT": "GENERATED", "AUDIT_PACKS": "GENERATED", "docs/reports": "GENERATED"}
+  },
+  "moves": [],
+  "note": "No file was moved or deleted; classification precedes any future isolation batch."
+}

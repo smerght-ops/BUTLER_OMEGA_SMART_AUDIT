@@ -11,7 +11,7 @@ from datetime import datetime
 from pathlib import Path
 
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[2]
 AGENTS_DIR = ROOT / "A_04_AGENTS"
 REGISTRY_PATH = ROOT / "CapabilityRegistry.json"
 REPORT_PATH = ROOT / "CAPABILITY_REGISTRY_REPORT.md"

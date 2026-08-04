@@ -14,7 +14,7 @@ class CapabilityRegistry:
     }
 
     def __init__(self, path=None):
-        self.path = Path(path) if path else Path(__file__).resolve().with_name("CapabilityRegistry.json")
+        self.path = Path(path) if path else Path(__file__).resolve().parents[2] / "CapabilityRegistry.json"
 
     def load(self) -> dict:
         payload = json.loads(self.path.read_text(encoding="utf-8-sig"))

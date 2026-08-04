@@ -1,8 +1,11 @@
 {
   "generated_at": 1782379232,
   "project": "BUTLER_OMEGA_SMART",
-  "architecture_version": "1.2.0",
+  "architecture_version": "3.0.0",
   "approved": true,
+  "production_architecture": "A_00_ARCHITECTURE/PRODUCTION_ARCHITECTURE.json",
+  "runtime_status": "ACTIVE_PRODUCTION",
+  "memory_contract": "A_00_ARCHITECTURE/MEMORY_CONTRACT.json",
   "critical_files": {
     "A_01_CORE/memory_guardian.py": {
       "exists": true,

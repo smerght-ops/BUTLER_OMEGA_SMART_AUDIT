@@ -124,16 +124,16 @@ class DKICompiler:
     # LLM interface — reuses existing Ollama /api/generate endpoint
     # ------------------------------------------------------------------
     def _call_llm(self, raw_path, raw_text, model_name):
-        """Call the existing project LLM interface (ask_ollama).
-
-        Reuses the approved Ollama transport from chat_router.py.
-        Returns the raw text response from the model, or None on failure.
-        """
+        """Call the approved ACTIVE_SUPPORT model-provider boundary."""
         try:
-            # Lazy import to avoid circular dependency at module level
-            from A_03_ORCHESTRATION.chat_router import ask_ollama
-            raw_response = ask_ollama(model_name, self._build_extraction_prompt(raw_path, raw_text), timeout=120)
-            if raw_response is None:
+            from A_02_MANAGERS.smart_dispatcher import SmartDispatcher
+            response = SmartDispatcher().execute_employee(
+                employee="chat",
+                system_prompt="Extract validated DKI JSON only.",
+                user_content=self._build_extraction_prompt(raw_path, raw_text),
+            )
+            raw_response = response.get("text") if response.get("status") == "ok" else None
+            if not raw_response:
                 return None
             # Strip markdown code fences if present
             raw_response = self._strip_markdown_json(raw_response)

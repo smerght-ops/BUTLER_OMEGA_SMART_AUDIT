@@ -1,10 +1,10 @@
 {
-  "version": "1.0",
-  "generated": "2026-08-04T00:00:00+03:00",
-  "schema": "butler.runtime-contract.v1",
-  "entry_point": "START_BUTLER_OS.ps1",
-  "entry_point_status": "AMBIGUOUS_RUNTIME",
-  "exclusive_entry_point_proven": false,
+  "schema": "butler.runtime-contract.v2",
+  "version": "2.0",
+  "runtime_status": "ACTIVE_PRODUCTION",
+  "exclusive_entry_point_proven": true,
+  "official_launcher": "START_BUTLER_OS.ps1",
+  "official_stop_launcher": "STOP_BUTLER_OS.ps1",
   "main_python": "BUTLER_OS.py",
   "runtime_chain": [
     "START_BUTLER_OS.ps1",
@@ -14,121 +14,40 @@
     "SmartDispatcherV2",
     "ButlerHarness",
     "DepartmentExecutionGateway",
+    "PermissionEngine",
     "Department"
   ],
-  "runtime_implementations": [
-    {
-      "id": "BUTLER_OS_CHAIN",
-      "status": "CONFIRMED_EXECUTABLE_CANDIDATE",
-      "chain": ["START_BUTLER_OS.ps1", "BUTLER_OS.py", "AgentCoreCoordinator", "dispatcher_bridge_v2", "SmartDispatcherV2", "ButlerHarness", "DepartmentExecutionGateway", "Department"],
-      "evidence": [
-        {"path":"START_BUTLER_OS.ps1","line":132,"symbol":"script invocation","source":"launcher command","fact":"invokes BUTLER_OS.py"},
-        {"path":"BUTLER_OS.py","line":29,"symbol":"_agent_core","source":"Python AST assignment","fact":"constructs AgentCoreCoordinator with dispatch callback"},
-        {"path":"A_03_ORCHESTRATION/agent_core_coordinator.py","line":433,"symbol":"AgentCoreCoordinator._dispatch_tool_call","source":"Python AST call","fact":"calls self.department_dispatch"},
-        {"path":"A_03_ORCHESTRATION/dispatcher_bridge_v2.py","line":34,"symbol":"dispatch","source":"Python AST call","fact":"calls SmartDispatcherV2.dispatch"},
-        {"path":"A_02_MANAGERS/smart_dispatcher_v2.py","line":188,"symbol":"SmartDispatcherV2._execute_department","source":"Python AST call","fact":"calls ButlerHarness.execute"},
-        {"path":"A_02_MANAGERS/smart_dispatcher_v2.py","line":184,"symbol":"executor closure","source":"Python AST call","fact":"calls DepartmentExecutionGateway.execute"},
-        {"path":"A_03_ORCHESTRATION/permission/gateway.py","line":64,"symbol":"DepartmentExecutionGateway.execute","source":"Python AST function","fact":"calls the selected department execute method"}
-      ]
-    },
-    {
-      "id": "CHAT_ROUTER_CHAIN",
-      "status": "CONFIRMED_EXECUTABLE_CANDIDATE",
-      "chain": ["START_BUTLER.ps1 or START_BUTLER_FULL.ps1", "A_03_ORCHESTRATION/chat_router.py", "router_bus.dispatch", "conditional DepartmentExecutionGateway/ImageDepartment path"],
-      "evidence": [
-        {"path":"START_BUTLER.ps1","line":33,"symbol":"script invocation","source":"launcher command","fact":"invokes chat_router.py"},
-        {"path":"START_BUTLER_FULL.ps1","line":45,"symbol":"script invocation","source":"launcher command","fact":"invokes chat_router.py"},
-        {"path":"A_03_ORCHESTRATION/chat_router.py","line":274,"symbol":"main","source":"Python AST call","fact":"calls router_bus.dispatch"},
-        {"path":"A_03_ORCHESTRATION/chat_router.py","line":164,"symbol":"image generation branch","source":"Python AST call","fact":"directly uses DepartmentExecutionGateway for ImageDepartment"}
-      ]
-    },
-    {
-      "id": "SAFE_LAUNCH_CHAIN",
-      "status": "MULTIPLE_IMPLEMENTATIONS",
-      "chain": ["START_SAFE_LAUNCH.py", "task_feeder.py + execution_loop.py + flow_monitor.py"],
-      "evidence": [{"path":"START_SAFE_LAUNCH.py","line":15,"symbol":"__main__","source":"Python AST","fact":"starts three independent processes"}]
-    },
-    {
-      "id": "CORE_SYSTEM_CHAINS",
-      "status": "MULTIPLE_IMPLEMENTATIONS",
-      "chain": ["START_BUTLER_CORE.py or START_BUTLER_SYSTEM.py", "ExecutionLoop"],
-      "evidence": [
-        {"path":"START_BUTLER_CORE.py","line":81,"symbol":"BootstrapCore.run","source":"Python AST","fact":"starts ExecutionLoop"},
-        {"path":"START_BUTLER_SYSTEM.py","line":66,"symbol":"ButlerSystem.run","source":"Python AST","fact":"starts ExecutionLoop"}
-      ]
-    }
+  "process_ownership": {
+    "state_file": "A_08_LOGS/runtime/active_session.json",
+    "schema": "butler.runtime-session.v1",
+    "owned_roles": ["ButlerOS", "RunnerLoop"],
+    "stop_verification": ["session_id", "pid", "command_token", "owned"],
+    "external_processes_are_never_stopped": true
+  },
+  "external_services": [
+    {"name": "Ollama", "mode": "EXTERNAL_PREEXISTING_OR_UNAVAILABLE"},
+    {"name": "ComfyUI", "mode": "EXTERNAL_PREEXISTING_OR_UNAVAILABLE"},
+    {"name": "LM Studio", "mode": "NOT_REQUIRED"},
+    {"name": "System Guardian", "mode": "NOT_REQUIRED"}
   ],
-  "coordinator": {
-    "name": "AgentCoreCoordinator",
-    "path": "A_03_ORCHESTRATION/agent_core_coordinator.py"
-  },
-  "dispatcher": {
-    "name": "SmartDispatcherV2",
-    "path": "A_02_MANAGERS/smart_dispatcher_v2.py",
-    "bridge": "A_03_ORCHESTRATION/dispatcher_bridge_v2.py"
-  },
-  "gateway": {
-    "name": "DepartmentExecutionGateway",
-    "path": "A_03_ORCHESTRATION/permission/gateway.py"
-  },
-  "permission": {
-    "name": "Permission Engine Stage 1",
-    "implementation": "PermissionEngine",
-    "path": "A_03_ORCHESTRATION/permission/engine.py"
-  },
-  "runtime_services": [
-    {"name":"MemoryOrchestratorV2","role":"coordinator and dispatcher memory context","status":"ACTIVE","evidence":[{"path":"BUTLER_OS.py","lines":"23,29-33","source":"Python AST constructor and argument"},{"path":"A_02_MANAGERS/smart_dispatcher_v2.py","lines":"31,44","source":"Python AST import and constructor"}]},
-    {"name":"Voice Interface","role":"conditional keyboard-alternative input","status":"ACTIVE_CONDITIONAL","evidence":[{"path":"BUTLER_OS.py","lines":"173-178,190-195","source":"Python AST conditional import and call"}]},
-    {"name":"RunnerLoop","role":"launcher-managed companion process","status":"ACTIVE_COMPANION","evidence":[{"path":"START_BUTLER_OS.ps1","lines":"120-127","source":"launcher command"}]}
+  "alternative_launchers": [
+    {"path": "START_BUTLER.ps1", "status": "LEGACY", "action": "DOCUMENT"},
+    {"path": "START_BUTLER_FULL.ps1", "status": "LEGACY", "action": "DOCUMENT"},
+    {"path": "START_BUTLER_RUNTIME_DIAGNOSTIC.bat", "status": "DIAGNOSTIC", "action": "KEEP"},
+    {"path": "START_SAFE_LAUNCH.py", "status": "EXPERIMENTAL", "action": "DOCUMENT"},
+    {"path": "START_BUTLER_CORE.py", "status": "DEVELOPMENT", "action": "DOCUMENT"},
+    {"path": "START_BUTLER_SYSTEM.py", "status": "DEVELOPMENT", "action": "DOCUMENT"}
   ],
-  "loaded_but_not_active_services": [
-    {"name":"CapabilityExecutor","reason":"instantiated by BUTLER_OS.py but no call on _capability_executor is present","evidence":{"path":"BUTLER_OS.py","line":21,"source":"Python AST assignment plus absence from call graph"}},
-    {"name":"TaskExecutor","reason":"instantiated by BUTLER_OS.py but no call on _task_planner is present; SmartDispatcherV2 constructs a separate instance","evidence":[{"path":"BUTLER_OS.py","line":20,"source":"Python AST assignment plus absence from call graph"},{"path":"A_02_MANAGERS/smart_dispatcher_v2.py","line":45,"source":"Python AST constructor"}]}
-  ],
-  "department_table_evidence": {
-    "runner_presence": {"source":"filesystem path existence","path_pattern":"A_04_AGENTS/<Department>/runner.py"},
-    "dispatcher_imports": {"source":"Python AST import graph","path":"A_02_MANAGERS/smart_dispatcher_v2.py","lines":"6-24"},
-    "dispatcher_instances": {"source":"Python AST constructor calls","class":"SmartDispatcherV2","function":"__init__","path":"A_02_MANAGERS/smart_dispatcher_v2.py","lines":"49-70"},
-    "registry_entries": {"source":"registry literal","path":"A_02_MANAGERS/department_registry.py","lines":"5-14"},
-    "negative_status_rule":"false means absence from the exact evidence set above; it is not inferred from a component name"
-  },
-  "departments": [
-    {"department":"ArchiveDepartment","runner":"A_04_AGENTS/ArchiveDepartment/runner.py","registered":true,"dispatcher":true,"status":"ACTIVE"},
-    {"department":"AudioDepartment","runner":"A_04_AGENTS/AudioDepartment/runner.py","registered":true,"dispatcher":true,"status":"ACTIVE"},
-    {"department":"BionicDepartment","runner":null,"registered":false,"dispatcher":false,"status":"INCOMPLETE"},
-    {"department":"BrowserDepartment","runner":"A_04_AGENTS/BrowserDepartment/runner.py","registered":false,"dispatcher":true,"status":"ACTIVE_REGISTRY_MISMATCH"},
-    {"department":"ChatDepartment","runner":null,"registered":false,"dispatcher":false,"status":"INCOMPLETE"},
-    {"department":"CodingDepartment","runner":"A_04_AGENTS/CodingDepartment/runner.py","registered":true,"dispatcher":true,"status":"ACTIVE"},
-    {"department":"DocumentsDepartment","runner":"A_04_AGENTS/DocumentsDepartment/runner.py","registered":false,"dispatcher":true,"status":"ACTIVE_REGISTRY_MISMATCH"},
-    {"department":"EngineeringReviewDepartment","runner":"A_04_AGENTS/EngineeringReviewDepartment/runner.py","registered":true,"dispatcher":true,"status":"ACTIVE"},
-    {"department":"ExternalDepartment","runner":null,"registered":false,"dispatcher":false,"status":"INCOMPLETE"},
-    {"department":"FilesystemDepartment","runner":"A_04_AGENTS/FilesystemDepartment/runner.py","registered":false,"dispatcher":true,"status":"ACTIVE_REGISTRY_MISMATCH"},
-    {"department":"GitPublishGuardianDepartment","runner":null,"registered":false,"dispatcher":false,"status":"INCOMPLETE"},
-    {"department":"HomeDepartment","runner":"A_04_AGENTS/HomeDepartment/runner.py","registered":false,"dispatcher":true,"status":"ACTIVE_REGISTRY_MISMATCH"},
-    {"department":"ImageDepartment","runner":"A_04_AGENTS/ImageDepartment/runner.py","registered":true,"dispatcher":true,"status":"ACTIVE"},
-    {"department":"MemoryDepartment","runner":"A_04_AGENTS/MemoryDepartment/runner.py","registered":true,"dispatcher":true,"status":"ACTIVE"},
-    {"department":"OCRDepartment","runner":null,"registered":false,"dispatcher":false,"status":"INCOMPLETE"},
-    {"department":"OpenDocumentDepartment","runner":"A_04_AGENTS/OpenDocumentDepartment/runner.py","registered":false,"dispatcher":true,"status":"ACTIVE_REGISTRY_MISMATCH"},
-    {"department":"ProjectDocumentationDepartment","runner":"A_04_AGENTS/ProjectDocumentationDepartment/runner.py","registered":false,"dispatcher":true,"status":"ACTIVE_REGISTRY_MISMATCH"},
-    {"department":"PublicationGuardianDepartment","runner":"A_04_AGENTS/PublicationGuardianDepartment/runner.py","registered":false,"dispatcher":true,"status":"ACTIVE_REGISTRY_MISMATCH"},
-    {"department":"RepositoryKnowledgeDepartment","runner":"A_04_AGENTS/RepositoryKnowledgeDepartment/runner.py","registered":true,"dispatcher":true,"status":"ACTIVE"},
-    {"department":"SearchDepartment","runner":"A_04_AGENTS/SearchDepartment/runner.py","registered":false,"dispatcher":true,"status":"ACTIVE_REGISTRY_MISMATCH"},
-    {"department":"TextDepartment","runner":"A_04_AGENTS/TextDepartment/runner.py","registered":true,"dispatcher":true,"status":"ACTIVE"},
-    {"department":"VideoDepartment","runner":"A_04_AGENTS/VideoDepartment/runner.py","registered":true,"dispatcher":true,"status":"ACTIVE"},
-    {"department":"VisionDepartment","runner":"A_04_AGENTS/VisionDepartment/runner.py","registered":true,"dispatcher":true,"status":"ACTIVE"},
-    {"department":"VoiceDepartment","runner":null,"registered":false,"dispatcher":false,"status":"INCOMPLETE"}
+  "evidence": [
+    "START_BUTLER_OS.ps1 owns session state and exact child PIDs",
+    "STOP_BUTLER_OS.ps1 accepts only session-owned verified PID records",
+    "BUTLER_OS.py constructs AgentCoreCoordinator over dispatcher_bridge_v2",
+    "SmartDispatcherV2 executes through ButlerHarness and DepartmentExecutionGateway"
   ],
   "validation": {
-    "entry_point": "AMBIGUOUS_RUNTIME",
-    "main_python": "PASS",
-    "dispatcher": "PASS",
-    "gateway": "PASS",
-    "permission": "PASS",
-    "coordinator": "PASS",
-    "active_document": "DOCUMENT_OUTDATED",
-    "department_registry": "REGISTRY_OUTDATED",
-    "dispatcher_registered_departments_only": "FAIL"
-  },
-  "runtime_status": "AMBIGUOUS_RUNTIME",
-  "ambiguity_reason": "Multiple executable launcher/runtime implementations exist; repository evidence does not prove exclusive production selection."
+    "launcher_parser": "PASS",
+    "stop_parser": "PASS",
+    "ownership_tests": "PENDING",
+    "smoke_test": "PENDING"
+  }
 }

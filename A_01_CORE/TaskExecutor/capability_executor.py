@@ -8,7 +8,7 @@ import hashlib
 from datetime import datetime
 from pathlib import Path
 
-from CapabilityRegistry import CapabilityRegistry
+from tools.inspectors.CapabilityRegistry import CapabilityRegistry
 
 from .execution_context import ExecutionContext
 from A_07_MEMORY.semantic_memory import SemanticMemory

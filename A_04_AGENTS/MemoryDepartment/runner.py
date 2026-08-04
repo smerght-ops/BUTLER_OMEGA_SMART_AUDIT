@@ -8,7 +8,7 @@ import json
 import re
 
 from A_07_MEMORY import memory_router
-from A_07_MEMORY.memory_facade_v2 import MemoryFacadeV2
+from A_07_MEMORY.memory_orchestrator_v2 import MemoryOrchestratorV2
 from A_07_MEMORY.profile_manager import get_fact, get_memory_summary, load_profile
 
 class MemoryDepartment(BaseDepartment):
@@ -38,7 +38,7 @@ class MemoryDepartment(BaseDepartment):
         self.permanent = self.root / "A_05_STORAGE" / "USER_MEMORY.md"
         self.project   = self.root / "A_07_CONFIG" / "project_state.json"
         self.session   = self.root / "A_05_STORAGE" / "session_history.jsonl"
-        self.dk02 = MemoryFacadeV2()
+        self.memory = MemoryOrchestratorV2()
 
     def can_handle(self, query: str, context: dict = None) -> bool:
         q = (query or "").lower()
@@ -97,7 +97,7 @@ class MemoryDepartment(BaseDepartment):
             key = rollback.group(1).strip()
             if "/" not in key:
                 key = f"profile/facts/{key.casefold()}"
-            outcome = self.dk02.rollback_knowledge(key, int(rollback.group(2)))
+            outcome = self.memory.rollback_knowledge(key, int(rollback.group(2)))
             return {
                 "ok": bool(outcome.get("ok")), "department": self.NAME,
                 "model": "SemanticMemory", "latency_ms": max(0, int((perf_counter() - started) * 1000)),
@@ -119,7 +119,7 @@ class MemoryDepartment(BaseDepartment):
             kind = "document" if kind_word.startswith("документ") else (
                 "image" if kind_word.startswith("изображ") else kind_word
             )
-            outcome = self.dk02.link_knowledge_media(
+            outcome = self.memory.link_knowledge_media(
                 key, kind, media_link.group(3).strip(), source="MemoryDepartment:user_request",
             )
             return {
@@ -131,7 +131,7 @@ class MemoryDepartment(BaseDepartment):
             }
 
         try:
-            self.dk02.add_session_event("user", query)
+            self.memory.add_session_event("user", query)
         except Exception as exc:
             return self._error_result(
                 started,
@@ -205,8 +205,8 @@ class MemoryDepartment(BaseDepartment):
         result["text"] = self._answer_memory_query(query, result["permanent"])
         result["metadata"]["response_mode"] = "relevant_profile_answer"
         try:
-            result["metadata"]["dk02"] = self.dk02.build_context(semantic_query=query)
-            self.dk02.add_session_event("assistant", result["text"])
+            result["metadata"]["dk02"] = self.memory.build_context(semantic_query=query)
+            self.memory.add_session_event("assistant", result["text"])
         except Exception as exc:
             result["ok"] = False
             result["error"] = "DK02_CONTEXT_ERROR"
@@ -219,7 +219,7 @@ class MemoryDepartment(BaseDepartment):
         q = query.lower().strip().rstrip("?.!")
 
         if any(word in q for word in ("изображ", "аудио", "видео", "медиа")) and "связ" in q:
-            links = self.dk02.get_media_links()
+            links = self.memory.get_media_links()
             if not links:
                 return "Связанные изображения, аудио или видео не найдены."
             return "Связанные медиа: " + "; ".join(
@@ -229,7 +229,7 @@ class MemoryDepartment(BaseDepartment):
 
         # Controlled knowledge is queried by meaning; do not reinterpret the
         # whole natural-language question as a literal profile key.
-        knowledge = self.dk02.search_knowledge(query)
+        knowledge = self.memory.search_knowledge(query)
         if knowledge:
             item = knowledge[0]
             active = item.get("knowledge", {})
@@ -481,7 +481,7 @@ class MemoryDepartment(BaseDepartment):
         artifacts, sources = self._load_project_knowledge()
         text = self._build_self_knowledge_answer(query, artifacts)
         try:
-            self.dk02.add_session_event("assistant", text)
+            self.memory.add_session_event("assistant", text)
         except Exception:
             pass
         return {
@@ -507,7 +507,7 @@ class MemoryDepartment(BaseDepartment):
         previous_value = get_fact(section, key)
 
         try:
-            evolution = self.dk02.evolve_knowledge(
+            evolution = self.memory.evolve_knowledge(
                 f"profile/{section}/{key}", value,
                 provenance="MemoryDepartment:user_request",
             )
@@ -520,7 +520,7 @@ class MemoryDepartment(BaseDepartment):
 
         if evolution.get("relation") == "CONFLICTS_WITH_EXISTING":
             try:
-                self.dk02.rollback_knowledge(
+                self.memory.rollback_knowledge(
                     f"profile/{section}/{key}", evolution["version"]
                 )
                 evolution["active_version"] = evolution["version"]
@@ -549,13 +549,13 @@ class MemoryDepartment(BaseDepartment):
             )
 
         try:
-            self.dk02.index_semantic(
+            self.memory.index_semantic(
                 f"{key} = {value}",
                 path=f"memory://profile/{section}/{key}",
                 tags=["profile", section, key],
                 entities=[key, value],
             )
-            self.dk02.add_session_event("assistant", f"Факт сохранён: {key} = {value}")
+            self.memory.add_session_event("assistant", f"Факт сохранён: {key} = {value}")
         except Exception as exc:
             return self._error_result(
                 started,
@@ -574,7 +574,7 @@ class MemoryDepartment(BaseDepartment):
             "metadata": {
                 "mode": "read_write",
                 "action": "write",
-                "dk02_bridge": "MemoryFacadeV2",
+                "dk02_bridge": "MemoryOrchestratorV2",
                 "section": section,
                 "key": key,
                 "value": value,

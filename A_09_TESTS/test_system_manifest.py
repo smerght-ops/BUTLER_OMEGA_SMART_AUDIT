@@ -17,5 +17,6 @@ def test_manifest_has_no_bom_loader_ok_and_paths_exist():
 
 def test_manifest_is_in_repository_index():
     index = RepositoryKnowledgeService(ROOT).index()
-    assert index.source_versions["system_manifest"] == "2.0"
+    manifest = ManifestLoader().load(ROOT)[0]
+    assert index.source_versions["system_manifest"] == manifest["version"]
     assert any(node.get("file") == "system_manifest.json" for node in index.nodes)

@@ -1,0 +1,799 @@
+{
+  "version": "1.0",
+  "generated_at": "2026-08-04T19:01:39+03:00",
+  "capabilities": [
+    {
+      "id": "archive_create_archive_archive",
+      "department": "ARCHIVE",
+      "action": "create_archive",
+      "object": "archive",
+      "input": "path",
+      "output": "path",
+      "confidence": "confirmed",
+      "aliases": [
+        "archive",
+        "create archive",
+        "создай archive"
+      ]
+    },
+    {
+      "id": "archive_extract_archive_archive",
+      "department": "ARCHIVE",
+      "action": "extract_archive",
+      "object": "archive",
+      "input": "path",
+      "output": "path",
+      "confidence": "confirmed",
+      "aliases": [
+        "archive",
+        "extract archive",
+        "извлеки archive",
+        "распакуй archive"
+      ]
+    },
+    {
+      "id": "archive_inspect_archive_archive",
+      "department": "ARCHIVE",
+      "action": "inspect_archive",
+      "object": "archive",
+      "input": "path",
+      "output": "path",
+      "confidence": "confirmed",
+      "aliases": [
+        "archive",
+        "inspect archive",
+        "инспектируй archive",
+        "проверь archive"
+      ]
+    },
+    {
+      "id": "audio_recognize_speech_speech",
+      "department": "AUDIO",
+      "action": "recognize_speech",
+      "object": "speech",
+      "input": "audio",
+      "output": "text",
+      "confidence": "confirmed",
+      "aliases": [
+        "audio",
+        "recognize speech",
+        "speech recognition",
+        "распознай speech"
+      ]
+    },
+    {
+      "id": "audio_synthesize_speech_speech",
+      "department": "AUDIO",
+      "action": "synthesize_speech",
+      "object": "speech",
+      "input": "audio",
+      "output": "audio",
+      "confidence": "confirmed",
+      "aliases": [
+        "audio",
+        "speech synthesis",
+        "synthesize speech",
+        "синтезируй speech"
+      ]
+    },
+    {
+      "id": "browser_open_url_url",
+      "department": "BROWSER",
+      "action": "open_url",
+      "object": "url",
+      "input": "text",
+      "output": "path",
+      "confidence": "confirmed",
+      "aliases": [
+        "browser",
+        "open url",
+        "открой url"
+      ]
+    },
+    {
+      "id": "browser_search_web_web",
+      "department": "BROWSER",
+      "action": "search_web",
+      "object": "web",
+      "input": "text",
+      "output": "list",
+      "confidence": "confirmed",
+      "aliases": [
+        "browser",
+        "search web",
+        "web search",
+        "найди web",
+        "поиск web"
+      ]
+    },
+    {
+      "id": "coding_correct_code_code",
+      "department": "CODING",
+      "action": "correct_code",
+      "object": "code",
+      "input": "text",
+      "output": "text",
+      "confidence": "confirmed",
+      "aliases": [
+        "code correction",
+        "coding",
+        "correct code",
+        "исправь code",
+        "скорректируй code"
+      ]
+    },
+    {
+      "id": "coding_explain_code_code",
+      "department": "CODING",
+      "action": "explain_code",
+      "object": "code",
+      "input": "text",
+      "output": "text",
+      "confidence": "confirmed",
+      "aliases": [
+        "code explanation",
+        "coding",
+        "explain code",
+        "объясни code"
+      ]
+    },
+    {
+      "id": "coding_generate_code_code",
+      "department": "CODING",
+      "action": "generate_code",
+      "object": "code",
+      "input": "text",
+      "output": "code",
+      "confidence": "confirmed",
+      "aliases": [
+        "code generation",
+        "coding",
+        "generate code",
+        "сгенерируй code",
+        "создай code"
+      ]
+    },
+    {
+      "id": "documents_extract_docx_docx",
+      "department": "DOCUMENTS",
+      "action": "extract_docx",
+      "object": "docx",
+      "input": "path",
+      "output": "path",
+      "confidence": "confirmed",
+      "aliases": [
+        "documents",
+        "docx extraction",
+        "extract docx",
+        "извлеки docx",
+        "распакуй docx"
+      ]
+    },
+    {
+      "id": "documents_extract_pdf_pdf",
+      "department": "DOCUMENTS",
+      "action": "extract_pdf",
+      "object": "pdf",
+      "input": "path",
+      "output": "path",
+      "confidence": "confirmed",
+      "aliases": [
+        "documents",
+        "extract pdf",
+        "pdf extraction",
+        "извлеки pdf",
+        "распакуй pdf"
+      ]
+    },
+    {
+      "id": "documents_extract_spreadsheet_spreadsheet",
+      "department": "DOCUMENTS",
+      "action": "extract_spreadsheet",
+      "object": "spreadsheet",
+      "input": "path",
+      "output": "path",
+      "confidence": "confirmed",
+      "aliases": [
+        "documents",
+        "extract spreadsheet",
+        "spreadsheet extraction",
+        "извлеки spreadsheet",
+        "распакуй spreadsheet"
+      ]
+    },
+    {
+      "id": "documents_extract_text_text",
+      "department": "DOCUMENTS",
+      "action": "extract_text",
+      "object": "text",
+      "input": "path",
+      "output": "path",
+      "confidence": "confirmed",
+      "aliases": [
+        "documents",
+        "extract text",
+        "text extraction",
+        "извлеки text",
+        "распакуй text"
+      ]
+    },
+    {
+      "id": "documents_summarize_optional_local_optional_local",
+      "department": "DOCUMENTS",
+      "action": "summarize_optional_local",
+      "object": "optional_local",
+      "input": "path",
+      "output": "text",
+      "confidence": "confirmed",
+      "aliases": [
+        "documents",
+        "optional local summary",
+        "summarize optional local",
+        "резюмируй optional local",
+        "сделай сводку optional local"
+      ]
+    },
+    {
+      "id": "engineering_review_change_verification_unknown",
+      "department": "ENGINEERING_REVIEW",
+      "action": "change_verification",
+      "object": "unknown",
+      "input": "text",
+      "output": "text",
+      "confidence": "unknown",
+      "aliases": [
+        "change verification",
+        "engineering_review"
+      ]
+    },
+    {
+      "id": "engineering_review_engineering_review_unknown",
+      "department": "ENGINEERING_REVIEW",
+      "action": "engineering_review",
+      "object": "unknown",
+      "input": "text",
+      "output": "text",
+      "confidence": "unknown",
+      "aliases": [
+        "engineering review",
+        "engineering_review"
+      ]
+    },
+    {
+      "id": "engineering_review_project_audit_unknown",
+      "department": "ENGINEERING_REVIEW",
+      "action": "project_audit",
+      "object": "unknown",
+      "input": "text",
+      "output": "text",
+      "confidence": "unknown",
+      "aliases": [
+        "engineering_review",
+        "project audit"
+      ]
+    },
+    {
+      "id": "filesystem_analyze_folder_folder",
+      "department": "FILESYSTEM",
+      "action": "analyze_folder",
+      "object": "folder",
+      "input": "path",
+      "output": "text",
+      "confidence": "confirmed",
+      "aliases": [
+        "analyze folder",
+        "filesystem",
+        "анализ folder",
+        "проанализируй folder"
+      ]
+    },
+    {
+      "id": "filesystem_create_folder_folder",
+      "department": "FILESYSTEM",
+      "action": "create_folder",
+      "object": "folder",
+      "input": "path",
+      "output": "path",
+      "confidence": "confirmed",
+      "aliases": [
+        "create folder",
+        "filesystem",
+        "создай folder"
+      ]
+    },
+    {
+      "id": "filesystem_save_image_image",
+      "department": "FILESYSTEM",
+      "action": "save_image",
+      "object": "image",
+      "input": "path",
+      "output": "path",
+      "confidence": "confirmed",
+      "aliases": [
+        "filesystem",
+        "save image",
+        "запиши image",
+        "сохрани image"
+      ]
+    },
+    {
+      "id": "filesystem_save_text_text",
+      "department": "FILESYSTEM",
+      "action": "save_text",
+      "object": "text",
+      "input": "path",
+      "output": "path",
+      "confidence": "confirmed",
+      "aliases": [
+        "filesystem",
+        "save text",
+        "запиши text",
+        "сохрани text"
+      ]
+    },
+    {
+      "id": "home_butler_identity_unknown",
+      "department": "HOME",
+      "action": "butler_identity",
+      "object": "unknown",
+      "input": "text",
+      "output": "path",
+      "confidence": "unknown",
+      "aliases": [
+        "butler identity",
+        "home"
+      ]
+    },
+    {
+      "id": "home_inventory_unknown",
+      "department": "HOME",
+      "action": "inventory",
+      "object": "unknown",
+      "input": "text",
+      "output": "path",
+      "confidence": "unknown",
+      "aliases": [
+        "home",
+        "inventory"
+      ]
+    },
+    {
+      "id": "home_launch_confirmed_program_confirmed_program",
+      "department": "HOME",
+      "action": "launch_confirmed_program",
+      "object": "confirmed_program",
+      "input": "text",
+      "output": "path",
+      "confidence": "confirmed",
+      "aliases": [
+        "confirmed program launch",
+        "home",
+        "launch confirmed program",
+        "запусти confirmed program"
+      ]
+    },
+    {
+      "id": "home_manage_reminder_reminder",
+      "department": "HOME",
+      "action": "manage_reminder",
+      "object": "reminder",
+      "input": "text",
+      "output": "path",
+      "confidence": "confirmed",
+      "aliases": [
+        "home",
+        "manage reminder",
+        "reminder lifecycle",
+        "обнови reminder",
+        "управляй reminder"
+      ]
+    },
+    {
+      "id": "home_register_program_program",
+      "department": "HOME",
+      "action": "register_program",
+      "object": "program",
+      "input": "text",
+      "output": "path",
+      "confidence": "confirmed",
+      "aliases": [
+        "home",
+        "program registry",
+        "register program",
+        "зарегистрируй program"
+      ]
+    },
+    {
+      "id": "home_status_home_home",
+      "department": "HOME",
+      "action": "status_home",
+      "object": "home",
+      "input": "text",
+      "output": "text",
+      "confidence": "confirmed",
+      "aliases": [
+        "home",
+        "home status",
+        "status home",
+        "покажи статус home"
+      ]
+    },
+    {
+      "id": "home_watch_document_document",
+      "department": "HOME",
+      "action": "watch_document",
+      "object": "document",
+      "input": "text",
+      "output": "path",
+      "confidence": "confirmed",
+      "aliases": [
+        "document watch",
+        "home",
+        "watch document",
+        "контролируй document",
+        "отслеживай document"
+      ]
+    },
+    {
+      "id": "image_build_prompt_prompt",
+      "department": "IMAGE",
+      "action": "build_prompt",
+      "object": "prompt",
+      "input": "text",
+      "output": "image",
+      "confidence": "confirmed",
+      "aliases": [
+        "build prompt",
+        "image",
+        "prompt building",
+        "построй prompt",
+        "создай prompt"
+      ]
+    },
+    {
+      "id": "image_export_png_png",
+      "department": "IMAGE",
+      "action": "export_png",
+      "object": "png",
+      "input": "text",
+      "output": "image",
+      "confidence": "confirmed",
+      "aliases": [
+        "export png",
+        "image",
+        "png export",
+        "сохрани png",
+        "экспортируй png"
+      ]
+    },
+    {
+      "id": "image_generate_comfyui_image_comfyui_image",
+      "department": "IMAGE",
+      "action": "generate_comfyui_image",
+      "object": "comfyui_image",
+      "input": "text",
+      "output": "image",
+      "confidence": "confirmed",
+      "aliases": [
+        "comfyui image generation",
+        "generate comfyui image",
+        "image",
+        "сгенерируй comfyui image",
+        "создай comfyui image"
+      ]
+    },
+    {
+      "id": "memory_read_memory_sources_memory_sources",
+      "department": "MEMORY",
+      "action": "read_memory_sources",
+      "object": "memory_sources",
+      "input": "text",
+      "output": "text",
+      "confidence": "confirmed",
+      "aliases": [
+        "memory",
+        "read memory sources",
+        "прочитай memory sources"
+      ]
+    },
+    {
+      "id": "memory_write_profile_fact_profile_fact",
+      "department": "MEMORY",
+      "action": "write_profile_fact",
+      "object": "profile_fact",
+      "input": "text",
+      "output": "text",
+      "confidence": "confirmed",
+      "aliases": [
+        "memory",
+        "write profile fact",
+        "запиши profile fact",
+        "сохрани profile fact"
+      ]
+    },
+    {
+      "id": "open_document_open_local_document_local_document",
+      "department": "OPEN_DOCUMENT",
+      "action": "open_local_document",
+      "object": "local_document",
+      "input": "text",
+      "output": "path",
+      "confidence": "confirmed",
+      "aliases": [
+        "open local document",
+        "open_document",
+        "открой local document"
+      ]
+    },
+    {
+      "id": "open_document_resolve_search_reference_search_reference",
+      "department": "OPEN_DOCUMENT",
+      "action": "resolve_search_reference",
+      "object": "search_reference",
+      "input": "text",
+      "output": "text",
+      "confidence": "confirmed",
+      "aliases": [
+        "open_document",
+        "resolve search reference",
+        "разреши ссылку search reference"
+      ]
+    },
+    {
+      "id": "project_documentation_architect_question_unknown",
+      "department": "PROJECT_DOCUMENTATION",
+      "action": "architect_question",
+      "object": "unknown",
+      "input": "text",
+      "output": "path",
+      "confidence": "unknown",
+      "aliases": [
+        "architect question",
+        "project_documentation"
+      ]
+    },
+    {
+      "id": "project_documentation_diagnose_project_evidence_project_evidence",
+      "department": "PROJECT_DOCUMENTATION",
+      "action": "diagnose_project_evidence",
+      "object": "project_evidence",
+      "input": "text",
+      "output": "path",
+      "confidence": "confirmed",
+      "aliases": [
+        "diagnose project evidence",
+        "project evidence doctor",
+        "project_documentation",
+        "диагностика project evidence",
+        "проверь project evidence"
+      ]
+    },
+    {
+      "id": "project_documentation_report_engineering_engineering",
+      "department": "PROJECT_DOCUMENTATION",
+      "action": "report_engineering",
+      "object": "engineering",
+      "input": "text",
+      "output": "text",
+      "confidence": "confirmed",
+      "aliases": [
+        "engineering report",
+        "project_documentation",
+        "report engineering",
+        "сформируй отчёт engineering"
+      ]
+    },
+    {
+      "id": "publication_guardian_inspect_publication_publication",
+      "department": "PUBLICATION_GUARDIAN",
+      "action": "inspect_publication",
+      "object": "publication",
+      "input": "text",
+      "output": "text",
+      "confidence": "confirmed",
+      "aliases": [
+        "inspect publication",
+        "publication_guardian",
+        "инспектируй publication",
+        "проверь publication"
+      ]
+    },
+    {
+      "id": "repository_knowledge_engineering_query_unknown",
+      "department": "REPOSITORY_KNOWLEDGE",
+      "action": "engineering_query",
+      "object": "unknown",
+      "input": "text",
+      "output": "text",
+      "confidence": "unknown",
+      "aliases": [
+        "engineering query",
+        "repository_knowledge"
+      ]
+    },
+    {
+      "id": "repository_knowledge_report_architecture_architecture",
+      "department": "REPOSITORY_KNOWLEDGE",
+      "action": "report_architecture",
+      "object": "architecture",
+      "input": "text",
+      "output": "text",
+      "confidence": "confirmed",
+      "aliases": [
+        "architecture report",
+        "report architecture",
+        "repository_knowledge",
+        "сформируй отчёт architecture"
+      ]
+    },
+    {
+      "id": "repository_knowledge_repository_knowledge_unknown",
+      "department": "REPOSITORY_KNOWLEDGE",
+      "action": "repository_knowledge",
+      "object": "unknown",
+      "input": "text",
+      "output": "text",
+      "confidence": "unknown",
+      "aliases": [
+        "repository knowledge",
+        "repository_knowledge"
+      ]
+    },
+    {
+      "id": "search_search_catalog_full_text_catalog_full_text",
+      "department": "SEARCH",
+      "action": "search_catalog_full_text",
+      "object": "catalog_full_text",
+      "input": "text",
+      "output": "list",
+      "confidence": "confirmed",
+      "aliases": [
+        "catalog full text search",
+        "search",
+        "search catalog full text",
+        "найди catalog full text",
+        "поиск catalog full text"
+      ]
+    },
+    {
+      "id": "search_search_local_first_information_local_first_information",
+      "department": "SEARCH",
+      "action": "search_local_first_information",
+      "object": "local_first_information",
+      "input": "text",
+      "output": "list",
+      "confidence": "confirmed",
+      "aliases": [
+        "local first information search",
+        "search",
+        "search local first information",
+        "найди local first information",
+        "поиск local first information"
+      ]
+    },
+    {
+      "id": "search_search_profile_memory_profile_memory",
+      "department": "SEARCH",
+      "action": "search_profile_memory",
+      "object": "profile_memory",
+      "input": "text",
+      "output": "list",
+      "confidence": "confirmed",
+      "aliases": [
+        "profile memory search",
+        "search",
+        "search profile memory",
+        "найди profile memory",
+        "поиск profile memory"
+      ]
+    },
+    {
+      "id": "text_explain_text_text",
+      "department": "TEXT",
+      "action": "explain_text",
+      "object": "text",
+      "input": "text",
+      "output": "text",
+      "confidence": "confirmed",
+      "aliases": [
+        "explain text",
+        "text",
+        "text explanation",
+        "объясни text"
+      ]
+    },
+    {
+      "id": "text_generate_text_text",
+      "department": "TEXT",
+      "action": "generate_text",
+      "object": "text",
+      "input": "text",
+      "output": "text",
+      "confidence": "confirmed",
+      "aliases": [
+        "generate text",
+        "text",
+        "text generation",
+        "сгенерируй text",
+        "создай text"
+      ]
+    },
+    {
+      "id": "text_rewrite_text_text",
+      "department": "TEXT",
+      "action": "rewrite_text",
+      "object": "text",
+      "input": "text",
+      "output": "text",
+      "confidence": "confirmed",
+      "aliases": [
+        "rewrite text",
+        "text",
+        "text rewriting",
+        "перепиши text",
+        "перефразируй text"
+      ]
+    },
+    {
+      "id": "video_analyze_video_content_video_content",
+      "department": "VIDEO",
+      "action": "analyze_video_content",
+      "object": "video_content",
+      "input": "path",
+      "output": "text",
+      "confidence": "confirmed",
+      "aliases": [
+        "analyze video content",
+        "video",
+        "video content analysis",
+        "анализ video content",
+        "проанализируй video content"
+      ]
+    },
+    {
+      "id": "video_video_frame_sampling_unknown",
+      "department": "VIDEO",
+      "action": "video_frame_sampling",
+      "object": "unknown",
+      "input": "path",
+      "output": "text",
+      "confidence": "unknown",
+      "aliases": [
+        "video",
+        "video frame sampling"
+      ]
+    },
+    {
+      "id": "vision_analyze_image_image",
+      "department": "VISION",
+      "action": "analyze_image",
+      "object": "image",
+      "input": "image",
+      "output": "text",
+      "confidence": "confirmed",
+      "aliases": [
+        "analyze image",
+        "image analysis",
+        "vision",
+        "анализ image",
+        "проанализируй image"
+      ]
+    },
+    {
+      "id": "vision_recognize_image_text_image_text",
+      "department": "VISION",
+      "action": "recognize_image_text",
+      "object": "image_text",
+      "input": "image",
+      "output": "text",
+      "confidence": "confirmed",
+      "aliases": [
+        "image text recognition",
+        "recognize image text",
+        "vision",
+        "распознай image text"
+      ]
+    }
+  ],
+  "missing_capabilities": []
+}

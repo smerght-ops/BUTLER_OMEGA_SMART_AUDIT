@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 from A_07_MEMORY.semantic_compression import SemanticCompressor
 from A_07_MEMORY.attention_memory import AttentionMemory
@@ -146,6 +146,30 @@ class MemoryOrchestratorV2:
 --- USER INPUT ---
 {packet['user_input']}
 """.strip()
+
+    def add_session_event(self, *args, **kwargs):
+        return self.facade.add_session_event(*args, **kwargs)
+
+    def build_context(self, *args, **kwargs):
+        return self.facade.build_context(*args, **kwargs)
+
+    def evolve_knowledge(self, *args, **kwargs):
+        return self.facade.evolve_knowledge(*args, **kwargs)
+
+    def get_media_links(self, *args, **kwargs):
+        return self.facade.get_media_links(*args, **kwargs)
+
+    def index_semantic(self, *args, **kwargs):
+        return self.facade.index_semantic(*args, **kwargs)
+
+    def link_knowledge_media(self, *args, **kwargs):
+        return self.facade.link_knowledge_media(*args, **kwargs)
+
+    def rollback_knowledge(self, *args, **kwargs):
+        return self.facade.rollback_knowledge(*args, **kwargs)
+
+    def search_knowledge(self, *args, **kwargs):
+        return self.facade.search_knowledge(*args, **kwargs)
 
 
 # =========================

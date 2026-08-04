@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import replace
 from pathlib import Path
 
-from CapabilityRegistry import CapabilityRegistry
+from tools.inspectors.CapabilityRegistry import CapabilityRegistry
 
 from .task_decomposer import TaskDecomposer, TaskIntent
 from .task_plan import TaskPlan

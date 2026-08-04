@@ -1,62 +1,53 @@
-﻿$Host.UI.RawUI.WindowTitle = "BUTLER OMEGA SMART - RED STOP"
+[CmdletBinding()]
+param([int]$GracefulTimeoutSeconds = 5)
+
+$ErrorActionPreference = "Stop"
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
-Set-Location $PSScriptRoot
+$ProjectRoot = $PSScriptRoot
+$StatePath = Join-Path $ProjectRoot "A_08_LOGS\runtime\active_session.json"
 
-function OK($m){ Write-Host "[OK] $m" -ForegroundColor Green }
-function INFO($m){ Write-Host "[..] $m" -ForegroundColor Cyan }
+if (-not (Test-Path -LiteralPath $StatePath -PathType Leaf)) {
+    Write-Host "BUTLER_RUNTIME_ALREADY_STOPPED"
+    exit 0
+}
 
-Clear-Host
-Write-Host "=====================================================" -ForegroundColor Red
-Write-Host "       BUTLER OMEGA SMART - RED STOP BUTTON          " -ForegroundColor Red
-Write-Host "=====================================================" -ForegroundColor Red
-Write-Host "[ROOT] $PWD"
-Write-Host ""
+try {
+    $state = Get-Content -LiteralPath $StatePath -Raw -Encoding UTF8 | ConvertFrom-Json
+}
+catch {
+    Write-Error "BLOCKED_INVALID_SESSION_STATE: $($_.Exception.Message)"
+    exit 2
+}
 
-$patterns = @(
-    "BUTLER_OS\.py",
-    "TaskRunner\.runner_loop",
-    "ComfyUI\\main\.py"
-)
+if ($state.schema -ne "butler.runtime-session.v1" -or [string]::IsNullOrWhiteSpace($state.session_id)) {
+    Write-Error "BLOCKED_INVALID_SESSION_OWNERSHIP"
+    exit 2
+}
 
-$procs = Get-CimInstance Win32_Process | Where-Object {
-    $cmd = $_.CommandLine
-    if([string]::IsNullOrWhiteSpace($cmd)){ return $false }
-
-    foreach($p in $patterns){
-        if($cmd -match $p){ return $true }
+$failures = @()
+foreach ($entry in @($state.processes)) {
+    if (-not $entry.owned) { continue }
+    $processInfo = Get-CimInstance Win32_Process -Filter "ProcessId = $($entry.pid)" -ErrorAction SilentlyContinue
+    if ($null -eq $processInfo) { continue }
+    if ([string]::IsNullOrWhiteSpace($processInfo.CommandLine) -or $processInfo.CommandLine -notmatch [regex]::Escape($entry.command_token)) {
+        $failures += "PID_COMMAND_MISMATCH:$($entry.pid):$($entry.role)"
+        continue
     }
-    return $false
-}
-
-if($procs.Count -eq 0){
-    OK "Butler Runtime already stopped."
-}
-else{
-    foreach($proc in $procs){
-        INFO "Stopping PID $($proc.ProcessId)"
-        try{
-            Stop-Process -Id $proc.ProcessId -Force -ErrorAction Stop
-            OK "Stopped PID $($proc.ProcessId)"
-        }
-        catch{
-            Write-Host "[SKIP] PID $($proc.ProcessId)" -ForegroundColor Yellow
-        }
+    $process = Get-Process -Id $entry.pid -ErrorAction SilentlyContinue
+    if ($null -eq $process) { continue }
+    $process.CloseMainWindow() | Out-Null
+    if (-not $process.WaitForExit($GracefulTimeoutSeconds * 1000)) {
+        Stop-Process -Id $entry.pid -Force -ErrorAction SilentlyContinue
+        $process = Get-Process -Id $entry.pid -ErrorAction SilentlyContinue
+        if ($null -ne $process) { $failures += "STOP_TIMEOUT:$($entry.pid):$($entry.role)" }
     }
 }
 
-Write-Host ""
-Write-Host "Checking remaining Butler processes..."
-$left = Get-CimInstance Win32_Process | Where-Object {
-    $_.CommandLine -match "BUTLER_OS|TaskRunner\.runner_loop|ComfyUI\\main\.py"
+if ($failures.Count -gt 0) {
+    Write-Error ("PARTIAL_STOP: " + ($failures -join ", "))
+    exit 1
 }
 
-if($left){
-    Write-Host ""
-    Write-Host "[WARNING] Remaining processes:" -ForegroundColor Yellow
-    $left | Select-Object ProcessId,CommandLine | Format-Table -Auto
-}
-else{
-    OK "All Butler Runtime processes stopped."
-}
-
-Pause
+Remove-Item -LiteralPath $StatePath -Force
+Write-Host "BUTLER_RUNTIME_STOPPED session=$($state.session_id)"
+exit 0

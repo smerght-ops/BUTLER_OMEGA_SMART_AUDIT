@@ -31,6 +31,7 @@ engineering:
   - {name: "docs", reason: "Актуальная документация, спецификации и отчёты."}
   - {name: "AUDIT", reason: "Engineering evidence предыдущих аудитов."}
   - {name: "AUDIT_PACKS", reason: "Пакеты инженерных свидетельств."}
+  - {name: "A_10_BUTLER_OS", reason: "ACTIVE_SUPPORT материалы официального Butler OS; отдельным runtime не является."}
 
 workspace:
   - {name: "A_06_WORKSPACE", reason: "Рабочие артефакты Butler."}
@@ -65,7 +66,6 @@ review_required:
   - {name: "A_00_HEALER_UNIT", assigned: null, reason: "Роль относительно текущего runtime требует отдельного аудита."}
   - {name: "A_00_RELEASES", assigned: null, reason: "Смешанная зона release artifacts требует отдельного решения."}
   - {name: "A_08_LOGS", assigned: null, reason: "Смешанные runtime logs и generated exports."}
-  - {name: "A_10_BUTLER_OS", assigned: null, reason: "Runtime остаётся AMBIGUOUS_RUNTIME до отдельной консолидации."}
   - {name: "INSPECTOR_KNOWLEDGE", assigned: null, reason: "Смешанные knowledge/cache материалы требуют аудита."}
 
 classification_rules:

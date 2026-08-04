@@ -1,14 +1,14 @@
-# BUTLER-OS
+# A_10_BUTLER_OS
 
-Статус: первый слой вынесен из Factory в корень BUTLER_OMEGA.
+Статус: `ACTIVE_SUPPORT`.
 
-Роли:
-- Factory: лаборатория и полигон.
-- A_10_BUTLER_OS/00_PRODUCTION: новый боевой слой.
-- chat_router_WORKING_COPY.py: сохранённая рабочая копия текущего роутера.
-- department_contract.py: единый контракт отделов.
-- model_registry.py: утвержденный стек моделей.
-- smart_router.py: первый детерминированный классификатор задач.
+Каталог содержит вспомогательные и исторические Butler-OS материалы. Он не является
+самостоятельной production-архитектурой и не определяет entry point.
 
-Следующий шаг:
-подключить smart_router.py к текущему chat_router.py и убрать ручной выбор модели для обычных запросов.
+Официальная архитектура описана в:
+
+- `A_00_ARCHITECTURE/PRODUCTION_ARCHITECTURE.json`;
+- `A_00_ARCHITECTURE/RUNTIME_CONTRACT.json`;
+- `A_00_ARCHITECTURE/ACTIVE_SYSTEM.md`.
+
+Официальный launcher находится в корне: `START_BUTLER_OS.ps1`.

@@ -1,171 +1,87 @@
 ---
 metadata:
-  project: "BUTLER_OMEGA"
-  version: "1.0"
+  project: "BUTLER_OMEGA_SMART"
+  version: "2.0"
   created: "2026-08-04"
-  scope_version: "1.0"
+  scope_version: "2.0"
   source_gitignore: ".gitignore"
 
-# ---- Production -----------------------------------------------------------+
-# Каталог, являющийся частью работающего Butler.
-# Назначается только по явной документации или конфигурации (system_manifest.json).
-# Раздел заполняется только после утверждённого инженерного аудита.
-production: []
+production:
+  - {name: "A_01_CORE", reason: "Активное ядро, импортируемое официальными launcher и orchestration."}
+  - {name: "A_02_MANAGERS", reason: "Активные менеджеры и SmartDispatcherV2."}
+  - {name: "A_03_ENGINES", reason: "Runtime engines активных Department."}
+  - {name: "A_03_EXECUTORS", reason: "Исполнители активного runtime."}
+  - {name: "A_03_HANDLERS", reason: "Обработчики активного runtime."}
+  - {name: "A_03_ORCHESTRATION", reason: "Gateway, Harness и orchestration boundary."}
+  - {name: "A_04_AGENTS", reason: "Активные Butler Department и агенты."}
+  - {name: "A_04_COMPONENTS", reason: "Переиспользуемые production-компоненты."}
+  - {name: "A_05_STORAGE", reason: "Production storage layer."}
+  - {name: "A_07_CONFIG", reason: "Активные конфигурации и registry."}
+  - {name: "A_07_MEMORY", reason: "Активная система памяти."}
+  - {name: "A_09_GUARDIANS", reason: "Production security guardians."}
+  - {name: "A_09_INTERFACE", reason: "Активные интерфейсные компоненты."}
 
-# ---- Engineering ----------------------------------------------------------+
-# Инженерная инфраструктура: документация, тесты, инструменты, скрипты.
-# Раздел заполняется только после утверждённого инженерного аудита.
-engineering: []
+engineering:
+  - {name: "A_00_ARCHITECTURE", reason: "Актуальные архитектурные контракты и состояние проекта."}
+  - {name: "A_00_UTILS", reason: "Инженерные утилиты проекта."}
+  - {name: "A_09_TESTS", reason: "Официальные инженерные и приёмочные тесты."}
+  - {name: "A_99_TESTS", reason: "Дополнительные тестовые сценарии."}
+  - {name: "A_99_TEST_DATA", reason: "Фикстуры и тестовые данные."}
+  - {name: "tools", reason: "Инженерные инструменты и инспекторы."}
+  - {name: "docs", reason: "Актуальная документация, спецификации и отчёты."}
+  - {name: "AUDIT", reason: "Engineering evidence предыдущих аудитов."}
+  - {name: "AUDIT_PACKS", reason: "Пакеты инженерных свидетельств."}
 
-# ---- Workspace ------------------------------------------------------------+
-# Рабочие материалы проекта: черновики, временные данные, эксперименты.
-workspace: []
+workspace:
+  - {name: "A_06_WORKSPACE", reason: "Рабочие артефакты Butler."}
+  - {name: "A_10_OUTPUT_IMAGES", reason: "Пользовательские выходные изображения."}
 
-# ---- Laboratory -----------------------------------------------------------+
-# Исследовательские каталоги и песочницы (прототипы, PoC, тестовые среды).
 laboratory:
-  - name: "_AGENT_CORE_LAB"
-    reason: "Git-ignore section 'Local Laboratory' прямо подтверждает назначение как лаборатория."
+  - {name: "_AGENT_CORE_LAB", reason: "Изолированная лаборатория Agent Core."}
 
-# ---- Archive --------------------------------------------------------------+
-# Исторические данные и бэкапы. Каталог должен присутствовать в истории Git,
-# но не является источником актуальной архитектуры системы.
 archive:
-  - name: "A_00_ARCHITECTURE"
-    reason: "Протокол Git: Historical Project Trees (префикс A_00_)."
-  - name: "A_00_HEALER_UNIT"
-    reason: "Протокол Git: Historical Project Trees (префикс A_00_)."
-  - name: "A_00_LEGACY_ARCHIVE"
-    reason: "Протокол Git: Historical Project Trees (префикс A_00_)."
-  - name: "A_00_QUARANTINE"
-    reason: "Протокол Git: Historical Project Trees (префикс A_00_)."
-  - name: "A_00_RELEASES"
-    reason: "Протокол Git: Historical Project Trees (префикс A_00_)."
-  - name: "A_00_RESTORE"
-    reason: "Протокол Git: Historical Project Trees (префикс A_00_)."
-  - name: "BACKUP_ARCHITECTURE_DOCS_MOVE_20260802_155835"
-    reason: "BACKUP префикс — Migration & Local Backups (.gitignore)."
-  - name: "BACKUP_AUDITS_MOVE_20260803_065427"
-    reason: "BACKUP префикс — автоматические бэкапы системы (.gitignore)."
-  - name: "BACKUP_AUDIT_MOVE_20260802_120428"
-    reason: "BACKUP префикс — Backup history (.gitignore)."
-  - name: "AUDIT"
-    reason: "Каталог экспорта аудита (раздел 'Local Audit Exports' .gitignore)."
-  - name: "AUDIT_PACKS"
-    reason: "Каталог экспорта аудита — вариант во мн. числе (.gitignore раздел 'Audits exports')."
-  - name: "AI_ARCHITECTURE_AUDIT_20260713_115059"
-    reason: "Экспорт аудита (раздел 'Local Audit Exports' .gitignore)."
+  - {name: "A_00_LEGACY_ARCHIVE", reason: "Исторический код."}
+  - {name: "A_00_RESTORE", reason: "Точки восстановления."}
+  - {name: "A_00_QUARANTINE", reason: "Карантин исключённых материалов."}
+  - {name: "BACKUP_*", reason: "Точечные и миграционные backup-каталоги."}
+  - {name: "AI_ARCHITECTURE_AUDIT_*", reason: "Исторические выгрузки архитектурного аудита."}
 
-# ---- Generated ------------------------------------------------------------+
-# Генерируемые объекты при запуске и тестировании. Не являются частью проекта.
 generated:
-  - name: "__pycache__"
-    reason: "Кэш выполнения Python (PEP 3147, PEP 578 — .gitignore 'Python Runtime & Caches')."
-  - name: ".venv"
-    reason: "Виртуальное окружение Python (стандарт изоляции .gitignore)."
+  - {name: "__pycache__", reason: "Python bytecode cache."}
+  - {name: ".pytest_cache", reason: "Pytest cache."}
+  - {name: ".mypy_cache", reason: "Mypy cache."}
+  - {name: ".kilo", reason: "Локальные generated/tooling-данные; production-источники отсутствуют."}
 
-# ---- Ignore ---------------------------------------------------------------+
-# Полностью исключаемые файлы и каталоги. Инструменты Butler не обращаются к ним
-# в любой классификации. Они не считаются частью дерева проекта.
 ignore:
-  - name: ".git"
-    reason: "Метаданные репозитория Git — стандартная практика, не часть контента."
-  - name: ".agents"
-    reason: "Локальный каталог IDE/Agent service (раздел 'Local Service Folders' .gitignore)."
-  - name: ".codex"
-    reason: "Кодовая генерация tooling — Local Service Folder (.gitignore раздел)."
+  - {name: ".git", reason: "Git metadata."}
+  - {name: ".agents", reason: "Локальные метаданные agent tooling."}
+  - {name: ".codex", reason: "Локальные метаданные Codex."}
+  - {name: ".venv", reason: "Локальное Python-окружение."}
+  - {name: "venv", reason: "Локальное Python-окружение."}
+  - {name: "env", reason: "Локальное Python-окружение."}
+  - {name: "node_modules", reason: "Внешние JavaScript-зависимости."}
 
-# ---- Review_Required -----------------------------------------------------+
-# Каталог верхнего уровня, не попавший ни в одну секцию выше.
-# assigned: null до инженерного аудита. UNKNOWN не переносится в Active
-# (Production/Engineering/Workspace/Laboratory/Archive) без подтверждённой роли.
 review_required:
-  - name: "A_01_CORE"
-    assigned: null
-    reason: "path_key в system_manifest.json, роль не задокументирована."
-  - name: "A_02_MANAGERS"
-    assigned: null
-    reason: "Каталог верхнего уровня — роль не подтверждена документацией."
-  - name: "A_03_ENGINES"
-    assigned: null
-    reason: "Каталог верхнего уровня — роль не подтверждена документацией."
-  - name: "A_04_AGENTS"
-    assigned: null
-    reason: "Каталог верхнего уровня — роль не подтверждена документацией."
-  - name: "A_06_WORKSPACE"
-    assigned: null
-    reason: "path_key в system_manifest.json, роль не задокументирована."
-  - name: "A_08_LOGS"
-    assigned: null
-    reason: "Каталог верхнего уровня — роль не подтверждена документацией."
-  - name: "A_03_EXECUTORS"
-    assigned: null
-    reason: "Каталог верхнего уровня, отсутствует в system_manifest.json."
-  - name: "A_03_HANDLERS"
-    assigned: null
-    reason: "Каталог верхнего уровня — роль не подтверждена документацией."
-  - name: "A_03_ORCHESTRATION"
-    assigned: null
-    reason: "Каталог верхнего уровня — роль не подтверждена документацией."
-  - name: "A_04_COMPONENTS"
-    assigned: null
-    reason: "Каталог верхнего уровня — роль не подтверждена документацией."
-  - name: "A_05_STORAGE"
-    assigned: null
-    reason: "Каталог верхнего уровня — роль не подтверждена документацией."
-  - name: "A_07_CONFIG"
-    assigned: null
-    reason: "Каталог верхнего уровня — роль не подтверждена документацией."
-  - name: "A_07_MEMORY"
-    assigned: null
-    reason: "Каталог верхнего уровня — роль не подтверждена документацией."
-  - name: "A_09_GUARDIANS"
-    assigned: null
-    reason: "Каталог верхнего уровня — роль не подтверждена документацией."
-  - name: "A_10_BUTLER_OS"
-    assigned: null
-    reason: "Каталог верхнего уровня — роль не подтверждена документацией."
-  - name: "A_10_OUTPUT_IMAGES"
-    assigned: null
-    reason: "Каталог верхнего уровня — роль не подтверждена документацией."
-  - name: "A_99_TESTS"
-    assigned: null
-    reason: "Каталог верхнего уровня, назначение под вопросом (префикс A_99_)."
-  - name: "A_99_TEST_DATA"
-    assigned: null
-    reason: "Каталог верхнего уровня — роль не подтверждена документацией."
-  - name: "tools"
-    assigned: null
-    reason: "Каталог верхнего уровня — роль не подтверждена документацией."
-  - name: "docs"
-    assigned: null
-    reason: "Каталог верхнего уровня — роль не подтверждена документацией."
-  - name: "INSPECTOR_KNOWLEDGE"
-    assigned: null
-    reason: "Local Inspector Cache (раздел 'Local inspections cache' .gitignore)."
+  - {name: "A_00_HEALER_UNIT", assigned: null, reason: "Роль относительно текущего runtime требует отдельного аудита."}
+  - {name: "A_00_RELEASES", assigned: null, reason: "Смешанная зона release artifacts требует отдельного решения."}
+  - {name: "A_08_LOGS", assigned: null, reason: "Смешанные runtime logs и generated exports."}
+  - {name: "A_10_BUTLER_OS", assigned: null, reason: "Runtime остаётся AMBIGUOUS_RUNTIME до отдельной консолидации."}
+  - {name: "INSPECTOR_KNOWLEDGE", assigned: null, reason: "Смешанные knowledge/cache материалы требуют аудита."}
 
-# ---- Classification Rules -------------------------------------------------+
 classification_rules:
-  - "Каталог верхнего уровня, не упомянутый ни в одной секции или review_required, считается UNKNOWN."
-  - "UNKNOWN никогда автоматически НЕ переходит в Production или любую другую Active категорию."
-  - "Перевод UNKNOWN из Review_Required в активную секцию возможен только после инженерного аудита конкретного каталога."
+  - "Путь может принадлежать только одной категории."
+  - "UNKNOWN не переводится в активную категорию без инженерного аудита."
+  - "Archive, generated и ignore исключаются из обычного сканирования."
 
-# ---- Audit Policy ---------------------------------------------------------+
 audit_policy:
-  production_audit: { scopes: [] }
-  engineering_audit: { scopes: [] }
-  repository_audit: { scopes: ["*"] }
-  architecture_reconstruction_scan: { scopes: [ ] }
+  production_audit: {scopes: ["production"]}
+  engineering_audit: {scopes: ["engineering"]}
+  repository_audit: {scopes: ["production", "engineering", "workspace", "laboratory"]}
+  architecture_reconstruction_scan: {scopes: ["production", "engineering"]}
 
-# ---- Future Consumers -----------------------------------------------------+
 future_consumers:
-  - name: "RepositoryKnowledgeDepartment"
-    description: "Департамент знаний репозитория, читает классификацию для навигации."
-  - name: "ReconstructionScanner"
-    description: "Сканер реконструкции архитектуры, ограничивается Production/Engineering."
-  - name: "ProjectIndexer"
-    description: "Индексатор проекта по классификационному дереву."
-  - name: "ArchitectureInspector"
-    description: "Архитектурный инспектор валидации соответствия дерева проекту."
-  - name: "Guardian"
-    description: "Система контроля границ, проверяет корректность маршрутизации каталогов."
+  - {name: "RepositoryKnowledgeDepartment", description: "Канонический опубликованный индекс репозитория."}
+  - {name: "ReconstructionScanner", description: "Scope-driven реконструкция архитектуры."}
+  - {name: "ProjectIndexer", description: "Экспортёр RepositoryIndex."}
+  - {name: "ArchitectureInspector", description: "Проверка архитектурных границ."}
+  - {name: "Guardian", description: "Контроль классификации и маршрутизации."}

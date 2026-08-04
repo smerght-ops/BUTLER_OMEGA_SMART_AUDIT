@@ -1,22 +1,36 @@
-﻿{
-    "project_name": "BUTLER_OMEGA",
-    "version": "1.0",
-    "author": "Victor",
-    "vision_model": "qwen2.5-vl:latest",
-    "analysis_model": "qwen35-ru:latest",
-    "coder_model": "DeepSeek-Coder-V2-Lite-Instruct-Q6_K:latest",
-    "fallback_model": "codestral:latest",
-    "matrix_maturity": {
-        "v1.0_foundation": "COMPLETED",
-        "v1.1_management": "IN_PROGRESS",
-        "v1.2_agent_layer": "PLANNED"
-    },
-    "paths": {
-        "core": "A_01_CORE",
-        "managers": "A_02_MANAGERS",
-        "engines": "A_03_ENGINES",
-        "agents": "A_04_AGENTS",
-        "workspace": "A_06_WORKSPACE",
-        "logs": "A_08_LOGS"
-    }
+{
+  "active_paths": [
+    "A_01_CORE",
+    "A_02_MANAGERS",
+    "A_03_ENGINES",
+    "A_03_EXECUTORS",
+    "A_03_HANDLERS",
+    "A_03_ORCHESTRATION",
+    "A_04_AGENTS",
+    "A_04_COMPONENTS",
+    "A_05_STORAGE",
+    "A_07_CONFIG",
+    "A_07_MEMORY",
+    "A_09_GUARDIANS",
+    "A_09_INTERFACE"
+  ],
+  "author": "Victor",
+  "components": "A_04_COMPONENTS",
+  "config": "A_07_CONFIG",
+  "core": "A_01_CORE",
+  "departments": "A_04_AGENTS",
+  "engines": "A_03_ENGINES",
+  "executors": "A_03_EXECUTORS",
+  "guardians": "A_09_GUARDIANS",
+  "handlers": "A_03_HANDLERS",
+  "interface": "A_09_INTERFACE",
+  "managers": "A_02_MANAGERS",
+  "memory": "A_07_MEMORY",
+  "orchestration": "A_03_ORCHESTRATION",
+  "project": "BUTLER_OMEGA_SMART",
+  "project_name": "BUTLER_OMEGA_SMART",
+  "storage": "A_05_STORAGE",
+  "tests": ["A_09_TESTS", "A_99_TESTS"],
+  "version": "2.0",
+  "workspace": ["A_06_WORKSPACE", "A_10_OUTPUT_IMAGES"]
 }

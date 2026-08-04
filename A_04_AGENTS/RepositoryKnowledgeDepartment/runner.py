@@ -59,6 +59,7 @@ class RepositoryKnowledgeDepartment(BaseDepartment):
         if operation == "get_index":
             index = self._service.index()
             return self._service._operation("get_index", index.to_dict(), time.perf_counter())
+        if operation == "get_index_status": return self._service.get_index_status()
         if operation == "find_duplicates": return self.find_duplicates(value)
         return self._service.query(operation, value if value is not None else query, filters)
 
@@ -78,6 +79,7 @@ class RepositoryKnowledgeDepartment(BaseDepartment):
 
     def build_index(self): return self._service.build_index()
     def refresh_index(self): return self._service.refresh_index()
+    def get_index_status(self): return self._service.get_index_status()
     def find_department(self, name): return self._service.find_department(name)
     def find_manager(self, name): return self._service.find_manager(name)
     def find_handler(self, name): return self._service.find_handler(name)

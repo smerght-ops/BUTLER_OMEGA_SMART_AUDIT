@@ -14,6 +14,8 @@ class Diagnostic:
     status: str
     reason: str = ""
     details: Mapping[str, Any] = field(default_factory=dict)
+    line: int | None = None
+    column: int | None = None
 
     def to_dict(self):
         return asdict(self)
@@ -28,6 +30,7 @@ class FileRecord:
     size: int
     sha256: str
     encoding: str
+    mtime_ns: int
     module: str | None = None
     symbols: Tuple[Mapping[str, Any], ...] = ()
     imports: Tuple[Mapping[str, Any], ...] = ()

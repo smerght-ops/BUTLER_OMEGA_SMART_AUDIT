@@ -15,12 +15,19 @@ class IndexBuilder:
         file_nodes = []
         for item in files:
             node_type = "File"
+            file_metadata = dict(item.metadata)
+            file_metadata.update({
+                "imports": sorted({entry.get("module") for entry in item.imports if entry.get("module")}),
+                "classes": sorted(entry["name"] for entry in item.symbols if entry.get("kind") == "ClassDef"),
+                "functions": sorted(entry["name"] for entry in item.symbols if entry.get("kind") in {"FunctionDef", "AsyncFunctionDef"}),
+            })
             file_nodes.append({"identifier": item.identifier, "name": item.name, "type": node_type,
                 "category": item.category, "file": item.relative_path, "line": 1,
                 "owner": item.relative_path.rsplit("/", 1)[0] if "/" in item.relative_path else "repository",
                 "confidence": "HIGH", "sha256": item.sha256, "module": item.module,
+                "size": item.size, "encoding": item.encoding, "mtime_ns": item.mtime_ns,
                 "runtime_status": "UNKNOWN", "registration_status": "UNKNOWN",
-                "dependencies": [], "reverse_dependencies": [], "metadata": dict(item.metadata)})
+                "dependencies": [], "reverse_dependencies": [], "metadata": file_metadata})
             for symbol in item.symbols:
                 identifier = "symbol:" + hashlib.sha256(f"{item.relative_path}:{symbol['name']}:{symbol['line']}".encode()).hexdigest()[:20]
                 symbol_type = "Class" if symbol["kind"] == "ClassDef" else "Function"

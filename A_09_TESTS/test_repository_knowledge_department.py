@@ -21,7 +21,10 @@ class RepositoryKnowledgeTests(unittest.TestCase):
         self.temporary = tempfile.TemporaryDirectory()
         self.root = Path(self.temporary.name)
         (self.root / "PROJECT_SCOPE.yaml").write_text(
-            "metadata:\n  scope_version: 1.0\nproduction:\n  - name: src\n",
+            "metadata:\n  scope_version: '1.0'\n"
+            "production:\n  - name: src\nengineering: []\nworkspace: []\nlaboratory: []\n"
+            "archive: []\ngenerated: []\nignore: []\nreview_required: []\n"
+            "classification_rules: []\naudit_policy: {}\nfuture_consumers: []\n",
             encoding="utf-8",
         )
         (self.root / "system_manifest.json").write_text(
@@ -67,6 +70,19 @@ class RepositoryKnowledgeTests(unittest.TestCase):
         target = next(item for item in first if item.relative_path == "src/department.py")
         self.assertEqual(target.category, "production")
         self.assertTrue(any(item["name"] == "DemoDepartment" for item in target.symbols))
+        self.assertIn("mtime_ns", target.metadata)
+        self.assertEqual(target.metadata["size"], target.size)
+
+    def test_scanner_excludes_archive_restore_backup_and_symlink(self):
+        for name in ("legacy", "restore", "BACKUP_one"):
+            (self.root / name).mkdir()
+            (self.root / name / "hidden.py").write_text("x = 1", encoding="utf-8")
+        text = (self.root / "PROJECT_SCOPE.yaml").read_text(encoding="utf-8")
+        text = text.replace("archive: []", "archive: [legacy, restore, 'BACKUP_*']")
+        (self.root / "PROJECT_SCOPE.yaml").write_text(text, encoding="utf-8")
+        scope = ScopeResolver().load(self.root)[0]
+        paths = [item.relative_path for item in RepositoryScanner(self.root, scope).scan()[0]]
+        assert not any("hidden.py" in path for path in paths)
 
     def test_index_build_refresh_and_cache(self):
         built = self.service.build_index()
@@ -104,7 +120,7 @@ class RepositoryKnowledgeTests(unittest.TestCase):
         self.assertEqual(result["department"], "REPOSITORY_KNOWLEDGE")
         self.assertTrue(result["metadata"]["repository_knowledge"]["data"]["matches"])
         events = [row[1] for row in self.observation.rows]
-        self.assertIn("INDEX_BUILD", events)
+        self.assertIn("INDEX_COLD_BUILD", events)
         self.assertIn("QUERY_EXECUTION", events)
 
     def test_dispatcher_harness_gateway_permission_integration(self):

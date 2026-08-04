@@ -1,4 +1,4 @@
-import ast, json, hashlib
+import json
 from pathlib import Path
 from datetime import datetime
 
@@ -8,100 +8,37 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "A_08_LOGS" / "PROJECT_INDEX"
 OUT.mkdir(parents=True, exist_ok=True)
 
-SKIP_DIRS = {
-    "__pycache__", ".git", ".venv", "venv", "env",
-    "node_modules", ".mypy_cache", ".pytest_cache"
-}
-
 TEXT_EXT = {
     ".py", ".json", ".md", ".txt", ".bat", ".ps1",
     ".yml", ".yaml", ".ini", ".cfg", ".toml"
 }
 
 
-def sha256_file(path):
-    h = hashlib.sha256()
-    with open(path, "rb") as f:
-        for chunk in iter(lambda: f.read(1024 * 1024), b""):
-            h.update(chunk)
-    return h.hexdigest()
-
-
-def read_text_safe(path):
-    for enc in ("utf-8-sig", "utf-8", "cp1251"):
-        try:
-            return path.read_text(encoding=enc), enc, None
-        except Exception as e:
-            last = str(e)
-    return "", None, last
-
-
-def analyze_py(path):
-    text, enc, err = read_text_safe(path)
-    info = {
-        "encoding": enc,
-        "parse_error": err,
-        "imports": [],
-        "classes": [],
-        "functions": []
-    }
-    if err:
-        return info
-
-    try:
-        tree = ast.parse(text)
-    except Exception as e:
-        info["parse_error"] = str(e)
-        return info
-
-    imports = set()
-    for node in ast.walk(tree):
-        if isinstance(node, ast.Import):
-            for a in node.names:
-                imports.add(a.name)
-        elif isinstance(node, ast.ImportFrom):
-            if node.module:
-                imports.add(node.module)
-        elif isinstance(node, ast.ClassDef):
-            info["classes"].append(node.name)
-        elif isinstance(node, ast.FunctionDef):
-            info["functions"].append(node.name)
-
-    info["imports"] = sorted(imports)
-    return info
-
-
 def main():
     payload = query_repository(ROOT, "get_index")
     canonical = payload["data"]
     file_nodes = [node for node in canonical["nodes"] if node.get("type") == "File"]
-    symbol_nodes = [node for node in canonical["nodes"] if node.get("type") in ("Class", "Function")]
-    edges = canonical["edges"]
     files = []
     directories = set()
     for node in file_nodes:
         rel_path = node.get("file", "")
-        path = ROOT / rel_path
         extension = Path(rel_path).suffix.lower()
-        owner_id = node.get("identifier", "")
-        symbols = [item for item in symbol_nodes if item.get("owner") == owner_id]
-        imports = [edge.get("target", "") for edge in edges
-                   if edge.get("source") == owner_id and edge.get("edge_type") == "imports"]
         metadata = node.get("metadata", {})
         files.append({
             "path": rel_path,
             "name": Path(rel_path).name,
             "ext": extension,
-            "size": metadata.get("size", 0),
-            "mtime": int(path.stat().st_mtime) if path.exists() else 0,
+            "size": node.get("size", metadata.get("size", 0)),
+            "mtime_ns": node.get("mtime_ns", metadata.get("mtime_ns", 0)),
             "sha256": node.get("sha256", ""),
+            "category": node.get("category", "UNKNOWN"),
             "kind": "text" if extension in TEXT_EXT else "binary_or_data",
             "python": {
-                "encoding": metadata.get("encoding"),
-                "parse_error": None,
-                "imports": sorted(imports),
-                "classes": [item["name"] for item in symbols if item.get("type") == "Class"],
-                "functions": [item["name"] for item in symbols if item.get("type") == "Function"],
+                "encoding": node.get("encoding", metadata.get("encoding")),
+                "parse_error": metadata.get("parse_error"),
+                "imports": metadata.get("imports", []),
+                "classes": metadata.get("classes", []),
+                "functions": metadata.get("functions", []),
             },
         })
         parent = Path(rel_path).parent

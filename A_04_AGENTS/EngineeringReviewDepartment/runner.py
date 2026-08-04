@@ -35,7 +35,9 @@ class EngineeringReviewDepartment(BaseDepartment):
     def execute(self, query: str, context: dict = None, **kwargs) -> dict:
         started = time.perf_counter()
         try:
-            report = run_full_review()
+            context = dict(context or {})
+            mode = "full" if context.get("full") or "full" in str(query).casefold() else "changed"
+            report = run_full_review(mode=mode, detailed=bool(context.get("detailed")))
             text = format_report(report)
             return self._result(started, True, {"report": report}, None, text=text)
         except Exception as error:

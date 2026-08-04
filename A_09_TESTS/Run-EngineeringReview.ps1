@@ -16,7 +16,10 @@
 #>
 
 [CmdletBinding()]
-param()
+param(
+    [switch]$Full,
+    [switch]$Detailed
+)
 
 $ErrorActionPreference = "Stop"
 $ProjectRoot = $PSScriptRoot | Split-Path -Parent
@@ -32,7 +35,13 @@ Write-Host ""
 $env:PYTHONPATH = "$ProjectRoot;$env:PYTHONPATH"
 
 try {
-    & $PythonExe -c "from A_04_AGENTS.EngineeringReviewDepartment.checker import run_full_review, print_report; print_report(run_full_review())" 2>&1
+    $Mode = if ($Full) { "full" } else { "changed" }
+    $DetailedValue = if ($Detailed) { "True" } else { "False" }
+    $PreviousErrorPreference = $ErrorActionPreference
+    $ErrorActionPreference = "Continue"
+    & $PythonExe -c "from A_04_AGENTS.EngineeringReviewDepartment.checker import run_full_review, print_report; print_report(run_full_review(mode='$Mode', detailed=$DetailedValue))" 2>&1
+    $ErrorActionPreference = $PreviousErrorPreference
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
     Write-Host ""
     Write-Host "--- Engineering Review Complete ---" -ForegroundColor Green

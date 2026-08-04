@@ -3,6 +3,7 @@
 from datetime import datetime, timezone
 from pathlib import Path
 import time
+from threading import RLock
 
 from .analyzers import DuplicateDetector
 from .graphs import ProjectGraphBuilder
@@ -17,6 +18,11 @@ class RepositoryKnowledgeService:
     def __init__(self, root: Path, observation=None):
         self.root, self.observation = root.resolve(), observation
         self.cache, self.query_engine = KnowledgeCache(), QueryEngine()
+        self._build_lock = RLock()
+        self.build_count = 0
+        self.scan_count = 0
+        self.last_build_duration_ms = 0
+        self.last_error = None
 
     def _record(self, event, payload):
         if self.observation is None: return
@@ -24,29 +30,70 @@ class RepositoryKnowledgeService:
         except Exception: pass
 
     def build_index(self):
-        return self._build("INDEX_BUILD")
+        return self._build("INDEX_COLD_BUILD")
 
     def refresh_index(self):
         return self._build("INDEX_REFRESH")
 
     def _build(self, event):
-        started = time.perf_counter()
-        scope, scope_diag = ScopeResolver().load(self.root)
-        manifest, manifest_diag = ManifestLoader().load(self.root)
-        inventory, inventory_diag = InventoryLoader().load(self.root)
-        files, scan_diags = RepositoryScanner(self.root, scope).scan()
-        diagnostics = [scope_diag.to_dict(), manifest_diag.to_dict(), inventory_diag.to_dict(), *scan_diags]
-        candidate = IndexBuilder().build(files, {"scope":scope,"manifest":manifest,"inventory":inventory}, diagnostics)
-        published = self.cache.publish(candidate)
-        self._record(event, {"index_version":published.index_version,"files":len(files),
-            "duration_ms":int((time.perf_counter()-started)*1000)})
-        return self._operation(event.casefold(), published.to_dict(), started)
+        with self._build_lock:
+            if event == "INDEX_COLD_BUILD" and self.cache.get() is not None:
+                self._record("INDEX_CACHE_HIT", {"index_version": self.cache.get().index_version})
+                return self._operation("get_index", self.cache.get().to_dict(), time.perf_counter())
+            started = time.perf_counter()
+            previous = self.cache.get()
+            try:
+                scope, scope_diag = ScopeResolver().load(self.root)
+                if scope_diag.status != "OK":
+                    raise RuntimeError(f"{scope_diag.reason}: {dict(scope_diag.details)}")
+                manifest, manifest_diag = ManifestLoader().load(self.root)
+                if manifest_diag.status != "OK":
+                    raise RuntimeError(f"{manifest_diag.reason}: {dict(manifest_diag.details)}")
+                inventory, inventory_diag = InventoryLoader().load(self.root)
+                self.scan_count += 1
+                files, scan_diags = RepositoryScanner(self.root, scope).scan()
+                diagnostics = [scope_diag.to_dict(), manifest_diag.to_dict(), inventory_diag.to_dict(), *scan_diags]
+                candidate = IndexBuilder().build(files, {"scope":scope,"manifest":manifest,"inventory":inventory}, diagnostics)
+                published = self.cache.publish(candidate)
+                self.build_count += 1
+                self.last_error = None
+                self.last_build_duration_ms = int((time.perf_counter() - started) * 1000)
+                self._record(event, {"index_version":published.index_version,"files":len(files),
+                    "duration_ms":self.last_build_duration_ms,"scan_count":self.scan_count})
+                return self._operation(event.casefold(), published.to_dict(), started)
+            except Exception as error:
+                self.last_error = f"{type(error).__name__}: {error}"
+                self.last_build_duration_ms = int((time.perf_counter() - started) * 1000)
+                failed_event = "INDEX_REFRESH_FAILED" if event == "INDEX_REFRESH" else "INDEX_COLD_BUILD_FAILED"
+                self._record(failed_event, {"error": self.last_error, "index_preserved": previous is not None})
+                if previous is None:
+                    raise
+                return {**self._operation("refresh_index", previous.to_dict(), started),
+                        "degraded": True, "status": "DEGRADED", "errors": [self.last_error]}
 
     def index(self):
         index = self.cache.get()
+        if index is not None:
+            self._record("INDEX_CACHE_HIT", {"index_version": index.index_version})
+            return index
+        self.build_index()
+        index = self.cache.get()
         if index is None:
-            self.build_index(); index = self.cache.get()
+            raise RuntimeError("Repository index is unavailable")
         return index
+
+    def get_index_status(self):
+        started = time.perf_counter()
+        index = self.cache.get()
+        data = {
+            "root": str(self.root), "index_ready": index is not None,
+            "index_version": index.index_version if index else None,
+            "repository_version": index.repository_version if index else None,
+            "built_at": index.build_timestamp if index else None,
+            "build_count": self.build_count, "scan_count": self.scan_count,
+            "last_build_duration_ms": self.last_build_duration_ms, "last_error": self.last_error,
+        }
+        return self._operation("get_index_status", data, started)
 
     def query(self, operation="query", value=None, filters=None):
         started = time.perf_counter(); result = self.query_engine.query(self.index(), operation, value, filters)

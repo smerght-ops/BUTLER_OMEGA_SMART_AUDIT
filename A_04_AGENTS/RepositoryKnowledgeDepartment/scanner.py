@@ -5,6 +5,7 @@ import hashlib
 import os
 import re
 import stat
+from fnmatch import fnmatch
 from pathlib import Path
 
 from .models import Diagnostic, FileRecord
@@ -23,6 +24,12 @@ class RepositoryScanner:
         self.excluded_roots = {
             str(name).casefold()
             for category in ("archive", "generated", "ignore")
+            for name in categories.get(category, []) or []
+        }
+        self.excluded_patterns = tuple(self.excluded_roots)
+        self.included_roots = {
+            str(name).casefold()
+            for category in ("production", "engineering", "workspace", "laboratory")
             for name in categories.get(category, []) or []
         }
 
@@ -44,6 +51,8 @@ class RepositoryScanner:
         return mapping
 
     def _classify(self, relative: str, mapping: dict) -> str:
+        if "/" not in relative:
+            return "engineering"
         top = relative.split("/", 1)[0].casefold()
         if top in mapping:
             return mapping[top]
@@ -61,8 +70,10 @@ class RepositoryScanner:
                 if self._reparse(entry):
                     continue
                 if entry.is_dir(follow_symlinks=False):
+                    is_root_child = directory == self.root
                     if (entry.name not in self.ALWAYS_IGNORE
-                            and entry.name.casefold() not in self.excluded_roots
+                            and not any(fnmatch(entry.name.casefold(), pattern) for pattern in self.excluded_patterns)
+                            and (not is_root_child or entry.name.casefold() in self.included_roots)
                             and not entry.name.casefold().startswith(("backup", "restore", "snapshot", "checkpoint"))):
                         stack.append(Path(entry.path))
                 elif entry.is_file(follow_symlinks=False):
@@ -74,13 +85,16 @@ class RepositoryScanner:
         for path in self._walk():
             relative = path.relative_to(self.root).as_posix()
             try:
-                size = path.stat().st_size
+                stat_result = path.stat()
+                size = stat_result.st_size
                 raw = path.read_bytes() if size <= self.MAX_TEXT_BYTES else b""
             except OSError as error:
                 diagnostics.append(Diagnostic(relative, "DEGRADED", type(error).__name__).to_dict())
                 continue
             digest = hashlib.sha256(raw if raw else f"{relative}:{size}".encode()).hexdigest()
-            encoding, symbols, imports, calls, metadata = "BINARY_OR_SKIPPED", (), (), (), {}
+            encoding, symbols, imports, calls = "BINARY_OR_SKIPPED", (), (), ()
+            metadata = {"size": size, "mtime_ns": stat_result.st_mtime_ns, "encoding": "BINARY_OR_SKIPPED",
+                        "parse_error": None, "redacted": False}
             sensitive = bool(self.SENSITIVE.search(path.name))
             if not sensitive and size <= self.MAX_TEXT_BYTES and path.suffix.casefold() in self.TEXT_SUFFIXES:
                 try:
@@ -88,6 +102,7 @@ class RepositoryScanner:
                         raise UnicodeError("UTF8_BOM_NOT_ALLOWED")
                     text = raw.decode("utf-8")
                     encoding = "UTF-8"
+                    metadata["encoding"] = encoding
                     if path.suffix.casefold() == ".py":
                         tree = ast.parse(text, filename=relative)
                         symbol_items, import_items, call_items = [], [], []
@@ -104,11 +119,12 @@ class RepositoryScanner:
                         symbols, imports, calls = tuple(symbol_items), tuple(import_items), tuple(call_items)
                 except (UnicodeError, UnicodeDecodeError, SyntaxError) as error:
                     encoding = "INVALID_UTF8" if not isinstance(error, SyntaxError) else "UTF-8"
-                    metadata = {"parse_error": f"{type(error).__name__}: {error}"}
+                    metadata["parse_error"] = f"{type(error).__name__}: {error}"
+                    metadata["encoding"] = encoding
                     diagnostics.append(Diagnostic(relative, "DEGRADED", type(error).__name__).to_dict())
             elif sensitive:
-                metadata = {"redacted": True}
+                metadata["redacted"] = True
             identifier = "file:" + hashlib.sha256(relative.encode("utf-8")).hexdigest()[:20]
             module = ".".join(Path(relative).with_suffix("").parts) if path.suffix.casefold() == ".py" else None
-            records.append(FileRecord(identifier, path.name, relative, self._classify(relative, mapping), size, digest, encoding, module, symbols, imports, calls, metadata))
+            records.append(FileRecord(identifier, path.name, relative, self._classify(relative, mapping), size, digest, encoding, stat_result.st_mtime_ns, module, symbols, imports, calls, metadata))
         return tuple(records), tuple(diagnostics)

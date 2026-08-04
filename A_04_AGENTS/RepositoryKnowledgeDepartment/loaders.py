@@ -3,6 +3,8 @@
 import json
 from pathlib import Path
 
+import yaml
+
 from .models import Diagnostic
 
 
@@ -15,34 +17,62 @@ def _strict_text(path: Path) -> str:
 
 class ScopeResolver:
     SOURCE = "PROJECT_SCOPE.yaml"
+    REQUIRED = (
+        "metadata", "production", "engineering", "workspace", "laboratory", "archive",
+        "generated", "ignore", "review_required", "classification_rules", "audit_policy",
+        "future_consumers",
+    )
+    CATEGORIES = ("production", "engineering", "workspace", "laboratory", "archive", "generated", "ignore")
 
     def load(self, root: Path):
         path = root / self.SOURCE
         if not path.is_file():
             return {}, Diagnostic(self.SOURCE, "DEGRADED", "SOURCE_UNAVAILABLE")
         try:
-            text = _strict_text(path)
-            result = {"metadata": {}, "categories": {}, "rules": []}
-            section = None
-            for raw_line in text.splitlines():
-                line = raw_line.strip()
-                if not line or line.startswith("#") or line == "---":
-                    continue
-                if not raw_line.startswith((" ", "\t")) and line.endswith(":"):
-                    section = line[:-1]
-                    result["categories"].setdefault(section, [])
-                elif line.startswith("- name:") and section:
-                    result["categories"].setdefault(section, []).append(
-                        line.split(":", 1)[1].strip().strip('"\'')
-                    )
-                elif section == "metadata" and ":" in line:
-                    key, value = line.split(":", 1)
-                    result["metadata"][key.strip()] = value.strip().strip('"\'')
-                elif section == "classification_rules" and line.startswith("-"):
-                    result["rules"].append(line[1:].strip().strip('"'))
+            value = yaml.safe_load(_strict_text(path))
+            if not isinstance(value, dict):
+                return {}, Diagnostic(self.SOURCE, "DEGRADED", "INVALID_SCHEMA")
+            missing = [name for name in self.REQUIRED if name not in value]
+            if missing:
+                return {}, Diagnostic(self.SOURCE, "DEGRADED", "MISSING_REQUIRED_SECTION", {"sections": missing})
+            unknown = sorted(set(value).difference(self.REQUIRED))
+            if unknown:
+                return {}, Diagnostic(self.SOURCE, "DEGRADED", "UNKNOWN_CATEGORY", {"categories": unknown})
+            categories, entries, owners = {}, {}, {}
+            for category in self.CATEGORIES:
+                rows = value.get(category)
+                if not isinstance(rows, list):
+                    return {}, Diagnostic(self.SOURCE, "DEGRADED", "INVALID_SCHEMA", {"section": category})
+                normalized = []
+                normalized_entries = []
+                for row in rows:
+                    item = {"name": row} if isinstance(row, str) else row
+                    if not isinstance(item, dict) or not isinstance(item.get("name"), str):
+                        return {}, Diagnostic(self.SOURCE, "DEGRADED", "INVALID_SCHEMA", {"section": category})
+                    name = item["name"].strip().replace("\\", "/").rstrip("/")
+                    key = name.casefold()
+                    if key in owners:
+                        return {}, Diagnostic(self.SOURCE, "DEGRADED", "DUPLICATE_PATH_CLASSIFICATION",
+                                              {"path": name, "categories": [owners[key], category]})
+                    owners[key] = category
+                    normalized.append(name)
+                    normalized_entries.append({**item, "name": name})
+                categories[category] = normalized
+                entries[category] = normalized_entries
+            result = dict(value)
+            result["categories"] = categories
+            result["category_entries"] = entries
+            result["rules"] = list(value["classification_rules"])
             return result, Diagnostic(self.SOURCE, "OK")
-        except (OSError, UnicodeError, ValueError) as error:
-            return {}, Diagnostic(self.SOURCE, "DEGRADED", type(error).__name__)
+        except yaml.MarkedYAMLError as error:
+            mark = getattr(error, "problem_mark", None)
+            return {}, Diagnostic(self.SOURCE, "DEGRADED", "YAML_PARSE_ERROR",
+                                  {"message": str(error)},
+                                  mark.line + 1 if mark else None, mark.column + 1 if mark else None)
+        except UnicodeError as error:
+            return {}, Diagnostic(self.SOURCE, "DEGRADED", "UTF8_BOM_NOT_ALLOWED" if str(error) == "UTF8_BOM_NOT_ALLOWED" else "INVALID_SCHEMA")
+        except OSError:
+            return {}, Diagnostic(self.SOURCE, "DEGRADED", "SOURCE_UNAVAILABLE")
 
 
 class ManifestLoader:

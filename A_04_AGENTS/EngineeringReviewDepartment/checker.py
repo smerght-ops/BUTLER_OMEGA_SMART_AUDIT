@@ -15,6 +15,7 @@ import json
 import importlib.util
 import tokenize
 import io
+import re
 from pathlib import Path
 from typing import Any, Dict, List
 
@@ -104,20 +105,25 @@ def _get_modified_python_files() -> List[Path]:
     return files
 
 
+def _scope_files(suffixes=None, scopes=("production", "engineering")) -> List[Path]:
+    from A_04_AGENTS.RepositoryKnowledgeDepartment.loaders import ScopeResolver
+    scope, diagnostic = ScopeResolver().load(_root())
+    if diagnostic.status != "OK":
+        return []
+    roots = tuple(name + "/" for category in scopes for name in scope["categories"].get(category, []))
+    tracked = _git("ls-files")
+    names = tracked.stdout.splitlines() if tracked.returncode == 0 else []
+    return [_root() / name for name in sorted(names)
+            if name.startswith(roots) and (suffixes is None or Path(name).suffix.casefold() in suffixes)]
+
+
 def _production_python_files() -> List[Path]:
-    tracked = _git("ls-files", "*.py")
-    untracked = _git("ls-files", "--others", "--exclude-standard", "*.py")
-    names = set(tracked.stdout.splitlines()) | set(untracked.stdout.splitlines())
-    return [
-        _root() / name for name in sorted(names)
-        if name.startswith(("A_01_CORE/", "A_02_MANAGERS/", "A_03_", "A_04_AGENTS/"))
-        and not any(part.startswith(("BACKUP", "A_00_LEGACY", "A_00_RESTORE")) for part in Path(name).parts)
-    ]
+    return _scope_files({".py"}, ("production",))
 
 
-def check_python() -> Dict[str, Any]:
+def check_python(mode="changed") -> Dict[str, Any]:
     """py_compile + import + syntax validation for each modified Python file."""
-    py_files = _get_modified_python_files()
+    py_files = _production_python_files() if mode == "full" else _get_modified_python_files()
     if not py_files:
         return {"status": "PASS", "details": "No modified Python files to check", "items": []}
 
@@ -175,9 +181,10 @@ def _check_single_python_file(fpath: Path) -> Dict[str, Any]:
 #  Encoding checks                                                           #
 # --------------------------------------------------------------------------- #
 
-def check_encoding() -> Dict[str, Any]:
+def check_encoding(mode="changed") -> Dict[str, Any]:
     """UTF-8 / no BOM / no corrupted Cyrillic for modified files."""
-    all_files = _get_modified_python_files()
+    suffixes = {".py", ".json", ".yaml", ".yml", ".md", ".ps1", ".bat", ".cmd", ".txt", ".toml", ".ini", ".cfg"}
+    all_files = _scope_files(suffixes) if mode == "full" else [path for path in _changed_files() if path.suffix.casefold() in suffixes]
     if not all_files:
         return {"status": "PASS", "details": "No modified Python files to check encoding", "items": []}
 
@@ -214,10 +221,120 @@ def _check_single_encoding(fpath: Path) -> Dict[str, Any]:
 
     # Check for corrupted Cyrillic (replacement characters)
     if "\ufffd" in text:
-        return {"status": "WARNING", "details": "Replacement character U+FFFD found — possible encoding corruption",
+        return {"status": "FAIL", "details": "Replacement character U+FFFD found — possible encoding corruption",
                 "items": [str(fpath)]}
 
+    mojibake = ("\u0420\u00a0", "\u0420\u040e", "\u0420\u00b0", "\u0420\u00b5", "\u0421\u0402")
+    if any(marker in text for marker in mojibake):
+        return {"status": "FAIL", "details": "Mojibake marker detected", "items": [str(fpath)]}
+    try:
+        if fpath.suffix.casefold() == ".json":
+            json.loads(text)
+        elif fpath.suffix.casefold() in {".yaml", ".yml"}:
+            import yaml
+            yaml.safe_load(text)
+    except Exception as exc:
+        return {"status": "FAIL", "details": f"Structured text parse failed: {exc}", "items": [str(fpath)]}
+
     return {"status": "PASS", "details": "UTF-8 clean, no BOM, Cyrillic intact", "items": [str(fpath)]}
+
+
+def check_imports(mode="changed") -> Dict[str, Any]:
+    files = _production_python_files() if mode == "full" else _get_modified_python_files()
+    results = []
+    overall = "PASS"
+    script = (
+        "import importlib.util,sys; p=sys.argv[1]; "
+        "s=importlib.util.spec_from_file_location('engineering_review_target',p); "
+        "m=importlib.util.module_from_spec(s); s.loader.exec_module(m)"
+    )
+    for path in files:
+        try:
+            tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+        except Exception as exc:
+            results.append({"file": str(path), "result": "IMPORT_FAIL", "stderr": str(exc)})
+            overall = "FAIL"
+            continue
+        unsafe = any(isinstance(node, (ast.Expr, ast.With, ast.For, ast.While, ast.Try)) for node in tree.body)
+        if unsafe:
+            results.append({"file": str(path), "result": "IMPORT_UNSAFE", "reason": "top-level executable statement"})
+            continue
+        try:
+            completed = _run([sys.executable, "-c", script, str(path)], _root(), timeout=15)
+        except subprocess.TimeoutExpired:
+            results.append({"file": str(path), "result": "IMPORT_TIMEOUT"})
+            overall = "FAIL"
+            continue
+        result = "IMPORT_PASS" if completed.returncode == 0 else "IMPORT_FAIL"
+        results.append({"file": str(path), "result": result, "exit_code": completed.returncode,
+                        "stdout": completed.stdout[-2000:], "stderr": completed.stderr[-2000:]})
+        if result == "IMPORT_FAIL":
+            overall = "FAIL"
+    return {"status": overall, "details": f"Checked {len(results)} import targets in subprocess", "items": results}
+
+
+def check_scope() -> Dict[str, Any]:
+    from A_04_AGENTS.RepositoryKnowledgeDepartment.loaders import ScopeResolver
+    scope, diagnostic = ScopeResolver().load(_root())
+    failures = []
+    if diagnostic.status != "OK":
+        failures.append(diagnostic.to_dict())
+    categories = scope.get("categories", {})
+    if not categories.get("production"):
+        failures.append("production is empty")
+    if not categories.get("engineering"):
+        failures.append("engineering is empty")
+    if "A_00_ARCHITECTURE" not in categories.get("engineering", []):
+        failures.append("A_00_ARCHITECTURE is not engineering")
+    if "A_00_ARCHITECTURE" in categories.get("archive", []):
+        failures.append("A_00_ARCHITECTURE is archive")
+    return {"status": "FAIL" if failures else "PASS", "details": "Scope schema and classifications validated", "items": failures}
+
+
+def check_manifest() -> Dict[str, Any]:
+    from A_04_AGENTS.RepositoryKnowledgeDepartment.loaders import ManifestLoader, ScopeResolver
+    manifest, diagnostic = ManifestLoader().load(_root())
+    scope = ScopeResolver().load(_root())[0]
+    failures = []
+    if diagnostic.status != "OK":
+        failures.append(diagnostic.to_dict())
+    active = manifest.get("active_paths", [])
+    production = scope.get("categories", {}).get("production", [])
+    failures.extend(f"missing active path: {name}" for name in production if name not in active)
+    failures.extend(f"active path unavailable: {name}" for name in active if not (_root() / name).is_dir())
+    forbidden = scope.get("categories", {}).get("archive", []) + scope.get("categories", {}).get("generated", [])
+    failures.extend(f"forbidden active path: {name}" for name in active if name in forbidden)
+    return {"status": "FAIL" if failures else "PASS", "details": f"Manifest version {manifest.get('version')}", "items": failures}
+
+
+def check_rkd_lifecycle() -> Dict[str, Any]:
+    from A_04_AGENTS.RepositoryKnowledgeDepartment.lifecycle import get_department
+    first = get_department(_root())
+    before = first._service.get_index_status()["data"]
+    first._service.query("list_files", filters={"type": "File"})
+    after_first = first._service.get_index_status()["data"]
+    second = get_department(_root())
+    second._service.query("list_files", filters={"type": "File"})
+    after_second = second._service.get_index_status()["data"]
+    failures = []
+    if first is not second or first._service is not second._service:
+        failures.append("instance or service was not reused")
+    if after_second["scan_count"] != after_first["scan_count"]:
+        failures.append("repeat query caused a scan")
+    if after_first["scan_count"] - before["scan_count"] not in {0, 1}:
+        failures.append("cold query scan count invalid")
+    return {"status": "FAIL" if failures else "PASS", "details": str(after_second), "items": failures}
+
+
+def _changed_files():
+    status = _git("status", "--porcelain", "--untracked-files=all")
+    result = []
+    for line in status.stdout.splitlines() if status.returncode == 0 else []:
+        name = line[3:].strip().strip('"').split(" -> ")[-1]
+        path = _root() / name
+        if path.is_file():
+            result.append(path)
+    return result
 
 
 # --------------------------------------------------------------------------- #
@@ -476,7 +593,7 @@ def check_runtime() -> Dict[str, Any]:
 
     contract_path = root / "A_00_ARCHITECTURE" / "RUNTIME_CONTRACT.json"
     if contract_path.exists():
-        contract = json.loads(contract_path.read_text(encoding="utf-8-sig"))
+        contract = json.loads(contract_path.read_text(encoding="utf-8"))
         runtime_status = contract.get("runtime_status")
         exclusive = contract.get("exclusive_entry_point_proven") is True
         unambiguous = runtime_status not in {"AMBIGUOUS_RUNTIME", "MULTIPLE_IMPLEMENTATIONS"}
@@ -528,7 +645,7 @@ def check_architecture() -> Dict[str, Any]:
     if manifest_path.exists():
         try:
             import json
-            data = json.loads(manifest_path.read_text(encoding="utf-8-sig"))
+            data = json.loads(manifest_path.read_text(encoding="utf-8"))
             has_project_name = "project_name" in data
             results.append({"check": "manifest_json", "status": "PASS" if has_project_name else "FAIL",
                             "details": "system_manifest.json valid" if has_project_name else "system_manifest.json missing project_name"})
@@ -567,6 +684,7 @@ def check_repository_knowledge_boundary() -> Dict[str, Any]:
     }
     operational_scan_owners = {
         "ArchiveDepartment", "FilesystemDepartment", "ImageDepartment", "archive_handler.py",
+        "architectural_knowledge_graph.py",
     }
     direct_internal = []
     direct_calls = []
@@ -576,7 +694,7 @@ def check_repository_knowledge_boundary() -> Dict[str, Any]:
         if rkd_dir in path.parents or path == Path(__file__).resolve():
             continue
         try:
-            tree = ast.parse(path.read_text(encoding="utf-8-sig"), filename=str(path))
+            tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
         except (OSError, SyntaxError, UnicodeError):
             continue
         relative = path.relative_to(root).as_posix()
@@ -606,8 +724,8 @@ def check_repository_knowledge_boundary() -> Dict[str, Any]:
 
     project_indexer = root / "A_01_CORE" / "project_indexer.py"
     rkd_files = list(rkd_dir.glob("*.py"))
-    rkd_to_indexer = any("project_indexer" in path.read_text(encoding="utf-8-sig") for path in rkd_files)
-    indexer_text = project_indexer.read_text(encoding="utf-8-sig")
+    rkd_to_indexer = any("project_indexer" in path.read_text(encoding="utf-8") for path in rkd_files)
+    indexer_text = project_indexer.read_text(encoding="utf-8")
     indexer_to_rkd = "repository_knowledge_gateway" in indexer_text
     cycle = rkd_to_indexer and indexer_to_rkd
 
@@ -790,12 +908,15 @@ def check_tests() -> Dict[str, Any]:
 #  Full report                                                               #
 # --------------------------------------------------------------------------- #
 
-def run_full_review() -> Dict[str, Any]:
+def run_full_review(mode="changed", detailed=False) -> Dict[str, Any]:
     """Execute all checks and produce the final engineering review report."""
     checks = {
         "Repository": check_repository,
-        "Python": check_python,
-        "Encoding": check_encoding,
+        "Python": lambda: check_python(mode),
+        "Imports": lambda: check_imports(mode),
+        "Encoding": lambda: check_encoding(mode),
+        "Scope": check_scope,
+        "Manifest": check_manifest,
         "Registration": check_department_registration,
         "Gateway": check_gateway,
         "Permission": check_permission,
@@ -803,6 +924,7 @@ def run_full_review() -> Dict[str, Any]:
         "Runtime": check_runtime,
         "Architecture": check_architecture,
         "RKD Boundary": check_repository_knowledge_boundary,
+        "RKD Lifecycle": check_rkd_lifecycle,
         "Duplicates": check_duplicates,
         "Tests": check_tests,
     }
@@ -821,6 +943,11 @@ def run_full_review() -> Dict[str, Any]:
             report["checks"][name] = {"status": "FAIL", "details": f"Check error: {exc}", "items": []}
             report["overall"] = "FAIL"
 
+    failures = [name for name, result in report["checks"].items() if result.get("status") == "FAIL"]
+    if failures == ["Runtime"]:
+        report["overall"] = "FAIL_WITH_KNOWN_RUNTIME_AMBIGUITY"
+    report["mode"] = mode
+    report["detailed"] = bool(detailed)
     return report
 
 
@@ -833,8 +960,9 @@ def format_report(report: Dict[str, Any]) -> str:
         "=" * 37,
     ]
 
-    for name in ["Repository", "Python", "Encoding", "Registration", "Gateway",
-                 "Permission", "Dispatcher", "Runtime", "Architecture", "RKD Boundary", "Duplicates", "Tests"]:
+    for name in ["Repository", "Python", "Imports", "Encoding", "Scope", "Manifest",
+                 "Registration", "Gateway", "Permission", "Dispatcher", "Runtime", "Architecture",
+                 "RKD Boundary", "RKD Lifecycle", "Duplicates", "Tests"]:
         check = report["checks"].get(name, {"status": "FAIL", "details": "Not found"})
         status = check.get("status", "FAIL")
         # Pad with dots to align status column

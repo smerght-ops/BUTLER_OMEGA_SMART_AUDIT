@@ -1,4 +1,98 @@
-﻿# RepositoryKnowledgeDepartment RFC v1.0
+﻿
+# IMPLEMENTATION INSTRUCTIONS
+
+Project Root
+
+C:\Users\KOS\Desktop\Butler_Agent\BUTLER_OMEGA_SMART
+
+---
+
+## IMPLEMENTATION OBJECTIVE
+
+Implement RepositoryKnowledgeDepartment as a permanent Butler Department.
+
+The implementation shall follow this RFC completely.
+
+The existing Butler architecture is authoritative.
+
+RepositoryKnowledgeDepartment shall integrate into the current architecture rather than replacing it.
+
+---
+
+## ENGINEERING WORKFLOW
+
+Before modifying production code:
+
+1. Study the existing Butler implementation.
+
+2. Identify the current Department registration mechanism.
+
+3. Identify SmartDispatcherV2 integration points.
+
+4. Identify DepartmentExecutionGateway execution flow.
+
+5. Identify Permission Engine execution flow.
+
+6. Reuse existing Butler architectural patterns.
+
+7. Minimize production modifications.
+
+8. Preserve backward compatibility.
+
+9. Produce incremental implementation stages.
+
+10. Validate every stage before continuing.
+
+---
+
+## IMPLEMENTATION RULES
+
+Implementation shall:
+
+Reuse existing Butler components.
+
+Follow current Department conventions.
+
+Preserve repository structure.
+
+Preserve coding style.
+
+Preserve runtime architecture.
+
+Preserve dispatcher architecture.
+
+Preserve gateway architecture.
+
+Preserve permission architecture.
+
+Preserve UTF-8 without BOM.
+
+Produce deterministic behaviour.
+
+---
+
+## REQUIRED OUTPUT
+
+At completion provide:
+
+Implementation Summary
+
+Modified Files
+
+Architecture Summary
+
+Integration Summary
+
+Testing Summary
+
+Engineering Audit
+
+PASS / FAIL Report
+
+Then continue with the RFC below.
+
+---
+# RepositoryKnowledgeDepartment RFC v1.0
 
 > STATUS: DRAFT
 > Project: BUTLER_OMEGA_SMART
@@ -2176,4 +2270,5 @@ At completion, produce:
 
 RepositoryKnowledgeDepartment RFC v1.1
 FINAL IMPLEMENTATION SPECIFICATION
+
 

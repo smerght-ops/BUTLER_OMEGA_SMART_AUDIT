@@ -72,8 +72,19 @@ def test_repository_baseline_checks_working_tree(monkeypatch):
     monkeypatch.setattr(checker, "_git", fake_git)
     assert checker.check_repository()["status"] == "PASS"
     empty_tree = "4b825dc642cb6eb9a060e54bf8d69288fbee4904"
-    assert ("diff", "--check", empty_tree) in calls
+    baseline_call = next(call for call in calls if call[:3] == ("diff", "--check", empty_tree))
+    assert "A_01_CORE" in baseline_call
+    assert "START_BUTLER_OS.ps1" in baseline_call
+    assert ":(exclude,glob).repository_hygiene_baseline/**" in baseline_call
+    assert ":(exclude,glob).stabilization_backups/**" in baseline_call
     assert ("diff", "--check", empty_tree, "HEAD") not in calls
+
+
+def test_baseline_whitespace_scope_comes_from_active_manifest():
+    scope = checker._baseline_whitespace_pathspecs()
+    assert "A_03_ORCHESTRATION" in scope
+    assert "A_09_TESTS" not in scope
+    assert all("evidence" not in item.lower() for item in scope if not item.startswith(":(exclude"))
 
 
 def test_repository_review_allows_intentional_working_changes(monkeypatch):

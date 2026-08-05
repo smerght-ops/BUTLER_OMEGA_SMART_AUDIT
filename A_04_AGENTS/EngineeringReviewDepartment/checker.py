@@ -51,6 +51,22 @@ def _root() -> Path:
     return Path(__file__).resolve().parents[2]
 
 
+def _baseline_whitespace_pathspecs() -> List[str]:
+    """Return the declared active scope, excluding historical evidence stores."""
+    manifest_path = _root() / "system_manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8-sig"))
+    included = list(manifest.get("active_paths", []))
+    included.extend(manifest.get("root_entry_files", []))
+    excluded = [
+        ":(exclude,glob)**/*backup*/**",
+        ":(exclude,glob)**/*rollback*/**",
+        ":(exclude,glob)**/*snapshot*/**",
+        ":(exclude,glob).repository_hygiene_baseline/**",
+        ":(exclude,glob).stabilization_backups/**",
+    ]
+    return [*included, *excluded]
+
+
 # --------------------------------------------------------------------------- #
 #  Repository checks                                                         #
 # --------------------------------------------------------------------------- #
@@ -84,7 +100,10 @@ def check_repository() -> Dict[str, Any]:
     results.append({"check": "git_diff_check", "status": ws_status,
                      "details": "Whitespace errors found" if ws_status == "FAIL" else "No whitespace errors"})
 
-    baseline = _git("diff", "--check", "4b825dc642cb6eb9a060e54bf8d69288fbee4904")
+    baseline = _git(
+        "diff", "--check", "4b825dc642cb6eb9a060e54bf8d69288fbee4904",
+        "--", *_baseline_whitespace_pathspecs(),
+    )
     baseline_status = "FAIL" if baseline.returncode != 0 or baseline.stdout.strip() else "PASS"
     results.append({"check": "git_baseline_diff_check", "status": baseline_status,
                     "details": "Baseline whitespace errors found" if baseline_status == "FAIL"

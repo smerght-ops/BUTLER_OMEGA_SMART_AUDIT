@@ -7,9 +7,10 @@ from pathlib import Path
 
 
 class ExecutionJournal:
-    def __init__(self, root: Path):
+    def __init__(self, root: Path, create: bool = True):
         self.directory = Path(root) / "A_05_STORAGE" / "tasks"
-        self.directory.mkdir(parents=True, exist_ok=True)
+        if create:
+            self.directory.mkdir(parents=True, exist_ok=True)
 
     def path_for(self, task_id: str) -> Path:
         return self.directory / f"{task_id}.json"

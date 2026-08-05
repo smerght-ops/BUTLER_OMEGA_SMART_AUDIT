@@ -138,4 +138,3 @@ class ComputerUseDepartment(BaseDepartment):
             "latency_ms": max(0, int((time.perf_counter() - started) * 1000)),
             "text": str(text), "error": error, "metadata": dict(metadata),
         }
-

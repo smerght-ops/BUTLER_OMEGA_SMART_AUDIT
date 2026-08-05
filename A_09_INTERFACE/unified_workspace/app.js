@@ -27,4 +27,3 @@ async function refresh() {
 
 refresh();
 setInterval(refresh, 5000);
-

@@ -24,4 +24,3 @@ pre { margin: 16px 0 0; max-height: 280px; overflow: auto; color: #a9c1b8; font:
 footer { padding: 22px 0 38px; color: #70877f; border-top: 1px solid #21352f; }
 @media (max-width: 900px) { .grid { grid-template-columns: 1fr 1fr; } .metrics { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 600px) { header { align-items: flex-start; padding: 28px 0; flex-direction: column; gap: 20px; } .grid { grid-template-columns: 1fr; } }
-

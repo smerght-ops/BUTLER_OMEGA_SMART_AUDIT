@@ -20,7 +20,6 @@ $CompileFiles = @(
     "A_03_ORCHESTRATION\chat_router.py",
     "A_03_ORCHESTRATION\context_builder.py",
     "A_07_MEMORY\profile_manager.py",
-    "A_07_MEMORY\profile_sync.py",
     "A_03_ORCHESTRATION\worker.py"
 )
 

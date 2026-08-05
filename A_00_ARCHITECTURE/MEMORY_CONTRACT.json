@@ -23,7 +23,6 @@
   "legacy_replacements": {
     "chat_router.ask_ollama": "SmartDispatcher.execute_employee",
     "architectural_knowledge_graph ROOT.rglob": "repository_knowledge_gateway.get_index",
-    "memory_orchestrator.py": "memory_orchestrator_v2.py",
-    "profile_sync.py": "profile_manager.py (единственный владелец user_profile.json)"
+    "memory_orchestrator.py": "memory_orchestrator_v2.py"
   }
 }

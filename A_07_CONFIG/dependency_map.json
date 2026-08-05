@@ -1488,21 +1488,7 @@
       "build_prompt"
     ]
   },
-  "A_07_MEMORY\\profile_sync.py": {
-    "imports": [
-      "datetime",
-      "json",
-      "pathlib"
-    ],
-    "classes": [],
-    "functions": [
-      "_now",
-      "load_profile",
-      "rebuild_user_memory",
-      "save_profile",
-      "set_fact"
-    ]
-  },
+
   "A_07_MEMORY\\search_engine.py": {
     "imports": [
       "json",

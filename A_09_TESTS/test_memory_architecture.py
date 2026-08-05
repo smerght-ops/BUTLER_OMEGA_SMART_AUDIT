@@ -57,15 +57,15 @@ def test_memory_contract_matches_runtime():
 def test_profile_manager_is_sole_owner_of_user_profile():
     """Подтверждение: единственный владелец user_profile.json — profile_manager.py.
     
-    profile_sync.py является дубликатом и помечен как DEPRECATED/LEGACY.
+    profile_sync.py удалён как подтверждённый dead component (ТЗ №5A.1).
     Ни один продакшен-модуль не импортирует profile_sync напрямую.
     """
-    # 1. profile_sync.py помечен как DEPRECATED
-    sync_source = (ROOT / "A_07_MEMORY/profile_sync.py").read_text(encoding="utf-8")
-    assert "DEPRECATED" in sync_source, "profile_sync.py должен быть помечен как DEPRECATED"
-    assert "LEGACY" in sync_source, "profile_sync.py должен иметь статус LEGACY"
+    # 1. profile_sync.py УДАЛЁН
+    sync_path = ROOT / "A_07_MEMORY/profile_sync.py"
+    assert not sync_path.exists(), \
+        "profile_sync.py должен быть удалён (ТЗ №5A.1 — dead component)"
 
-    # 2. profile_manager.py — активный модуль (без deprecated-меток)
+    # 2. profile_manager.py — активный модуль
     mgr_source = (ROOT / "A_07_MEMORY/profile_manager.py").read_text(encoding="utf-8")
     assert "DEPRECATED" not in mgr_source, "profile_manager.py не должен быть помечен как DEPRECATED"
 

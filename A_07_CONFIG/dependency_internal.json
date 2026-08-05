@@ -247,7 +247,7 @@
     "A_02_MANAGERS.session_manager",
     "A_03_ORCHESTRATION.context_builder"
   ],
-  "A_07_MEMORY\\profile_sync.py": [],
+
   "A_07_MEMORY\\search_engine.py": [],
   "A_07_MEMORY\\self_healing_memory.py": [],
   "A_09_TESTS\\handshake_test.py": [

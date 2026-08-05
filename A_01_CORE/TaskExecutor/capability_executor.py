@@ -14,6 +14,8 @@ from .execution_context import ExecutionContext
 from A_01_CORE.event_bus import EventBus
 from A_01_CORE.execution_journal import ExecutionJournal
 from A_01_CORE.judge_runtime import JudgeRuntime
+from A_01_CORE.skill_runtime import SkillManager
+from A_01_CORE.task_scheduler import TaskGraph, TaskScheduler
 from A_01_CORE.runtime_contracts import (
     CancellationToken,
     ResourceLease,
@@ -36,8 +38,10 @@ class CapabilityExecutor:
         self.skill_memory = SemanticMemory()
         self.department_gateway = DepartmentExecutionGateway()
         self.judge = JudgeRuntime()
+        self.skill_manager = SkillManager(memory=self.skill_memory, judge=self.judge)
         self.journal = ExecutionJournal(self.root)
         self.journal_dir = self.journal.directory
+        self.scheduler = TaskScheduler()
 
     def execute(
         self,
@@ -67,72 +71,66 @@ class CapabilityExecutor:
         if missing:
             return self._final(started, False, "missing_capability", context, missing=missing)
 
-        for index, step in enumerate(steps, 1):
-            if index <= completed_count:
-                continue
+        pending = [dict(step) for step in steps if int(step.get("order", 0)) > completed_count]
+        pending_orders = {int(step["order"]) for step in pending}
+        for step in pending:
+            step["depends_on"] = [item for item in step.get("depends_on", []) if int(item) in pending_orders]
+        try:
+            layers = TaskGraph(pending, satisfied=range(1, completed_count + 1)).layers() if pending else []
+        except ValueError as exc:
+            return self._final(started, False, "invalid_task_graph", context, error=str(exc))
+
+        for layer in layers:
             if token.is_cancelled:
-                return self._final(
-                    started, False, "cancelled", context,
-                    failed_step=index, error=token.reason or "cancelled",
-                )
-            capability = self._capability(step)
-            if capability is None:
-                return self._final(
-                    started, False, "missing_capability", context,
-                    failed_step=index, missing=[step.get("action")],
-                )
+                return self._final(started, False, "cancelled", context, error=token.reason or "cancelled")
             try:
-                department = self._department(capability["department"])
-                arguments = context.resolve(step.get("arguments") or {})
-                query = str(arguments.pop("query", None) or step.get("source_text") or step.get("action") or "")
-                call_context = dict(arguments)
-                call_context.update({
-                    "capability_action": capability["action"],
-                    "execution_context": context.snapshot(),
-                })
-                result = None
-                last_failure = None
-                for attempt in range(1, 3):
-                    call_context["retry_attempt"] = attempt
-                    candidate = self.department_gateway.execute(
-                        department, query, context=call_context
-                    )
-                    result = candidate
-                    if isinstance(candidate, dict) and candidate.get("ok"):
-                        break
-                    failure = (candidate or {}).get("error") if isinstance(candidate, dict) else type(candidate).__name__
-                    if failure == last_failure:
-                        break
-                    last_failure = failure
+                outcomes = self.scheduler.execute_layer(
+                    layer, lambda step: self._execute_step(step, context), token,
+                )
             except Exception as exc:
-                return self._final(
-                    started, False, "execution_error", context,
-                    failed_step=index,
-                    error=f"{type(exc).__name__}: {exc}",
-                )
-
-            if not isinstance(result, dict) or not self.REQUIRED_RESULT_FIELDS.issubset(result):
-                return self._final(
-                    started, False, "invalid_result_contract", context,
-                    failed_step=index,
-                )
-
-            if result.get("ok") and capability.get("output") == "image":
-                result = self._verify_visual_artifact(
-                    department, query, call_context, result,
-                )
-
-            output = self._output(result)
-            context.record(index, step, result, output)
-            self._write_journal(journal_path, plan, context, index, "running")
-            if not result.get("ok"):
-                return self._final(
-                    started, False, "step_failed", context,
-                    failed_step=index,
-                    error=result.get("error"),
-                )
+                return self._final(started, False, "execution_error", context, error=f"{type(exc).__name__}: {exc}")
+            for step, outcome in sorted(zip(layer, outcomes), key=lambda item: int(item[0]["order"])):
+                index = int(step["order"])
+                if outcome.get("contract_error"):
+                    return self._final(started, False, outcome["contract_error"], context, failed_step=index)
+                result = outcome["result"]
+                output = outcome["output"]
+                context.record(index, step, result, output)
+                self._write_journal(journal_path, plan, context, index, "running")
+                if not result.get("ok"):
+                    return self._final(started, False, "step_failed", context, failed_step=index, error=result.get("error"))
 
         return self._final(started, True, "completed", context)
+
+    def _execute_step(self, step, context):
+        capability = self._capability(step)
+        if capability is None:
+            return {"contract_error": "missing_capability", "result": None, "output": None}
+        department = self._department(capability["department"])
+        arguments = context.resolve(step.get("arguments") or {})
+        query = str(arguments.pop("query", None) or step.get("source_text") or step.get("action") or "")
+        call_context = dict(arguments)
+        call_context.update({
+            "capability_action": capability["action"],
+            "execution_context": context.snapshot(),
+        })
+        result = None
+        last_failure = None
+        for attempt in range(1, 3):
+            call_context["retry_attempt"] = attempt
+            candidate = self.department_gateway.execute(department, query, context=call_context)
+            result = candidate
+            if isinstance(candidate, dict) and candidate.get("ok"):
+                break
+            failure = (candidate or {}).get("error") if isinstance(candidate, dict) else type(candidate).__name__
+            if failure == last_failure:
+                break
+            last_failure = failure
+        if not isinstance(result, dict) or not self.REQUIRED_RESULT_FIELDS.issubset(result):
+            return {"contract_error": "invalid_result_contract", "result": result, "output": None}
+        if result.get("ok") and capability.get("output") == "image":
+            result = self._verify_visual_artifact(department, query, call_context, result)
+        return {"contract_error": None, "result": result, "output": self._output(result)}
 
     def _verify_visual_artifact(self, creator, query, call_context, result):
         path = self._output(result)
@@ -296,13 +294,18 @@ class CapabilityExecutor:
         plan = getattr(self, "_active_plan", {})
         if journal_path:
             self._write_journal(journal_path, plan, context, failed_step or len(context.history), status, error)
-        if ok and context.history:
+        if context.history:
             signature = [step.get("capability_id") or step.get("action")
                          for step in plan.get("steps", [])]
-            learned = self.skill_memory.record_tested_skill(
+            telemetry = self.skill_manager.record_telemetry(
                 signature, context.history, provenance=str(journal_path),
+                reused=bool((plan.get("procedural_memory") or {}).get("reused")),
             )
-            result["metadata"]["procedural_learning"] = learned
+            result["metadata"]["procedural_learning"] = {
+                "promoted": False,
+                "requires_explicit_command": True,
+                "telemetry": telemetry,
+            }
             result["metadata"]["procedural_reuse"] = bool(
                 (plan.get("procedural_memory") or {}).get("reused")
             )

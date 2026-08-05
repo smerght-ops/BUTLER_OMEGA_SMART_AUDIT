@@ -37,5 +37,5 @@ def test_tree_classification_contains_required_groups():
     classification = load("A_00_ARCHITECTURE/PRODUCTION_TREE_CLASSIFICATION.json")
     assert {"launcher", "router_bridge", "memory", "knowledge_review", "evidence"} <= set(classification["groups"])
     assert classification["moves"]
-    assert sum(status == "ACTIVE_PRODUCTION" for status in classification["departments"].values()) == 18
+    assert sum(status == "ACTIVE_PRODUCTION" for status in classification["departments"].values()) == 19
     assert set(classification["departments"].values()) <= {"ACTIVE_PRODUCTION", "ACTIVE_PARTIAL", "DEVELOPMENT", "LEGACY", "UNUSED"}

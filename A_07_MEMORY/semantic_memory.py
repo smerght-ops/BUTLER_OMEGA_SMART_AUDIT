@@ -164,6 +164,17 @@ class SemanticMemory:
         with self.index_path.open("a", encoding="utf-8") as stream:
             stream.write(json.dumps(record, ensure_ascii=False) + "\n")
 
+    def skill_events(self):
+        """Return skill lifecycle records from the canonical memory index."""
+        return [row for row in self._records() if row.get("type") in {"skill", "skill_telemetry"}]
+
+    def append_skill_event(self, record):
+        """Append a SkillManager-owned lifecycle event without a second store."""
+        if not isinstance(record, dict) or not str(record.get("event") or "").startswith("SKILL_"):
+            raise ValueError("INVALID_SKILL_EVENT")
+        self._append_record(record)
+        return dict(record)
+
     @staticmethod
     def _knowledge_id(key):
         digest = hashlib.sha256(str(key).strip().casefold().encode("utf-8")).hexdigest()[:16]

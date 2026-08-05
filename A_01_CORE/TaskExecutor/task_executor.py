@@ -9,6 +9,7 @@ from .task_decomposer import TaskDecomposer, TaskIntent
 from .task_plan import TaskPlan
 from .task_step import TaskStep
 from A_07_MEMORY.semantic_memory import SemanticMemory
+from A_01_CORE.skill_runtime import SkillManager
 
 
 class TaskExecutor:
@@ -19,6 +20,7 @@ class TaskExecutor:
         self.registry = CapabilityRegistry(registry_path or default_path)
         self.decomposer = TaskDecomposer()
         self.skill_memory = SemanticMemory()
+        self.skill_manager = SkillManager(memory=self.skill_memory)
 
     def plan(self, request: str) -> dict:
         goal = str(request or "").strip()
@@ -118,7 +120,7 @@ class TaskExecutor:
 
     def _with_learned_skill(self, plan):
         signature = [step.get("capability_id") or step.get("action") for step in plan.get("steps", [])]
-        skill = self.skill_memory.match_tested_skill(signature)
+        skill = self.skill_manager.match_active(signature)
         plan["procedural_memory"] = {
             "signature": signature,
             "reused": bool(skill),

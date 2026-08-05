@@ -154,6 +154,66 @@
       ]
     },
     {
+      "id": "computer_use_capture_screenshot_screen",
+      "department": "COMPUTER_USE",
+      "action": "capture_screenshot",
+      "object": "screen",
+      "input": "text",
+      "output": "image",
+      "confidence": "confirmed",
+      "aliases": [
+        "capture screenshot",
+        "computer use",
+        "screenshot",
+        "сделай скриншот"
+      ]
+    },
+    {
+      "id": "computer_use_inspect_navigation_foreground",
+      "department": "COMPUTER_USE",
+      "action": "inspect_navigation",
+      "object": "foreground",
+      "input": "text",
+      "output": "text",
+      "confidence": "confirmed",
+      "aliases": [
+        "active window",
+        "computer use",
+        "inspect navigation",
+        "активное окно"
+      ]
+    },
+    {
+      "id": "computer_use_list_windows_windows",
+      "department": "COMPUTER_USE",
+      "action": "list_windows",
+      "object": "windows",
+      "input": "text",
+      "output": "list",
+      "confidence": "confirmed",
+      "aliases": [
+        "computer use",
+        "list windows",
+        "visible windows",
+        "список окон"
+      ]
+    },
+    {
+      "id": "computer_use_read_clipboard_clipboard",
+      "department": "COMPUTER_USE",
+      "action": "read_clipboard",
+      "object": "clipboard",
+      "input": "text",
+      "output": "text",
+      "confidence": "confirmed",
+      "aliases": [
+        "clipboard",
+        "computer use",
+        "read clipboard",
+        "прочитай буфер"
+      ]
+    },
+    {
       "id": "documents_extract_docx_docx",
       "department": "DOCUMENTS",
       "action": "extract_docx",

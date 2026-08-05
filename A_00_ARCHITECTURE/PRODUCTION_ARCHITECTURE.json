@@ -17,7 +17,7 @@
   "gateway": "DepartmentExecutionGateway",
   "permission_engine": "PermissionEngine",
   "canonical_department_registry": "A_02_MANAGERS/department_registry.py",
-  "production_departments": ["PUBLICATION_GUARDIAN", "REPOSITORY_KNOWLEDGE", "ENGINEERING_REVIEW", "PROJECT_DOCUMENTATION", "BROWSER", "IMAGE", "VIDEO", "AUDIO", "ARCHIVE", "FILESYSTEM", "CODING", "VISION", "SEARCH", "MEMORY", "OPEN_DOCUMENT", "DOCUMENTS", "TEXT", "HOME"],
+  "production_departments": ["PUBLICATION_GUARDIAN", "REPOSITORY_KNOWLEDGE", "ENGINEERING_REVIEW", "PROJECT_DOCUMENTATION", "BROWSER", "IMAGE", "VIDEO", "AUDIO", "ARCHIVE", "FILESYSTEM", "CODING", "COMPUTER_USE", "VISION", "SEARCH", "MEMORY", "OPEN_DOCUMENT", "DOCUMENTS", "TEXT", "HOME"],
   "managers": ["GoalManager"],
   "guardians": ["PublicationGuardianDepartment", "Memory Guardian", "System Guardian"],
   "memory_contract": "A_00_ARCHITECTURE/MEMORY_CONTRACT.json",

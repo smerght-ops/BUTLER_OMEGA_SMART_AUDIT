@@ -90,6 +90,7 @@ class VisionDepartment(BaseDepartment):
 
         context = dict(context or {})
         attachments = context.get("attachments", [])
+        supplied_base64 = context.get("image_base64")
 
         if not isinstance(attachments, (list, tuple)):
             return self._error_result(
@@ -97,35 +98,38 @@ class VisionDepartment(BaseDepartment):
                 "Ошибка: attachments должен быть списком путей."
             )
 
-        if not attachments:
+        if not attachments and not supplied_base64:
             extracted_path = self._extract_image_path(query)
             if extracted_path:
                 attachments = [extracted_path]
                 context['attachments'] = attachments
 
-        if not attachments:
+        if not attachments and not supplied_base64:
             return self._error_result(
                 start, "MISSING_ATTACHMENT",
                 "Ошибка: изображение не передано через context['attachments']."
             )
 
-        image_path_str = str(attachments[0]).strip().strip("\"'")
-        image_path = Path(image_path_str)
-        if not image_path.exists():
+        image_path = None
+        extension = str(context.get("image_format") or ".png").lower()
+        if not supplied_base64:
+            image_path_str = str(attachments[0]).strip().strip("\"'")
+            image_path = Path(image_path_str)
+        if image_path is not None and not image_path.exists():
             return self._error_result(
                 start, "IMAGE_NOT_FOUND",
                 f"Ошибка: Файл не найден по пути {image_path}",
                 path=image_path,
             )
 
-        if not image_path.is_file():
+        if image_path is not None and not image_path.is_file():
             return self._error_result(
                 start, "NOT_A_FILE",
                 f"Ошибка: указанный путь не является файлом: {image_path}",
                 path=image_path,
             )
 
-        extension = image_path.suffix.lower()
+        extension = image_path.suffix.lower() if image_path is not None else extension
         if extension not in self.SUPPORTED_EXTENSIONS:
             return self._error_result(
                 start, "UNSUPPORTED_FORMAT",
@@ -133,7 +137,7 @@ class VisionDepartment(BaseDepartment):
                 path=image_path,
             )
 
-        base64_image = self._encode_image(image_path)
+        base64_image = str(supplied_base64 or self._encode_image(image_path))
         if not base64_image:
             return self._error_result(
                 start, "ENCODE_FAILED",
@@ -176,7 +180,7 @@ class VisionDepartment(BaseDepartment):
                 "latency_ms": int((time.time() - start) * 1000),
                 "text": answer,
                 "metadata": {
-                    "path": str(image_path),
+                    "path": str(image_path) if image_path is not None else None,
                     "format": extension,
                     "engine": "OllamaVision",
                 },

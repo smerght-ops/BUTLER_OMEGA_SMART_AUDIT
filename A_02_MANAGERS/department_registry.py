@@ -15,6 +15,7 @@ DEPARTMENTS = {
     "ARCHIVE": {"module": "A_04_AGENTS.ArchiveDepartment.runner", "class": "ArchiveDepartment", "component_type": "DEPARTMENT", "order": 90},
     "FILESYSTEM": {"module": "A_04_AGENTS.FilesystemDepartment.runner", "class": "FilesystemDepartment", "component_type": "DEPARTMENT", "order": 100},
     "CODING": {"module": "A_04_AGENTS.CodingDepartment.runner", "class": "CodingDepartment", "component_type": "DEPARTMENT", "order": 110},
+    "COMPUTER_USE": {"module": "A_04_AGENTS.ComputerUseDepartment.runner", "class": "ComputerUseDepartment", "component_type": "DEPARTMENT", "order": 115},
     "VISION": {"module": "A_04_AGENTS.VisionDepartment.runner", "class": "VisionDepartment", "component_type": "DEPARTMENT", "order": 120},
     "SEARCH": {"module": "A_04_AGENTS.SearchDepartment.runner", "class": "SearchDepartment", "component_type": "DEPARTMENT", "order": 130},
     "MEMORY": {"module": "A_04_AGENTS.MemoryDepartment.runner", "class": "MemoryDepartment", "component_type": "DEPARTMENT", "order": 140},

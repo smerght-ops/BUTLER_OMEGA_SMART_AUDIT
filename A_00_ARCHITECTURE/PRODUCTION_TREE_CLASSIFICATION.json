@@ -46,6 +46,7 @@
     "ArchiveDepartment": "ACTIVE_PRODUCTION",
     "FilesystemDepartment": "ACTIVE_PRODUCTION",
     "CodingDepartment": "ACTIVE_PRODUCTION",
+    "ComputerUseDepartment": "ACTIVE_PRODUCTION",
     "VisionDepartment": "ACTIVE_PRODUCTION",
     "SearchDepartment": "ACTIVE_PRODUCTION",
     "MemoryDepartment": "ACTIVE_PRODUCTION",

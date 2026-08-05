@@ -30,7 +30,7 @@
 1. **Основная информация**:
    - В верхней части документа указан номер операции или счет.
    - Есть отметки об участниках финансовой транзакции, включая отправителя и получателя средств.
-   - Сумма платежа указана рядом с соответствующим полем. 
+   - Сумма платежа указана рядом с соответствующим полем.
 
 2. **Контекст**:
    - В документе присутствует дата выполнения операции.
@@ -98,7 +98,7 @@
 
 === ГЛУБОКИЙ АНАЛИЗ: тз дворецкий с кодом.txt ===
 Выжимка: Нет глубокого анализа для данного файла.
-Теги: 
+Теги:
 --------------------------------------------------
 
 === ГЛУБОКИЙ АНАЛИЗ: ЦЕЛИ И МИССИЯ ПРОЕКТА АРХИВАРИУС.txt ===
@@ -113,7 +113,7 @@ TAGS: contract, abonent, v3
 
 FILE: test_document.txt
 SUMMARY: Нет анализа.
-TAGS: 
+TAGS:
 ------------------------------
 
 FILE: Без имени 2.docx
@@ -145,7 +145,7 @@ FILE: ПаспортЕвгенийИМАлександрович2004.jpg
 SUMMARY: Изображение показывает страницу паспорта гражданина Российской Федерации. На документе присутствует фотография владельца, но лицо на ней закрыто. Видны следующие данные:
 
 - **Фамилия**: Имярек (Имёнок)
-- **Имя**: Евгений 
+- **Имя**: Евгений
 - **Отчество**: Александрович
 - **Пол**: Муж.
 - **Дата рождения**: 12.09.1682
@@ -184,7 +184,7 @@ TAGS: multimodal, ai-assistant, local-llm, pyqt6, vlm, ollama, geolocation
 
 FILE: ЦЕЛИ И МИССИЯ ПРОЕКТА АРХИВАРИУС.txt
 SUMMARY: Нет анализа.
-TAGS: 
+TAGS:
 ------------------------------
 
 FILE: final_test.txt
@@ -194,7 +194,7 @@ TAGS: file-management, storage, security, verification, final-stage
 
 FILE: test_document.txt
 SUMMARY: Нет анализа.
-TAGS: 
+TAGS:
 ------------------------------
 
 FILE: ДокументыВРуках.webp
@@ -244,7 +244,7 @@ TAGS: кит, морское животное, глубокое море, син
 
 FILE: Без имени 2.docx
 SUMMARY: Нет анализа.
-TAGS: 
+TAGS:
 ------------------------------
 
 FILE: ЦЕЛИ И МИССИЯ ПРОЕКТА АРХИВАРИУС.txt
@@ -270,7 +270,7 @@ TAGS: Эссе,Проверка,Обязательный этап
 ------------------------------
 FILE: A_06_WORKSPACE\incoming\real_test_001_copy.txt
 SUMMARY: REAL TEST 001
-TAGS: 
+TAGS:
 ------------------------------
 FILE: C:\Users\KOS\Desktop\Butler_Agent\BUTLER_OMEGA\A_06_WORKSPACE\incoming\dict_tag_test.txt
 SUMMARY: Образовательный контент, включающий в себя тестовые материалы и теоретические знания.
@@ -278,11 +278,11 @@ TAGS: education,test,knowledge
 ------------------------------
 FILE: C:\Users\KOS\Desktop\Butler_Agent\BUTLER_OMEGA\A_06_WORKSPACE\incoming\new_test_document.txt
 SUMMARY: Нет анализа.
-TAGS: 
+TAGS:
 ------------------------------
 FILE: C:\Users\KOS\Desktop\Butler_Agent\BUTLER_OMEGA\A_06_WORKSPACE\incoming\guardian_test.txt
 SUMMARY: Нет анализа.
-TAGS: 
+TAGS:
 ------------------------------
 FILE: C:\Users\KOS\Desktop\Butler_Agent\BUTLER_OMEGA\A_06_WORKSPACE\incoming\professor_smoke_test.txt
 PATH: C:\Users\KOS\Desktop\Butler_Agent\BUTLER_OMEGA\A_06_WORKSPACE\incoming\professor_smoke_test.txt
@@ -299,6 +299,6 @@ TAGS: tag1,tag2,tag3
 FILE: md5_check.txt
 PATH: A_06_WORKSPACE\incoming\md5_check.txt
 HANDLER: TextHandler
-SUMMARY: Р В Р’В Р вЂ™Р’В Р В Р Р‹Р РЋРЎв„ўР В Р’В Р вЂ™Р’В Р В РІР‚в„ўР вЂ™Р’ВµР В Р’В Р В Р вЂ№Р В Р вЂ Р В РІР‚С™Р РЋРІвЂћСћ Р В Р’В Р вЂ™Р’В Р В РІР‚в„ўР вЂ™Р’В°Р В Р’В Р вЂ™Р’В Р В Р’В Р Р†Р вЂљР’В¦Р В Р’В Р вЂ™Р’В Р В РІР‚в„ўР вЂ™Р’В°Р В Р’В Р вЂ™Р’В Р В РІР‚в„ўР вЂ™Р’В»Р В Р’В Р вЂ™Р’В Р В Р Р‹Р Р†Р вЂљР’ВР В Р’В Р вЂ™Р’В Р В РІР‚в„ўР вЂ™Р’В·Р В Р’В Р вЂ™Р’В Р В РІР‚в„ўР вЂ™Р’В°.
-TAGS: 
+SUMMARY: Нет анализа.
+TAGS:
 ------------------------------

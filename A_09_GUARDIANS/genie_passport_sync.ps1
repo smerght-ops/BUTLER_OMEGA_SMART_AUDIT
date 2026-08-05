@@ -1,4 +1,4 @@
-﻿Write-Host ""
+Write-Host ""
 Write-Host "========== GENIE PASSPORT SYNC ==========" -ForegroundColor Cyan
 Write-Host ""
 

@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 Stage 8.4.2
@@ -30,4 +30,3 @@ if __name__ == "__main__":
     state = ExecutionState.last()
 
     print(state)
-

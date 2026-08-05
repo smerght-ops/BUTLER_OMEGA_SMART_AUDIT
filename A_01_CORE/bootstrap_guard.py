@@ -17,11 +17,11 @@ def calculate_sha256(path: Path) -> str:
 
 def boot_verify() -> bool:
     print("• [BOOTSTRAP] Первичный контроль целостности Стража...")
-    
+
     if not GUARDIAN_PATH.exists():
         print("❌ [BOOTSTRAP FATAL] Файл memory_guardian.py физически уничтожен!")
         return False
-        
+
     try:
         py_compile.compile(str(GUARDIAN_PATH), doraise=True)
     except Exception as e:

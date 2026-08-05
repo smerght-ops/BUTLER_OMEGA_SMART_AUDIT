@@ -31,10 +31,10 @@ tags:
 Voxtral Mini 4B Realtime 2602 is a **multilingual, realtime speech-transcription model** and among the first open-source solutions to achieve accuracy comparable to offline systems with a delay of **<500ms**.
 It supports **13 languages** and outperforms existing open-source baselines across a range of tasks, making it ideal for applications like voice assistants and live subtitling.
 
-Built with a **natively streaming architecture** and a custom causal audio encoder - it allows configurable transcription delays (240ms to 2.4s), enabling users to balance **latency and accuracy** based on their needs. 
+Built with a **natively streaming architecture** and a custom causal audio encoder - it allows configurable transcription delays (240ms to 2.4s), enabling users to balance **latency and accuracy** based on their needs.
 At a **480ms delay**, it matches the performance of leading offline open-source transcription models, as well as realtime APIs.
 
-As a **4B-parameter model**, is optimized for **on-device deployment**, requiring minimal hardware resources. 
+As a **4B-parameter model**, is optimized for **on-device deployment**, requiring minimal hardware resources.
 It runs in realtime with on devices minimal hardware with throughput exceeding 12.5 tokens/second.
 
 This model is released in **BF16** under the **Apache-2 license**, ensuring flexibility for both research and commercial use.
@@ -90,8 +90,8 @@ Voxtral Mini 4B Realtime is competitive to leading offline models and shows sign
 ### Fleurs
 
 | Model                                   | Delay       | AVG     | Arabic | German | English | Spanish | French | Hindi  | Italian | Dutch | Portuguese | Chinese | Japanese | Korean | Russian |
-|-----------------------------------------|-------------|---------|--------|--------|---------|---------|--------|--------|---------|-------|------------|---------|----------|--------|---------|            
-| Voxtral Mini Transcribe 2.0             | Offline     | 5.90%   | 13.54% | 3.54%  | 3.32%   | 2.63%   | 4.32%  | 10.33% | 2.17%   | 4.78% | 3.56%      | 7.30%   | 4.14%    | 12.29% | 4.75%   | 
+|-----------------------------------------|-------------|---------|--------|--------|---------|---------|--------|--------|---------|-------|------------|---------|----------|--------|---------|
+| Voxtral Mini Transcribe 2.0             | Offline     | 5.90%   | 13.54% | 3.54%  | 3.32%   | 2.63%   | 4.32%  | 10.33% | 2.17%   | 4.78% | 3.56%      | 7.30%   | 4.14%    | 12.29% | 4.75%   |
 | **Voxtral Mini 4B Realtime 2602**       | 480 ms      | 8.72%   | 22.53% | 6.19%  | 4.90%   | 3.31%   | 6.42%  | 12.88% | 3.27%   | 7.07% | 5.03%      | 10.45%  | 9.59%    | 15.74% | 6.02%   |
 |                                         |             |         |        |        |         |         |        |        |         |       |            |         |          |        |         |
 |                                         | 160 ms      | 12.60%  | 24.33% | 9.50%  | 6.46%   | 5.34%   | 9.75%  | 15.28% | 5.59%   | 11.39%| 10.01%     | 17.67%  | 19.17%   | 19.81% | 9.53%   |
@@ -110,7 +110,7 @@ Voxtral Mini 4B Realtime is competitive to leading offline models and shows sign
 ### Short-form English
 
 | Model                              | Delay  | CHiME-4 | GigaSpeech 2k Subset | AMI IHM | SwitchBoard | CHiME-4 SP | GISpeech 2k Subset |
-| ---------------------------------- | ------ | ------- | -------------------- | ------- | ----------- | ---------- | ------------------ | 
+| ---------------------------------- | ------ | ------- | -------------------- | ------- | ----------- | ---------- | ------------------ |
 | Voxtral Mini Transcribe 2.0        | Offline | 10.39%  | 6.81%               | 14.43%  | 11.54%      | 10.42% | 1.74% |
 | **Voxtral Mini 4B Realtime 2602**  | 480ms  | 10.50%  | 7.35%                | 15.05%  | 11.65%      | 12.41% | 1.73% |
 
@@ -120,7 +120,7 @@ The model can also be deployed with the following libraries:
 - [`vllm (recommended)`](https://github.com/vllm-project/vllm): See [here](#vllm-recommended)
 - [`transformers`](https://github.com/huggingface/transformers): See [here](#transformers)
 - [`executorch` (untested)](https://github.com/pytorch/executorch/tree/main/examples/models/voxtral_realtime): See [here](#executorch-untested)
-  
+
 - *Community Contributions*: See [here](#community-contributions-untested)
 
 ### vLLM (recommended)
@@ -135,12 +135,12 @@ The model can also be deployed with the following libraries:
 > to add the architecture to [Transformers](https://github.com/huggingface/transformers) and [Llama.cpp](https://github.com/ggml-org/llama.cpp).
 
 We've worked hand-in-hand with the vLLM team to have production-grade support for Voxtral Mini 4B Realtime 2602 with vLLM.
-[vLLM](https://github.com/vllm-project/vllm)'s [new Realtime API](https://docs.vllm.ai/en/latest/serving/openai_compatible_server/?h=realtime#realtime-api) is perfectly suited to 
+[vLLM](https://github.com/vllm-project/vllm)'s [new Realtime API](https://docs.vllm.ai/en/latest/serving/openai_compatible_server/?h=realtime#realtime-api) is perfectly suited to
 run audio streaming sessions with the model.
 
 #### Installation
 
-Make sure to install [vllm](https://github.com/vllm-project/vllm) from the nightly pypi package. 
+Make sure to install [vllm](https://github.com/vllm-project/vllm) from the nightly pypi package.
 See [here](https://docs.vllm.ai/en/latest/getting_started/installation/) for a full installation guide.
 
 ```

@@ -1,0 +1,19 @@
+﻿# PROJECT CONTEXT BUILDER CONTRACT
+
+class ProjectContextBuilder:
+
+    def load_execution_registry(self):
+        pass
+
+    def load_goals_registry(self):
+        pass
+
+    def load_ledger(self):
+        pass
+
+    def load_observations(self):
+        pass
+
+    def build_context(self):
+        pass
+

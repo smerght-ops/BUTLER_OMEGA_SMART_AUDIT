@@ -1,4 +1,4 @@
-﻿from A_03_ORCHESTRATION.dps_vdk import DPSVDK
+from A_03_ORCHESTRATION.dps_vdk import DPSVDK
 
 d = DPSVDK()
 

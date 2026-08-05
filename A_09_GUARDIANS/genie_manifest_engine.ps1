@@ -1,4 +1,4 @@
-﻿# GENIE v2
+# GENIE v2
 # Manifest Driven Guardian
 
 $Manifest = Get-Content `

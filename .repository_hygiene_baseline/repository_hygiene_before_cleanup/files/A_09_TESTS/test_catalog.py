@@ -1,0 +1,1 @@
+﻿import sys; from A_02_MANAGERS.catalog_manager import CatalogManager; sys.stdout.reconfigure(encoding="utf-8"); print("=================================\nTESTING MODULE: CATALOG MANAGER\n========================="); cm = CatalogManager(); print("✓ Тест пройден: База данных найдена." if cm.db_path.exists() else "✗ Тест ПРОВАЛЕН")

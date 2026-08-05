@@ -1,4 +1,4 @@
-﻿"""
+"""
 Router Integration for Butler Omega
 Automatically connects AgentRouter outputs to targets via RouterRegistry
 Safe additive component with DK02 Memory Context Integration
@@ -47,7 +47,7 @@ class RouterIntegration:
         # Отправляем в роутер уже насыщенный контекстом текст
         route = self.router.route(enriched_input)
         target = self.registry.get_target(route)
-        
+
         return target
 
 

@@ -2,9 +2,9 @@
 
 ## TL;DR
 
-**Goal**: Real-time microphone transcription for Butler Agent  
-**Solution**: vLLM server + Voxtral model (17.8 GB)  
-**Hardware**: RTX 3090 Ti (24GB VRAM) ✅ Compatible  
+**Goal**: Real-time microphone transcription for Butler Agent
+**Solution**: vLLM server + Voxtral model (17.8 GB)
+**Hardware**: RTX 3090 Ti (24GB VRAM) ✅ Compatible
 
 ---
 
@@ -22,7 +22,7 @@ uv pip install -U vllm soxr librosa transformers websockets pyaudio
 huggingface-cli download mistralai/Voxtral-Mini-4B-Realtime-2602 --local-dir ./voxtral-models
 ```
 
-**Time**: ~15-30 minutes depending on internet speed  
+**Time**: ~15-30 minutes depending on internet speed
 **Disk space needed**: ~36 GB total (weights + cache)
 
 ### Step 3: Launch vLLM Server
@@ -55,7 +55,7 @@ async def test_voxtral():
             "type": "session_update",
             "config": {"transcription_delay_ms": 480, "temperature": 0.0}
         }))
-        
+
         # Setup microphone (16kHz mono)
         p = pyaudio.PyAudio()
         stream = p.open(
@@ -65,25 +65,25 @@ async def test_voxtral():
             input=True,
             frames_per_buffer=1600  # 100ms chunks
         )
-        
+
         print("Listening... (Press Ctrl+C to stop)")
-        
+
         try:
             while True:
                 # Read audio chunk
                 audio = stream.read(1600, exception_on_overflow=False)
-                
+
                 # Send to server (base64 encoded)
                 import base64
                 await ws.send(json.dumps({
                     "type": "input_audio_buffer.append",
                     "audio": base64.b64encode(audio).decode()
                 }))
-                
+
                 # Receive transcription
                 msg = await ws.recv()
                 data = json.loads(msg)
-                
+
                 if data.get("type") == "response.text.delta":
                     print(data.get("text", ""), end="", flush=True)
         except KeyboardInterrupt:
@@ -125,15 +125,15 @@ from typing import AsyncGenerator
 
 class VoxtralRealtimeClient:
     """vLLM WebSocket client for Voxtral-Mini-4B-Realtime-2602"""
-    
+
     def __init__(self, server_url: str = "ws://localhost:8000/v1/realtime"):
         self.server_url = server_url
         self.websocket = None
-        
+
     async def connect(self):
         """Connect to vLLM server and configure session"""
         self.websocket = await websockets.connect(self.server_url)
-        
+
         # Configure transcription settings
         config = {
             "transcription_delay_ms": 480,  # Sweet spot: <500ms latency
@@ -143,39 +143,39 @@ class VoxtralRealtimeClient:
             "type": "session_update",
             "config": config
         }))
-        
+
     async def send_audio_chunk(self, audio_data: np.ndarray):
         """Send 16kHz audio chunk (base64 encoded)"""
         if len(audio_data.shape) == 2:
             audio_data = audio_data.squeeze()  # Remove channel dim
-        
+
         audio_b64 = base64.b64encode(audio_data.tobytes()).decode('utf-8')
-        
+
         message = {
             "type": "input_audio_buffer.append",
             "audio": audio_b64
         }
         await self.websocket.send(json.dumps(message))
-        
+
     async def receive_transcription(self) -> AsyncGenerator[str, None]:
         """Receive streaming transcription text"""
         async for message in self.websocket:
             data = json.loads(message)
-            
+
             if data.get("type") == "response.text.delta":
                 yield data.get("text", "")
-                
+
     async def transcribe_microphone(
-        self, 
+        self,
         chunk_duration_ms: int = 100,
         sample_rate: int = 16000
     ) -> AsyncGenerator[str, None]:
         """Stream microphone audio to Voxtral and yield transcription"""
         import pyaudio
-        
+
         p = pyaudio.PyAudio()
         frames_per_buffer = int(chunk_duration_ms / 1000 * sample_rate)
-        
+
         stream = p.open(
             format=pyaudio.paInt16,
             channels=1,
@@ -183,19 +183,19 @@ class VoxtralRealtimeClient:
             input=True,
             frames_per_buffer=frames_per_buffer
         )
-        
+
         try:
             async for text_chunk in self.receive_transcription():
                 # Read audio and send while receiving transcription
                 audio = stream.read(frames_per_buffer, exception_on_overflow=False)
                 await self.send_audio_chunk(np.frombuffer(audio, dtype=np.int16))
-                
+
                 yield text_chunk
         finally:
             stream.stop_stream()
             stream.close()
             p.terminate()
-    
+
     async def close(self):
         """Close WebSocket connection"""
         if self.websocket:
@@ -205,15 +205,15 @@ class VoxtralRealtimeClient:
 async def butler_asr_loop():
     client = VoxtralRealtimeClient()
     await client.connect()
-    
+
     try:
         async for text in client.transcribe_microphone():
             # Pass transcription to Butler agent logic
             print(f"🎤 Transcribed: {text}")
-            
+
             # TODO: Integrate with Butler's decision-making pipeline
             # await butler_agent.process_input(text)
-            
+
     except KeyboardInterrupt:
         print("\nStopped listening")
     finally:
@@ -306,8 +306,8 @@ pip install pyaudio
 
 ## Status
 
-✅ Investigation complete  
-✅ Standalone solution verified  
-✅ Ready for deployment  
+✅ Investigation complete
+✅ Standalone solution verified
+✅ Ready for deployment
 
 **No further Bionic reverse-engineering required.**

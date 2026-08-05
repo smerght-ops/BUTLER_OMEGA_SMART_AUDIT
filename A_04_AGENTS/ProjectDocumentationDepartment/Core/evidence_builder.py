@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 import json
 from pathlib import Path
@@ -72,6 +72,3 @@ for k,v in report["summary"].items():
 
 print("="*70)
 print("Output :", OUT)
-
-
-

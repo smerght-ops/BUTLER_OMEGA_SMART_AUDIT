@@ -1,4 +1,4 @@
-﻿# USER MEMORY
+# USER MEMORY
 
 ## Пользователь
 

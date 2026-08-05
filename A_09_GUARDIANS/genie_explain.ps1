@@ -1,4 +1,4 @@
-﻿# GENIE EXPLAINER
+# GENIE EXPLAINER
 
 $Current = ".\A_02_MANAGERS\smart_dispatcher_v2.py"
 

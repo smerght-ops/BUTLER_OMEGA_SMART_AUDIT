@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 UltimateRealityDiscovery (any) — полный поиск по проекту для запрошенной capability.
 Собирает все доказательства из всех артефактов: файлы, классы, функции, импорты,

@@ -1,0 +1,2184 @@
+﻿{
+  "generated": "2026-07-06T18:31:11",
+  "count": 363,
+  "records": [
+    {
+      "type": "write_text",
+      "file": "ask_gemini_next_step.py",
+      "line": 38,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "path_open",
+      "file": "build_project_audit_pack.py",
+      "line": 40,
+      "value": "w"
+    },
+    {
+      "type": "read_text",
+      "file": "butler_capability_audit.py",
+      "line": 38,
+      "value": null
+    },
+    {
+      "type": "subprocess",
+      "file": "Butler_Gate.py",
+      "line": 40,
+      "value": "<variable>"
+    },
+    {
+      "type": "os",
+      "file": "BUTLER_OS.py",
+      "line": 8,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "path_open",
+      "file": "create_snapshot.py",
+      "line": 28,
+      "value": "rb"
+    },
+    {
+      "type": "read_text",
+      "file": "debug_ast.py",
+      "line": 5,
+      "value": null
+    },
+    {
+      "type": "read_text",
+      "file": "fix_departments_utf8.py",
+      "line": 53,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "fix_departments_utf8.py",
+      "line": 59,
+      "value": "<variable>"
+    },
+    {
+      "type": "write_text",
+      "file": "fix_departments_utf8.py",
+      "line": 60,
+      "value": "<variable>"
+    },
+    {
+      "type": "open",
+      "file": "harness_patcher.py",
+      "line": 2,
+      "value": "<variable>"
+    },
+    {
+      "type": "open",
+      "file": "harness_patcher.py",
+      "line": 32,
+      "value": "<variable>"
+    },
+    {
+      "type": "read_text",
+      "file": "harness_stage_patch.py",
+      "line": 5,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "harness_stage_patch.py",
+      "line": 13,
+      "value": "<call>"
+    },
+    {
+      "type": "open",
+      "file": "INIT_OMEGA.py",
+      "line": 14,
+      "value": "<variable>"
+    },
+    {
+      "type": "read_text",
+      "file": "patch_architect_planner_bridge.py",
+      "line": 5,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "patch_architect_planner_bridge.py",
+      "line": 41,
+      "value": "<variable>"
+    },
+    {
+      "type": "read_text",
+      "file": "patch_architect_planner_bridge.py",
+      "line": 46,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "patch_architect_planner_bridge.py",
+      "line": 66,
+      "value": "<variable>"
+    },
+    {
+      "type": "read_text",
+      "file": "patch_context_provider_bridge.py",
+      "line": 5,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "patch_context_provider_bridge.py",
+      "line": 32,
+      "value": "<call>"
+    },
+    {
+      "type": "read_text",
+      "file": "patch_context_provider_v2.py",
+      "line": 5,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "patch_context_provider_v2.py",
+      "line": 51,
+      "value": "<variable>"
+    },
+    {
+      "type": "read_text",
+      "file": "patch_image_dual_artist.py",
+      "line": 4,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "patch_image_dual_artist.py",
+      "line": 43,
+      "value": "<variable>"
+    },
+    {
+      "type": "read_text",
+      "file": "patch_memory.py",
+      "line": 5,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "patch_memory.py",
+      "line": 29,
+      "value": "<variable>"
+    },
+    {
+      "type": "read_text",
+      "file": "patch_planner_autorun.py",
+      "line": 4,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "patch_planner_autorun.py",
+      "line": 27,
+      "value": "<variable>"
+    },
+    {
+      "type": "read_text",
+      "file": "patch_quality.py",
+      "line": 5,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "patch_quality.py",
+      "line": 16,
+      "value": "<variable>"
+    },
+    {
+      "type": "read_text",
+      "file": "patch_recipe_schema_version.py",
+      "line": 5,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "patch_recipe_schema_version.py",
+      "line": 18,
+      "value": "<variable>"
+    },
+    {
+      "type": "subprocess",
+      "file": "restore_full_project.py",
+      "line": 40,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "subprocess",
+      "file": "restore_snapshot.py",
+      "line": 57,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "subprocess",
+      "file": "restore_snapshot.py",
+      "line": 65,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "open",
+      "file": "run_audit.py",
+      "line": 13,
+      "value": "<variable>"
+    },
+    {
+      "type": "open",
+      "file": "run_audit.py",
+      "line": 26,
+      "value": "GEMINI.md"
+    },
+    {
+      "type": "open",
+      "file": "run_audit.py",
+      "line": 29,
+      "value": "<variable>"
+    },
+    {
+      "type": "open",
+      "file": "run_audit.py",
+      "line": 53,
+      "value": "ARCHITECTURE_REPORT.md"
+    },
+    {
+      "type": "read_text",
+      "file": "run_audit_v2.py",
+      "line": 16,
+      "value": null
+    },
+    {
+      "type": "read_text",
+      "file": "run_audit_v2.py",
+      "line": 18,
+      "value": null
+    },
+    {
+      "type": "open",
+      "file": "RUN_PIPELINE_V12.py",
+      "line": 78,
+      "value": "<variable>"
+    },
+    {
+      "type": "path_open",
+      "file": "safe_change.py",
+      "line": 34,
+      "value": "rb"
+    },
+    {
+      "type": "read_text",
+      "file": "split_project_pack.py",
+      "line": 23,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "split_project_pack.py",
+      "line": 57,
+      "value": "<call>"
+    },
+    {
+      "type": "write_text",
+      "file": "split_project_pack.py",
+      "line": 78,
+      "value": "<call>"
+    },
+    {
+      "type": "subprocess",
+      "file": "START_SAFE_LAUNCH.py",
+      "line": 13,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "subprocess",
+      "file": "system_doctor.py",
+      "line": 64,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "read_text",
+      "file": "system_doctor.py",
+      "line": 172,
+      "value": null
+    },
+    {
+      "type": "path_open",
+      "file": "verify_project.py",
+      "line": 26,
+      "value": "rb"
+    },
+    {
+      "type": "write_text",
+      "file": "verify_project.py",
+      "line": 75,
+      "value": "<call>"
+    },
+    {
+      "type": "write_text",
+      "file": "verify_project.py",
+      "line": 92,
+      "value": "<call>"
+    },
+    {
+      "type": "write_text",
+      "file": "AUDIT/local_project_audit.py",
+      "line": 35,
+      "value": "<call>"
+    },
+    {
+      "type": "read_text",
+      "file": "AUDIT/local_project_audit.py",
+      "line": 40,
+      "value": null
+    },
+    {
+      "type": "read_text",
+      "file": "AUDIT/local_project_audit.py",
+      "line": 83,
+      "value": null
+    },
+    {
+      "type": "subprocess",
+      "file": "AUDIT/local_project_audit.py",
+      "line": 144,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "open",
+      "file": "A_01_CORE/bootstrap_guard.py",
+      "line": 13,
+      "value": "<variable>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_01_CORE/bootstrap_guard.py",
+      "line": 35,
+      "value": null
+    },
+    {
+      "type": "os",
+      "file": "A_01_CORE/butler_drawer.py",
+      "line": 74,
+      "value": "<fstring>"
+    },
+    {
+      "type": "subprocess",
+      "file": "A_01_CORE/butler_ui.py",
+      "line": 16,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "open",
+      "file": "A_01_CORE/config_loader.py",
+      "line": 6,
+      "value": "<variable>"
+    },
+    {
+      "type": "open",
+      "file": "A_01_CORE/diagnostic_tool.py",
+      "line": 58,
+      "value": "<variable>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_01_CORE/execution_loop.py",
+      "line": 23,
+      "value": null
+    },
+    {
+      "type": "open",
+      "file": "A_01_CORE/execution_loop.py",
+      "line": 45,
+      "value": "<variable>"
+    },
+    {
+      "type": "write_text",
+      "file": "A_01_CORE/execution_loop.py",
+      "line": 52,
+      "value": "<call>"
+    },
+    {
+      "type": "os",
+      "file": "A_01_CORE/flow_monitor.py",
+      "line": 19,
+      "value": "cls"
+    },
+    {
+      "type": "open",
+      "file": "A_01_CORE/healthcheck.py",
+      "line": 28,
+      "value": "<variable>"
+    },
+    {
+      "type": "open",
+      "file": "A_01_CORE/manifest_loader.py",
+      "line": 22,
+      "value": "<variable>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_01_CORE/memory_guardian.py",
+      "line": 40,
+      "value": null
+    },
+    {
+      "type": "read_text",
+      "file": "A_01_CORE/memory_guardian.py",
+      "line": 56,
+      "value": null
+    },
+    {
+      "type": "read_text",
+      "file": "A_01_CORE/memory_guardian.py",
+      "line": 73,
+      "value": null
+    },
+    {
+      "type": "dynamic_import",
+      "file": "A_01_CORE/memory_guardian.py",
+      "line": 158,
+      "value": "<call>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_01_CORE/memory_guardian.py",
+      "line": 195,
+      "value": null
+    },
+    {
+      "type": "read_text",
+      "file": "A_01_CORE/memory_guardian.py",
+      "line": 196,
+      "value": null
+    },
+    {
+      "type": "open",
+      "file": "A_01_CORE/orchestrator.py",
+      "line": 25,
+      "value": "<variable>"
+    },
+    {
+      "type": "open",
+      "file": "A_01_CORE/project_indexer.py",
+      "line": 21,
+      "value": "<variable>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_01_CORE/project_indexer.py",
+      "line": 29,
+      "value": null
+    },
+    {
+      "type": "open",
+      "file": "A_01_CORE/project_state_builder.py",
+      "line": 35,
+      "value": "<variable>"
+    },
+    {
+      "type": "write_text",
+      "file": "A_01_CORE/project_state_builder.py",
+      "line": 44,
+      "value": "<call>"
+    },
+    {
+      "type": "open",
+      "file": "A_01_CORE/project_state_builder.py",
+      "line": 65,
+      "value": "<variable>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_01_CORE/project_state_builder.py",
+      "line": 71,
+      "value": null
+    },
+    {
+      "type": "read_text",
+      "file": "A_01_CORE/project_state_builder.py",
+      "line": 74,
+      "value": null
+    },
+    {
+      "type": "path_open",
+      "file": "A_01_CORE/safety_gate.py",
+      "line": 20,
+      "value": "a"
+    },
+    {
+      "type": "subprocess",
+      "file": "A_01_CORE/safety_gate.py",
+      "line": 26,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "subprocess",
+      "file": "A_01_CORE/safety_gate.py",
+      "line": 69,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "write_text",
+      "file": "A_01_CORE/safety_gate.py",
+      "line": 98,
+      "value": "<variable>"
+    },
+    {
+      "type": "write_text",
+      "file": "A_01_CORE/self_healing_loop.py",
+      "line": 24,
+      "value": "<concat>"
+    },
+    {
+      "type": "subprocess",
+      "file": "A_01_CORE/self_healing_loop.py",
+      "line": 32,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_01_CORE/self_healing_loop.py",
+      "line": 47,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "A_01_CORE/self_healing_loop.py",
+      "line": 63,
+      "value": "<concat>"
+    },
+    {
+      "type": "open",
+      "file": "A_01_CORE/system_guardian.py",
+      "line": 89,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_01_CORE/system_stabilizer.py",
+      "line": 13,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "A_01_CORE/system_stabilizer.py",
+      "line": 17,
+      "value": "<call>"
+    },
+    {
+      "type": "write_text",
+      "file": "A_01_CORE/system_stabilizer.py",
+      "line": 64,
+      "value": "<call>"
+    },
+    {
+      "type": "open",
+      "file": "A_01_CORE/task_feeder.py",
+      "line": 20,
+      "value": "<concat>"
+    },
+    {
+      "type": "requests",
+      "file": "A_01_CORE_BACKUP/agent_interface.py",
+      "line": 50,
+      "value": "http://127.0.0.1:11434/api/generate"
+    },
+    {
+      "type": "os",
+      "file": "A_01_CORE_BACKUP/agent_interface.py",
+      "line": 58,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "os",
+      "file": "A_01_CORE_BACKUP/butler_drawer.py",
+      "line": 74,
+      "value": "<fstring>"
+    },
+    {
+      "type": "open",
+      "file": "A_01_CORE_BACKUP/config_loader.py",
+      "line": 6,
+      "value": "<variable>"
+    },
+    {
+      "type": "open",
+      "file": "A_01_CORE_BACKUP/diagnostic_tool.py",
+      "line": 58,
+      "value": "<variable>"
+    },
+    {
+      "type": "open",
+      "file": "A_01_CORE_BACKUP/healthcheck.py",
+      "line": 28,
+      "value": "<variable>"
+    },
+    {
+      "type": "open",
+      "file": "A_01_CORE_BACKUP/manifest_loader.py",
+      "line": 22,
+      "value": "<variable>"
+    },
+    {
+      "type": "open",
+      "file": "A_01_CORE_BACKUP/register_report.py",
+      "line": 8,
+      "value": "<variable>"
+    },
+    {
+      "type": "write_text",
+      "file": "A_01_CORE_BACKUP/test_db.py",
+      "line": 8,
+      "value": "Это тестовый документ для проверки БД."
+    },
+    {
+      "type": "write_text",
+      "file": "A_02_MANAGERS/audit_reporter.py",
+      "line": 55,
+      "value": "<variable>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_02_MANAGERS/context_builder.py",
+      "line": 15,
+      "value": null
+    },
+    {
+      "type": "read_text",
+      "file": "A_02_MANAGERS/context_builder.py",
+      "line": 34,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "A_02_MANAGERS/context_builder.py",
+      "line": 110,
+      "value": "<variable>"
+    },
+    {
+      "type": "write_text",
+      "file": "A_02_MANAGERS/context_builder.py",
+      "line": 126,
+      "value": "<call>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_02_MANAGERS/dream_manager.py",
+      "line": 20,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "A_02_MANAGERS/dream_manager.py",
+      "line": 42,
+      "value": "<fstring>"
+    },
+    {
+      "type": "write_text",
+      "file": "A_02_MANAGERS/dream_manager.py",
+      "line": 68,
+      "value": "<variable>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_02_MANAGERS/impact_analyzer.py",
+      "line": 51,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "A_02_MANAGERS/impact_analyzer.py",
+      "line": 77,
+      "value": "<call>"
+    },
+    {
+      "type": "open",
+      "file": "A_02_MANAGERS/memory_manager.py",
+      "line": 16,
+      "value": "<variable>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_02_MANAGERS/project_guardian.py",
+      "line": 52,
+      "value": null
+    },
+    {
+      "type": "requests",
+      "file": "A_02_MANAGERS/provider_manager.py",
+      "line": 16,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "requests",
+      "file": "A_02_MANAGERS/provider_manager.py",
+      "line": 29,
+      "value": "<fstring>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_02_MANAGERS/recipe_validator.py",
+      "line": 169,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "A_02_MANAGERS/recipe_validator.py",
+      "line": 193,
+      "value": "Butler Engine Active\nTarget block active\n"
+    },
+    {
+      "type": "open",
+      "file": "A_02_MANAGERS/session_manager.py",
+      "line": 25,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "open",
+      "file": "A_02_MANAGERS/session_manager.py",
+      "line": 33,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "requests",
+      "file": "A_02_MANAGERS/smart_dispatcher.py",
+      "line": 69,
+      "value": "<variable>"
+    },
+    {
+      "type": "open",
+      "file": "A_02_MANAGERS_BACKUP/audit_reporter.py",
+      "line": 61,
+      "value": "<variable>"
+    },
+    {
+      "type": "open",
+      "file": "A_02_MANAGERS_BACKUP/audit_reporter.py",
+      "line": 65,
+      "value": "<variable>"
+    },
+    {
+      "type": "open",
+      "file": "A_02_MANAGERS_BACKUP/audit_reporter.py",
+      "line": 73,
+      "value": "<variable>"
+    },
+    {
+      "type": "open",
+      "file": "A_02_MANAGERS_BACKUP/memory_manager.py",
+      "line": 16,
+      "value": "<variable>"
+    },
+    {
+      "type": "requests",
+      "file": "A_02_MANAGERS_BACKUP/provider_manager.py",
+      "line": 16,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "requests",
+      "file": "A_02_MANAGERS_BACKUP/provider_manager.py",
+      "line": 29,
+      "value": "<fstring>"
+    },
+    {
+      "type": "open",
+      "file": "A_03_EXECUTORS/executor.py",
+      "line": 25,
+      "value": "<variable>"
+    },
+    {
+      "type": "path_open",
+      "file": "A_03_HANDLERS/archive_handler.py",
+      "line": 47,
+      "value": "<variable>"
+    },
+    {
+      "type": "path_open",
+      "file": "A_03_HANDLERS/archive_handler.py",
+      "line": 54,
+      "value": "<variable>"
+    },
+    {
+      "type": "open",
+      "file": "A_03_HANDLERS/archive_handler.py",
+      "line": 55,
+      "value": "<variable>"
+    },
+    {
+      "type": "path_open",
+      "file": "A_03_HANDLERS/archive_handler.py",
+      "line": 105,
+      "value": "<variable>"
+    },
+    {
+      "type": "open",
+      "file": "A_03_HANDLERS/archive_handler.py",
+      "line": 106,
+      "value": "<variable>"
+    },
+    {
+      "type": "open",
+      "file": "A_03_HANDLERS/archive_handler.py",
+      "line": 118,
+      "value": "<variable>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_03_HANDLERS/code_handler.py",
+      "line": 19,
+      "value": null
+    },
+    {
+      "type": "path_open",
+      "file": "A_03_HANDLERS/ocr_backend.py",
+      "line": 32,
+      "value": "<variable>"
+    },
+    {
+      "type": "open",
+      "file": "A_03_HANDLERS/ollama_vision_backend.py",
+      "line": 22,
+      "value": "<variable>"
+    },
+    {
+      "type": "requests",
+      "file": "A_03_HANDLERS/ollama_vision_backend.py",
+      "line": 53,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "open",
+      "file": "A_03_HANDLERS/pdf_handler.py",
+      "line": 59,
+      "value": "<variable>"
+    },
+    {
+      "type": "path_open",
+      "file": "A_03_HANDLERS/pdf_handler.py",
+      "line": 114,
+      "value": "<call>"
+    },
+    {
+      "type": "path_open",
+      "file": "A_03_HANDLERS/pdf_ocr_pipeline.py",
+      "line": 56,
+      "value": "r"
+    },
+    {
+      "type": "path_open",
+      "file": "A_03_HANDLERS/pdf_ocr_pipeline.py",
+      "line": 75,
+      "value": "w"
+    },
+    {
+      "type": "path_open",
+      "file": "A_03_HANDLERS/pdf_ocr_pipeline.py",
+      "line": 102,
+      "value": "<call>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_03_HANDLERS/text_handler.py",
+      "line": 12,
+      "value": null
+    },
+    {
+      "type": "open",
+      "file": "A_03_ORCHESTRATION/agent_planner.py",
+      "line": 14,
+      "value": "<variable>"
+    },
+    {
+      "type": "open",
+      "file": "A_03_ORCHESTRATION/agent_planner.py",
+      "line": 21,
+      "value": "<variable>"
+    },
+    {
+      "type": "os",
+      "file": "A_03_ORCHESTRATION/chat_router.CLEAN_UTF8.py",
+      "line": 56,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "requests",
+      "file": "A_03_ORCHESTRATION/chat_router.CLEAN_UTF8.py",
+      "line": 64,
+      "value": "<variable>"
+    },
+    {
+      "type": "requests",
+      "file": "A_03_ORCHESTRATION/chat_router.CLEAN_UTF8.py",
+      "line": 82,
+      "value": "<concat>"
+    },
+    {
+      "type": "requests",
+      "file": "A_03_ORCHESTRATION/chat_router.CLEAN_UTF8.py",
+      "line": 94,
+      "value": "<variable>"
+    },
+    {
+      "type": "write_text",
+      "file": "A_03_ORCHESTRATION/chat_router.CLEAN_UTF8.py",
+      "line": 212,
+      "value": "<variable>"
+    },
+    {
+      "type": "os",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.after_import.py",
+      "line": 46,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "requests",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.after_import.py",
+      "line": 54,
+      "value": "<variable>"
+    },
+    {
+      "type": "requests",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.after_import.py",
+      "line": 72,
+      "value": "<concat>"
+    },
+    {
+      "type": "requests",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.after_import.py",
+      "line": 84,
+      "value": "<variable>"
+    },
+    {
+      "type": "write_text",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.after_import.py",
+      "line": 200,
+      "value": "<variable>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.after_import.py",
+      "line": 222,
+      "value": null
+    },
+    {
+      "type": "os",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.after_resolver.py",
+      "line": 46,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "requests",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.after_resolver.py",
+      "line": 54,
+      "value": "<variable>"
+    },
+    {
+      "type": "requests",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.after_resolver.py",
+      "line": 72,
+      "value": "<concat>"
+    },
+    {
+      "type": "requests",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.after_resolver.py",
+      "line": 84,
+      "value": "<variable>"
+    },
+    {
+      "type": "write_text",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.after_resolver.py",
+      "line": 207,
+      "value": "<variable>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.after_resolver.py",
+      "line": 229,
+      "value": null
+    },
+    {
+      "type": "os",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.hybrid_ok.py",
+      "line": 46,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "requests",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.hybrid_ok.py",
+      "line": 54,
+      "value": "<variable>"
+    },
+    {
+      "type": "requests",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.hybrid_ok.py",
+      "line": 72,
+      "value": "<concat>"
+    },
+    {
+      "type": "requests",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.hybrid_ok.py",
+      "line": 84,
+      "value": "<variable>"
+    },
+    {
+      "type": "write_text",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.hybrid_ok.py",
+      "line": 207,
+      "value": "<variable>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.hybrid_ok.py",
+      "line": 229,
+      "value": null
+    },
+    {
+      "type": "os",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.py",
+      "line": 46,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "requests",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.py",
+      "line": 54,
+      "value": "<variable>"
+    },
+    {
+      "type": "requests",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.py",
+      "line": 72,
+      "value": "<concat>"
+    },
+    {
+      "type": "requests",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.py",
+      "line": 84,
+      "value": "<variable>"
+    },
+    {
+      "type": "write_text",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.py",
+      "line": 207,
+      "value": "<variable>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.py",
+      "line": 229,
+      "value": null
+    },
+    {
+      "type": "os",
+      "file": "A_03_ORCHESTRATION/chat_router.py",
+      "line": 52,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "requests",
+      "file": "A_03_ORCHESTRATION/chat_router.py",
+      "line": 59,
+      "value": "<variable>"
+    },
+    {
+      "type": "requests",
+      "file": "A_03_ORCHESTRATION/chat_router.py",
+      "line": 71,
+      "value": "<variable>"
+    },
+    {
+      "type": "requests",
+      "file": "A_03_ORCHESTRATION/chat_router.py",
+      "line": 109,
+      "value": "<variable>"
+    },
+    {
+      "type": "write_text",
+      "file": "A_03_ORCHESTRATION/chat_router.py",
+      "line": 153,
+      "value": "<variable>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_03_ORCHESTRATION/chat_router.py",
+      "line": 192,
+      "value": null
+    },
+    {
+      "type": "read_text",
+      "file": "A_03_ORCHESTRATION/context_builder.py",
+      "line": 15,
+      "value": null
+    },
+    {
+      "type": "open",
+      "file": "A_03_ORCHESTRATION/dispatcher_bridge.py",
+      "line": 19,
+      "value": "<concat>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_03_ORCHESTRATION/dispatcher_bridge.py",
+      "line": 31,
+      "value": null
+    },
+    {
+      "type": "read_text",
+      "file": "A_03_ORCHESTRATION/editor_patch.py",
+      "line": 17,
+      "value": null
+    },
+    {
+      "type": "open",
+      "file": "A_03_ORCHESTRATION/memory_sidecar.py",
+      "line": 48,
+      "value": "<variable>"
+    },
+    {
+      "type": "write_text",
+      "file": "A_03_ORCHESTRATION/message_network.py",
+      "line": 32,
+      "value": "<call>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_03_ORCHESTRATION/message_network.py",
+      "line": 50,
+      "value": null
+    },
+    {
+      "type": "read_text",
+      "file": "A_03_ORCHESTRATION/message_network.py",
+      "line": 65,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "A_03_ORCHESTRATION/message_network.py",
+      "line": 67,
+      "value": "<call>"
+    },
+    {
+      "type": "open",
+      "file": "A_03_ORCHESTRATION/observation_layer.py",
+      "line": 34,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "subprocess",
+      "file": "A_03_ORCHESTRATION/passport_commands.py",
+      "line": 36,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_03_ORCHESTRATION/registry_brain.py",
+      "line": 42,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "A_03_ORCHESTRATION/registry_brain.py",
+      "line": 48,
+      "value": "<call>"
+    },
+    {
+      "type": "requests",
+      "file": "A_04_AGENTS/professor.py",
+      "line": 48,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "open",
+      "file": "A_04_AGENTS/professor.py",
+      "line": 167,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "open",
+      "file": "A_04_AGENTS/professor.py",
+      "line": 217,
+      "value": "<variable>"
+    },
+    {
+      "type": "requests",
+      "file": "A_04_AGENTS/professor.py",
+      "line": 224,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_04_AGENTS_BACKUP/professor.py",
+      "line": 47,
+      "value": null
+    },
+    {
+      "type": "open",
+      "file": "A_04_AGENTS_BACKUP/professor.py",
+      "line": 56,
+      "value": "<variable>"
+    },
+    {
+      "type": "requests",
+      "file": "A_04_AGENTS_BACKUP/professor.py",
+      "line": 59,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "open",
+      "file": "A_04_AGENTS_BACKUP/professor.py",
+      "line": 70,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "open",
+      "file": "A_07_CONFIG/project_memory_loader.py",
+      "line": 17,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "open",
+      "file": "A_07_CONFIG/project_passport_loader.py",
+      "line": 16,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "open",
+      "file": "A_07_CONFIG/project_passport_loader.py",
+      "line": 48,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "open",
+      "file": "A_07_CONFIG/registry_loader.py",
+      "line": 16,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "open",
+      "file": "A_07_CONFIG/registry_validator.py",
+      "line": 16,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_07_MEMORY/agent_planner.py",
+      "line": 19,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "A_07_MEMORY/agent_planner.py",
+      "line": 25,
+      "value": "<call>"
+    },
+    {
+      "type": "subprocess",
+      "file": "A_07_MEMORY/agent_planner.py",
+      "line": 107,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "subprocess",
+      "file": "A_07_MEMORY/agent_runtime.py",
+      "line": 30,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_07_MEMORY/agent_runtime.py",
+      "line": 75,
+      "value": null
+    },
+    {
+      "type": "read_text",
+      "file": "A_07_MEMORY/architectural_knowledge_graph.py",
+      "line": 39,
+      "value": null
+    },
+    {
+      "type": "read_text",
+      "file": "A_07_MEMORY/change_request_manager.py",
+      "line": 33,
+      "value": null
+    },
+    {
+      "type": "open",
+      "file": "A_07_MEMORY/change_request_manager.py",
+      "line": 71,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_07_MEMORY/execution_registry.py",
+      "line": 19,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "A_07_MEMORY/execution_registry.py",
+      "line": 26,
+      "value": "<call>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_07_MEMORY/goal_loop_engine.py",
+      "line": 18,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "A_07_MEMORY/goal_loop_engine.py",
+      "line": 24,
+      "value": "<call>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_07_MEMORY/memory_facade.py",
+      "line": 24,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "A_07_MEMORY/png_workflow_memory.py",
+      "line": 17,
+      "value": "{}"
+    },
+    {
+      "type": "read_text",
+      "file": "A_07_MEMORY/png_workflow_memory.py",
+      "line": 25,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "A_07_MEMORY/png_workflow_memory.py",
+      "line": 32,
+      "value": "<call>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_07_MEMORY/profile_manager.py",
+      "line": 14,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "A_07_MEMORY/profile_manager.py",
+      "line": 25,
+      "value": "<call>"
+    },
+    {
+      "type": "write_text",
+      "file": "A_07_MEMORY/profile_manager.py",
+      "line": 100,
+      "value": "<call>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_07_MEMORY/profile_sync.py",
+      "line": 14,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "A_07_MEMORY/profile_sync.py",
+      "line": 25,
+      "value": "<call>"
+    },
+    {
+      "type": "write_text",
+      "file": "A_07_MEMORY/profile_sync.py",
+      "line": 72,
+      "value": "<call>"
+    },
+    {
+      "type": "open",
+      "file": "A_07_MEMORY/project_context_builder.py",
+      "line": 16,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "open",
+      "file": "A_07_MEMORY/project_context_builder.py",
+      "line": 42,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_07_MEMORY/project_context_builder.py",
+      "line": 65,
+      "value": null
+    },
+    {
+      "type": "open",
+      "file": "A_07_MEMORY/project_context_builder.py",
+      "line": 88,
+      "value": "<variable>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_07_MEMORY/project_history.py",
+      "line": 19,
+      "value": null
+    },
+    {
+      "type": "path_open",
+      "file": "A_07_MEMORY/search_engine.py",
+      "line": 80,
+      "value": "r"
+    },
+    {
+      "type": "path_open",
+      "file": "A_07_MEMORY/search_engine.py",
+      "line": 97,
+      "value": "r"
+    },
+    {
+      "type": "write_text",
+      "file": "A_07_MEMORY/self_healing_memory.py",
+      "line": 31,
+      "value": "<variable>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_07_MEMORY/self_healing_memory.py",
+      "line": 66,
+      "value": null
+    },
+    {
+      "type": "path_open",
+      "file": "A_07_MEMORY/semantic_memory.py",
+      "line": 56,
+      "value": "a"
+    },
+    {
+      "type": "path_open",
+      "file": "A_07_MEMORY/semantic_memory.py",
+      "line": 76,
+      "value": "r"
+    },
+    {
+      "type": "path_open",
+      "file": "A_07_MEMORY/semantic_memory.py",
+      "line": 108,
+      "value": "r"
+    },
+    {
+      "type": "read_text",
+      "file": "A_07_MEMORY/semantic_reasoning_engine_v2.py",
+      "line": 44,
+      "value": null
+    },
+    {
+      "type": "read_text",
+      "file": "A_07_MEMORY/semantic_relations_engine.py",
+      "line": 82,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "A_07_MEMORY/semantic_relations_engine.py",
+      "line": 100,
+      "value": "<call>"
+    },
+    {
+      "type": "requests",
+      "file": "A_09_INTERFACE/test_ollama_connect.py",
+      "line": 9,
+      "value": "<fstring>"
+    },
+    {
+      "type": "requests",
+      "file": "A_09_INTERFACE/test_ollama_connect.py",
+      "line": 33,
+      "value": "<fstring>"
+    },
+    {
+      "type": "path_open",
+      "file": "A_09_TESTS/test_search_engine.py",
+      "line": 43,
+      "value": "w"
+    },
+    {
+      "type": "path_open",
+      "file": "A_09_TESTS/test_search_engine.py",
+      "line": 46,
+      "value": "w"
+    },
+    {
+      "type": "requests",
+      "file": "A_00_RESTORE/CHECKPOINT_IMAGE_LINK_OK_20260616_192929/runner.py",
+      "line": 63,
+      "value": "<concat>"
+    },
+    {
+      "type": "requests",
+      "file": "A_00_RESTORE/CHECKPOINT_IMAGE_LINK_OK_20260616_192929/runner.py",
+      "line": 158,
+      "value": "<concat>"
+    },
+    {
+      "type": "subprocess",
+      "file": "A_00_RESTORE/CHECKPOINT_IMAGE_LINK_OK_20260616_192929/runner.py",
+      "line": 182,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "subprocess",
+      "file": "A_00_RESTORE/CHECKPOINT_IMAGE_LINK_OK_20260616_192929/runner.py",
+      "line": 195,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "requests",
+      "file": "A_00_RESTORE/CHECKPOINT_IMAGE_LINK_OK_20260616_192943/runner.py",
+      "line": 64,
+      "value": "<concat>"
+    },
+    {
+      "type": "requests",
+      "file": "A_00_RESTORE/CHECKPOINT_IMAGE_LINK_OK_20260616_192943/runner.py",
+      "line": 159,
+      "value": "<concat>"
+    },
+    {
+      "type": "subprocess",
+      "file": "A_00_RESTORE/CHECKPOINT_IMAGE_LINK_OK_20260616_192943/runner.py",
+      "line": 183,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "subprocess",
+      "file": "A_00_RESTORE/CHECKPOINT_IMAGE_LINK_OK_20260616_192943/runner.py",
+      "line": 196,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "path_open",
+      "file": "A_00_RESTORE/SEARCH_ENGINE_BACKUPS/search_engine_20260610_115441.py",
+      "line": 36,
+      "value": "r"
+    },
+    {
+      "type": "path_open",
+      "file": "A_00_RESTORE/SEARCH_ENGINE_BACKUPS/search_engine_20260610_115441.py",
+      "line": 53,
+      "value": "r"
+    },
+    {
+      "type": "read_text",
+      "file": "A_02_MANAGERS/ArchitectAgent/context_provider.py",
+      "line": 51,
+      "value": null
+    },
+    {
+      "type": "read_text",
+      "file": "A_02_MANAGERS/ArchitectAgent/context_provider.py",
+      "line": 60,
+      "value": null
+    },
+    {
+      "type": "read_text",
+      "file": "A_02_MANAGERS/ArchitectAgent/dependency_graph.py",
+      "line": 34,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "A_02_MANAGERS/ArchitectAgent/queue_manager.py",
+      "line": 21,
+      "value": "<call>"
+    },
+    {
+      "type": "open",
+      "file": "A_02_MANAGERS/ExecutionMonitor/execution_history.py",
+      "line": 27,
+      "value": "<variable>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_02_MANAGERS/ProjectContextReader/PCR_ANALYZE.py",
+      "line": 13,
+      "value": null
+    },
+    {
+      "type": "read_text",
+      "file": "A_02_MANAGERS/ProjectContextReader/PCR_INTERNAL.py",
+      "line": 18,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "A_02_MANAGERS/ProjectContextReader/PCR_INTERNAL.py",
+      "line": 27,
+      "value": "<call>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_02_MANAGERS/ProjectContextReader/PCR_V3.py",
+      "line": 31,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "A_02_MANAGERS/ProjectContextReader/PCR_V3.py",
+      "line": 66,
+      "value": "<call>"
+    },
+    {
+      "type": "open",
+      "file": "A_02_MANAGERS/TaskRunner/recipe_loader.py",
+      "line": 28,
+      "value": "<variable>"
+    },
+    {
+      "type": "open",
+      "file": "A_02_MANAGERS/TaskRunner/recipe_writer.py",
+      "line": 28,
+      "value": "<variable>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_02_MANAGERS/TaskRunner/runner.py",
+      "line": 67,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "A_02_MANAGERS/TaskRunner/runner.py",
+      "line": 79,
+      "value": "<variable>"
+    },
+    {
+      "type": "subprocess",
+      "file": "A_02_MANAGERS/TaskRunner/runner.py",
+      "line": 107,
+      "value": "<variable>"
+    },
+    {
+      "type": "subprocess",
+      "file": "A_02_MANAGERS/TaskRunner/ExecutionAdapters/powershell_adapter.py",
+      "line": 34,
+      "value": "<variable>"
+    },
+    {
+      "type": "subprocess",
+      "file": "A_02_MANAGERS/TaskRunner/ExecutionAdapters/python_adapter.py",
+      "line": 28,
+      "value": "<variable>"
+    },
+    {
+      "type": "requests",
+      "file": "A_03_ENGINES/Generation_Engine/comfy_bridge.py",
+      "line": 21,
+      "value": "<fstring>"
+    },
+    {
+      "type": "requests",
+      "file": "A_03_ENGINES/Generation_Engine/comfy_bridge.py",
+      "line": 100,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "os",
+      "file": "A_03_ENGINES/Generation_Engine/comfy_bridge.py",
+      "line": 126,
+      "value": "<call>"
+    },
+    {
+      "type": "open",
+      "file": "A_03_ORCHESTRATION/guards/compile_guard.py",
+      "line": 23,
+      "value": "<variable>"
+    },
+    {
+      "type": "write_text",
+      "file": "A_03_ORCHESTRATION/guards/compile_guard.py",
+      "line": 79,
+      "value": "def unclosed_function_def(:\n    print('broken'"
+    },
+    {
+      "type": "open",
+      "file": "A_03_ORCHESTRATION/guards/compile_guard.py",
+      "line": 87,
+      "value": "<variable>"
+    },
+    {
+      "type": "open",
+      "file": "A_03_ORCHESTRATION/guards/frozen_core_guard.py",
+      "line": 23,
+      "value": "<variable>"
+    },
+    {
+      "type": "write_text",
+      "file": "A_03_ORCHESTRATION/guards/frozen_core_guard.py",
+      "line": 84,
+      "value": "{\"target_files\":[\"A_01_CORE/sys_init.py\"]}"
+    },
+    {
+      "type": "open",
+      "file": "A_03_ORCHESTRATION/guards/rollback_guard.py",
+      "line": 24,
+      "value": "<variable>"
+    },
+    {
+      "type": "requests",
+      "file": "A_04_AGENTS/CodingDepartment/runner.py",
+      "line": 30,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "requests",
+      "file": "A_04_AGENTS/ImageDepartment/runner.py",
+      "line": 74,
+      "value": "<concat>"
+    },
+    {
+      "type": "requests",
+      "file": "A_04_AGENTS/ImageDepartment/runner.py",
+      "line": 162,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "open",
+      "file": "A_04_AGENTS/ImageDepartment/runner.py",
+      "line": 232,
+      "value": "<concat>"
+    },
+    {
+      "type": "requests",
+      "file": "A_04_AGENTS/ImageDepartment/runner.py",
+      "line": 244,
+      "value": "<concat>"
+    },
+    {
+      "type": "subprocess",
+      "file": "A_04_AGENTS/ImageDepartment/runner.py",
+      "line": 268,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "subprocess",
+      "file": "A_04_AGENTS/ImageDepartment/runner.py",
+      "line": 281,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_04_AGENTS/MemoryDepartment/runner.py",
+      "line": 40,
+      "value": null
+    },
+    {
+      "type": "read_text",
+      "file": "A_04_AGENTS/MemoryDepartment/runner.py",
+      "line": 46,
+      "value": null
+    },
+    {
+      "type": "read_text",
+      "file": "A_04_AGENTS/MemoryDepartment/runner.py",
+      "line": 53,
+      "value": null
+    },
+    {
+      "type": "open",
+      "file": "A_04_AGENTS/TextDepartment/project_context_builder.py",
+      "line": 17,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "open",
+      "file": "A_04_AGENTS/TextDepartment/project_context_builder.py",
+      "line": 34,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "open",
+      "file": "A_04_AGENTS/TextDepartment/project_context_builder.py",
+      "line": 50,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "requests",
+      "file": "A_04_AGENTS/TextDepartment/runner.py",
+      "line": 55,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "requests",
+      "file": "A_04_AGENTS/TextDepartment/runner.py",
+      "line": 132,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "open",
+      "file": "A_04_AGENTS/VisionDepartment/runner.py",
+      "line": 42,
+      "value": "<variable>"
+    },
+    {
+      "type": "requests",
+      "file": "A_04_AGENTS/VisionDepartment/runner.py",
+      "line": 121,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/ast_call_parser.py",
+      "line": 101,
+      "value": null
+    },
+    {
+      "type": "read_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/ast_call_parser.py",
+      "line": 103,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/ast_call_parser.py",
+      "line": 116,
+      "value": "<call>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/ast_parser.py",
+      "line": 19,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/ast_parser.py",
+      "line": 80,
+      "value": "<call>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/ast_path_resolver.py",
+      "line": 62,
+      "value": null
+    },
+    {
+      "type": "read_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/evidence_builder.py",
+      "line": 35,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/evidence_builder.py",
+      "line": 57,
+      "value": "<call>"
+    },
+    {
+      "type": "subprocess",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/evidence_doctor.py",
+      "line": 22,
+      "value": "<variable>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/evidence_doctor.py",
+      "line": 28,
+      "value": null
+    },
+    {
+      "type": "read_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/evidence_doctor.py",
+      "line": 78,
+      "value": null
+    },
+    {
+      "type": "subprocess",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/evidence_doctor.py",
+      "line": 108,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "subprocess",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/evidence_doctor.py",
+      "line": 111,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "subprocess",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/evidence_doctor.py",
+      "line": 142,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "subprocess",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/evidence_doctor.py",
+      "line": 144,
+      "value": "<dynamic>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/graph_builder.py",
+      "line": 29,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/graph_builder.py",
+      "line": 39,
+      "value": "<call>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/scope_loader.py",
+      "line": 31,
+      "value": null
+    },
+    {
+      "type": "read_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/structural_extractor.py",
+      "line": 95,
+      "value": null
+    },
+    {
+      "type": "read_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/ast_call_parser.py",
+      "line": 14,
+      "value": null
+    },
+    {
+      "type": "read_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/ast_call_parser.py",
+      "line": 133,
+      "value": null
+    },
+    {
+      "type": "read_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/ast_call_parser.py",
+      "line": 137,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/ast_call_parser.py",
+      "line": 157,
+      "value": "<call>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/ast_parser.py",
+      "line": 14,
+      "value": null
+    },
+    {
+      "type": "read_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/ast_parser.py",
+      "line": 40,
+      "value": null
+    },
+    {
+      "type": "read_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/ast_parser.py",
+      "line": 42,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/ast_parser.py",
+      "line": 86,
+      "value": "<call>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/ast_path_resolver.py",
+      "line": 50,
+      "value": null
+    },
+    {
+      "type": "read_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/evidence_builder.py",
+      "line": 33,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/evidence_builder.py",
+      "line": 55,
+      "value": "<call>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/graph_builder.py",
+      "line": 29,
+      "value": null
+    },
+    {
+      "type": "write_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/graph_builder.py",
+      "line": 39,
+      "value": "<call>"
+    },
+    {
+      "type": "read_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/scope_loader.py",
+      "line": 17,
+      "value": null
+    },
+    {
+      "type": "read_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/Discovery/execution_registry_discovery_agent.py",
+      "line": 36,
+      "value": null
+    },
+    {
+      "type": "read_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/Discovery/goals_registry_discovery_agent.py",
+      "line": 36,
+      "value": null
+    },
+    {
+      "type": "read_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/Discovery/passport_discovery_agent.py",
+      "line": 36,
+      "value": null
+    },
+    {
+      "type": "read_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/Discovery/registry_discovery_agent.py",
+      "line": 36,
+      "value": null
+    },
+    {
+      "type": "read_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/Discovery/registry_reader_agent.py",
+      "line": 33,
+      "value": null
+    },
+    {
+      "type": "path_open",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/Scanners/execution_scanner.py",
+      "line": 18,
+      "value": "r"
+    },
+    {
+      "type": "path_open",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/Scanners/goals_scanner.py",
+      "line": 18,
+      "value": "r"
+    },
+    {
+      "type": "read_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/Scanners/ledger_scanner.py",
+      "line": 19,
+      "value": null
+    },
+    {
+      "type": "path_open",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/Scanners/passport_scanner.py",
+      "line": 18,
+      "value": "r"
+    },
+    {
+      "type": "path_open",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/Scanners/project_state_scanner.py",
+      "line": 18,
+      "value": "r"
+    },
+    {
+      "type": "path_open",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/Scanners/registry_scanner.py",
+      "line": 18,
+      "value": "r"
+    },
+    {
+      "type": "read_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/Discovery/execution_registry_discovery_agent.py",
+      "line": 36,
+      "value": null
+    },
+    {
+      "type": "read_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/Discovery/goals_registry_discovery_agent.py",
+      "line": 36,
+      "value": null
+    },
+    {
+      "type": "read_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/Discovery/passport_discovery_agent.py",
+      "line": 36,
+      "value": null
+    },
+    {
+      "type": "read_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/Discovery/registry_discovery_agent.py",
+      "line": 36,
+      "value": null
+    },
+    {
+      "type": "read_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/Discovery/registry_reader_agent.py",
+      "line": 33,
+      "value": null
+    },
+    {
+      "type": "path_open",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/Scanners/execution_scanner.py",
+      "line": 18,
+      "value": "r"
+    },
+    {
+      "type": "path_open",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/Scanners/goals_scanner.py",
+      "line": 18,
+      "value": "r"
+    },
+    {
+      "type": "read_text",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/Scanners/ledger_scanner.py",
+      "line": 19,
+      "value": null
+    },
+    {
+      "type": "path_open",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/Scanners/passport_scanner.py",
+      "line": 18,
+      "value": "r"
+    },
+    {
+      "type": "path_open",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/Scanners/project_state_scanner.py",
+      "line": 18,
+      "value": "r"
+    },
+    {
+      "type": "path_open",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/Scanners/registry_scanner.py",
+      "line": 18,
+      "value": "r"
+    },
+    {
+      "type": "open",
+      "file": "A_07_MEMORY/SESSION/session_manager_poly.py",
+      "line": 96,
+      "value": "<variable>"
+    },
+    {
+      "type": "open",
+      "file": "A_07_MEMORY/SESSION/session_manager_poly.py",
+      "line": 134,
+      "value": "<variable>"
+    },
+    {
+      "type": "read_text",
+      "file": "STABLE_SNAPSHOTS/V2_STABLE_CLEAN/run_audit_v2.py",
+      "line": 16,
+      "value": null
+    },
+    {
+      "type": "read_text",
+      "file": "STABLE_SNAPSHOTS/V2_STABLE_CLEAN/run_audit_v2.py",
+      "line": 18,
+      "value": null
+    }
+  ]
+}

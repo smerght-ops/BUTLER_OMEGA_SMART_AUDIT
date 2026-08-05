@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 Stage 11.1
@@ -147,6 +147,3 @@ class ConversationContextEngine:
         correlation_id = metadata.get("correlation_id")
         if correlation_id:
             cls.last_correlation_id = str(correlation_id)
-
-
-

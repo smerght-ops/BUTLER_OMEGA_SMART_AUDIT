@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 from A_04_AGENTS.CodingDepartment.runner import CodingDepartment
 from A_04_AGENTS.MemoryDepartment.runner import MemoryDepartment
@@ -47,12 +47,12 @@ class SmartDispatcherV2:
     def dispatch(self, query: str, context: dict = None) -> dict:
         context = context or {}
         q = (query or "").strip()
-        
+
         for dept in self.departments:
             if dept.can_handle(q, context):
                 logger.info(f"Dispatcher: Маршрут направлен в {self._dept_name(dept)}")
                 return dept.execute(q, context)
-                
+
         return {
             "ok": False,
             "text": "Команда не распознана ни одним департаментом.",

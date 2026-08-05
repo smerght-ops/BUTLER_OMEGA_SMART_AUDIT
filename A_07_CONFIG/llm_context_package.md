@@ -383,7 +383,7 @@ class VisionDepartment(BaseDepartment):
 
     def execute(self, query: str, context: dict = None, **kwargs) -> dict:
         start = time.time()
-        
+
         context = context or {}
         attachments = context.get("attachments", [])
 

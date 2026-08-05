@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 from A_07_MEMORY.semantic_reasoning_engine_v2 import SemanticReasoningEngineV2
 

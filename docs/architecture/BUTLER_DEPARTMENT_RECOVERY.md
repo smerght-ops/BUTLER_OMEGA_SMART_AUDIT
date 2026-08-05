@@ -1,4 +1,4 @@
-﻿# BUTLER DEPARTMENT RECOVERY
+# BUTLER DEPARTMENT RECOVERY
 
 Рабочий документ восстановления Department.
 

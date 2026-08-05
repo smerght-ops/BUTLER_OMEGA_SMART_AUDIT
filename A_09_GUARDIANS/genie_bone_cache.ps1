@@ -1,4 +1,4 @@
-﻿Write-Host ""
+Write-Host ""
 Write-Host "========== GENIE BONE CACHE ==========" -ForegroundColor Cyan
 Write-Host ""
 

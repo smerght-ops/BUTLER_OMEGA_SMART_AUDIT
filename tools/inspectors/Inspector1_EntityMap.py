@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 Inspector 1 — Entity Map v1.3
 READ ONLY. Извлекает сущности (классы, функции, переменные) из .py-файлов.
@@ -176,13 +176,3 @@ if __name__ == "__main__":
     output_path = sys.argv[2] if len(sys.argv) > 2 else "UnifiedInspectorFacts.json"
     inspector = Inspector1_EntityMap(input_path, output_path)
     inspector.run()
-
-
-
-
-
-
-
-
-
-

@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 from .planner_pipeline import PlannerPipeline
 from .recipe_generator import RecipeGenerator

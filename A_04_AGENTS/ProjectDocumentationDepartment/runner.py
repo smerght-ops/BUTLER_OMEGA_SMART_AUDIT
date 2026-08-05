@@ -209,8 +209,3 @@ if __name__ == "__main__":
     result = dep.execute("что сделано")
 
     print(result["text"])
-
-
-
-
-

@@ -62,13 +62,13 @@ DEFAULT_API_KEY = os.environ.get("DEFAULT_API_KEY", "")
 def get_or_create_session(session_id: str = None) -> "UserSession":
     """Get existing session by ID or create a new one."""
     global _last_cleanup
-    
+
     # Periodic cleanup of stale sessions
     now = time.time()
     if now - _last_cleanup > SESSION_REGISTRY_CLEANUP_INTERVAL:
         _cleanup_stale_sessions()
         _last_cleanup = now
-    
+
     with _registry_lock:
         if session_id and session_id in _session_registry:
             session = _session_registry[session_id]
@@ -80,7 +80,7 @@ def get_or_create_session(session_id: str = None) -> "UserSession":
                 # Corrupted registry entry - remove and create new
                 print(f"WARNING: Corrupted session registry entry for {session_id}: {type(session)}")
                 del _session_registry[session_id]
-        
+
         # Create new session
         session = UserSession()
         session._last_accessed = now
@@ -93,7 +93,7 @@ def _cleanup_stale_sessions():
     now = time.time()
     to_remove_from_registry = []
     to_remove_from_active = []
-    
+
     # Need both locks to safely check both dictionaries
     with _registry_lock:
         with _sessions_lock:
@@ -102,30 +102,30 @@ def _cleanup_stale_sessions():
                 # NEVER remove if still in active_sessions (websocket still running)
                 if session_id in _active_sessions:
                     continue
-                    
+
                 last_accessed = getattr(session, '_last_accessed', 0)
                 # Remove if: not running AND not active AND old
                 if not session.is_running and (now - last_accessed > SESSION_MAX_AGE):
                     to_remove_from_registry.append(session_id)
-            
+
             # Find orphaned sessions in active_sessions (not in registry anymore)
             for session_id, session in list(_active_sessions.items()):
                 if session_id not in _session_registry:
                     # Orphaned - mark for removal
                     if not session.is_running:
                         to_remove_from_active.append(session_id)
-            
+
             # Clean up registry
             for session_id in to_remove_from_registry:
                 _session_registry.pop(session_id, None)
-            
+
             # Clean up orphaned active sessions
             for session_id in to_remove_from_active:
                 _active_sessions.pop(session_id, None)
-            
+
             active_count = len(_active_sessions)
             registry_count = len(_session_registry)
-    
+
     total_cleaned = len(to_remove_from_registry) + len(to_remove_from_active)
     if total_cleaned > 0:
         print(f"Cleaned up {len(to_remove_from_registry)} stale + {len(to_remove_from_active)} orphaned sessions. Registry: {registry_count}, Active: {active_count}")
@@ -140,15 +140,15 @@ def cleanup_session(session_id: str):
 def kill_all_sessions():
     """Emergency cleanup - kill ALL active sessions to free capacity."""
     killed_count = 0
-    
+
     with _sessions_lock:
         sessions_to_kill = list(_active_sessions.values())
-    
+
     for session in sessions_to_kill:
         try:
             session.is_running = False
             session._stopped_by_user = True
-            
+
             # Signal stop event
             if session._stop_event is not None:
                 loop = get_event_loop()
@@ -159,22 +159,22 @@ def kill_all_sessions():
                 except Exception:
                     pass
                 session._stop_event = None
-            
+
             # Cancel the task
             if session._task is not None:
                 session._task.cancel()
                 session._task = None
-            
+
             killed_count += 1
         except Exception as e:
             print(f"Error killing session {session.session_id[:8]}: {e}")
-    
+
     # Clear both dictionaries
     with _registry_lock:
         with _sessions_lock:
             _active_sessions.clear()
             _session_registry.clear()
-    
+
     print(f"CAPACITY RESET: Killed {killed_count} sessions. All sessions cleared.")
 
 
@@ -223,23 +223,23 @@ class UserSession:
         self._stopped_by_user = False  # Track if user explicitly stopped
         self.new_color_open = '<span style="color: #FFA500";>'
         self.new_color_close = "</span>"
-        
+
         # Enhanced event tracking
         self.stream_events = {
             'stream_1': [],  # List of (timestamp, event_type, event_data) tuples
             'stream_2': []   # List of (timestamp, event_type, event_data) tuples
         }
         self.last_event_timestamp = None
-    
+
     @property
     def audio_queue(self):
         """Return the thread-safe queue."""
         return self._audio_queue
-    
+
     def reset_queue(self):
         """Reset the audio queue."""
         self._audio_queue = queue.Queue(maxsize=200)
-    
+
     def get_event_summary(self):
         """Get a summary of all stream events with timestamps."""
         summary = {
@@ -252,7 +252,7 @@ class UserSession:
                 'total_events': len(self.stream_events['stream_1']) + len(self.stream_events['stream_2'])
             }
         }
-        
+
         for stream_name in ['stream_1', 'stream_2']:
             for event in self.stream_events[stream_name]:
                 summary[stream_name].append({
@@ -260,9 +260,9 @@ class UserSession:
                     'type': event.get('type', 'unknown'),
                     'data': {k: v for k, v in event.items() if k not in ['timestamp', 'type']}
                 })
-        
+
         return summary
-    
+
     def clear_events(self):
         """Clear all event history."""
         self.stream_events = {
@@ -275,7 +275,7 @@ class UserSession:
     @staticmethod
     def _normalize_word(word: str) -> str:
         return word.strip(".,!?;:\"'()[]{}").lower()
-    
+
     def _compute_display_texts(self, slow_text, fast_text) -> tuple[str, str]:
         slow_words = slow_text.split()
         fast_words = fast_text.split()
@@ -310,29 +310,29 @@ class UserSession:
         """Reconstruct transcription text from stream events."""
         stream1_text = ""
         stream2_text = ""
-    
+
         # Reconstruct from text_delta events
         for event in self.stream_events['stream_1']:
             if event.get('type') == 'text_delta':
                 stream1_text += event.get('text', '')
-    
+
         # Only reconstruct Stream 2 if partial_transcript_enabled is True
         if self.partial_transcript_enabled:
             for event in self.stream_events['stream_2']:
                 if event.get('type') == 'text_delta':
                     stream2_text += event.get('text', '')
-    
+
         # If partial_transcript_enabled is False, just return Stream 1 for all streams
         if not self.partial_transcript_enabled:
             return (stream1_text, "", stream1_text)
-    
+
         # Stream 3 (merged)
         stream3_final = stream2_text
         stream3_preview = stream1_text
-    
+
         stream3_final, stream3_preview = self._compute_display_texts(stream3_final, stream3_preview)
         stream3_text = stream3_final + self.new_color_open + stream3_preview + self.new_color_close
-    
+
         # Return as tuple for compatibility with HTML function
         return (stream1_text, stream2_text, stream3_text)
 
@@ -348,7 +348,7 @@ def get_header_html() -> str:
         logo_html = f'<img src="data:image/png;base64,{VOXTRAL_ICON_B64}" alt="Voxtral" class="header-logo" />'
     else:
         logo_html = ''
-    
+
     return f"""
     <div class="header-card">
         <h1 class="header-title">{logo_html}Real-time Speech Transcription</h1>
@@ -370,7 +370,7 @@ def get_status_html(status: str) -> str:
     }
     label, css_class, dot_class = status_configs.get(status, status_configs["ready"])
     dot_anim = f" {dot_class}" if dot_class else ""
-    
+
     return f"""<div class="status-badge {css_class}"><span class="status-dot{dot_anim}"></span><span style="color: inherit !important;">{label}</span></div>"""
 
 
@@ -518,21 +518,21 @@ def calculate_wpm(session):
         elapsed = time.time() - session.session_start_time
         if elapsed < CALIBRATION_PERIOD:
             return "Calibrating..."
-    
+
     if len(session.word_timestamps) < 2:
         return "0.0 WPM"
-    
+
     current_time = time.time()
     cutoff_time = current_time - WPM_WINDOW
     session.word_timestamps = [ts for ts in session.word_timestamps if ts >= cutoff_time]
-    
+
     if len(session.word_timestamps) < 2:
         return "0.0 WPM"
-    
+
     time_span = current_time - session.word_timestamps[0]
     if time_span == 0:
         return "0.0 WPM"
-    
+
     word_count = len(session.word_timestamps)
     wpm = (word_count / time_span) * 60
     return f"{round(wpm, 1)} WPM"
@@ -545,16 +545,16 @@ async def audio_stream_from_queue(session) -> AsyncIterator[bytes]:
     num_samples = int(SAMPLE_RATE * WARMUP_DURATION)
     silence = np.zeros(num_samples, dtype=np.int16)
     chunk_size = int(SAMPLE_RATE * 0.1)  # 100ms chunks
-    
+
     for i in range(0, num_samples, chunk_size):
         if not session.is_running:
             return
         chunk = silence[i:i + chunk_size]
         yield chunk.tobytes()
         await asyncio.sleep(0.05)
-    
+
     session.status_message = "listening"
-    
+
     # Then stream real audio from the queue
     while session.is_running:
         # Check for inactivity timeout
@@ -564,7 +564,7 @@ async def audio_stream_from_queue(session) -> AsyncIterator[bytes]:
                 session.is_running = False
                 session.status_message = "ready"
                 return
-        
+
         # Check for session timeout
         if session.session_start_time is not None:
             elapsed = time.time() - session.session_start_time
@@ -572,11 +572,11 @@ async def audio_stream_from_queue(session) -> AsyncIterator[bytes]:
                 session.is_running = False
                 session.status_message = "timeout"
                 return
-        
+
         # Check if stop was requested
         if session._stop_event and session._stop_event.is_set():
             return
-        
+
         # Get audio from queue
         try:
             # The queue contains base64-encoded PCM16 audio
@@ -592,35 +592,35 @@ async def audio_stream_from_queue(session) -> AsyncIterator[bytes]:
 
 class AudioStreamDuplicator:
     """Duplicates an audio stream so it can be consumed by multiple consumers."""
-    
+
     def __init__(self, session):
         self.session = session
         self.consumers = []
         self.buffer = []
         self.consumer_positions = {}  # Track position for each consumer
         self.lock = asyncio.Lock()
-        
+
     async def add_consumer(self):
         """Add a new consumer to the duplicator."""
         consumer_id = len(self.consumers)
         self.consumers.append(consumer_id)
         self.consumer_positions[consumer_id] = 0  # Start at beginning
         return self._create_consumer_stream(consumer_id)
-    
+
     async def _create_consumer_stream(self, consumer_id):
         """Create a stream for a specific consumer."""
         # First yield warmup silence for this consumer
         num_samples = int(SAMPLE_RATE * WARMUP_DURATION)
         silence = np.zeros(num_samples, dtype=np.int16)
         chunk_size = int(SAMPLE_RATE * 0.1)  # 100ms chunks
-        
+
         for i in range(0, num_samples, chunk_size):
             if not self.session.is_running:
                 return
             chunk = silence[i:i + chunk_size]
             yield chunk.tobytes()
             await asyncio.sleep(0.05)
-        
+
         # Then stream from the shared buffer
         while self.session.is_running:
             # Check for inactivity timeout
@@ -630,7 +630,7 @@ class AudioStreamDuplicator:
                     self.session.is_running = False
                     self.session.status_message = "ready"
                     return
-            
+
             # Check for session timeout
             if self.session.session_start_time is not None:
                 elapsed = time.time() - self.session.session_start_time
@@ -638,11 +638,11 @@ class AudioStreamDuplicator:
                     self.session.is_running = False
                     self.session.status_message = "timeout"
                     return
-            
+
             # Check if stop was requested
             if self.session._stop_event and self.session._stop_event.is_set():
                 return
-            
+
             # Get audio from the shared buffer - each consumer gets all chunks
             async with self.lock:
                 position = self.consumer_positions[consumer_id]
@@ -659,7 +659,7 @@ class AudioStreamDuplicator:
 async def audio_stream_duplicator_from_queue(session):
     """Create a duplicator that can serve multiple audio streams."""
     duplicator = AudioStreamDuplicator(session)
-    
+
     # Start a background task to fill the buffer from the queue
     async def fill_buffer():
         while session.is_running:
@@ -668,7 +668,7 @@ async def audio_stream_duplicator_from_queue(session):
                 b64_chunk = session.audio_queue.get_nowait()
                 # Decode base64 to raw bytes
                 audio_bytes = base64.b64decode(b64_chunk)
-                
+
                 async with duplicator.lock:
                     # Add to buffer - all consumers will get this chunk
                     duplicator.buffer.append(audio_bytes)
@@ -676,10 +676,10 @@ async def audio_stream_duplicator_from_queue(session):
                 # No audio available, yield control briefly
                 await asyncio.sleep(0.05)
                 continue
-    
+
     # Start the buffer filler task
     asyncio.create_task(fill_buffer())
-    
+
     return duplicator
 
 async def mistral_transcription_handler(session):
@@ -913,19 +913,19 @@ def start_transcription(session):
     """Start Mistral transcription using the shared event loop."""
     session.is_running = True
     session._stop_event = asyncio.Event()
-    
+
     # Register this session
     with _sessions_lock:
         _active_sessions[session.session_id] = session
         active_count = len(_active_sessions)
-    
+
     print(f"Starting session {session.session_id[:8]}. Active sessions: {active_count}")
-    
+
     # Submit to the shared event loop
     loop = get_event_loop()
     future = asyncio.run_coroutine_threadsafe(mistral_transcription_handler(session), loop)
     session._task = future
-    
+
     # Don't block - the coroutine runs in the background
     # Cleanup happens in mistral_transcription_handler's finally block
 
@@ -936,19 +936,19 @@ def ensure_session(session_id):
     if session_id is None or callable(session_id):
         session = get_or_create_session()
         return session
-    
+
     # If it's already a UserSession object (legacy), return it
     if isinstance(session_id, UserSession):
         return session_id
-    
+
     # Otherwise treat it as a session_id string
     session = get_or_create_session(str(session_id))
-    
+
     # Defensive check - this should never happen but helps debug
     if not isinstance(session, UserSession):
         print(f"WARNING: ensure_session returned non-UserSession: {type(session)}")
         return get_or_create_session()
-    
+
     return session
 
 
@@ -958,23 +958,23 @@ def auto_start_recording(session):
     with session._start_lock:
         if session.is_running:
             return get_transcription_html(session.reconstruct_transcription(), session.status_message, session.current_wpm, session.partial_transcript_enabled)
-        
+
         # Check if API key is set
         if not session.api_key:
             session.status_message = "error"
             return get_transcription_html(("Please enter your Mistral API key above to start transcription.","",""), "error", "", False)
-        
+
         # Check if we've hit max concurrent sessions - kill all if so
         with _sessions_lock:
             active_at_capacity = len(_active_sessions) >= MAX_CONCURRENT_SESSIONS
         with _registry_lock:
             registry_over = len(_session_registry) > MAX_CONCURRENT_SESSIONS
-        
+
         if active_at_capacity or registry_over:
             kill_all_sessions()
             session.status_message = "error"
             return get_transcription_html(("Server reset due to capacity. Please click the microphone to restart.","",""), "error", "", False)
-        
+
         session.word_timestamps = []
         session.current_wpm = "Calibrating..."
         session.session_start_time = time.time()
@@ -984,28 +984,28 @@ def auto_start_recording(session):
             'stream_1': [],
             'stream_2': []
         }
-        
+
         # Start Mistral transcription (now non-blocking, uses shared event loop)
         start_transcription(session)
-    
+
     return get_transcription_html(session.reconstruct_transcription(), session.status_message, session.current_wpm, session.partial_transcript_enabled)
 
 
 def stop_session(session_id, api_key=None, partial_transcript=False):
     """Stop the transcription and invalidate the session.
-    
+
     Returns None for session_id so a fresh session is created on next recording.
     This prevents duplicate session issues when users stop and restart quickly.
     """
     session = ensure_session(session_id)
     old_transcripts = session.reconstruct_transcription()
     old_wpm = session.current_wpm
-    
+
     if session.is_running:
         session.is_running = False
         session.last_audio_time = None
         session._stopped_by_user = True  # Mark as user-stopped to avoid duplicate logging
-        
+
         # Signal the stop event to terminate the audio stream
         if session._stop_event is not None:
             loop = get_event_loop()
@@ -1016,22 +1016,22 @@ def stop_session(session_id, api_key=None, partial_transcript=False):
             except Exception:
                 pass
             session._stop_event = None
-        
+
         # Cancel the running task if any
         if session._task is not None:
             session._task.cancel()
             session._task = None
-        
+
         # Remove from active sessions
         with _sessions_lock:
             _active_sessions.pop(session.session_id, None)
             active_count = len(_active_sessions)
-        
+
         print(f"Mic stopped - session {session.session_id[:8]} ended. Active sessions: {active_count}")
-    
+
     # Remove from registry - the session is done
     cleanup_session(session.session_id)
-    
+
     # Return None for session_id - a fresh session will be created on next recording
     # This ensures no duplicate sessions when users stop/start quickly
     return get_transcription_html(old_transcripts, "ready", old_wpm, partial_transcript), None
@@ -1048,7 +1048,7 @@ def clear_history(session_id, api_key=None, partial_transcript=False):
     session.is_running = False
     session.last_audio_time = None
     session._stopped_by_user = True  # Mark as user-stopped
-    
+
     # Signal the stop event
     if session._stop_event is not None:
         loop = get_event_loop()
@@ -1059,22 +1059,22 @@ def clear_history(session_id, api_key=None, partial_transcript=False):
         except Exception:
             pass
         session._stop_event = None
-    
+
     # Cancel the running task if any
     if session._task is not None:
         session._task.cancel()
         session._task = None
-    
+
     # Remove from active sessions
     with _sessions_lock:
         _active_sessions.pop(session.session_id, None)
-    
+
     # Reset the queue
     session.reset_queue()
-    
+
     # Clear event history
     session.clear_events()
-    
+
     session.word_timestamps = []
     session.current_wpm = "Calibrating..."
     session.session_start_time = None
@@ -1083,7 +1083,7 @@ def clear_history(session_id, api_key=None, partial_transcript=False):
         'stream_1': [],
         'stream_2': []
     }
-    
+
     # Return the session_id to maintain state
     return get_transcription_html(("",), "ready", "Calibrating...", False), None, session.session_id
 
@@ -1094,10 +1094,10 @@ def process_audio(audio, session_id, api_key, partial_transcript=False):
     with _sessions_lock:
         active_count = len(_active_sessions)
         is_active_user = session_id and any(s.session_id == session_id for s in _active_sessions.values())
-    
+
     with _registry_lock:
         registry_count = len(_session_registry)
-    
+
     # Kill all if:
     # 1. Registry exceeds limit (memory safety)
     # 2. Active sessions exceed limit
@@ -1105,21 +1105,21 @@ def process_audio(audio, session_id, api_key, partial_transcript=False):
     if registry_count > MAX_CONCURRENT_SESSIONS or active_count > MAX_CONCURRENT_SESSIONS or (active_count >= MAX_CONCURRENT_SESSIONS and not is_active_user):
         kill_all_sessions()
         return get_transcription_html(
-            ("Server reset due to capacity. Please click the microphone to restart.","",""), 
-            "error", 
+            ("Server reset due to capacity. Please click the microphone to restart.","",""),
+            "error",
             "",
             False
         ), None
-    
+
     # Check if API key is provided
     if not api_key or not api_key.strip():
         # return get_transcription_html(
-        #     ("Please enter your Mistral API key above to start transcription.","",""), 
-        #     "error", 
+        #     ("Please enter your Mistral API key above to start transcription.","",""),
+        #     "error",
         #     ""
         # ), None
         api_key = DEFAULT_API_KEY
-    
+
     # Always ensure we have a valid session first
     try:
         session = ensure_session(session_id)
@@ -1133,10 +1133,10 @@ def process_audio(audio, session_id, api_key, partial_transcript=False):
         session = UserSession(api_key=api_key.strip())
         session.partial_transcript_enabled = partial_transcript
         _session_registry[session.session_id] = session
-    
+
     # Cache session_id early in case of later errors
     current_session_id = session.session_id
-    
+
     try:
         # Quick return if audio is None
         if audio is None:
@@ -1178,7 +1178,7 @@ def process_audio(audio, session_id, api_key, partial_transcript=False):
         # Convert to PCM16 and base64 encode
         pcm16 = (audio_float * 32767).astype(np.int16)
         b64_chunk = base64.b64encode(pcm16.tobytes()).decode("utf-8")
-        
+
         # Put directly into thread-safe queue (no event loop needed)
         try:
             session.audio_queue.put_nowait(b64_chunk)
@@ -1195,10 +1195,10 @@ def process_audio(audio, session_id, api_key, partial_transcript=False):
 with gr.Blocks(title="Voxtral Real-time Transcription") as demo:
     # Store just the session_id string - much more reliable than complex objects
     session_state = gr.State(value=None)
-    
+
     # Header
     gr.HTML(get_header_html())
-    
+
     # API Key input with partial transcript checkbox
     with gr.Row():
         api_key_input = gr.Textbox(
@@ -1216,13 +1216,13 @@ with gr.Blocks(title="Voxtral Real-time Transcription") as demo:
             elem_id="partial-transcript-checkbox",
             scale=1
         )
-    
+
     # Transcription output
     transcription_display = gr.HTML(
         value=get_transcription_html(("","",""), "ready", "Calibrating...", False),
         elem_id="transcription-output"
     )
-    
+
     # Audio input
     audio_input = gr.Audio(
         sources=["microphone"],
@@ -1232,13 +1232,13 @@ with gr.Blocks(title="Voxtral Real-time Transcription") as demo:
         elem_id="audio-input",
         label="Microphone Input"
     )
-    
+
     # Clear button
     clear_btn = gr.Button(
         "Clear History",
         elem_classes=["clear-btn"]
     )
-    
+
     # Info text
     gr.HTML('<p class="info-text">To start again - click on Clear History AND refresh your website.</p>')
 
@@ -1248,20 +1248,20 @@ with gr.Blocks(title="Voxtral Real-time Transcription") as demo:
         inputs=[session_state, api_key_input, partial_transcript_checkbox],
         outputs=[transcription_display, audio_input, session_state]
     )
-    
-   
+
+
     audio_input.stop_recording(
         stop_session,
         inputs=[session_state, api_key_input, partial_transcript_checkbox],
         outputs=[transcription_display, session_state]
     )
-    
+
     audio_input.stream(
         process_audio,
         inputs=[audio_input, session_state, api_key_input, partial_transcript_checkbox],
         outputs=[transcription_display, session_state],
         show_progress="hidden",
-        concurrency_limit=500,  
+        concurrency_limit=500,
     )
 
 get_event_loop()

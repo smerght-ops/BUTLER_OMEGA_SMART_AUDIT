@@ -1,4 +1,4 @@
-﻿# A_01_CORE/project_state_builder.py
+# A_01_CORE/project_state_builder.py
 import json
 import sys
 import hashlib
@@ -122,15 +122,15 @@ def create_architecture_snapshot(reason: str = "manual") -> Path:
         f"snapshot={target.name}; reason={reason}; removed={removed}"
     )
 
-    print(f"вњ“ [SNAPSHOT] РЎРѕР·РґР°РЅ: {target}")
+    print(f"✓ [SNAPSHOT] Создан: {target}")
     if removed:
-        print(f"вњ“ [SNAPSHOT] РЈРґР°Р»РµРЅС‹ СЃС‚Р°СЂС‹Рµ СЃРЅРёРјРєРё: {removed}")
+        print(f"✓ [SNAPSHOT] Удалены старые снимки: {removed}")
 
     return target
 
 
 def rebuild_lock_manifest() -> bool:
-    print("вЂў [BUILDER] РџРµСЂРµРїРѕРґРїРёСЃР°РЅРёРµ ARCHITECTURE_LOCK.json...")
+    print("• [BUILDER] Переподписание ARCHITECTURE_LOCK.json...")
 
     try:
         lock_data = load_lock_source()
@@ -155,11 +155,11 @@ def rebuild_lock_manifest() -> bool:
             "ARCHITECTURE_LOCK.json and backup were signed"
         )
 
-        print("вњ“ [BUILDER] LOCK Рё backup СЃРёРЅС…СЂРѕРЅРёР·РёСЂРѕРІР°РЅС‹ Рё РїРѕРґРїРёСЃР°РЅС‹.")
+        print("✓ [BUILDER] LOCK и backup синхронизированы и подписаны.")
         return True
 
     except Exception as e:
-        print(f"вќЊ [BUILDER] РћС€РёР±РєР° РїРµСЂРµРїРѕРґРїРёСЃР°РЅРёСЏ LOCK: {e}")
+        print(f"❌ [BUILDER] Ошибка переподписания LOCK: {e}")
         return False
 
 
@@ -205,18 +205,18 @@ def build_state() -> bool:
     try:
         lock_data = load_lock_source()
     except Exception as e:
-        print(f"вќЊ [BUILDER] РќРµ СѓРґР°Р»РѕСЃСЊ РїСЂРѕС‡РёС‚Р°С‚СЊ LOCK: {e}")
+        print(f"❌ [BUILDER] Не удалось прочитать LOCK: {e}")
         return False
 
     current_files = collect_critical_files(lock_data)
 
     if not approved:
-        print("вљ пёЏ [DIAGNOSTIC MODE] РЎРІРµСЂРєР° Р·Р°РІРµСЂС€РµРЅР°.")
-        print("Р”Р»СЏ С„РёРєСЃР°С†РёРё СЃРѕСЃС‚РѕСЏРЅРёСЏ РёСЃРїРѕР»СЊР·СѓР№:")
+        print("⚠️ [DIAGNOSTIC MODE] Сверка завершена.")
+        print("Для фиксации состояния используй:")
         print("  python A_01_CORE\\project_state_builder.py --approve")
         return True
 
-    # Р’РђР–РќРћ: snapshot СЃРѕР·РґР°С‘С‚СЃСЏ Р”Рћ РїРµСЂРµР·Р°РїРёСЃРё PROJECT_STATE Рё LOCK
+    # ВАЖНО: snapshot создаётся ДО перезаписи PROJECT_STATE и LOCK
     create_architecture_snapshot(reason="before_approve")
 
     state = {
@@ -234,7 +234,7 @@ def build_state() -> bool:
     if not ok:
         return False
 
-    print("вњ“ [BUILDER] PROJECT_STATE.json РѕР±РЅРѕРІР»С‘РЅ.")
+    print("✓ [BUILDER] PROJECT_STATE.json обновлён.")
     return True
 
 

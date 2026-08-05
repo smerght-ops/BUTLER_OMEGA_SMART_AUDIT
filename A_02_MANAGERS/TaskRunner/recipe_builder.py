@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 Stage 7.2
@@ -58,9 +58,3 @@ if __name__ == "__main__":
             "Write-Output 'HELLO'"
         )
     )
-
-
-
-
-
-

@@ -1,4 +1,4 @@
-﻿$Baseline = Get-Content .\A_09_GUARDIANS\baseline_path.txt
+$Baseline = Get-Content .\A_09_GUARDIANS\baseline_path.txt
 $Current  = ".\A_02_MANAGERS\smart_dispatcher_v2.py"
 
 Write-Host ""

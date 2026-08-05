@@ -394,7 +394,7 @@ FILE: C:\Users\KOS\Desktop\Butler_Agent\BUTLER_OMEGA\A_00_ARCHITECTURE\STRICT_MO
 ============================================================
 # BUTLER STRICT MODULE PIPELINE
 
-Status: MANDATORY  
+Status: MANDATORY
 Scope: every new module, every module update, every integration.
 
 ## Golden Rule
@@ -466,5 +466,3 @@ The strict pipeline has successfully handled:
 ## Rule
 
 If a module does not pass this pipeline, it does not exist as a valid Butler Omega component.
-
-

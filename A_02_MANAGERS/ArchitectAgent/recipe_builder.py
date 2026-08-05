@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 from A_07_CONFIG.recipe_schema import SCHEMA_VERSION
 

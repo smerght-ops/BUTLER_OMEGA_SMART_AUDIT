@@ -1,4 +1,4 @@
-﻿import sys
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -20,7 +20,7 @@ if img_dept.can_handle(query):
     print("[✓] can_handle() отработал успешно! Запрос распознан как IMAGE.")
     print("[*] Запуск execute() напрямую без Harness...")
     result = img_dept.execute(query)
-    
+
     print("\n" + "=" * 70)
     print("DISPATCH RESULT БЕЗ HARNESS:")
     import json

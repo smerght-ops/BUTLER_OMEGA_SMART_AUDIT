@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 from A_03_ORCHESTRATION.router_integration import RouterIntegration
 
@@ -35,4 +35,3 @@ for t in tests:
     ok = any(m in r for m in markers)
 
     print(f"{t:20} -> {'OK' if ok else 'FAIL'}")
-

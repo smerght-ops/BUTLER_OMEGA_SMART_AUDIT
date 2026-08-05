@@ -1,4 +1,4 @@
-﻿param(
+param(
     [int]$Chunks = 0
 )
 

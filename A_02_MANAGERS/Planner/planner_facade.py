@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 Stage 8.3
@@ -48,4 +48,3 @@ if __name__ == "__main__":
     PlannerFacade.execute(
         "python version"
     )
-

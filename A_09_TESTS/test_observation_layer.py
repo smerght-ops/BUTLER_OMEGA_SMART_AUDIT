@@ -1,4 +1,4 @@
-﻿from A_03_ORCHESTRATION.observation_layer import ObservationLayer
+from A_03_ORCHESTRATION.observation_layer import ObservationLayer
 
 o = ObservationLayer()
 

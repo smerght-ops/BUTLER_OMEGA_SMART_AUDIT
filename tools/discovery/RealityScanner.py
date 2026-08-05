@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 RealityScanner — простой сканер для проверки существования подсистем.
 Использует все артефакты (PhysicalMap, EntityMap, ImportMap, RegistrationAST, CallGraph, LinkMap, DependencyModel)

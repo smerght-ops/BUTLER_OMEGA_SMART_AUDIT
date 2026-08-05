@@ -1,4 +1,4 @@
-﻿#requires -Version 5.1
+#requires -Version 5.1
 <#
 .SYNOPSIS
     Внешний аудит Markdown-документации проекта через OpenRouter.
@@ -807,10 +807,3 @@ Write-Host "Манифест       : $script:ManifestFile"
 Write-Host "Журнал         : $script:LogFile"
 Write-Host "Всего токенов  : $script:TotalTokens"
 Write-Host "============================================================" -ForegroundColor Green
-
-
-
-
-
-
-

@@ -37,7 +37,7 @@ class ExecutionLoop:
             "status": "done"
         }
 
-        
+
         # LOG EVENT (LAYER 2)
         try:
             from datetime import datetime
@@ -75,4 +75,3 @@ class ExecutionLoop:
 if __name__ == "__main__":
     loop = ExecutionLoop()
     loop.run()
-

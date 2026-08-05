@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 from .dependency_graph import DependencyGraph
 from .dependency_closure import DependencyClosure

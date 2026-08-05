@@ -19,7 +19,7 @@ Return ONLY the JSON array now."""
 
 models_to_test = [
     "butler-router-70b:latest",
-    "qwen35-ru:latest", 
+    "qwen35-ru:latest",
     "DeepSeek-GPU:latest",
 ]
 

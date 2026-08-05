@@ -1,0 +1,1 @@
+﻿import sys; from A_04_AGENTS import professor; sys.stdout.reconfigure(encoding="utf-8"); print("=================================\nTESTING AGENT: PROFESSOR\n========================="); print("✓ Тест пройден: Агент Диспетчер валиден." if hasattr(professor, "main") else "✗ Тест ПРОВАЛЕН")

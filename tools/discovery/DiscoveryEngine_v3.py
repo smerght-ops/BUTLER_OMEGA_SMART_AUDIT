@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 DiscoveryEngine v3 — кластеризация сущностей в возможности.
 Строит граф связей и по запросу выдаёт связный кластер как одну capability.

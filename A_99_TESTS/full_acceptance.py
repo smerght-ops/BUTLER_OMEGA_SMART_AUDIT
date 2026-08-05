@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """Permanent FAST/FULL acceptance runner for Butler Omega Smart."""
 
 import argparse

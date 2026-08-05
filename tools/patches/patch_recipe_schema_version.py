@@ -1,4 +1,4 @@
-﻿from pathlib import Path
+from pathlib import Path
 
 p=Path(r"A_07_CONFIG\recipe_schema.py")
 

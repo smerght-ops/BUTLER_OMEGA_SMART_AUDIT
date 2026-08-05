@@ -1,0 +1,26 @@
+﻿{
+    "prompt":  {
+                   "99":  {
+                              "inputs":  {
+                                             "images":  [
+                                                            "71",
+                                                            0
+                                                        ],
+                                             "filename_prefix":  "BUTLER_OMEGA"
+                                         },
+                              "class_type":  "SaveImage"
+                          },
+                   "71":  {
+                              "inputs":  {
+                                             "unet_name":  "z_image_turbo_bf16.safetensors",
+                                             "text":  "blue whale in the ocean, cinematic, high quality",
+                                             "width":  1024,
+                                             "clip_name":  "qwen_3_4b.safetensors",
+                                             "vae_name":  "ae.safetensors",
+                                             "steps":  8,
+                                             "height":  1024
+                                         },
+                              "class_type":  null
+                          }
+               }
+}

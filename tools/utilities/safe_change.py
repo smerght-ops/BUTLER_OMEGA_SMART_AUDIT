@@ -1,4 +1,4 @@
-﻿import sys
+import sys
 import subprocess
 import py_compile
 from pathlib import Path
@@ -33,7 +33,7 @@ def check_py_files():
         try:
             with p.open("rb") as f:
                 if f.read(3) == b"\xef\xbb\xbf":
-                    raise RuntimeError("BOM РІ РЅР°С‡Р°Р»Рµ С„Р°Р№Р»Р°")
+                    raise RuntimeError("BOM в начале файла")
             py_compile.compile(str(p), doraise=True)
         except Exception as e:
             errors.append((str(p.relative_to(ROOT)), str(e)))
@@ -41,32 +41,32 @@ def check_py_files():
 
 def main():
     print("=" * 60)
-    print("Р•Р”РРќР«Р™ РљРћРќРўРЈР  Р‘Р•Р—РћРџРђРЎРќРћРЎРўР BUTLER_OMEGA_SMART + BUTLER_FACTORY")
+    print("ЕДИНЫЙ КОНТУР БЕЗОПАСНОСТИ BUTLER_OMEGA_SMART + BUTLER_FACTORY")
     print("=" * 60)
 
     ok_factory, last = latest_rollback_has_factory()
 
-    print("РљРѕСЂРµРЅСЊ РїСЂРѕРµРєС‚Р°:", ROOT)
-    print("Р¤Р°Р±СЂРёРєР°:", FACTORY)
-    print("РџРѕСЃР»РµРґРЅСЏСЏ С‚РѕС‡РєР°:", last)
-    print("BUTLER_FACTORY РІ rollback:", "Р”Рђ" if ok_factory else "РќР•Рў")
+    print("Корень проекта:", ROOT)
+    print("Фабрика:", FACTORY)
+    print("Последняя точка:", last)
+    print("BUTLER_FACTORY в rollback:", "ДА" if ok_factory else "НЕТ")
 
     if not ok_factory:
-        print("РћРЁРР‘РљРђ: С„Р°Р±СЂРёРєР° РЅРµ РІС…РѕРґРёС‚ РІ РїРѕСЃР»РµРґРЅСЋСЋ С‚РѕС‡РєСѓ РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёСЏ")
+        print("ОШИБКА: фабрика не входит в последнюю точку восстановления")
         return 1
 
     print("")
-    print("РџСЂРѕРІРµСЂРєР° Python-С„Р°Р№Р»РѕРІ...")
+    print("Проверка Python-файлов...")
     errors = check_py_files()
 
     if errors:
-        print("РќРђР™Р”Р•РќР« РћРЁРР‘РљР:", len(errors))
+        print("НАЙДЕНЫ ОШИБКИ:", len(errors))
         for file, err in errors[:30]:
-            print("РћРЁРР‘РљРђ:", file)
+            print("ОШИБКА:", file)
             print("  ", err)
         return 1
 
-    print("Р’РЎРЃ Р’ РџРћР РЇР”РљР•. Р•РґРёРЅС‹Р№ РєРѕРЅС‚СѓСЂ СЂР°Р±РѕС‚Р°РµС‚.")
+    print("ВСЁ В ПОРЯДКЕ. Единый контур работает.")
     return 0
 
 if __name__ == "__main__":

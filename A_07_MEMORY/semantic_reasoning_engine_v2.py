@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 BUTLER OMEGA SMART
@@ -153,4 +153,3 @@ if __name__ == "__main__":
     for q in ["крыша", "ремонт", "автобус", "MB100D"]:
         print(engine.explain_text(q, max_depth=3))
         print()
-

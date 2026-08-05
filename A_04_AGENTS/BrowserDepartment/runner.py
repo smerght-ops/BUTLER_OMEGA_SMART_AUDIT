@@ -315,5 +315,3 @@ class BrowserDepartment(BaseDepartment):
             "error": error,
             "metadata": metadata,
         }
-
-

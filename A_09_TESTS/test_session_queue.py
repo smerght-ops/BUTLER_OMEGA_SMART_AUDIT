@@ -1,4 +1,4 @@
-﻿from A_03_ORCHESTRATION.session_queue import SessionQueue
+from A_03_ORCHESTRATION.session_queue import SessionQueue
 
 q = SessionQueue()
 

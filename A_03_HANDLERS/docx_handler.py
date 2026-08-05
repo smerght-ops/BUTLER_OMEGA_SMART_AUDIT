@@ -12,7 +12,7 @@ class DocxHandler(BaseHandler):
     def extract(self, path: Path) -> dict:
         """
         Extract text content from a DOCX file.
-        
+
         Returns:
             {
                 "success": bool,
@@ -137,12 +137,12 @@ class DocxHandler(BaseHandler):
     def create_from_text(self, target, text, open_after_create=False):
         """
         Create a new Word document from text content.
-        
+
         Args:
             target: Path to the output .docx file
             text: Text content to write into the document
             open_after_create: Whether to mark for opening after creation
-            
+
         Returns:
             {
                 "success": bool,
@@ -155,25 +155,25 @@ class DocxHandler(BaseHandler):
             from docx.enum.text import WD_ALIGN_PARAGRAPH
             from docx.shared import Pt
         except ImportError:
-            return {"success": False, "error": "FORMATTING_FAILED", 
+            return {"success": False, "error": "FORMATTING_FAILED",
                     "text": "Библиотека python-docx недоступна.", "metadata": {}}
 
         try:
             target = Path(str(target))
-            
+
             # Create new document
             document = Document()
-            
+
             # Write text content - split by lines and create paragraphs
             if text:
                 for line in text.split('\n'):
                     paragraph = document.add_paragraph(line.strip())
                     # Apply justified alignment for body text (business style)
                     paragraph.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
-            
+
             # Save the document
             document.save(target)
-            
+
             return {
                 "success": True,
                 "text": f"DOCX создан: {target.name}",
@@ -184,8 +184,8 @@ class DocxHandler(BaseHandler):
                 }
             }
         except PermissionError as exc:
-            return {"success": False, "error": "SAVE_FAILED", 
-                    "text": f"Не удалось создать DOCX: {exc}", 
+            return {"success": False, "error": "SAVE_FAILED",
+                    "text": f"Не удалось создать DOCX: {exc}",
                     "metadata": {"target_path": str(target)}}
         except Exception as exc:
             return {"success": False, "error": "CREATE_FAILED",

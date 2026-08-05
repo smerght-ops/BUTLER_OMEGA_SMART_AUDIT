@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 import json
 import subprocess
@@ -45,20 +45,20 @@ class IntegrationTestGuard:
             return {"status": "APPROVED", "code": "200_TEST_BYPASS", "reason": "Интеграционное тестирование не требуется."}
 
         target_files = cr_data.get("target_files", [])
-        
+
         default_test = self.project_root / "A_03_ORCHESTRATION" / "test_passport_adapter.py"
         test_to_run = default_test
 
         for file_path_str in target_files:
             target_file = self.project_root / file_path_str
             stem_name = target_file.stem
-            
+
             possible_tests = [
                 self.project_root / "A_03_ORCHESTRATION" / f"test_{stem_name}.py",
                 self.project_root / "A_03_ORCHESTRATION" / f"{stem_name}_test.py",
                 self.project_root / "A_09_TESTS" / f"test_{stem_name}.py"
             ]
-            
+
             for p_test in possible_tests:
                 if p_test.exists():
                     test_to_run = p_test

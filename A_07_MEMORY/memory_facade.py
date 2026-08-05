@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 import json
 from pathlib import Path
@@ -33,7 +33,7 @@ class MemoryFacade:
         identity = raw_passport.get("project_identity", {})
         freeze = raw_passport.get("architecture_freeze", {})
         roadmap = raw_passport.get("roadmap_pointer", {})
-        
+
         # Читаем выровненный контракт v2
         plan = self.planner.get_current_action_plan()
 
@@ -56,9 +56,9 @@ class MemoryFacade:
         context = self.get_unified_context()
         if "error" in context:
             return context["error"]
-            
+
         p = context["passport"]
-        
+
         lines = [
             "===== BUTLER PASSPORT (AUTONOMOUS V2) =====",
             f"\nNAME:\n{p.get('project_name')}",
@@ -68,11 +68,11 @@ class MemoryFacade:
         ]
         for mod in p.get("frozen_modules", []):
             lines.append(f"- {mod}")
-            
+
         lines.append("\nACTIVE MODULES:")
         for mod in p.get("active_modules", []):
             lines.append(f"- {mod}")
-            
+
         lines.append(f"\nCURRENT TARGET TASK:\n{p.get('current_task')}")
         lines.append(f"\nGLOBAL GOAL V2:\n{p.get('next_task')}")
         return "\n".join(lines)
@@ -81,6 +81,3 @@ class MemoryFacade:
 if __name__ == "__main__":
     facade = MemoryFacade()
     print(facade.get_passport_string())
-
-
-

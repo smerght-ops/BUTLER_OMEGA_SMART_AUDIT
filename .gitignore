@@ -1,4 +1,4 @@
-﻿# ===================================================
+# ===================================================
 # BUTLER OMEGA SMART - EXTENDED GITIGNORE POLICY
 # ===================================================
 
@@ -408,4 +408,3 @@ A_09_TESTS/*stdout.txt
 A_09_TESTS/*stderr.txt
 A_09_TESTS/*input.txt
 A_09_TESTS/*output.txt
-

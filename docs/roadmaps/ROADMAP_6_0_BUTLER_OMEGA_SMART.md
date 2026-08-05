@@ -1,4 +1,4 @@
-﻿# BUTLER OMEGA SMART
+# BUTLER OMEGA SMART
 # ROADMAP 6.0
 ## От инженерной платформы к автономному локальному дворецкому
 
@@ -53,22 +53,22 @@ LAW 06 — Semantic Consistency
 
 Цель: научить Butler понимать смысл.
 
-1.1 Semantic Search  
+1.1 Semantic Search
 Поиск по смыслу, а не по словам.
 
-1.2 Semantic Relations  
+1.2 Semantic Relations
 Понимание связей между объектами.
 
-1.3 Knowledge Graph  
+1.3 Knowledge Graph
 Построение графа знаний проекта.
 
-1.4 Semantic Memory  
+1.4 Semantic Memory
 Хранение смысловых связей.
 
-1.5 Semantic Constraint Layer  
+1.5 Semantic Constraint Layer
 Контроль логической непротиворечивости. Butler соблюдает архитектурные ограничения, законы проекта, манифест и Local First.
 
-1.6 Architectural Knowledge Graph  
+1.6 Architectural Knowledge Graph
 Butler понимает собственную архитектуру и отвечает на вопросы по реальным зависимостям графа.
 
 Результат: Butler начинает понимать смысл, связи и собственную архитектуру.
@@ -79,25 +79,25 @@ Butler понимает собственную архитектуру и отв�
 
 Цель: создать долговременную память Butler.
 
-2.1 Project Memory  
+2.1 Project Memory
 История разработки.
 
-2.2 User Memory  
+2.2 User Memory
 Предпочтения пользователя.
 
-2.3 Long-Term Memory  
+2.3 Long-Term Memory
 Память на годы.
 
-2.4 Memory Replay  
+2.4 Memory Replay
 Восстановление любого состояния проекта.
 
-2.5 Memory Compression  
+2.5 Memory Compression
 Сжатие истории без потери смысла.
 
-2.6 Memory Timeline  
+2.6 Memory Timeline
 Хронология событий.
 
-2.7 Context Builder  
+2.7 Context Builder
 Автоматическое построение контекста перед выполнением задачи.
 
 Результат: Butler перестает забывать.
@@ -108,28 +108,28 @@ Butler понимает собственную архитектуру и отв�
 
 Цель: научить Butler самостоятельно управлять задачами.
 
-3.1 Goal Manager  
+3.1 Goal Manager
 Главные цели.
 
-3.2 Planner  
+3.2 Planner
 Автоматическое построение плана.
 
-3.3 Progress Tracker  
+3.3 Progress Tracker
 Контроль выполнения.
 
-3.4 Priority Engine  
+3.4 Priority Engine
 Приоритеты.
 
-3.5 Reminder Engine  
+3.5 Reminder Engine
 Напоминания.
 
-3.6 Dependency Engine  
+3.6 Dependency Engine
 Зависимости между задачами.
 
-3.7 Auto Checklist  
+3.7 Auto Checklist
 Автоматическая декомпозиция больших задач.
 
-3.8 Feedback Loop / Self-Correction  
+3.8 Feedback Loop / Self-Correction
 Если задача выполнена плохо, Butler анализирует причину и перестраивает план.
 
 Результат: Butler становится адаптивным планировщиком.
@@ -140,31 +140,31 @@ Butler понимает собственную архитектуру и отв�
 
 Цель: сделать Butler полноценным агентом Windows.
 
-4.1 File Manager  
+4.1 File Manager
 Файлы.
 
-4.2 Folder Manager  
+4.2 Folder Manager
 Папки.
 
-4.3 Archive Manager  
+4.3 Archive Manager
 Архив.
 
-4.4 Desktop Organizer  
+4.4 Desktop Organizer
 Рабочий стол.
 
-4.5 Document Manager  
+4.5 Document Manager
 PDF, Word, Excel, фото, видео.
 
-4.6 OCR Agent  
+4.6 OCR Agent
 Распознавание документов.
 
-4.7 Windows Automation  
+4.7 Windows Automation
 PowerShell, Python, BAT, EXE, службы Windows.
 
-4.8 Application Control  
+4.8 Application Control
 ComfyUI, Ollama, Word, Excel, браузеры и локальные программы.
 
-4.9 Workspace Manager  
+4.9 Workspace Manager
 Автоматическая организация рабочих проектов.
 
 Результат: Butler становится полноценным помощником операционной системы.
@@ -175,31 +175,31 @@ ComfyUI, Ollama, Word, Excel, браузеры и локальные прогр�
 
 Главная цель проекта.
 
-5.1 Home Manager  
+5.1 Home Manager
 Дом.
 
-5.2 Finance Manager  
+5.2 Finance Manager
 Платежи, счета, бюджет.
 
-5.3 Calendar Manager  
+5.3 Calendar Manager
 Планирование.
 
-5.4 Vehicle Manager  
+5.4 Vehicle Manager
 Автобус, автомобиль, ТО, документы.
 
-5.5 Purchase Manager  
+5.5 Purchase Manager
 Покупки.
 
-5.6 Archive Butler  
+5.6 Archive Butler
 Полный домашний архив.
 
-5.7 Knowledge Butler  
+5.7 Knowledge Butler
 Ответы по личной базе знаний.
 
-5.8 Autonomous Assistant  
+5.8 Autonomous Assistant
 Самостоятельные рекомендации.
 
-5.9 External Expert Gateway  
+5.9 External Expert Gateway
 Единственная точка выхода во внешний мир. Gemini, OpenAI, Claude и другие внешние модели используются только как консультанты, при соблюдении Local First, Human Confirmation и Minimal Disclosure.
 
 ---

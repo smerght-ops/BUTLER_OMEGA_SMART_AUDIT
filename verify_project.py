@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 import json
 import py_compile
 import time
@@ -38,7 +38,7 @@ def main():
 
     print("")
     print("=" * 60)
-    print("РџР РћР’Р•Р РљРђ РџР РћР•РљРўРђ BUTLER_OMEGA_SMART")
+    print("ПРОВЕРКА ПРОЕКТА BUTLER_OMEGA_SMART")
     print("=" * 60)
 
     for path in sorted(py_files):
@@ -46,7 +46,7 @@ def main():
 
         try:
             if check_bom(path):
-                raise RuntimeError("РќР°Р№РґРµРЅ BOM РІ РЅР°С‡Р°Р»Рµ С„Р°Р№Р»Р°")
+                raise RuntimeError("Найден BOM в начале файла")
 
             py_compile.compile(str(path), doraise=True)
             print("[OK]", rel)
@@ -57,7 +57,7 @@ def main():
                 "file": rel,
                 "error": msg
             })
-            print("[РћРЁРР‘РљРђ]", rel)
+            print("[ОШИБКА]", rel)
             print("  ", msg)
 
     status = "SUCCESS" if not errors else "FAILED"
@@ -78,23 +78,23 @@ def main():
     )
 
     lines = []
-    lines.append("РџР РћР’Р•Р РљРђ РџР РћР•РљРўРђ BUTLER_OMEGA_SMART")
-    lines.append("РЎРўРђРўРЈРЎ: " + status)
-    lines.append("РџР РћР’Р•Р Р•РќРћ Р¤РђР™Р›РћР’: " + str(len(py_files)))
-    lines.append("РћРЁРР‘РћРљ: " + str(len(errors)))
-    lines.append("Р’Р Р•РњРЇ: " + str(elapsed) + " СЃРµРє.")
+    lines.append("ПРОВЕРКА ПРОЕКТА BUTLER_OMEGA_SMART")
+    lines.append("СТАТУС: " + status)
+    lines.append("ПРОВЕРЕНО ФАЙЛОВ: " + str(len(py_files)))
+    lines.append("ОШИБОК: " + str(len(errors)))
+    lines.append("ВРЕМЯ: " + str(elapsed) + " сек.")
     lines.append("")
     for err in errors:
-        lines.append("РћРЁРР‘РљРђ: " + err["file"])
+        lines.append("ОШИБКА: " + err["file"])
         lines.append(err["error"])
         lines.append("")
 
     REPORT_TXT.write_text("\n".join(lines), encoding="utf-8")
 
     print("=" * 60)
-    print("РРўРћР“:", status)
-    print("РџСЂРѕРІРµСЂРµРЅРѕ С„Р°Р№Р»РѕРІ:", len(py_files))
-    print("РћС€РёР±РѕРє:", len(errors))
+    print("ИТОГ:", status)
+    print("Проверено файлов:", len(py_files))
+    print("Ошибок:", len(errors))
     print("РћС‚С‡РµС‚:", REPORT_JSON)
     print("=" * 60)
 

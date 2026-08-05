@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 CapabilityExtractor — извлекает высокоуровневые возможности из модели проекта.
 Использует все артефакты (PhysicalMap, EntityMap, ImportMap, RegistrationAST, CallGraph, LinkMap, DependencyModel)

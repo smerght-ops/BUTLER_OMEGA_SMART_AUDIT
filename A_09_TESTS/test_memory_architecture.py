@@ -56,7 +56,7 @@ def test_memory_contract_matches_runtime():
 
 def test_profile_manager_is_sole_owner_of_user_profile():
     """Подтверждение: единственный владелец user_profile.json — profile_manager.py.
-    
+
     profile_sync.py удалён как подтверждённый dead component (ТЗ №5A.1).
     Ни один продакшен-модуль не импортирует profile_sync напрямую.
     """

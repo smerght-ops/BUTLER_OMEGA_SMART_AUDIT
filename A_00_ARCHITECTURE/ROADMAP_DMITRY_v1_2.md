@@ -1,4 +1,4 @@
-﻿# BUTLER OMEGA ROADMAP — DMITRY v1.2
+# BUTLER OMEGA ROADMAP — DMITRY v1.2
 
 ## Текущий статус
 

@@ -1,7 +1,7 @@
 # Диагностика официального запуска Butler
 
-Дата исследования: 2026-07-16 13:16–13:23 (UTC+03:00)  
-Режим: READ ONLY  
+Дата исследования: 2026-07-16 13:16–13:23 (UTC+03:00)
+Режим: READ ONLY
 Рабочий каталог: `C:\Users\KOS\Desktop\Butler_Agent\BUTLER_OMEGA_SMART`
 
 ## 1. Environment

@@ -1,4 +1,4 @@
-﻿{
+{
   "dispatcher": {
     "required_methods": [
       "_execute_department",

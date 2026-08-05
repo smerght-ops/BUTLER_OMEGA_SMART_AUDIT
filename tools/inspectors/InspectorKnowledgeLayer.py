@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 # InspectorKnowledgeLayer.py
 # READ ONLY. Только поиск упоминаний. Без записи, без pip, без subprocess.
 

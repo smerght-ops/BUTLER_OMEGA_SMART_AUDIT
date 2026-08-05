@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 import json
 from pathlib import Path
@@ -31,7 +31,7 @@ class GoalLoopEngine:
             return
 
         current_phase = reg.get("current_phase")
-        
+
         # Если макро-движок видит, что мы застряли на bootstrap - принудительно двигаем на финал и бэкап ядра
         if reg.get("active_goal") == "SYSTEM_EVOLUTION_LOOP" or current_phase == "PHASE_1_INIT":
             reg["active_goal"] = "PRODUCTION_CORE_FINAL"

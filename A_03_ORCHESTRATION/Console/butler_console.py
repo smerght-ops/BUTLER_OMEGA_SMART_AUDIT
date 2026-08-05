@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 Stage 10.1
@@ -43,4 +43,3 @@ def main():
 if __name__ == "__main__":
 
     main()
-

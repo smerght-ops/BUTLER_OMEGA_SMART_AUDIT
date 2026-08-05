@@ -83,7 +83,7 @@ def print_status():
         print(f"[*] Ollama: Сбой проверки доступности -> {err}")
     else:
         print(f"[*] Ollama: Доступно локальных моделей -> {len(models)}")
-    
+
     comfy_ok, comfy_msg = check_comfyui()
     print(f"[*] ComfyUI: Состояние генератора картинок -> {comfy_msg}")
     print("=" * 70)
@@ -97,7 +97,7 @@ def choose_model(available_models, model_dict, prompt_text):
         status = "[ОФЛАЙН]" if available_models and m_name not in available_models else "[ОК]"
         print(f"  {idx} -> {label} ({m_name}) {status}")
         valid_options[idx] = (label, m_name)
-    
+
     choice = input("Выбор > ").strip()
     return valid_options.get(choice, None)
 
@@ -130,7 +130,7 @@ def handle_draw(text, models):
         "добавить стили, освещение, проработать детали фасадов или окружения.\n"
         "Выдавай СТРОГО финальный промпт на английском языке. Никаких вводных слов и объяснений!"
     )
-    
+
     clean_prompt = text
     for t in DRAW_TRIGGERS:
         clean_prompt = clean_prompt.replace(t, "")
@@ -158,13 +158,13 @@ def handle_draw(text, models):
             from A_03_ORCHESTRATION.permission import DepartmentExecutionGateway
             from A_04_AGENTS.ImageDepartment.runner import ImageDepartment
             print("\n[*] Роутер: Активирую контур IMAGE напрямую...")
-            
+
             # Image уже выбран: вызываем его через permission gateway
             img_dept = ImageDepartment()
             dispatch_result = DepartmentExecutionGateway().execute(
                 img_dept, f"нарисуй {result}"
             )
-            
+
             print("\n" + "="*50)
             print("[✓] РЕЗУЛЬТАТ ГЕНЕРАЦИИ КОНТУРА:")
             print(dispatch_result)
@@ -294,4 +294,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

@@ -1,4 +1,4 @@
-﻿# GENIE RISK ENGINE v1.0
+# GENIE RISK ENGINE v1.0
 
 $ManifestPath = ".\A_09_GUARDIANS\criticality_manifest.json"
 $DispatcherPath = ".\A_02_MANAGERS\smart_dispatcher_v2.py"

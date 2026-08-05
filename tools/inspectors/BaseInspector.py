@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 BaseInspector — общий каркас для всех измерительных приборов.
 Обеспечивает:

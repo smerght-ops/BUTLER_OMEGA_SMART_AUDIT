@@ -142,15 +142,13 @@ class SmartDispatcherV2:
 
         def executor():
 
-            try:
-                return self.department_gateway.execute(dept, query, context=context)
-            except TypeError:
-                return self.department_gateway.execute(dept, query)
+            return self.department_gateway.execute(dept, query, context=context)
 
         harness_result = self.harness.execute(
             department_name=self._dept_name(dept),
             task=query,
-            executor=executor
+            executor=executor,
+            cr_name=context.get("cr_name"),
         )
 
         if harness_result.get("committed"):
@@ -285,6 +283,7 @@ class SmartDispatcherV2:
             department_name="CHAT",
             task=query,
             executor=executor,
+            cr_name=dict(context or {}).get("cr_name"),
         )
 
         if harness_result.get("committed"):
@@ -295,6 +294,7 @@ class SmartDispatcherV2:
     def dispatch(self, query: str, context: dict = None):
 
         context = dict(context or {})
+        context.setdefault("cr_name", "CR_RUNTIME_AUTOMATION.json")
 
         # An actual PublicationRequest is never routed through semantic/chat or
         # another department. Missing, failed, or malformed Guardian execution
@@ -359,7 +359,7 @@ class SmartDispatcherV2:
         # Try TaskExecutor first as new primary route
         task_plan = self.task_executor.plan(query)
         context["task_plan"] = task_plan
-        
+
         # Check if plan is valid and has executable steps
         steps = task_plan.get("steps", [])
         if not steps:
@@ -472,15 +472,3 @@ if __name__ == "__main__":
         "что изображено файл: C:\\test.jpg"
     ]:
         print(q, "=>", d.dispatch(q).get("department"))
-
-
-
-
-
-
-
-
-
-
-
-

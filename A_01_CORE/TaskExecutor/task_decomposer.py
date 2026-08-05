@@ -122,7 +122,7 @@ class TaskDecomposer:
                 return []
         except Exception:
             return []
-    
+
         intents = []
         for idx, item in enumerate(raw):
             if not isinstance(item, dict):
@@ -376,6 +376,3 @@ class TaskDecomposer:
                 seen.add(key)
                 result.append(intent)
         return result
-
-
-

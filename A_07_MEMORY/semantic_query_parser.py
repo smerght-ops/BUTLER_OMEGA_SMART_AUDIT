@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """
 BUTLER OMEGA SMART
 ROADMAP 6.0
@@ -48,4 +48,3 @@ if __name__ == "__main__":
     p = SemanticQueryParser()
 
     print(p.parse("ремонт крыши автобуса"))
-

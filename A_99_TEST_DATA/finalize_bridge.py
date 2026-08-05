@@ -1,4 +1,4 @@
-﻿from pathlib import Path
+from pathlib import Path
 
 file_path = Path("A_03_ORCHESTRATION") / "chat_router.py"
 if not file_path.exists():

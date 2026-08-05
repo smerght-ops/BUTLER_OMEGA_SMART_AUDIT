@@ -8,7 +8,7 @@ def draw_by_command(user_input):
     ui_lower = user_input.strip().lower()
     if not (ui_lower.startswith("нарисуй") or ui_lower.startswith("создай картинку")):
         return False
-        
+
     clean_p = ui_lower.replace("нарисуй мне", "").replace("нарисуй", "").replace("создай картинку", "").strip()
     if not clean_p:
         print("\n[-] Батлер: Что именно нарисовать? Пример: 'Нарисуй автомобиль'")
@@ -17,11 +17,11 @@ def draw_by_command(user_input):
     OLLAMA_URL = "http://127.0.0.1:11434/api/generate"
     COMFY_URL = "http://127.0.0.1:8188/prompt"
     OUTPUT_DIR = r"D:\AI_Studio\ComfyUI_windows_portable\ComfyUI_windows_portable\ComfyUI\output"
-    
+
     print("\n[*] Батлер: Отправляю запрос в Ollama для адаптации промпта...")
     prompt_to_ollama = f"Переведи этот промпт на английский язык для генерации изображений в Stable Diffusion XL. Выдай ТОЛЬКО чистый английский перевод, без лишнего текста и комментариев: {clean_p}"
     ollama_data = json.dumps({"model": "qwen35-ru", "prompt": prompt_to_ollama, "stream": False}).encode('utf-8')
-    
+
     try:
         req_ollama = urllib.request.Request(OLLAMA_URL, data=ollama_data, headers={'Content-Type': 'application/json'})
         with urllib.request.urlopen(req_ollama) as response:
@@ -47,7 +47,7 @@ def draw_by_command(user_input):
         "8": {"inputs": {"samples": ["3", 0], "vae": ["4", 2]}, "class_type": "VAEDecode"},
         "9": {"inputs": {"filename_prefix": "Butler_Channeled_Gen", "images": ["8", 0]}, "class_type": "SaveImage"}
     }
-    
+
     try:
         files_before = set(os.listdir(OUTPUT_DIR)) if os.path.exists(OUTPUT_DIR) else set()
         payload = {"prompt": workflow}
@@ -55,7 +55,7 @@ def draw_by_command(user_input):
         req_comfy = urllib.request.Request(COMFY_URL, data=comfy_data, headers={'Content-Type': 'application/json'})
         urllib.request.urlopen(req_comfy)
         print("[✓] Батлер: Задача принята Художником. Пошла генерация...")
-        
+
         new_file_path = None
         for _ in range(60):
             time.sleep(1)
@@ -68,7 +68,7 @@ def draw_by_command(user_input):
                         break
             if new_file_path:
                 break
-                
+
         if new_file_path:
             print(f"\n[✓] Батлер: Рисунок готов!")
             os.system(f'explorer.exe /select,"{new_file_path}"')

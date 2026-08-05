@@ -1,4 +1,4 @@
-﻿from A_03_ORCHESTRATION.butler_os_adapter import ButlerOSAdapter
+from A_03_ORCHESTRATION.butler_os_adapter import ButlerOSAdapter
 import json
 
 adapter = ButlerOSAdapter()

@@ -1,6 +1,6 @@
-﻿# BUTLER STRICT MODULE PIPELINE
+# BUTLER STRICT MODULE PIPELINE
 
-Status: MANDATORY  
+Status: MANDATORY
 Scope: every new module, every module update, every integration.
 
 ## Golden Rule

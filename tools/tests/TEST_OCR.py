@@ -1,4 +1,4 @@
-﻿from A_03_ENGINES.Vision_Engine.GO import process_image
+from A_03_ENGINES.Vision_Engine.GO import process_image
 from pathlib import Path
 
 # Укажи путь к любому PDF, который у тебя лежит в WORKSPACE

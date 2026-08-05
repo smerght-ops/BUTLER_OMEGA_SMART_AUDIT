@@ -1,4 +1,4 @@
-﻿Write-Host ""
+Write-Host ""
 Write-Host "========== GENIE CHANGE LOGGER ==========" -ForegroundColor Cyan
 Write-Host ""
 

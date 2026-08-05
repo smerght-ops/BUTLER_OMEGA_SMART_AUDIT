@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 Stage 8.5
@@ -84,4 +84,3 @@ if __name__ == "__main__":
     state = SystemState.current()
 
     print(state)
-

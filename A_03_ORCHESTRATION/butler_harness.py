@@ -25,7 +25,7 @@ class ButlerHarness:
         self.version = "3.0_STABLE"
         self.observation = ObservationLayer()
         self.project_root = Path(__file__).resolve().parents[1]
-        
+
         # Инициализируем обойму гвардов
         self.guards = [
             ("FrozenCore", FrozenCoreGuard()),
@@ -47,7 +47,7 @@ class ButlerHarness:
         task,
         executor,
         auto_commit=True,
-        cr_name="CR_000_TEST.json" # По умолчанию используем наш верифицированный CR
+        cr_name=None,
     ):
         result = {
             "ok": False,
@@ -65,6 +65,16 @@ class ButlerHarness:
             "result_outcome": "PENDING",
         }
 
+        if not cr_name:
+            result["pipeline_status"] = "MISSING_CHANGE_REQUEST"
+            result["result_outcome"] = "GUARD_REJECTED"
+            result["error"] = "An explicit Change Request is required for harness execution"
+            result["metadata"]["diagnostics"] = {
+                "code": "CR_REQUIRED",
+                "resolution": "Pass cr_name explicitly from the runtime or test context",
+            }
+            return result
+
         # 1. Логируем старт пайплайна безопасности
         self.observation.record(
             source=department_name,
@@ -79,7 +89,7 @@ class ButlerHarness:
         for guard_name, guard_instance in self.guards:
             try:
                 guard_result = guard_instance.validate(cr_path)
-                
+
                 # Логируем атомарный проход каждого защитника в общую jsonl ленту
                 self.observation.record(
                     source=f"Harness_Guard_{guard_name}",
@@ -89,13 +99,13 @@ class ButlerHarness:
 
                 if guard_result.get("status") == "REJECTED":
                     error_msg = f"Пайплайн заблокирован гвардом {guard_name}. Код: {guard_result.get('code')}. Причина: {guard_result.get('reason', 'Нет описания')}"
-                    
+
                     self.observation.record(
                         source=department_name,
                         event="HARNESS_V3_REJECTED",
                         payload={"guard": guard_name, "code": guard_result.get("code")}
                     )
-                    
+
                     result["pipeline_status"] = f"REJECTED_BY_{guard_name.upper()}"
                     result["error"] = error_msg
                     result["guard_code"] = guard_result.get("code")
@@ -123,7 +133,7 @@ class ButlerHarness:
 
         # 3. ФАЗА ИСПОЛНЕНИЯ (Допускается только при APPROVED от всех защитников)
         result["pipeline_status"] = "APPROVED_PRE_FLIGHT"
-        
+
         try:
             draft = executor()
             result["draft"] = draft
@@ -237,7 +247,6 @@ if __name__ == "__main__":
         executor=sample_executor,
         cr_name="CR_000_TEST.json"
     )
-    
+
     print("\nРезультат выполнения Harness Pipeline:")
     print(json.dumps(exec_result, indent=2, ensure_ascii=False))
-

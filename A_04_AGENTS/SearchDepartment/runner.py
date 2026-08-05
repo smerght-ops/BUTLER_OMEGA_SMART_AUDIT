@@ -57,7 +57,7 @@ class SearchDepartment(BaseDepartment):
         if self._pending_web_search is not None and self._confirmation_answer(q):
             return True
         keys = [
-            "найди", "поиск", "какие документы", 
+            "найди", "поиск", "какие документы",
             "какие изображения", "что есть в архиве", "ищи",
             "поищи информацию о", "что такое", "расскажи о",
             "покажи информацию по",
@@ -114,7 +114,7 @@ class SearchDepartment(BaseDepartment):
                 return self._resolve_web_confirmation(answer, start)
 
         clean_text = self._clean_query(query)
-        
+
         # Если после очистки ничего не осталось, ищем по исходному тексту
         search_term = clean_text if clean_text else query
         if self._is_information_request(query):
@@ -191,7 +191,7 @@ class SearchDepartment(BaseDepartment):
                 "results": [],
                 "error": None,
             }
-        
+
         if not results and self._is_information_request(query):
             topic = self._information_topic(query)
             if not topic:
@@ -385,8 +385,3 @@ class SearchDepartment(BaseDepartment):
                         "score": score,
                     })
         return sorted(matches, key=lambda item: item["score"], reverse=True)
-
-
-
-
-

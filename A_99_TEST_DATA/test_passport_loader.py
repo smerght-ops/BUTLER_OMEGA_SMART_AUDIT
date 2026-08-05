@@ -1,4 +1,4 @@
-﻿from A_07_CONFIG.project_passport_loader import ProjectPassportLoader
+from A_07_CONFIG.project_passport_loader import ProjectPassportLoader
 
 p = ProjectPassportLoader()
 

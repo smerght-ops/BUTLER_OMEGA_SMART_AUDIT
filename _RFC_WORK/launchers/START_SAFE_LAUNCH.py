@@ -25,7 +25,7 @@ if __name__ == "__main__":
 
     print("\n[OK] ALL SYSTEMS ONLINE")
     print("[FLOW] INBOX → ACTIVE → LOOP → RUNNER → OUTBOX")
-    
+
     p1.wait()
     p2.wait()
     p3.wait()

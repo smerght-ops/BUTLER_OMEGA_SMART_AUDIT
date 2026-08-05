@@ -1,4 +1,4 @@
-﻿# GENIE RELEASE GATE v1.0
+# GENIE RELEASE GATE v1.0
 
 $RiskScript = ".\A_09_GUARDIANS\genie_risk_engine.ps1"
 

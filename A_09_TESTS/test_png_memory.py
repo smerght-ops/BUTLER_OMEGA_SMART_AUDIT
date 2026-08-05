@@ -1,4 +1,4 @@
-﻿from A_07_MEMORY.png_workflow_memory import PNGWorkflowMemory
+from A_07_MEMORY.png_workflow_memory import PNGWorkflowMemory
 
 m = PNGWorkflowMemory()
 

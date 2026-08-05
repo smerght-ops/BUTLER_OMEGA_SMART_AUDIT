@@ -1,4 +1,4 @@
-﻿import urllib.request
+import urllib.request
 import json
 
 url = "http://127.0.0.1:8188/prompt"

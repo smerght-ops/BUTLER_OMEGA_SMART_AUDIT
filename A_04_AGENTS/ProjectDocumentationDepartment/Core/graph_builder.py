@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 import json
 from pathlib import Path
@@ -50,5 +50,3 @@ print("GRAPH BUILDER READY")
 print("="*70)
 print("Nodes :", len(graph["nodes"]))
 print("Output:", OUT)
-
-

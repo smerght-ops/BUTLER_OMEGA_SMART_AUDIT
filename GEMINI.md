@@ -1,4 +1,4 @@
-﻿# UNIVERSAL ARCHITECT AUDIT
+# UNIVERSAL ARCHITECT AUDIT
 
 Ты выступаешь как Principal Software Architect уровня Enterprise.
 

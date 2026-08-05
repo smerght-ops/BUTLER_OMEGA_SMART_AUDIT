@@ -1,0 +1,29 @@
+﻿{
+    "version":"1.0",
+    "graph":[
+        {
+            "source":"крыша",
+            "relation":"belongs_to",
+            "target":"автобус",
+            "weight":1.0
+        },
+        {
+            "source":"фольгоизол",
+            "relation":"used_for",
+            "target":"крыша",
+            "weight":1.0
+        },
+        {
+            "source":"ремонт",
+            "relation":"applies_to",
+            "target":"крыша",
+            "weight":1.0
+        },
+        {
+            "source":"MB100D",
+            "relation":"is_a",
+            "target":"автобус",
+            "weight":1.0
+        }
+    ]
+}

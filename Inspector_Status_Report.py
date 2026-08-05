@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 Unified Inspector Status Report v1.0
 READ ONLY.

@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 import sys
 from pathlib import Path
 
@@ -56,9 +56,3 @@ if __name__ == "__main__":
     handler = PassportCommandHandler()
     print("=== ТЕСТ ИНТЕГРАЦИИ ЕДИННОГО ФАСАДА ПАМЯТИ ===")
     print(handler.handle_command("паспорт"))
-
-
-
-
-
-

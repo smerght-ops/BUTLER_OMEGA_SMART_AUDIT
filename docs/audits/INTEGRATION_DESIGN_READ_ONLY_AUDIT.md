@@ -1,8 +1,8 @@
 # INTEGRATION DESIGN — READ ONLY AUDIT REPORT
 ## Bionic General Agent Worker / Builder Integration into BUTLER_OMEGA_SMART
 
-**Status:** BLOCKED — awaiting resolution of PROGRAMMATIC_BIONIC_INTERFACE  
-**Phase:** Этапы 1-2 (READ ONLY reconstruction + Integration Design)  
+**Status:** BLOCKED — awaiting resolution of PROGRAMMATIC_BIONIC_INTERFACE
+**Phase:** Этапы 1-2 (READ ONLY reconstruction + Integration Design)
 
 ---
 
@@ -44,7 +44,7 @@ lms load/unload/ls/ps       # управление моделями
 - Нет команд для отправки заданий в активную сессию
 
 #### 3. LM Studio HTTP API Server (порт 41343)
-**Доказательство:** `GET http://127.0.0.1:41343/lmstudio-greeting` -> `{"lmstudio": true}`  
+**Доказательство:** `GET http://127.0.0.1:41343/lmstudio-greeting` -> `{"lmstudio": true}`
 Все другие HTTP endpoints возвращают 404.
 
 **НЕ НАЙДЕНО:**
@@ -53,7 +53,7 @@ lms load/unload/ls/ps       # управление моделями
 - Нет публичного HTTP API, документированного или обнаруженного
 
 #### 4. Electron App IPC (main_window_preload.js)
-**Доказательство:** `C:/Program Files/LM Studio/resources/app/.webpack/main/main_window_preload.js`  
+**Доказательство:** `C:/Program Files/LM Studio/resources/app/.webpack/main/main_window_preload.js`
 Содержит только стандартный `exposeInMainWorld` - без специфичных Bionic session management channels.
 
 #### 5. SQLite базы сессий (read-only анализ)
@@ -64,7 +64,7 @@ lms load/unload/ls/ps       # управление моделями
 - `chat_entries` таблица: entry_json (включая source.ngModule, message.parts)
 - Tool calls логируются как: `source.ngModule = "lmstudio/shell-v1"`, `handler = "toolCall"`
 
-**Вывод:** Bionic session lifecycle управляется ТОЛЬКО через UI LM Studio desktop app.  
+**Вывод:** Bionic session lifecycle управляется ТОЛЬКО через UI LM Studio desktop app.
 Программного интерфейса для внешнего управления сессиями НЕ СУЩЕСТВУЕТ.
 
 ---
@@ -154,24 +154,24 @@ _execute_department(BionicDept, query)
   +-> result returned
 ```
 
-**Проблема:** Нет способа вызвать `BionicDept.execute()` программно.  
+**Проблема:** Нет способа вызвать `BionicDept.execute()` программно.
 Без programmatic interface, Department pattern не работает для автоматического вызова.
 
 #### Вариант 2: Worker capability (НЕ ПОДХОДИТ)
-Worker capability подразумевает что Butler может вызвать worker через API.  
+Worker capability подразумевает что Butler может вызвать worker через API.
 Нет API -> нет вызова.
 
 #### Вариант 3: Tool (НЕ ПОДХОДИТ)
-Tool - это функция/метод, который Butler вызывает напрямую.  
+Tool - это функция/метод, который Butler вызывает напрямую.
 Bionic не является функцией - это отдельное desktop приложение.
 
 #### Вариант 4: External execution backend (теоретически возможен но не реализован)
-Подразумевает внешний процесс с known interface.  
+Подразумевает внешний процесс с known interface.
 Но Bionic НЕ предоставляет никакого external interface.
 
 ### Вывод по типу интеграции
 
-**Bionic не может быть вызван программно из Butler.**  
+**Bionic не может быть вызван программно из Butler.**
 Единственный viable path - это **file-based handoff pattern**:
 1. Butler создаёт structured task spec (TZ) в staging area
 2. Человек или отдельный процесс передаёт spec в Bionic UI вручную
@@ -195,10 +195,10 @@ BUTLER_OMEGA_SMART coding project (`f960037a-...`):
 - `lmstudio/shell-v1` - shell_command -> выполнение команд в host shell
 - `lmstudio/python-v1/runPython` - запуск Python кода на host
 
-**Доказательство из TEST №2 (из BIONIC_LAB):**  
+**Доказательство из TEST №2 (из BIONIC_LAB):**
 Файлы, созданные Bionic через sample-file-system, были обнаружены на Windows host.
 
-**Проблема TEST №9:**  
+**Проблема TEST №9:**
 Когда working_directory был misconfigured или указывал на internal workspace -> файлы шли в sandbox.
 
 ### Delivery boundary правило:
@@ -226,7 +226,7 @@ VERIFIED         =  SYSTEM_ACCEPTANCE
 3. SQLite базы доступны только read-only и обновляются внутри LM Studio process
 4. AntiLoopBudget определён но НЕ подключён к production коду нигде
 
-**Единственный watchdog:** HTTP-level timeout на LM Studio API call  
+**Единственный watchdog:** HTTP-level timeout на LM Studio API call
 (но это не применимо, так как нет programmatic Bionic invocation)
 
 ---
@@ -278,7 +278,7 @@ ButlerHarness.execute(
 2. **Session configuration:** Shell доступен только если session создан в coding project
 3. **TEST №1B сессия:** Вероятно, была создана в regular project или без shell-ngModule активированным
 
-**Ключевой вывод:** Для Bionic Worker integration нужно использовать coding project  
+**Ключевой вывод:** Для Bionic Worker integration нужно использовать coding project
 с working_directory = Butler workspace и shell-v1 enabled.
 
 ---
@@ -390,7 +390,7 @@ NOT VERIFIED -> SYSTEM_ACCEPTANCE=FAIL
 ### Regression Departments:
 ```
 1. "Напиши fibonacci на Python" -> CodingDepartment.can_handle() = True OK
-2. "Создай картинку дракона" -> ImageDepartment.can_handle() = True OK  
+2. "Создай картинку дракона" -> ImageDepartment.can_handle() = True OK
 3. "Найди документ про станок" -> SearchDepartment.can_handle() = True OK
 4. "Привет, как дела?" -> HomeDepartment.can_handle() = True OK
 5. BionicDepartment должен быть ПОСЛЕ CodingDepartment и ПЕРЕД HomeDepartment
@@ -417,10 +417,10 @@ NOT VERIFIED -> SYSTEM_ACCEPTANCE=FAIL
 
 ## ИТОГОВЫЙ СТАТУС
 
-**BLOCKED: EXTERNAL_TOOL_LOOP_OBSERVABILITY = NO**  
+**BLOCKED: EXTERNAL_TOOL_LOOP_OBSERVABILITY = NO**
 **BLOCKED: PROGRAMMATIC_BIONIC_INTERFACE = NOT FOUND**
 
-Без programmatic Bionic API интеграция возможна ТОЛЬКО через file-based handoff pattern,  
+Без programmatic Bionic API интеграция возможна ТОЛЬКО через file-based handoff pattern,
 что требует human-in-the-loop или отдельного trigger mechanism.
 
 Для fully autonomous integration требуется:
@@ -428,7 +428,7 @@ NOT VERIFIED -> SYSTEM_ACCEPTANCE=FAIL
 2. ИЛИ Bionic должен поддерживать headless/CLI mode с known interface
 3. ИЛИ Butler должен интегрироваться через MCP (Model Context Protocol) если LM Studio его поддерживает
 
-**До получения одного из вышеперечисленных условий:**  
+**До получения одного из вышеперечисленных условий:**
 ЭТАП 3 НЕ НАЧИНАТЬ.
 
 ---

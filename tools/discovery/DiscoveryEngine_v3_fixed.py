@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 DiscoveryEngine v3 (fixed) — кластеризация сущностей с ограничением глубины.
 """

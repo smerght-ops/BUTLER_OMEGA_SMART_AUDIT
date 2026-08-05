@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 Inspector 2 — Import Map v1.3
 READ ONLY. Извлекает импорты из .py-файлов.

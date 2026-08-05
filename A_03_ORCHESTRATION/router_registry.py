@@ -1,4 +1,4 @@
-﻿"""
+"""
 Router Registry for Butler Omega
 Maps route names from AgentRouter to target modules
 Safe additive component
@@ -25,5 +25,3 @@ if __name__ == "__main__":
 
     for r in test_routes:
         print(f"{r} -> {registry.get_target(r)}")
-
-

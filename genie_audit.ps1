@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 # GENIE_GUARDIAN: Оперативный цензор архитектурных инвариантов Butler OS
 
 $ROOT = "."
@@ -13,7 +13,7 @@ Write-Host "====================================================" -ForegroundCol
 # I. АУДИТ ДИСПЕТЧЕРА
 if (Test-Path $DISPATCHER_PATH) {
     $content = Get-Content $DISPATCHER_PATH -Raw -Encoding UTF8
-    
+
     # 1. Проверка метода _execute_department
     if ($content -match "def _execute_department") {
         Write-Host "[GENIE] OK: Инвариант Диспетчера -> Метод _execute_department на месте." -ForegroundColor Green
@@ -45,7 +45,7 @@ if (Test-Path $DISPATCHER_PATH) {
 # II. АУДИТ РЕЗОЛВЕРА (КОНТРАКТ)
 if (Test-Path $RESOLVER_PATH) {
     $res_content = Get-Content $RESOLVER_PATH -Raw -Encoding UTF8
-    
+
     if ($res_content -match "def _success" -and $res_content -match "def _failure") {
         Write-Host "[GENIE] OK: Инвариант Контракта  -> Фабрики ответов фабрикуют симметрию." -ForegroundColor Green
     } else {

@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 # ==============================================================================
 # SYSTEM ARTIFACT: STATUS_CENTER_READONLY.ps1
 # VERSION: SAFE-READONLY V2.5 (AUTOMATED AUDIT SYNCHRONIZED)
@@ -38,7 +38,7 @@ $PassportValid = $false
 if (Test-Path $PassportFile) {
     $Passport = Get-Content $PassportFile -Raw | ConvertFrom-Json
     $PassportValid = $true
-    
+
     Write-Host "Name           :" -NoNewline; Write-Host " $($Passport.project_identity.name)" -ForegroundColor Cyan
     Write-Host "Version        :" -NoNewline; Write-Host " $($Passport.project_identity.version)" -ForegroundColor Cyan
     Write-Host "MAIN ROADMAP   :" -NoNewline; Write-Host " $($Passport.project_state.main_roadmap.name) / $($Passport.project_state.main_roadmap.milestone) / $($Passport.project_state.main_roadmap.status)" -ForegroundColor Green
@@ -64,7 +64,7 @@ if (Test-Path $Ledger) {
     if ($LastStable) {
         $RuntimeStage = $Passport.project_state.main_roadmap.milestone
         $LastStableMilestone = "UNKNOWN"
-        
+
         # Перезапись отключена по RULE #1 (Passport Supremacy)
         if ($LastStable -match "\[([^\]]+)\]") { $LastStableMilestone = $Matches[1] }
 
@@ -83,15 +83,15 @@ Write-Host "----------- RECENT CHANGE REQUESTS -----------" -ForegroundColor Yel
 
 if ($LedgerExists) {
     $RecentCRs = $LedgerContent | Where-Object { $_ -match "\[CHANGE_REQUEST\]" } | Select-Object -Last 3
-    
+
     if ($RecentCRs) {
         foreach ($cr in $RecentCRs) {
             $TaskName = "UNKNOWN"
             $LockStr = ""
-            
+
             if ($cr -match "NEXT=([^ ]+)") { $TaskName = $Matches[1] }
             if ($cr -match "LOCK_ID=([^ ]+)") { $LockStr = " [LOCK_ID=$($Matches[1])]" }
-            
+
             Write-Host "  • " -NoNewline
             Write-Host "PENDING" -ForegroundColor Yellow -NoNewline
             Write-Host " ↳ $TaskName" -NoNewline
@@ -113,7 +113,7 @@ if ($PassportValid) {
     foreach ($mod in $Passport.architecture_freeze.frozen_modules) {
         Write-Host "  ↳ $mod" -ForegroundColor Gray
     }
-    
+
     Write-Host "Active Modules:" -ForegroundColor Green
     foreach ($mod in $Passport.architecture_freeze.active_modules) {
         Write-Host "  ↳ $mod" -ForegroundColor Gray

@@ -1,0 +1,39 @@
+﻿{
+  "document": "DK02_MEMORY_BRIDGE",
+  "version": "2.0",
+  "system_state": "v1.5_CLEAN_LOCKED",
+  "architecture": {
+    "memory_layer": {
+      "v1": "MemoryFacade (legacy, stable)",
+      "v2": "MemoryFacadeV2 (bridge, isolated)"
+    },
+    "integration_policy": {
+      "router_integration": "NO CHANGES ALLOWED",
+      "chat_router": "NO CHANGES ALLOWED"
+    },
+    "layers": [
+      "L1_passport",
+      "L2_session",
+      "L3_tasks",
+      "L4_history",
+      "L5_semantic",
+      "L6_strategy"
+    ]
+  },
+  "rules": [
+    "v2 is additive only",
+    "v1 remains source of truth for passport",
+    "no dependency injection into router layer",
+    "bridge must not break runtime flow"
+  ],
+  "runtime_policy": {
+    "allowed_writes": [
+      "A_07_MEMORY/memory_facade_v2.py"
+    ],
+    "forbidden_writes": [
+      "A_03_ORCHESTRATION/*",
+      "chat_router.py"
+    ]
+  },
+  "status": "ACTIVE"
+}

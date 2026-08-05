@@ -36,4 +36,3 @@ def dispatch(query: str, context: dict = None):
     ConversationContextEngine.update(original_query, result)
 
     return result
-

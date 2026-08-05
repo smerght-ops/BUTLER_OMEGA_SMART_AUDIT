@@ -1,4 +1,4 @@
-﻿# ==============================================================================
+# ==============================================================================
 # SYSTEM ARTIFACT: BUTLER_PROJECT_CHRONICLE.md
 # TYPE: MASTER ARCHITECTURAL TRUTH & EVOLUTION CHRONICLE
 # CREATION DATE: 2026-06-22

@@ -1,4 +1,4 @@
-﻿from A_01_CORE.manifest_loader import ManifestLoader
+from A_01_CORE.manifest_loader import ManifestLoader
 from A_03_ENGINES.Vision_Engine.GO import process_image
 
 def main():

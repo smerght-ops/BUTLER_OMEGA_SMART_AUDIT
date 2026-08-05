@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 ENGINEERING_OBJECT_TYPES = {
     "DEPARTMENT",

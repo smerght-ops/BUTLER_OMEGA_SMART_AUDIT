@@ -1,4 +1,4 @@
-﻿{
+{
   "watch": [
     ".\\A_02_MANAGERS\\smart_dispatcher_v2.py",
     ".\\A_03_ORCHESTRATION\\butler_harness.py",

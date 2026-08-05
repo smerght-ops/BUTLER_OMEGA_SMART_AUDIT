@@ -1,0 +1,51 @@
+﻿{
+    "timestamp":  "2026-06-27 19:33:09",
+    "roles":  {
+                  "OpenDocumentDepartment":  {
+                                                 "integrity":  100,
+                                                 "status":  "HEALTHY"
+                                             },
+                  "ReferenceResolver":  {
+                                            "integrity":  100,
+                                            "status":  "HEALTHY"
+                                        },
+                  "SearchDepartment":  {
+                                           "integrity":  100,
+                                           "status":  "HEALTHY"
+                                       },
+                  "DocumentsDepartment":  {
+                                              "integrity":  100,
+                                              "status":  "HEALTHY"
+                                          },
+                  "Dispatcher":  {
+                                     "integrity":  100,
+                                     "status":  "HEALTHY"
+                                 }
+              },
+    "risk":  {
+                 "release_gate":  "ALLOWED",
+                 "healthy_count":  5,
+                 "warning_count":  0,
+                 "total_roles":  [
+                                     1,
+                                     1,
+                                     1,
+                                     1,
+                                     1
+                                 ],
+                 "total_risk":  "LOW",
+                 "critical_count":  0
+             },
+    "cascade":  {
+
+                },
+    "release":  {
+
+                },
+    "restore":  {
+
+                },
+    "patch":  {
+
+              }
+}

@@ -327,4 +327,3 @@ class SemanticSearchEngine:
             "synonyms": len(self.synonyms),
             "index_exists": self.index_path.exists(),
         }
-

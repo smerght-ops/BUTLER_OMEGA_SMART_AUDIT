@@ -1,0 +1,30 @@
+﻿==================================================
+BUTLER ROADMAP AFTER 4.26
+==================================================
+
+4.26 SEMANTIC_SEARCH_ENGINE_V1
+STATUS: TO CLOSE
+RESULT:
+- Search works
+- ReferenceResolver works
+- OpenDocumentDepartment works
+- "открой первый" reaches OPEN_DOCUMENT
+KNOWN ISSUE:
+- Catalog may contain stale file paths after files move to ARCHIVE_DONE
+
+NEXT:
+4.27 SEMANTIC_REASONING_ENGINE
+
+AFTER SEMANTICS:
+5.0 MEMORY GOVERNANCE LAYER
+5.1 OBJECT MERGE
+5.2 ENTITY PASSPORT
+5.3 ARCHITECTURAL DECISION REGISTRY
+5.4 RAW / WIP / VERIFIED
+5.5 CONFLICT DETECTOR
+
+LAW:
+Passport is the single source of truth.
+No new phase starts without passport update.
+
+==================================================

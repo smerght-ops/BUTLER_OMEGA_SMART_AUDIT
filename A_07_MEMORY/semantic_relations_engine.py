@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 BUTLER OMEGA SMART
@@ -131,7 +131,3 @@ if __name__=="__main__":
 
     for r in g.incoming("автобус"):
         print(r)
-
-
-
-

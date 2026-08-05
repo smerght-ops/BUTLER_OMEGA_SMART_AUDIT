@@ -87,7 +87,7 @@ class VisionDepartment(BaseDepartment):
 
     def execute(self, query: str, context: dict = None, **kwargs) -> dict:
         start = time.time()
-        
+
         context = dict(context or {})
         attachments = context.get("attachments", [])
 
@@ -204,6 +204,3 @@ class VisionDepartment(BaseDepartment):
             "error": str(error),
             "metadata": result_metadata,
         }
-
-
-

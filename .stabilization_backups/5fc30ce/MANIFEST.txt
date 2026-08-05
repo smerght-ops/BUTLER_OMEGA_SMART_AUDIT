@@ -1,0 +1,11 @@
+Architecture Baseline Stabilization pre-change backup manifest
+Git HEAD: 5fc30ce93dbc77e9c0904529cec40a2e7b54fb81
+
+A_02_MANAGERS/smart_dispatcher_v2.py 713253fde4fee54b0ab694c8586d02c50ce4c8a5
+A_03_ORCHESTRATION/butler_harness.py 774ce1828e1987ba7cb5374f8c762b4a3ce69ea2
+A_03_ORCHESTRATION/worker.py 79582ccc7aef4c46aa056172fd2c4224a240c5d1
+A_04_AGENTS/EngineeringReviewDepartment/checker.py 69f5406a0763039bd10afd1e41d20c8bb5348ebc
+A_09_TESTS/test_department_architecture.py ef0c5757efd1e5d9f3ece6dad0305eae50495ef4
+A_09_TESTS/test_engineering_review_full.py 8f927e3d3222ad73e84de981c28e05d52957844b
+
+Each blob is recoverable with: git cat-file blob <blob-id>

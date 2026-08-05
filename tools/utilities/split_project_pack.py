@@ -1,4 +1,4 @@
-﻿from pathlib import Path
+from pathlib import Path
 
 ROOT=Path(".")
 SRC=ROOT/"PROJECT_FULL_CONTEXT_PACK.md"

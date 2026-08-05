@@ -1,4 +1,4 @@
-﻿Прочитай документ "C:\Users\KOS\Desktop\Butler_Agent\BUTLER_OMEGA_SMART\A_99_TEST_DATA\hello.pdf"
+Прочитай документ "C:\Users\KOS\Desktop\Butler_Agent\BUTLER_OMEGA_SMART\A_99_TEST_DATA\hello.pdf"
 Прочитай документ "C:\Users\KOS\Desktop\Butler_Agent\BUTLER_OMEGA_SMART\A_99_TEST_DATA\hello.docx"
 Прочитай документ "C:\Users\KOS\Desktop\Butler_Agent\BUTLER_OMEGA_SMART\A_99_TEST_DATA\hello.xlsx"
 Прочитай документ "C:\Users\KOS\Desktop\Butler_Agent\BUTLER_OMEGA_SMART\A_99_TEST_DATA\hello.csv"

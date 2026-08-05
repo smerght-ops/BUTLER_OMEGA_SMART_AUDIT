@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 from engineering_object_catalog import EngineeringObjectCatalog
 from engineering_evidence_collection import EngineeringEvidenceCollection

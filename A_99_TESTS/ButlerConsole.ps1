@@ -1,4 +1,4 @@
-﻿# Butler Omega Smart — единая PowerShell-консоль управления
+# Butler Omega Smart — единая PowerShell-консоль управления
 
 $script:ButlerRoot = Split-Path -Parent $PSScriptRoot
 $script:ReportsDir = Join-Path $PSScriptRoot "reports"
@@ -118,4 +118,3 @@ function Show-ButlerHelp {
 }
 
 Write-Host "ButlerConsole загружен. Команда: Show-ButlerHelp" -ForegroundColor Green
-

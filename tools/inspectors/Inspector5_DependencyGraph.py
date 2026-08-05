@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 Inspector 5 — Dependency Graph v1.0
 Агрегирует данные из Inspector1-4 и строит граф зависимостей.
@@ -10,7 +10,7 @@ from pathlib import Path
 from typing import Dict, List, Any
 
 class Inspector5_DependencyGraph:
-    def __init__(self, 
+    def __init__(self,
                  entity_path: str = "Inspector1_EntityMap.json",
                  import_path: str = "Inspector2_ImportMap.json",
                  registration_path: str = "Inspector3_RegistrationAST.json",

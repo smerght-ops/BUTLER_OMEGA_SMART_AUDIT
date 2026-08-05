@@ -65,8 +65,8 @@ User query (в _AGENT_CORE_LAB probe)
 
 ## 4. RECOMMENDED INTEGRATION POINT
 
-**Файл:** `BUTLER_OS.py`  
-**Место:** Функция `main(once_query=None)` или итерация `while True:` внутри неё  
+**Файл:** `BUTLER_OS.py`
+**Место:** Функция `main(once_query=None)` или итерация `while True:` внутри неё
 **Конкретная точка:** Добавить опциональный Agent Core loop **перед** вызовом `_execute_query(query)`, но **внутри** того же процесса.
 
 ### Почему именно здесь:
@@ -99,7 +99,7 @@ User query (в _AGENT_CORE_LAB probe)
 
 ## 6. EXISTING TOOL/CAPABILITY SOURCE
 
-**Источник:** `CapabilityRegistry.json` (корень проекта)  
+**Источник:** `CapabilityRegistry.json` (корень проекта)
 **API чтения:** `CapabilityRegistry` класс из `CapabilityRegistry.py`
 
 ```python

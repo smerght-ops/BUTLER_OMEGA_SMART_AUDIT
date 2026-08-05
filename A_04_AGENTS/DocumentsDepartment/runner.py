@@ -122,7 +122,7 @@ class DocumentsDepartment(BaseDepartment):
         if ("создай pdf из изображения" in q or "создай pdf из изображений" in q) and len(quoted) >= 2:
             return "images_to_pdf", {"sources": quoted[:-1], "target": quoted[-1]}
         # Конвертация DOCX в PDF
-        if ("преобразуй docx в pdf" in q or "конвертируй docx в pdf" in q or 
+        if ("преобразуй docx в pdf" in q or "конвертируй docx в pdf" in q or
             "сделай pdf из docx" in q or "из docx в pdf" in q) and len(quoted) >= 2:
             return "convert_docx_to_pdf", {"source": quoted[0], "target": quoted[-1]}
         # Если есть только один файл и сказано сделать PDF - предполагаем DOCX->PDF
@@ -136,7 +136,7 @@ class DocumentsDepartment(BaseDepartment):
         match = re.search(r'(?:файл|пут|документ)[а-я]*\s*:\s*([A-Za-z]:.+?\.(?:xlsx|docx|pdf|txt|md|log|csv))', text, re.IGNORECASE)
         if match:
             return match.group(1).strip().strip("\"'").replace("\\", "/")
-            
+
         if '"' in text:
             try: return text.split('"')[1].strip().replace("\\", "/")
             except: pass
@@ -265,19 +265,19 @@ class DocumentsDepartment(BaseDepartment):
             f"ЗАПРОС ПОЛЬЗОВАТЕЛЬЯ: {user_query}\n"
             f"ТЕКСТ ДОКУМЕНТА:\n{document_text}"
         )
-        
+
         data = json.dumps({
             "model": "qwen35-ru:latest",
             "prompt": prompt,
             "stream": False
         }).encode("utf-8")
-        
+
         req = urllib.request.Request(
-            url, data=data, 
-            headers={"Content-Type": "application/json"}, 
+            url, data=data,
+            headers={"Content-Type": "application/json"},
             method="POST"
         )
-        
+
         with urllib.request.urlopen(req, timeout=25) as response:
             res_json = json.loads(response.read().decode("utf-8"))
             answer = res_json.get("response", "").strip()
@@ -307,7 +307,7 @@ class DocumentsDepartment(BaseDepartment):
         context = dict(context or {})
         # Semantic Task Contract from SmartDispatcherV2
         semantic_contract = context.get("semantic_contract", {})
-        
+
         # Если contract отсутствует — работать по существующей логике
         if not semantic_contract:
             pass  # Продолжаем выполнение существующей логики
@@ -326,7 +326,7 @@ class DocumentsDepartment(BaseDepartment):
                     "execution_ready": False
                 }
             }
-        
+
         attachments = context.get("attachments", [])
 
         if context.get("capability_action") == "create_docx":
@@ -535,7 +535,7 @@ class DocumentsDepartment(BaseDepartment):
 
             q_low = (query or "").lower()
             has_trigger = any(k in q_low for k in ["анализ", "сводка", "резюме", "суть", "выжимка"])
-            
+
             if (len(extracted_text) > 1000 or has_trigger) and extracted_text.strip():
                 try:
                     analyzed_text = self._call_local_llm(query or "", extracted_text)
@@ -585,8 +585,3 @@ class DocumentsDepartment(BaseDepartment):
             "error": str(error),
             "metadata": result_metadata,
         }
-
-
-
-
-

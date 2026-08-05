@@ -1,4 +1,4 @@
-﻿LEGACY COMPONENTS
+LEGACY COMPONENTS
 
 НЕ ИСПОЛЬЗОВАТЬ В НОВОМ КОДЕ
 

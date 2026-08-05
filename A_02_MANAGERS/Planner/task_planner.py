@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 Stage 8.2
@@ -57,4 +57,3 @@ if __name__ == "__main__":
     recipe = TaskPlanner.plan(goal)
 
     print(recipe)
-

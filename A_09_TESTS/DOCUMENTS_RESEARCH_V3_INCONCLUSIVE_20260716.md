@@ -1,9 +1,9 @@
 # Research Before Change — документный блок Butler
 
-Дата: 2026-07-16  
-Рабочий корень: `C:\Users\KOS\Desktop\Butler_Agent\BUTLER_OMEGA_SMART`  
-Режим: READ ONLY для production-кода  
-Research Status: **INCONCLUSIVE**  
+Дата: 2026-07-16
+Рабочий корень: `C:\Users\KOS\Desktop\Butler_Agent\BUTLER_OMEGA_SMART`
+Режим: READ ONLY для production-кода
+Research Status: **INCONCLUSIVE**
 Итог: исследование не завершено из-за невозможности запустить свежий официальный Butler в закреплённом runtime без изменения окружения.
 
 ## Блокирующее доказательство
@@ -24,8 +24,8 @@ Research Status: **INCONCLUSIVE**
 
 Установка `requests`, изменение production-импортов или runtime-подмена запрещены заданием. Поэтому официальные пользовательские проверки не могут быть достоверно выполнены.
 
-Research Status блокера: **REPRODUCED**.  
-Assertion Status: **PROVEN**.  
+Research Status блокера: **REPRODUCED**.
+Assertion Status: **PROVEN**.
 Proven Statement: в исследованном закреплённом runtime свежий официальный dispatch не импортируется при неизменённом production-коде из-за отсутствующего обязательного для импорта `requests`.
 
 ## Статическая карта Department
@@ -115,5 +115,5 @@ DOCX `PARTIAL` для таблиц означает: таблица может �
 - `A_09_TESTS\documents_research_v3.py` — runner, остановившийся на импорте официального маршрута;
 - `A_09_TESTS\DOCUMENTS_RESEARCH_V3_INCONCLUSIVE_20260716.md` — настоящий отчёт.
 
-Итоговый Research Status: **INCONCLUSIVE**.  
+Итоговый Research Status: **INCONCLUSIVE**.
 Итоговый вывод: **исследование не завершено**; обязательная официальная пользовательская проверка невозможна в текущем закреплённом runtime без запрещённого изменения окружения.

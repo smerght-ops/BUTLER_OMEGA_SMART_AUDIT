@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 from abc import ABC, abstractmethod
 
@@ -43,4 +43,3 @@ class EngineeringAgent(ABC):
     @abstractmethod
     def report(self):
         pass
-

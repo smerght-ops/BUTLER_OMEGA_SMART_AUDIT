@@ -1,4 +1,4 @@
-﻿# GENIE Architecture Diff v1
+# GENIE Architecture Diff v1
 
 $Current = ".\A_02_MANAGERS\smart_dispatcher_v2.py"
 

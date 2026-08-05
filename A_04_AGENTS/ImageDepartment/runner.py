@@ -664,7 +664,3 @@ class ImageDepartment(BaseDepartment):
             "error": str(error),
             "metadata": dict(metadata or {}),
         }
-
-
-
-

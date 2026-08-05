@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 from typing import List
 
@@ -42,4 +42,3 @@ class EngineeringEvidenceCollection:
             e for e in self.items
             if e.object_name == artifact_name
         ]
-

@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 Stage 9.1
@@ -88,4 +88,3 @@ if __name__ == "__main__":
 
     print(PlannerEngine.can_handle("python version"))
     print(PlannerEngine.can_handle("нарисуй дракона"))
-

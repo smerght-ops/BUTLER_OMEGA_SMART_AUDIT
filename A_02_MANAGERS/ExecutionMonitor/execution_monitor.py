@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 Stage 8.4
@@ -45,4 +45,3 @@ if __name__ == "__main__":
 
     print("FAILED:")
     print(monitor.failed_recipes())
-

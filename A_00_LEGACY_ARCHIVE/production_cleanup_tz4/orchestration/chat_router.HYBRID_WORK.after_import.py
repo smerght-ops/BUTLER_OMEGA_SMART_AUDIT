@@ -1,4 +1,4 @@
-﻿import argparse
+import argparse
 import json
 import os
 import time
@@ -17,9 +17,9 @@ OLLAMA_TAGS = OLLAMA_BASE.rstrip("/") + "/api/tags"
 COMFYUI_BASE = os.environ.get("BUTLER_COMFYUI_BASE", "http://127.0.0.1:8188")
 
 ARTISTS = {
-    "1": ("РҐСѓРґРѕР¶РЅРёРє РҐРѕСЂСЂРѕСЂ", "DeepSeek-GPU:latest"),
-    "2": ("Р’С‹РґСѓРјС‰РёРє", "gemma-4:latest"),
-    "3": ("РҐСѓРґРѕР¶РЅРёРє РўРµС…РЅР°СЂСЊ", "ibm-granite_granite-4.1-30b-Q5_K_S:latest"),
+    "1": ("Художник Хоррор", "DeepSeek-GPU:latest"),
+    "2": ("Выдумщик", "gemma-4:latest"),
+    "3": ("Художник Технарь", "ibm-granite_granite-4.1-30b-Q5_K_S:latest"),
 }
 
 TEXT_MODELS = {
@@ -30,16 +30,16 @@ TEXT_MODELS = {
 }
 
 DRAW_TRIGGERS = [
-    "РЅР°СЂРёСЃСѓР№ РјРЅРµ",
-    "РЅР°СЂРёСЃСѓР№",
-    "СЃРіРµРЅРµСЂРёСЂСѓР№",
-    "СЃРґРµР»Р°Р№ С„РѕС‚Рѕ",
-    "СЃРѕР·РґР°Р№ РєР°СЂС‚РёРЅРєСѓ",
-    "СЃРѕР·РґР°Р№ РёР·РѕР±СЂР°Р¶РµРЅРёРµ",
-    "СЃРґРµР»Р°Р№ РєР°СЂС‚РёРЅРєСѓ",
+    "нарисуй мне",
+    "нарисуй",
+    "сгенерируй",
+    "сделай фото",
+    "создай картинку",
+    "создай изображение",
+    "сделай картинку",
 ]
 
-EXIT_WORDS = {"РІС‹С…РѕРґ", "exit", "quit", "q"}
+EXIT_WORDS = {"выход", "exit", "quit", "q"}
 
 
 def clear_screen():
@@ -144,16 +144,16 @@ def choose_model(models, registry, title):
         mark = "OK" if model in models else "--"
         print(f"  [{key}] {role} ({model}) [{mark}]")
 
-    choice = input("Р’Р°С€ РІС‹Р±РѕСЂ: ").strip()
+    choice = input("Ваш выбор: ").strip()
     if choice not in registry:
-        print("[-] РќРµРІРµСЂРЅС‹Р№ РІС‹Р±РѕСЂ.")
+        print("[-] Неверный выбор.")
         return None
 
     role, model = registry[choice]
     if models and model not in models:
-        print(f"[!] Р’РЅРёРјР°РЅРёРµ: РјРѕРґРµР»СЊ РЅРµ РЅР°Р№РґРµРЅР° РІ ollama list: {model}")
-        use_anyway = input("РџСЂРѕР±РѕРІР°С‚СЊ РІСЃС‘ СЂР°РІРЅРѕ? y/n: ").strip().lower()
-        if use_anyway not in {"y", "yes", "Рґ", "РґР°"}:
+        print(f"[!] Внимание: модель не найдена в ollama list: {model}")
+        use_anyway = input("Пробовать всё равно? y/n: ").strip().lower()
+        if use_anyway not in {"y", "yes", "д", "да"}:
             return None
 
     return role, model
@@ -166,28 +166,28 @@ def handle_draw(text, models):
         return False
 
     if not clean_prompt:
-        print("[-] Р‘Р°С‚Р»РµСЂ: Р§С‚Рѕ РёРјРµРЅРЅРѕ РЅР°СЂРёСЃРѕРІР°С‚СЊ?")
+        print("[-] Батлер: Что именно нарисовать?")
         return True
 
-    selected = choose_model(models, ARTISTS, "[?] Р’С‹Р±РµСЂРёС‚Рµ РјР°СЃС‚РµСЂР° РґР»СЏ СЃРѕР·РґР°РЅРёСЏ РїСЂРѕРјРїС‚Р° ComfyUI:")
+    selected = choose_model(models, ARTISTS, "[?] Выберите мастера для создания промпта ComfyUI:")
     if not selected:
         return True
 
     role_name, model_name = selected
 
     system_instruction = (
-        "РўС‹ СЌРєСЃРїРµСЂС‚ РїРѕ СЃРѕР·РґР°РЅРёСЋ РїСЂРѕРјРїС‚РѕРІ РґР»СЏ ComfyUI. "
-        "РџРµСЂРµРІРµРґРё СЂСѓСЃСЃРєРёР№ Р·Р°РїСЂРѕСЃ РЅР° Р°РЅРіР»РёР№СЃРєРёР№. "
-        "Р•СЃР»Рё СЌС‚Рѕ РіРёР±СЂРёРґ, СЃРѕР·РґР°Р№ РѕРїРёСЃР°РЅРёРµ С„Р°РЅС‚Р°СЃС‚РёС‡РµСЃРєРѕРіРѕ СЃСѓС‰РµСЃС‚РІР°, РѕР±СЉРµРґРёРЅСЏСЋС‰РµРіРѕ С‡РµСЂС‚С‹ РѕР±РѕРёС… Р¶РёРІРѕС‚РЅС‹С…. "
-        "Р”РѕР±Р°РІСЊ РґРµС‚Р°Р»Рё: photorealism, cinematic light, high detail, sharp focus, dramatic composition. "
-        "Р’С‹РґР°Р№ РўРћР›Р¬РљРћ РіРѕС‚РѕРІС‹Р№ Р°РЅРіР»РёР№СЃРєРёР№ РїСЂРѕРјРїС‚ Р±РµР· РїРѕСЏСЃРЅРµРЅРёР№."
+        "Ты эксперт по созданию промптов для ComfyUI. "
+        "Переведи русский запрос на английский. "
+        "Если это гибрид, создай описание фантастического существа, объединяющего черты обоих животных. "
+        "Добавь детали: photorealism, cinematic light, high detail, sharp focus, dramatic composition. "
+        "Выдай ТОЛЬКО готовый английский промпт без пояснений."
     )
 
-    final_prompt = f"{system_instruction}\n\nР—Р°РїСЂРѕСЃ: {clean_prompt}"
+    final_prompt = f"{system_instruction}\n\nЗапрос: {clean_prompt}"
 
     print()
-    print(f"[*] Р‘Р°С‚Р»РµСЂ: РїРѕРґРєР»СЋС‡Р°СЋ [{role_name}] / {model_name}")
-    print("[*] Р“РµРЅРµСЂР°С†РёСЏ РїСЂРѕРјРїС‚Р° РґР»СЏ ComfyUI...")
+    print(f"[*] Батлер: подключаю [{role_name}] / {model_name}")
+    print("[*] Генерация промпта для ComfyUI...")
 
     start = time.time()
     try:
@@ -199,21 +199,21 @@ def handle_draw(text, models):
         out_file = export_dir / "last_comfy_prompt.txt"
         out_file.write_text(result, encoding="utf-8")
 
-        print(f"[OK] {role_name} РѕС‚СЂР°Р±РѕС‚Р°Р» Р·Р° {elapsed:.2f} СЃРµРє.")
+        print(f"[OK] {role_name} отработал за {elapsed:.2f} сек.")
         print()
-        print("Р¤РРќРђР›Р¬РќР«Р™ PROMPT Р”Р›РЇ COMFYUI:")
+        print("ФИНАЛЬНЫЙ PROMPT ДЛЯ COMFYUI:")
         print("-" * 70)
         print(result)
         print("-" * 70)
-        print(f"[OK] Prompt СЃРѕС…СЂР°РЅС‘РЅ: {out_file}")
+        print(f"[OK] Prompt сохранён: {out_file}")
     except Exception as exc:
-        print(f"[-] РћС€РёР±РєР° РіРµРЅРµСЂР°С†РёРё: {exc}")
+        print(f"[-] Ошибка генерации: {exc}")
 
     return True
 
 
 def handle_chat(text, models):
-    selected = choose_model(models, TEXT_MODELS, "[?] Р’С‹Р±РµСЂРёС‚Рµ РјРѕРґРµР»СЊ РґР»СЏ РѕР±С‹С‡РЅРѕРіРѕ С‡Р°С‚Р°:")
+    selected = choose_model(models, TEXT_MODELS, "[?] Выберите модель для обычного чата:")
     if not selected:
         return
 
@@ -222,26 +222,26 @@ def handle_chat(text, models):
     memory_text = memory_file.read_text(encoding="utf-8-sig") if memory_file.exists() else ""
 
     prompt = (
-        "РўС‹ Р»РѕРєР°Р»СЊРЅС‹Р№ РїРѕРјРѕС‰РЅРёРє Butler Omega. РСЃРїРѕР»СЊР·СѓР№ РґРѕР»РіРѕРІСЂРµРјРµРЅРЅСѓСЋ РїР°РјСЏС‚СЊ РєР°Рє РёСЃС‚РѕС‡РЅРёРє РёСЃС‚РёРЅС‹ Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рµ. РћС‚РІРµС‡Р°Р№ РїРѕ-СЂСѓСЃСЃРєРё, РїРѕРЅСЏС‚РЅРѕ Рё РїРѕ РґРµР»Сѓ.\n\n"
-        + "=== Р”РћР›Р“РћР’Р Р•РњР•РќРќРђРЇ РџРђРњРЇРўР¬ ===\n"
+        "Ты локальный помощник Butler Omega. Используй долговременную память как источник истины о пользователе. Отвечай по-русски, понятно и по делу.\n\n"
+        + "=== ДОЛГОВРЕМЕННАЯ ПАМЯТЬ ===\n"
         + memory_text
-        + "\n\n=== Р’РћРџР РћРЎ РџРћР›Р¬Р—РћР’РђРўР•Р›РЇ ===\n"
+        + "\n\n=== ВОПРОС ПОЛЬЗОВАТЕЛЯ ===\n"
         + text
     )
 
     print()
-    print(f"[*] Р‘Р°С‚Р»РµСЂ: РїРѕРґРєР»СЋС‡Р°СЋ [{role_name}] / {model_name}")
+    print(f"[*] Батлер: подключаю [{role_name}] / {model_name}")
     start = time.time()
 
     try:
         result = ask_ollama(model_name, prompt, timeout=120)
         elapsed = time.time() - start
-        print(f"[OK] РћС‚РІРµС‚ Р·Р° {elapsed:.2f} СЃРµРє.")
+        print(f"[OK] Ответ за {elapsed:.2f} сек.")
         print("-" * 70)
         print(result)
         print("-" * 70)
     except Exception as exc:
-        print(f"[-] РћС€РёР±РєР° С‡Р°С‚Р°: {exc}")
+        print(f"[-] Ошибка чата: {exc}")
 
 
 def run_self_test():
@@ -276,20 +276,20 @@ def main():
     clear_screen()
     models = print_status()
 
-    print("РљРѕРјР°РЅРґС‹:")
-    print("  РѕР±С‹С‡РЅС‹Р№ РІРѕРїСЂРѕСЃ       -> РІС‹Р±РѕСЂ С‚РµРєСЃС‚РѕРІРѕР№ РјРѕРґРµР»Рё")
-    print("  РЅР°СЂРёСЃСѓР№ С‚РёРіСЂР°РєСЂС‹СЃСѓ  -> РІС‹Р±РѕСЂ С…СѓРґРѕР¶РЅРёРєР° Рё РіРµРЅРµСЂР°С†РёСЏ prompt РґР»СЏ ComfyUI")
-    print("  РІС‹С…РѕРґ / q            -> РІС‹С…РѕРґ")
+    print("Команды:")
+    print("  обычный вопрос       -> выбор текстовой модели")
+    print("  нарисуй тигракрысу  -> выбор художника и генерация prompt для ComfyUI")
+    print("  выход / q            -> выход")
     print("=" * 70)
 
     while True:
-        user_text = input("\nР’РёРєС‚РѕСЂ > ").strip()
+        user_text = input("\nВиктор > ").strip()
 
         if not user_text:
             continue
 
         if user_text.lower() in EXIT_WORDS:
-            print("[*] Р’С‹С…РѕРґ РёР· Butler Chat Router.")
+            print("[*] Выход из Butler Chat Router.")
             break
 
         models, _ = fetch_ollama_models()

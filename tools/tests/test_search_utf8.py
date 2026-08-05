@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 from A_04_AGENTS.SearchDepartment.runner import SearchDepartment
 

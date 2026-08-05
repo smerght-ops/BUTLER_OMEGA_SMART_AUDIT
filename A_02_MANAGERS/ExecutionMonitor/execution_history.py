@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 Stage 8.4.1
@@ -43,4 +43,3 @@ if __name__ == "__main__":
     if history:
 
         print(history[-1])
-

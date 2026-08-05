@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 DependencyModelBuilder — строит модель зависимостей (узлы + рёбра) из LinkMap.
 Не использует графовые библиотеки. Только JSON. Не делает выводов.

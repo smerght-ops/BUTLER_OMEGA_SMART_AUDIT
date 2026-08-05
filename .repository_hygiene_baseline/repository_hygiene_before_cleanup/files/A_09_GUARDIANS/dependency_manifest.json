@@ -1,0 +1,59 @@
+﻿{
+  "Dispatcher": {
+    "depends_on": [],
+    "affects": [
+      "Harness",
+      "SearchDepartment",
+      "DocumentsDepartment",
+      "OpenDocumentDepartment",
+      "ReferenceResolver"
+    ]
+  },
+
+  "Harness": {
+    "depends_on": [
+      "Dispatcher"
+    ],
+    "affects": [
+      "CommitPipeline"
+    ]
+  },
+
+  "CommitPipeline": {
+    "depends_on": [
+      "Harness"
+    ],
+    "affects": []
+  },
+
+  "ReferenceResolver": {
+    "depends_on": [],
+    "affects": [
+      "OpenDocumentDepartment"
+    ]
+  },
+
+  "SearchDepartment": {
+    "depends_on": [
+      "Dispatcher"
+    ],
+    "affects": [
+      "ReferenceResolver"
+    ]
+  },
+
+  "DocumentsDepartment": {
+    "depends_on": [
+      "Dispatcher"
+    ],
+    "affects": []
+  },
+
+  "OpenDocumentDepartment": {
+    "depends_on": [
+      "Dispatcher",
+      "ReferenceResolver"
+    ],
+    "affects": []
+  }
+}

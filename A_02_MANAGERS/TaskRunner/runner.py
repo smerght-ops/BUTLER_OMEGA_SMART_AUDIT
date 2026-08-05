@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 import subprocess
 import sys
@@ -118,7 +118,7 @@ class TaskRunner:
         """Связывает Мозг (Planner) и Руки (Runner) в единый цикл автоматизации"""
         planner = AgentPlannerV2()
         plan = planner.get_current_action_plan()
-        
+
         # Проверяем, не завершены ли все задачи текущей фазы
         if plan.get("status") == "ALL_TASKS_COMPLETED" or plan.get("active_task") == "UNKNOWN":
             print("=" * 70)
@@ -214,11 +214,3 @@ if __name__=="__main__":
         runner.run_strategic_step()
     else:
         runner.run_task(cmd)
-
-
-
-
-
-
-
-

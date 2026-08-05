@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 TITLE_COMMANDS = "Команды:"
 CMD_TEXT = "  обычный вопрос       -> выбор текстовой модели"

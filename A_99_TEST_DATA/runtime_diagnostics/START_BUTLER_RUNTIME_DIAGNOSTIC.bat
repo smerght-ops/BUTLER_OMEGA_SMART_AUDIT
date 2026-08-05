@@ -1,4 +1,4 @@
-﻿@echo off
+@echo off
 title BUTLER OMEGA SMART - MAIN ENTRY POINT v4.15.3 (DYNAMIC + VISUAL)
 color 0A
 cd /d "%~dp0"

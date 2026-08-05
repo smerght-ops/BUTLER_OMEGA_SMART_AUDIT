@@ -1,4 +1,4 @@
-﻿# GENIE PATCH PREVIEW
+# GENIE PATCH PREVIEW
 # Только просмотр. Никаких изменений в коде.
 
 $BaselineFile = Get-Content .\A_09_GUARDIANS\baseline_path.txt -Encoding UTF8
@@ -60,4 +60,3 @@ foreach($target in $targets){
 Write-Host ""
 Write-Host "=========================================" -ForegroundColor Cyan
 Write-Host "PATCH PREVIEW COMPLETE" -ForegroundColor Green
-

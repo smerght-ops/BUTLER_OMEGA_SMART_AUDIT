@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 Stage 6.9
@@ -41,4 +41,3 @@ class PythonExecutionAdapter(BaseExecutionAdapter):
             duration_ms=int((time.time() - start) * 1000),
             executed_steps=[step.command]
         )
-

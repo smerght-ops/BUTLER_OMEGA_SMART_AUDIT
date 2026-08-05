@@ -1,4 +1,4 @@
-﻿$Baseline = Get-Content .\A_09_GUARDIANS\baseline_path.txt -Encoding UTF8
+$Baseline = Get-Content .\A_09_GUARDIANS\baseline_path.txt -Encoding UTF8
 
 $Current = ".\A_02_MANAGERS\smart_dispatcher_v2.py"
 

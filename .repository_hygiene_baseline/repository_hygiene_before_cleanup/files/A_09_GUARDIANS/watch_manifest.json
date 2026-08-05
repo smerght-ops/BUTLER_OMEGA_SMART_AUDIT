@@ -1,0 +1,11 @@
+﻿{
+  "watch": [
+    ".\\A_02_MANAGERS\\smart_dispatcher_v2.py",
+    ".\\A_03_ORCHESTRATION\\butler_harness.py",
+    ".\\A_07_MEMORY\\SESSION\\reference_resolver.py",
+    ".\\A_07_CONFIG\\project_passport.json"
+  ],
+  "poll_seconds": 2,
+  "auto_watchdog": true,
+  "silent": true
+}

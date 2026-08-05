@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 from engineering_agent import EngineeringAgent
 from engineering_evidence import EngineeringEvidence
@@ -65,4 +65,3 @@ class RuntimeDepartmentsDiscoveryAgent(EngineeringAgent):
             "role": self.ROLE,
             "source": self.SOURCE
         }
-

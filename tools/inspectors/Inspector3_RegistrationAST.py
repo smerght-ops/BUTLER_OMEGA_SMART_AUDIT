@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 Inspector 3 — Registration AST v1.0
 READ ONLY. Находит регистрации компонентов через AST (вызовы register, Dispatcher и т.п.).

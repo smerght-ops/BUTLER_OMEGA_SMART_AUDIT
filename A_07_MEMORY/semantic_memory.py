@@ -394,4 +394,3 @@ class SemanticMemory:
 
         self._append_record(record)
         return dict(record)
-

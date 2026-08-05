@@ -1,0 +1,11 @@
+﻿{
+    "version":  "1.0",
+    "pipeline":  [
+                     "Gate",
+                     "Candidate",
+                     "Preview",
+                     "Validator",
+                     "Safety",
+                     "Confidence"
+                 ]
+}

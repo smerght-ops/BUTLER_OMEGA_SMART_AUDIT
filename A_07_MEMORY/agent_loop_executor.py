@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 from A_07_MEMORY.project_history import ProjectHistory
 from A_07_MEMORY.change_request_manager import ChangeRequestManager

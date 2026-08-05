@@ -6,7 +6,7 @@ def register_test_job(filename):
     cm = CatalogManager()
     # Формируем корректный относительный путь для тестового файла
     rel_path = Path('A_06_WORKSPACE') / 'incoming' / filename
-    
+
     # Создаем пустую заглушку для теста, если файла физически нет в инкаминге
     full_path = cm.PROJECT_ROOT / rel_path
     full_path.parent.mkdir(parents=True, exist_ok=True)

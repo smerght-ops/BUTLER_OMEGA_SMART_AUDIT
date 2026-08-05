@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 Butler Self-Audit — максимальный самоаудит проекта.
 Использует все доступные артефакты (JSON, ключевые файлы) и отвечает на вопросы:
@@ -72,7 +72,7 @@ class ButlerSelfAudit:
         self.load_artifact("CallGraph", ["Inspector4_CallGraph.json", "A_06_WORKSPACE/AUDITS/Inspector4_CallGraph.json"])
         self.load_artifact("LinkMap", ["LinkMap.json", "A_06_WORKSPACE/AUDITS/LinkMap.json"])
         self.load_artifact("DependencyModel", ["DependencyModel.json", "A_06_WORKSPACE/AUDITS/DependencyModel.json"])
-        
+
         # Дополнительные артефакты (если есть)
         self.load_artifact("ProjectPassport", ["A_07_CONFIG/project_passport.json", "project_passport.json"])
         self.load_artifact("SystemManifest", ["A_07_CONFIG/system_manifest.json", "system_manifest.json"])
@@ -220,18 +220,18 @@ class ButlerSelfAudit:
         """Генерирует JSON и Markdown отчёты."""
         from datetime import datetime, timezone
         self.report["metadata"]["generated_utc"] = datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z')
-        
+
         # Сохраняем JSON
         with open("Butler_SelfAudit_Report.json", 'w', encoding='utf-8') as f:
             json.dump(self.report, f, ensure_ascii=False, indent=2)
-        
+
         # Генерируем Markdown
         md_lines = []
         md_lines.append("# Butler Self-Audit Report")
         md_lines.append(f"**Generated:** {self.report['metadata']['generated_utc']}")
         md_lines.append(f"**Generator:** {self.report['metadata']['generator']} v{self.report['metadata']['version']}")
         md_lines.append("")
-        
+
         # Компоненты
         md_lines.append("## Архитектурные компоненты")
         md_lines.append(f"**Всего:** {len(self.report['components'])}")
@@ -240,7 +240,7 @@ class ButlerSelfAudit:
         if len(self.report['components']) > 20:
             md_lines.append(f"... и ещё {len(self.report['components']) - 20} компонентов")
         md_lines.append("")
-        
+
         # Возможности
         md_lines.append("## Возможности (регистрации)")
         md_lines.append(f"**Всего:** {len(self.report['capabilities'])}")
@@ -249,7 +249,7 @@ class ButlerSelfAudit:
         if len(self.report['capabilities']) > 20:
             md_lines.append(f"... и ещё {len(self.report['capabilities']) - 20} возможностей")
         md_lines.append("")
-        
+
         # Дубликаты
         md_lines.append("## Дублирующиеся компоненты")
         if self.report['duplicates']:
@@ -258,7 +258,7 @@ class ButlerSelfAudit:
         else:
             md_lines.append("Нет дублирующихся компонентов.")
         md_lines.append("")
-        
+
         # Неиспользуемые
         md_lines.append("## Неиспользуемые компоненты (нет входящих ссылок)")
         if self.report['unused']:
@@ -269,7 +269,7 @@ class ButlerSelfAudit:
         else:
             md_lines.append("Все компоненты имеют входящие ссылки.")
         md_lines.append("")
-        
+
         # Отсутствующие
         md_lines.append("## Заявленные, но отсутствующие компоненты")
         if self.report['missing']:
@@ -278,31 +278,31 @@ class ButlerSelfAudit:
         else:
             md_lines.append("Все заявленные компоненты присутствуют.")
         md_lines.append("")
-        
+
         # Точки входа
         md_lines.append("## Точки входа")
         for ep in self.report['entry_points']:
             md_lines.append(f"- {ep['name']} ({ep['file']})")
         md_lines.append("")
-        
+
         # Registry/Manager/Builder
         md_lines.append("## Существующие Registry/Manager/Builder")
         md_lines.append(f"**Registries:** {', '.join([r['name'] for r in self.report['registries']]) if self.report['registries'] else 'Нет'}")
         md_lines.append(f"**Managers:** {', '.join([m['name'] for m in self.report['managers']]) if self.report['managers'] else 'Нет'}")
         md_lines.append(f"**Builders:** {', '.join([b['name'] for b in self.report['builders']]) if self.report['builders'] else 'Нет'}")
         md_lines.append("")
-        
+
         # Повторы
         md_lines.append("## Предлагаемые повторы (не обнаружено)")
         md_lines.append("На данный момент не выявлено предложений создать что-то повторно.")
         md_lines.append("")
-        
+
         md_lines.append("---")
         md_lines.append("*Этот отчёт сгенерирован автоматически и содержит только объективные факты.*")
-        
+
         with open("Butler_SelfAudit_Report.md", 'w', encoding='utf-8') as f:
             f.write("\n".join(md_lines))
-        
+
         print("Отчёты сгенерированы:")
         print("  - Butler_SelfAudit_Report.json")
         print("  - Butler_SelfAudit_Report.md")

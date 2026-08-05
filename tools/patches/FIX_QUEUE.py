@@ -1,4 +1,4 @@
-﻿import os
+import os
 import sqlite3
 from pathlib import Path
 from A_02_MANAGERS.catalog_manager import CatalogManager
@@ -7,7 +7,7 @@ def reset_and_register():
     cm = CatalogManager()
     project_root = cm.PROJECT_ROOT
     folder = project_root / 'A_06_WORKSPACE' / 'incoming'
-    
+
     if not folder.exists():
         print(f"[-] Каталог входящих не найден: {folder}")
         return

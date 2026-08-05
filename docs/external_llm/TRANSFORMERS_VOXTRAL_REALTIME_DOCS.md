@@ -574,4 +574,3 @@ Example:
 >>> outputs = model.generate(**inputs)
 >>> processor.batch_decode(outputs, skip_special_tokens=True)
 ```
-

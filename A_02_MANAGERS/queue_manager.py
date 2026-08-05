@@ -21,7 +21,7 @@ class QueueManager:
         print("[СВЯЗЬ] Инициализация QueueManager. Подключение к СУБД каталога...")
         self.PROJECT_ROOT = Path(__file__).resolve().parent.parent
         self.db_path = self.PROJECT_ROOT / "A_05_STORAGE" / "catalog.db"
-        
+
         # Загружаем конфигурацию для таймаутов
         try:
             self.config = ManifestLoader.load()
@@ -48,18 +48,18 @@ class QueueManager:
         try:
             # Выставляем эксклюзивную блокировку на запись прямо в начале транзакции
             conn.execute("BEGIN IMMEDIATE")
-            
+
             cursor = conn.cursor()
             # Ищем первую задачу в очереди
             cursor.execute(
                 "SELECT id, filepath FROM documents WHERE status='queued' ORDER BY registered_at ASC LIMIT 1"
             )
             row = cursor.fetchone()
-            
+
             if row:
                 doc_id, filepath = row
                 current_time = int(time.time())
-                
+
                 # Мгновенно обновляем статус под конкретный воркер
                 cursor.execute(
                     "UPDATE documents SET status='processing', updated_at=?, summary=? WHERE id=?",
@@ -68,10 +68,10 @@ class QueueManager:
                 conn.commit()
                 print(f"[ОЧЕРЕДЬ -> {worker_id}] Успешно захвачена задача ID {doc_id}: {filepath}")
                 return {"task_id": doc_id, "filepath": filepath}
-                
+
             conn.commit() # Если задач нет, просто закрываем транзакцию
             return None
-            
+
         except sqlite3.OperationalError as e:
             print(f"[-] База заблокирована параллельным процессом, ожидание: {e}")
             return None
@@ -92,14 +92,14 @@ class QueueManager:
             conn.execute("BEGIN IMMEDIATE")
             cursor = conn.cursor()
             threshold_time = int(time.time()) - self.timeout_limit
-            
+
             # Находим задачи, которые застряли в 'processing' и долго не обновлялись
             cursor.execute(
                 "SELECT id, filepath FROM documents WHERE status='processing' AND updated_at < ?",
                 (threshold_time,)
             )
             dead_tasks = cursor.fetchall()
-            
+
             if dead_tasks:
                 print(f"[СВЯЗЬ -> Восстановление] Обнаружено упавших/зависших задач: {len(dead_tasks)}")
                 for doc_id, filepath in dead_tasks:

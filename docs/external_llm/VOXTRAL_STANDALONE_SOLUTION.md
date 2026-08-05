@@ -10,10 +10,10 @@ Both official runtimes support **Voxtral-Mini-4B-Realtime-2602** on Windows + CU
 
 ## Model Confirmation
 
-✅ **Model ID**: `mistralai/Voxtral-Mini-4B-Realtime-2602`  
-✅ **Size**: ~17.8 GB (BF16 weights)  
-✅ **Architecture**: 3.4B LM + 970M causal audio encoder  
-✅ **License**: Apache 2.0 (commercial use allowed)  
+✅ **Model ID**: `mistralai/Voxtral-Mini-4B-Realtime-2602`
+✅ **Size**: ~17.8 GB (BF16 weights)
+✅ **Architecture**: 3.4B LM + 970M causal audio encoder
+✅ **License**: Apache 2.0 (commercial use allowed)
 ✅ **Official Docs**: https://huggingface.co/mistralai/Voxtral-Mini-4B-Realtime-2602
 
 **Key Features:**
@@ -28,9 +28,9 @@ Both official runtimes support **Voxtral-Mini-4B-Realtime-2602** on Windows + CU
 
 ### Option 1: vLLM (Recommended for Production)
 
-**Status**: ✅ Officially supported, production-grade  
-**Windows Support**: ✅ Yes (CUDA)  
-**Streaming API**: WebSocket `/v1/realtime` endpoint  
+**Status**: ✅ Officially supported, production-grade
+**Windows Support**: ✅ Yes (CUDA)
+**Streaming API**: WebSocket `/v1/realtime` endpoint
 
 #### Installation
 ```bash
@@ -88,9 +88,9 @@ async def transcribe_audio_stream(audio_generator):
 
 ### Option 2: Transformers Library (Recommended for Prototyping)
 
-**Status**: ✅ Supported since v5.2.0  
-**Windows Support**: ✅ Yes (CUDA via PyTorch)  
-**Streaming API**: Experimental, manual chunking required  
+**Status**: ✅ Supported since v5.2.0
+**Windows Support**: ✅ Yes (CUDA via PyTorch)
+**Streaming API**: Experimental, manual chunking required
 
 #### Installation
 ```bash
@@ -146,7 +146,7 @@ model = VoxtralRealtimeForConditionalGeneration.from_pretrained(
 # Audio must be padded for streaming
 audio = ds[0]["audio"]["array"]
 xaudio = np.pad(
-    audio, 
+    audio,
     (0, processor.num_right_pad_tokens * processor.raw_audio_length_per_tok)
 )
 
@@ -159,14 +159,14 @@ first_chunk_inputs = processor(
 
 def input_features_generator():
     yield first_chunk_inputs.input_features
-    
+
     mel_frame_idx = processor.num_mel_frames_first_audio_chunk
     hop_length = processor.feature_extractor.hop_length
     win_length = processor.feature_extractor.win_length
-    
+
     start_idx = mel_frame_idx * hop_length - win_length // 2
     end_idx = start_idx + processor.num_samples_per_audio_chunk
-    
+
     while (end_idx:=start_idx + processor.num_samples_per_audio_chunk) < audio.shape[0]:
         inputs = processor(
             audio[start_idx:end_idx],
@@ -174,13 +174,13 @@ def input_features_generator():
             is_first_audio_chunk=False,
             return_tensors="pt"
         ).to(model.device, dtype=model.dtype)
-        
+
         yield inputs.input_features
         mel_frame_idx += processor.audio_length_per_tok
         start_idx = mel_frame_idx * hop_length - win_length // 2
 
 streamer = TextIteratorStreamer(
-    processor.tokenizer, 
+    processor.tokenizer,
     skip_special_tokens=True,
     clean_up_tokenization_spaces=True
 )
@@ -207,9 +207,9 @@ for text_chunk in streamer:
 
 ### Option 3: ExecuTorch (Not Recommended for Windows)
 
-**Status**: ⚠️ Untested on Windows  
-**Windows Support**: ❓ Limited documentation mentions `--backend cuda-windows` but no verified examples  
-**Recommendation**: Avoid unless you need mobile/embedded deployment  
+**Status**: ⚠️ Untested on Windows
+**Windows Support**: ❓ Limited documentation mentions `--backend cuda-windows` but no verified examples
+**Recommendation**: Avoid unless you need mobile/embedded deployment
 
 Official warning from model card:
 > "Running Voxtral-Realtime on-device with ExecuTorch is not thoroughly tested and hence there might be some sharp edges."
@@ -277,7 +277,7 @@ snapshot_download(
 )
 ```
 
-**Expected download size**: ~17.8 GB (BF16 weights)  
+**Expected download size**: ~17.8 GB (BF16 weights)
 **Disk space required**: ~36 GB (weights + cache + context buffers)
 
 ### Step 4: Launch Server
@@ -307,7 +307,7 @@ repo_id = "mistralai/Voxtral-Mini-4B-Realtime-2602"
 
 processor = AutoProcessor.from_pretrained("./voxtral-models")
 model = VoxtralRealtimeForConditionalGeneration.from_pretrained(
-    "./voxtral-models", 
+    "./voxtral-models",
     device_map="cuda:0"
 )
 
@@ -358,41 +358,41 @@ class VoxtralRealtimeClient:
     def __init__(self, server_url="ws://localhost:8000/v1/realtime"):
         self.server_url = server_url
         self.websocket = None
-        
+
     async def connect(self):
         self.websocket = await websockets.connect(self.server_url)
-        
+
         # Send session configuration
         config = {
             "transcription_delay_ms": 480,  # Sweet spot for latency/accuracy
             "temperature": 0.0,
         }
         await self.websocket.send(json.dumps({"type": "session_update", "config": config}))
-        
+
     async def send_audio_chunk(self, audio_data: np.ndarray):
         """Send 16kHz audio chunk (base64 encoded)"""
         import base64
-        
+
         audio_b64 = base64.b64encode(audio_data.tobytes()).decode('utf-8')
-        
+
         message = {
             "type": "input_audio_buffer.append",
             "audio": audio_b64
         }
         await self.websocket.send(json.dumps(message))
-        
+
     async def receive_transcription(self):
         """Receive streaming transcription text"""
         async for message in self.websocket:
             data = json.loads(message)
-            
+
             if data.get("type") == "response.text.delta":
                 yield data.get("text", "")
-                
+
     async def transcribe_microphone(self, chunk_duration_ms=100):
         """Stream microphone audio to Voxtral"""
         p = pyaudio.PyAudio()
-        
+
         # 16kHz mono, 16-bit PCM
         stream = p.open(
             format=pyaudio.paInt16,
@@ -401,10 +401,10 @@ class VoxtralRealtimeClient:
             input=True,
             frames_per_buffer=int(0.1 * 16000)  # 100ms chunks
         )
-        
+
         async for text_chunk in self.receive_transcription():
             print(text_chunk, end="", flush=True)
-            
+
         stream.stop_stream()
         stream.close()
         p.terminate()
@@ -413,7 +413,7 @@ class VoxtralRealtimeClient:
 async def main():
     client = VoxtralRealtimeClient()
     await client.connect()
-    
+
     # Stream microphone until stopped
     try:
         async for text in client.transcribe_microphone():
@@ -446,21 +446,21 @@ Based on official benchmarks and model architecture:
 ## Decision Matrix
 
 ### When to Use vLLM:
-✅ Production deployment  
-✅ Need WebSocket streaming API  
-✅ Want HTTP-compatible interface for Butler integration  
-✅ Require production-grade reliability  
+✅ Production deployment
+✅ Need WebSocket streaming API
+✅ Want HTTP-compatible interface for Butler integration
+✅ Require production-grade reliability
 
 ### When to Use Transformers:
-✅ Rapid prototyping / experimentation  
-✅ Offline transcription workflows  
-✅ Already using PyTorch ecosystem  
-✅ Don't need real-time streaming yet  
+✅ Rapid prototyping / experimentation
+✅ Offline transcription workflows
+✅ Already using PyTorch ecosystem
+✅ Don't need real-time streaming yet
 
 ### When NOT to Download Voxtral-Mini-3B-2507:
-❌ This is the **wrong model** (audio-understanding, not real-time ASR)  
-❌ 18.7 GB download for incorrect use case  
-❌ Does not support native streaming architecture  
+❌ This is the **wrong model** (audio-understanding, not real-time ASR)
+❌ 18.7 GB download for incorrect use case
+❌ Does not support native streaming architecture
 
 ---
 

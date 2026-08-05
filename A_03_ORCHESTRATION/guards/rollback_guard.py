@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 import json
 import time
@@ -48,7 +48,7 @@ class RollbackGuard:
             for item in target_dir.iterdir():
                 if item.is_file() and item.name != target_file.name:
                     name_lower = item.name.lower()
-                    
+
                     if base_name in name_lower and any(m in name_lower for m in self.backup_markers):
                         # Вычисляем точный возраст бэкапа
                         file_age = current_time - item.stat().st_mtime

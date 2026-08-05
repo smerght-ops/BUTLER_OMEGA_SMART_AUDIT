@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 Stage 6.7
@@ -77,4 +77,3 @@ if __name__ == "__main__":
     print()
 
     print(recipe.steps[0])
-

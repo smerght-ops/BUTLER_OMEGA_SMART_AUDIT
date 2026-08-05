@@ -245,10 +245,10 @@ def text_to_pdf(text, target):
             if Path(search_path).exists():
                 font_path = search_path
                 break
-        
+
         canvas=Canvas(str(tmp), pagesize=A4)
         width,height=A4; y=height-50; pages=1
-        
+
         # Use Helvetica with encoding that supports Cyrillic if available, otherwise use default
         try:
             if font_path and Path(font_path).exists():
@@ -258,7 +258,7 @@ def text_to_pdf(text, target):
                 current_font = 'Helvetica'
         except Exception:
             current_font = 'Helvetica'
-        
+
         for paragraph in (text.splitlines() or [""]):
             words=paragraph.split(); line=""
             lines=[]
@@ -281,30 +281,30 @@ def text_to_pdf(text, target):
 def convert_docx_to_pdf(source, target):
     """
     Конвертирует DOCX файл в PDF с использованием LibreOffice headless mode.
-    
+
     Args:
         source: Путь к входному DOCX файлу
         target: Путь к выходному PDF файлу (должен иметь .pdf расширение)
-    
+
     Returns:
         dict: Метаданные операции
-    
+
     Raises:
         PDFOperationError: Если конвертация не удалась
     """
     import subprocess
     import sys
     from pathlib import Path
-    
+
     source = _absolute(source)
     if not source.exists():
         raise PDFOperationError("PDF_SOURCE_NOT_FOUND", f"DOCX файл не найден: {source}")
     if source.suffix.lower() != ".docx":
         raise PDFOperationError("PDF_INVALID_DOCUMENT", f"Ожидался файл .docx: {source}")
-    
+
     target = _target(target, suffix=".pdf")
     target.parent.mkdir(parents=True, exist_ok=True)
-    
+
     try:
         result = subprocess.run(
             [
@@ -317,18 +317,18 @@ def convert_docx_to_pdf(source, target):
             capture_output=True,
             timeout=120
         )
-        
+
         if result.returncode != 0:
             error_msg = result.stderr.decode("utf-8", errors="ignore") or result.stdout.decode("utf-8", errors="ignore")
             raise PDFOperationError("PDF_CONVERSION_FAILED", f"LibreOffice вернул ошибку {result.returncode}: {error_msg}")
-        
+
         expected_pdf = target.parent / (source.stem + ".pdf")
         if not expected_pdf.exists():
             raise PDFOperationError("PDF_CONVERSION_FAILED", "LibreOffice не создал ожидаемый PDF файл.")
-        
+
         os.replace(str(expected_pdf), str(target))
         _reader(target)
-        
+
         return {
             "operation": "convert_docx_to_pdf",
             "source_path": str(source),

@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 RealityDiscovery — по запросу собирает все доказательства существования capability.
 Использует все артефакты и выдает структурированный ответ.
@@ -152,4 +152,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

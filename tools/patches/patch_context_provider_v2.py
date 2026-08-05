@@ -1,4 +1,4 @@
-﻿from pathlib import Path
+from pathlib import Path
 
 p=Path(r"A_02_MANAGERS\ArchitectAgent\context_provider.py")
 

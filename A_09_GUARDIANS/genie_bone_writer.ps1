@@ -1,4 +1,4 @@
-﻿Write-Host ""
+Write-Host ""
 Write-Host "========== GENIE BONE WRITER ==========" -ForegroundColor Cyan
 Write-Host ""
 

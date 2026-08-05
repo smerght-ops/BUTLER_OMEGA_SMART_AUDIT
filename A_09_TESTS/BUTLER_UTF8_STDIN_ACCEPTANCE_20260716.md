@@ -1,7 +1,7 @@
 # BUTLER UTF-8 STDIN ACCEPTANCE
 
-Дата: 16.07.2026  
-Рабочий каталог: `C:\Users\KOS\Desktop\Butler_Agent\BUTLER_OMEGA_SMART`  
+Дата: 16.07.2026
+Рабочий каталог: `C:\Users\KOS\Desktop\Butler_Agent\BUTLER_OMEGA_SMART`
 Выбранный способ: **A — cmd.exe и UTF-8-файл без BOM**
 
 ## Observation

@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 Stage 11.2
@@ -62,4 +62,3 @@ if __name__ == "__main__":
     print(ImageSession.update("на море"))
     print(ImageSession.update("под водопадом"))
     print(ImageSession.current())
-

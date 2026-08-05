@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 Inspector 5 — Link Map v1.0
 READ ONLY. Объединяет факты из предыдущих инспекторов в нормализованный список связей.

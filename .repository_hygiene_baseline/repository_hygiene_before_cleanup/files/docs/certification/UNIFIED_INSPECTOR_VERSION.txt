@@ -1,0 +1,41 @@
+﻿BUTLER UNIFIED INSPECTOR
+
+VERSION : 1.0
+STATUS  : FINAL
+
+ACCEPTANCE:
+OK
+
+FACTS SOURCE:
+UnifiedInspectorFacts.json
+
+VERIFIED:
+FILES          : 501
+ERRORS         : 0
+
+CLASSES        : 301
+FUNCTIONS      : 302
+VARIABLES      : 2046
+
+IMPORTS        : 1528
+REGISTRATIONS  : 20
+CALLS          : 10428
+
+ARCHITECTURE:
+READ ONLY FACT COLLECTOR
+
+ROLE:
+Provide measured project facts
+for LLM analysis and human review.
+
+NO:
+- reasoning layer
+- assumptions
+- automatic conclusions
+
+YES:
+- files
+- entities
+- dependencies
+- calls
+- registrations

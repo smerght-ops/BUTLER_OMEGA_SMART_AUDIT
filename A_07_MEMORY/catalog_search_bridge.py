@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 from pathlib import Path
 
@@ -119,4 +119,3 @@ class CatalogSearchBridge:
             "results": packed,
             "error": None
         }
-

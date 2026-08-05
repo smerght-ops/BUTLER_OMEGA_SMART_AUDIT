@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 Stage 6.9
@@ -57,4 +57,3 @@ ExecutorFactory.register(PowerShellExecutionAdapter)
 if __name__ == "__main__":
 
     print("ADAPTERS:", ExecutorFactory.names())
-

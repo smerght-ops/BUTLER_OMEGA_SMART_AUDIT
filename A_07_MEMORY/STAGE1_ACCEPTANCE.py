@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 from A_07_MEMORY.semantic_query_parser import SemanticQueryParser
 from A_07_MEMORY.semantic_core import SemanticCore

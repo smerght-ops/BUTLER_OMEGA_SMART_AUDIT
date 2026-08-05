@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 from A_03_ORCHESTRATION.professor_adapter import ProfessorAdapter
 from A_02_MANAGERS.queue_manager import QueueManager
@@ -22,7 +22,7 @@ class Worker:
     def __init__(self):
         self.queue_manager = QueueManager()
         self.dispatcher = ProfessorAdapter()
-        
+
         # Подключаем стабильную шину Harness V3
         self.harness = ButlerHarness()
 
@@ -67,8 +67,8 @@ class Worker:
             def run_agent_pipeline():
                 return self.dispatcher.process_agent_task(filepath, target_agent)
 
-            # Извлекаем привязанную CR-заявку или откатываемся на дефолтную
-            cr_file = task.get('cr_name', 'CR_000_TEST.json')
+            # Change Request must be supplied explicitly by the task producer.
+            cr_file = task.get('cr_name')
 
             # Прогоняем задачу через полный сквозной контур Guards
             harness_result = self.harness.execute(
@@ -91,5 +91,3 @@ class Worker:
             return False
 
         return True
-
-

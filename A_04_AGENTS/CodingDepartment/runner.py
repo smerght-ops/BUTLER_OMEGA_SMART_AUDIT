@@ -197,4 +197,3 @@ class CodingDepartment(BaseDepartment):
             "error": str(error),
             "metadata": result_metadata,
         }
-

@@ -1,4 +1,4 @@
-﻿# GENIE RESTORE ADVISOR v1.0
+# GENIE RESTORE ADVISOR v1.0
 # Показывает, ЧТО пропало и ОТКУДА восстанавливать
 
 $BASELINE = "C:\Users\KOS\Desktop\Butler_Agent\BUTLER_OMEGA_SMART\A_00_HISTORY\ROLLBACK_POINTS\STABLE_BUTLER_4_22_GREEN_START_20260625_131707\smart_dispatcher_v2.py"

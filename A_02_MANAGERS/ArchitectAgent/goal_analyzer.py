@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 class GoalAnalyzer:
     """
@@ -94,5 +94,3 @@ if __name__ == "__main__":
     pprint.pp(result)
 
     print("=" * 70)
-
-

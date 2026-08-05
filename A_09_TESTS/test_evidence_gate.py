@@ -66,7 +66,7 @@ def _error_obs() -> dict:
 
 def test_structure_only_content_query():
     """Query asks for file contents but only structure evidence is collected.
-    
+
     Expected: evidence_sufficient() == False → completion blocked.
     """
     tracker = EvidenceTracker()
@@ -88,7 +88,7 @@ def test_structure_only_content_query():
 
 def test_mixed_directory_requires_content():
     """Mixed directory (txt, xlsx, png) with a query asking for analysis.
-    
+
     Expected: without reading any file → insufficient; after reading one → sufficient.
     """
     tracker = EvidenceTracker()
@@ -117,7 +117,7 @@ def test_mixed_directory_requires_content():
 
 def test_placeholder_never_success():
     """A query requiring content analysis with only placeholder/empty observations.
-    
+
     Expected: insufficient regardless of observation count if no real content.
     """
     tracker = EvidenceTracker()
@@ -146,7 +146,7 @@ def test_placeholder_never_success():
 def test_filename_inference_not_content():
     """A query that could be answered from filenames alone should NOT be
     accepted as sufficient when the user asked for content analysis.
-    
+
     Expected: structure evidence (filenames) is insufficient for content queries.
     """
     tracker = EvidenceTracker()
@@ -171,7 +171,7 @@ def test_filename_inference_not_content():
 
 def test_unsupported_content():
     """When the query requires content but all reads fail or return unsupported format.
-    
+
     Expected: evidence_sufficient() == False → completion blocked, loop continues.
     """
     tracker = EvidenceTracker()
@@ -200,7 +200,7 @@ def test_unsupported_content():
 def test_representative_content():
     """When a directory contains supported documents and the query asks for analysis,
     reading at least one representative file should be sufficient.
-    
+
     Expected: after reading one file → evidence_sufficient() == True.
     """
     tracker = EvidenceTracker()
@@ -227,7 +227,7 @@ def test_representative_content():
 def test_multimodal_scope():
     """A structure-only query (list files) should NOT require vision.
     A query about images SHOULD require content/vision evidence.
-    
+
     Expected: different classification based on query intent.
     """
     # Structure-only query — no vision needed
@@ -259,7 +259,7 @@ def test_multimodal_scope():
 def test_reasoning_continuation():
     """After receiving only a directory listing, the evidence gate must force
     the reasoning loop to continue until content evidence is collected.
-    
+
     Expected: evidence_sufficient() == False after structure → True after content read.
     """
     tracker = EvidenceTracker()

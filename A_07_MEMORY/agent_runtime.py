@@ -56,7 +56,7 @@ class LoopOrchestratorV3_MASTER_TRUTH:
         self.max_error_streak = 3
         self.last_task = None
         self.last_hash = None
-        
+
         self.CORE_FILES = [
             "A_07_MEMORY/agent_planner.py",
             "A_07_MEMORY/memory_facade.py",
@@ -176,7 +176,7 @@ class LoopOrchestratorV3_MASTER_TRUTH:
 
             if task_completed:
                 self.goal_engine.run()
-                
+
             time.sleep(0.5)
 
         print("\n=== DETERMINISTIC RUNTIME TERMINATED ===")

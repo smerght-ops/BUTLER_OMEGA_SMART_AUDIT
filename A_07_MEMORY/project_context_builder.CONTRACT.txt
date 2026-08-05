@@ -1,4 +1,4 @@
-﻿# PROJECT CONTEXT BUILDER CONTRACT
+# PROJECT CONTEXT BUILDER CONTRACT
 
 class ProjectContextBuilder:
 
@@ -16,4 +16,3 @@ class ProjectContextBuilder:
 
     def build_context(self):
         pass
-

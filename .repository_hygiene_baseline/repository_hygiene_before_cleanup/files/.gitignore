@@ -1,0 +1,411 @@
+﻿# ===================================================
+# BUTLER OMEGA SMART - EXTENDED GITIGNORE POLICY
+# ===================================================
+
+# ---------- Migration & Local Backups ----------
+BACKUP_*/
+*.bak
+*.bak_*
+*.before_*
+*.reserve_*
+*.orig
+*.tmp
+*.temp
+*.CURED_BAK
+
+# ---------- Historical Project Trees ----------
+A_00_LEGACY_ARCHIVE/
+A_00_RESTORE/
+A_00_QUARANTINE/
+A_00_RELEASES/
+
+# ---------- Large Local Audit Exports ----------
+AI_ARCHITECTURE_AUDIT_*/
+AUDIT/
+AUDIT_PACKS/
+E2E_TEST_AUDIT_*/
+
+# ---------- Local Laboratory ----------
+_AGENT_CORE_LAB/
+
+# ---------- Local Inspector Cache ----------
+INSPECTOR_KNOWLEDGE/
+
+# ---------- Python Runtime & Caches ----------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.pytest_cache_local/
+.pytest_tmp/
+.pytest_runtime_cache/
+.pytest_runtime_tmp/
+.mypy_cache/
+
+# ---------- Virtual Environments ----------
+.venv/
+venv/
+env/
+
+# ---------- Editors & Local IDE Settings ----------
+.vscode/
+.idea/
+
+# ---------- Windows System Artifacts ----------
+Thumbs.db
+Desktop.ini
+nul
+
+# ---------- Local System Markers ----------
+.architect_knowledge_final_snapshot_path
+.architect_knowledge_snapshot_path
+.butler_python_path
+.discovery_v31_snapshot_path
+.full_knowledge_vertical_snapshot_path
+
+# ---------- Local Service Folders ----------
+.kilo/
+.agents/
+.codex/
+
+# ---------- Historical repositories ----------
+A_00_LEGACY_ARCHIVE/
+A_00_RESTORE/
+A_00_QUARANTINE/
+A_00_RELEASES/
+
+# ---------- Audit exports ----------
+AI_ARCHITECTURE_AUDIT_*/
+AUDIT/
+AUDIT_PACKS/
+E2E_TEST_AUDIT_*/
+
+# ---------- Local laboratories ----------
+_AGENT_CORE_LAB/
+INSPECTOR_KNOWLEDGE/
+
+# ---------- Workspace generated content ----------
+A_06_WORKSPACE/AUDITS/
+A_06_WORKSPACE/ARCHIVE_DONE/
+A_06_WORKSPACE/EXTERNAL_AUDIT/
+A_06_WORKSPACE/GENERATED_IMAGES/
+A_06_WORKSPACE/OLYMPICS*/
+A_06_WORKSPACE/PDF_ACCEPTANCE*/
+A_06_WORKSPACE/STAGE4_OUTPUT/
+A_06_WORKSPACE/TRANSPORT_OUT/
+A_06_WORKSPACE/TRANSPORT_RESEARCH/
+A_06_WORKSPACE/exports/
+A_06_WORKSPACE/reports/
+
+# ---------- Runtime logs ----------
+A_08_LOGS/*.log
+A_08_LOGS/*.jsonl
+A_08_LOGS/execution_log_*.json
+A_08_LOGS/*.zip
+
+
+# ---------- Backup / history files ----------
+*.bak
+*.bak_*
+*.broken*
+*.LEGACY*
+*.POINT_BAK*
+*.step*_backup*
+*.FIX*_BACKUP*
+*.FINAL_BACKUP*
+*.AUDIO_WHISPER_BACKUP*
+*.orig
+
+# ---------- Runtime temporary files ----------
+audit.log
+temp_test.py
+
+
+# ---------- Runtime logs and audit outputs ----------
+A_08_LOGS/
+
+
+# =====================================================
+# ACTIVE REPOSITORY POLICY
+# =====================================================
+
+# ---------- Runtime workspace ----------
+A_06_WORKSPACE/**
+!A_06_WORKSPACE/.gitkeep
+!A_06_WORKSPACE/README*
+
+# ---------- Runtime logs ----------
+A_08_LOGS/**
+*.log
+*.jsonl
+
+# ---------- Runtime databases ----------
+*.db
+*.sqlite
+*.sqlite3
+
+# ---------- Runtime memory ----------
+A_07_MEMORY/SESSION/**
+A_07_MEMORY/test_sessions/**
+A_07_MEMORY/*.db
+A_07_MEMORY/*.sqlite
+A_07_MEMORY/*.sqlite3
+
+# ---------- Generated exports ----------
+**/exports/**
+**/reports/**
+**/incoming/**
+**/queue/**
+**/queues/**
+**/completed/**
+
+# ---------- Generated media ----------
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.webp
+*.mp3
+*.wav
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.zip
+
+# ---------- Office documents ----------
+*.docx
+*.xlsx
+*.pptx
+*.pdf
+
+# ---------- Secrets ----------
+.env
+*.env
+*.key
+*secret*
+*_api_key*
+A_07_CONFIG/Secrets/
+
+
+# =====================================================
+# ACTIVE REPOSITORY POLICY (RUNTIME DATA)
+# =====================================================
+
+# ---------- Secrets ----------
+A_07_CONFIG/Secrets/
+*.key
+*.pem
+*.pfx
+*.p12
+.env
+*.env
+
+# ---------- Runtime databases ----------
+*.db
+*.sqlite
+*.sqlite3
+
+# ---------- Runtime storage ----------
+A_05_STORAGE/tasks/
+A_05_STORAGE/session_history.jsonl
+A_05_STORAGE/user_profile.json
+A_05_STORAGE/home_assistant.json
+
+# ---------- Runtime sessions ----------
+A_07_MEMORY/SESSION/
+
+# ---------- Workspace ----------
+A_06_WORKSPACE/**
+
+!A_06_WORKSPACE/.gitkeep
+!A_06_WORKSPACE/README*
+
+# ---------- Test reports ----------
+A_09_TESTS/reports/
+A_99_TESTS/reports/
+
+# ---------- Tracked production cleanup isolation ----------
+!A_00_LEGACY_ARCHIVE/
+A_00_LEGACY_ARCHIVE/*
+!A_00_LEGACY_ARCHIVE/production_cleanup_tz4/
+!A_00_LEGACY_ARCHIVE/production_cleanup_tz4/**
+
+# ---------- Generated artifacts ----------
+**/benchmark/**
+**/incoming/**
+**/queue/**
+**/completed/**
+**/exports/**
+**/reports/**
+
+# ---------- Office / media ----------
+*.docx
+*.xlsx
+*.pptx
+*.pdf
+
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.webp
+
+*.wav
+*.mp3
+*.mp4
+*.avi
+*.mov
+*.mkv
+
+*.zip
+
+# ---------- Runtime logs ----------
+*.log
+*.jsonl
+
+
+# =====================================================
+# ACTIVE REPOSITORY POLICY
+# =====================================================
+
+# ---------- Secrets ----------
+A_07_CONFIG/Secrets/
+
+*.key
+*.pem
+*.pfx
+*.p12
+.env
+*.env
+
+# ---------- Runtime databases ----------
+*.db
+*.sqlite
+*.sqlite3
+
+# ---------- Runtime storage ----------
+A_05_STORAGE/tasks/
+A_05_STORAGE/session_history.jsonl
+A_05_STORAGE/user_profile.json
+A_05_STORAGE/home_assistant.json
+
+# ---------- Runtime sessions ----------
+A_07_MEMORY/SESSION/
+
+# ---------- Workspace ----------
+A_06_WORKSPACE/**
+
+!A_06_WORKSPACE/.gitkeep
+!A_06_WORKSPACE/README*
+
+# ---------- Test reports ----------
+A_09_TESTS/reports/
+A_99_TESTS/reports/
+
+# ---------- Generated artifacts ----------
+**/benchmark/**
+**/incoming/**
+**/queue/**
+**/completed/**
+**/exports/**
+**/reports/**
+
+# ---------- Office documents ----------
+*.docx
+*.xlsx
+*.pptx
+*.pdf
+
+# ---------- Images ----------
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.webp
+
+# ---------- Audio / Video ----------
+*.wav
+*.mp3
+*.mp4
+*.avi
+*.mov
+*.mkv
+
+# ---------- Archives ----------
+*.zip
+
+# ---------- Logs ----------
+*.log
+*.jsonl
+
+
+# ---------- Runtime reports ----------
+A_08_LOGS/project_report.txt
+
+
+# =====================================================
+# Runtime artifacts
+# =====================================================
+
+**/__pycache__/
+*.py[cod]
+
+# Python
+*.pyo
+*.pyd
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+*.log
+*.jsonl
+
+# Runtime reports
+A_08_LOGS/project_report.txt
+A_08_LOGS/execution_log_*.json
+
+# Generated archives
+*.zip
+
+# Audio generated during tests
+*.wav
+
+
+# ----- Legacy / laboratory -----
+tools/archive/
+tools/lab/
+tools/inspectors_legacy/
+
+# ----- Temporary backups -----
+*.bak
+*.bak2
+*.bak3
+*.bak4
+
+# ----- Python cache -----
+__pycache__/
+*.pyc
+
+# ----- Local databases -----
+*.db
+
+
+# ---------- Temporary reports ----------
+A_05_STORAGE/REPORT_*
+A_05_STORAGE/test_leak.txt
+A_08_LOGS/project_report.txt
+
+# ---------- Test runtime artifacts ----------
+A_09_TESTS/*stdout.txt
+A_09_TESTS/*stderr.txt
+A_09_TESTS/*input.txt
+A_09_TESTS/*output.txt
+

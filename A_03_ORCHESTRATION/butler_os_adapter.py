@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 from A_07_MEMORY import profile_manager
 from A_07_CONFIG.project_passport_loader import ProjectPassportLoader
@@ -97,4 +97,3 @@ NEXT TASK:
             "episodes": self.episodes_summary(),
             "passport": self.passport_summary()
         }
-

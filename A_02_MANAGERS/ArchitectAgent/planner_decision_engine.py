@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 from .goal_analyzer import GoalAnalyzer
 from .dependency_analyzer import DependencyAnalyzer

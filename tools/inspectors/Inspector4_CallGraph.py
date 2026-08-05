@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 Inspector 4 — Call Graph v1.0
 READ ONLY. Собирает все вызовы функций и методов в .py-файлах (через AST).

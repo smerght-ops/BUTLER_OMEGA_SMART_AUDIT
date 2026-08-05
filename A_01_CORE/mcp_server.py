@@ -43,7 +43,7 @@ class ButlerMcpServer:
 
         elif method == "tools/call":
             tool_name = params.get("name")
-            
+
             if tool_name == "search_documents":
                 query = params.get("arguments", {}).get("query", "")
                 rows = self.catalog.full_text_search(query)

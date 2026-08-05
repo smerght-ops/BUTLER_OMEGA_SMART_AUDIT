@@ -1,4 +1,4 @@
-﻿from pathlib import Path
+from pathlib import Path
 
 # --- patch PlannerEngine ---
 p=Path(r"A_02_MANAGERS\Planner\planner_engine.py")

@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 ButlerCapabilityAggregator — выделяет высокоуровневые возможности из графа зависимостей.
 Использует DependencyModel для кластеризации сущностей по связям.

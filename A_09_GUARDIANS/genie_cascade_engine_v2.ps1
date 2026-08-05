@@ -1,4 +1,4 @@
-﻿Write-Host ""
+Write-Host ""
 Write-Host "========== GENIE CASCADE ENGINE v2 ==========" -ForegroundColor Cyan
 Write-Host ""
 

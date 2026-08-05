@@ -35,17 +35,17 @@ class OpenDocumentDepartment(BaseDepartment):
 
         if any(archive in q for archive in (".zip", ".tar", ".tgz", ".gz", " zip", " tar", " tgz")):
             return False
-        
+
         # Системные стоп-слова для защиты департамента памяти
         if any(ignored in q for ignored in ["наблюдения", "бюджет сессии", "контекстный бюджет", "лог"]):
             return False
-            
+
         has_trigger = any(t in q for t in self.TRIGGERS)
         has_reference = any(r in q for r in ["перв", "втор", "трет", "четвер", "пят", "последн", "тот", "этот", "текущ"])
-        
+
         # Обязательный маркер работы с физическими файлами
         has_file_marker = any(m in q for m in ["документ", "файл", "отчет", "справка", "реестр", "картинка", "изображение", "лог", ".txt", ".xlsx", ".pdf", ".jpg", ".png", ".webp"])
-        
+
         return has_trigger and (has_reference or has_file_marker)
 
     def execute(self, query: str, context: dict = None, **kwargs) -> dict:
@@ -113,7 +113,7 @@ class OpenDocumentDepartment(BaseDepartment):
             )
 
         reason = resolved.get("reason", "INVALID_RESOLVER_RESULT")
-        
+
         if not resolved["ok"]:
             if reason == ReferenceResolver.ERR_EMPTY_CONTEXT:
                 text_reply = "Контекст сессии пуст. Пожалуйста, сначала выполните поиск файлов."
@@ -121,11 +121,11 @@ class OpenDocumentDepartment(BaseDepartment):
                 text_reply = "Запрошенный индекс файла отсутствует в результатах последнего поиска."
             else:
                 text_reply = "Не удалось распознать, какой именно файл требуется открыть."
-                
+
             return self._error_result(start_time, reason, text_reply)
 
         doc = resolved["document"]
-        
+
         if not isinstance(doc, dict):
             return self._error_result(
                 start_time, "INVALID_DOCUMENT",
@@ -237,4 +237,3 @@ class OpenDocumentDepartment(BaseDepartment):
             "error": str(error),
             "metadata": result_metadata,
         }
-

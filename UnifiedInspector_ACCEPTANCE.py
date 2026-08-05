@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 Unified Inspector Acceptance Test v1.0
 READ ONLY.

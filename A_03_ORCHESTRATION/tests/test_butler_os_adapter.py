@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 from A_03_ORCHESTRATION.butler_os_adapter import ButlerOSAdapter
 

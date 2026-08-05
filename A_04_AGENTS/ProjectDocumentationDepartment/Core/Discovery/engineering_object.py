@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 class EngineeringObject:
     """
@@ -32,4 +32,3 @@ class EngineeringObject:
         self.first_seen = None
 
         self.last_seen = None
-

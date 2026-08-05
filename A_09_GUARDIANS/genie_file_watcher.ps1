@@ -1,4 +1,4 @@
-﻿Write-Host ""
+Write-Host ""
 Write-Host "========== GENIE FILE WATCHER ==========" -ForegroundColor Cyan
 Write-Host ""
 

@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 import os
 import time
 import shutil
@@ -11,7 +11,7 @@ class ComfyUIBridge:
         self.comfy_url = f"http://{server_address}/prompt"
         self.output_dir = Path(r"D:\AI_Studio\ComfyUI_windows_portable\ComfyUI\output")
         self.desktop_output = Path(r"C:\Users\KOS\Desktop\BUTLER_OUTPUT")
-        
+
         # Гарантируем создание папки на рабочем столе
         self.desktop_output.mkdir(parents=True, exist_ok=True)
 
@@ -99,7 +99,7 @@ class ComfyUIBridge:
             print("[*] Отправка стабильной XL-матрицы в рантайм ComfyUI...")
             response = requests.post(self.comfy_url, json={"prompt": workflow}, timeout=30)
             response.raise_for_status()
-            
+
             prompt_id = response.json().get("prompt_id")
             print(f"[✓] Задача в очереди ComfyUI. ID: {prompt_id}")
             print("[*] Ожидание рендера на RTX 3090 Ti...")
@@ -109,7 +109,7 @@ class ComfyUIBridge:
                 time.sleep(1)
                 if not self.output_dir.exists():
                     continue
-                    
+
                 files_after = set(os.listdir(self.output_dir))
                 new_files = files_after - files_before
 
@@ -121,11 +121,11 @@ class ComfyUIBridge:
                         # Копируем на рабочий стол
                         shutil.copy2(src, dst)
                         print(f"[OK] Генерация успешна! Файл скопирован: {dst}")
-                        
+
                         # Автооткрытие картинки в Windows
                         os.startfile(str(dst))
                         return True
-            
+
             print("[-] Ошибка: Превышено время ожидания рендера.")
             return False
 

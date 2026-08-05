@@ -124,4 +124,3 @@ print("CALL GRAPH READY")
 print("=" * 70)
 print("Evidence :", len(records))
 print("Output   :", OUT_FILE)
-

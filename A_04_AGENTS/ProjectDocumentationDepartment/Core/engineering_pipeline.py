@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 from pathlib import Path
 import sys
@@ -92,7 +92,3 @@ class EngineeringPipeline:
         catalog = ConflictResolution().resolve(catalog)
 
         return EvidenceConsolidation().consolidate(catalog, priority)
-
-
-
-

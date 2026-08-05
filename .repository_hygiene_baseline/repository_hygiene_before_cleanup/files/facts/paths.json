@@ -1,0 +1,3441 @@
+﻿{
+  "generated": "2026-07-06T18:31:10",
+  "count": 687,
+  "records": [
+    {
+      "type": "path_div",
+      "file": "ask_gemini_next_step.py",
+      "line": 37
+    },
+    {
+      "type": "path_div",
+      "file": "before_any_change.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "before_any_change.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "before_any_change.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "before_any_change.py",
+      "line": 24
+    },
+    {
+      "type": "path_div",
+      "file": "before_any_change.py",
+      "line": 28
+    },
+    {
+      "type": "path_div",
+      "file": "before_any_change.py",
+      "line": 43
+    },
+    {
+      "type": "path_div",
+      "file": "before_any_change.py",
+      "line": 43
+    },
+    {
+      "type": "path_div",
+      "file": "build_project_audit_pack.py",
+      "line": 5
+    },
+    {
+      "type": "path_div",
+      "file": "build_project_audit_pack.py",
+      "line": 69
+    },
+    {
+      "type": "path_div",
+      "file": "build_project_audit_pack.py",
+      "line": 69
+    },
+    {
+      "type": "path_div",
+      "file": "butler_capability_audit.py",
+      "line": 7
+    },
+    {
+      "type": "path_div",
+      "file": "butler_capability_audit.py",
+      "line": 7
+    },
+    {
+      "type": "path_div",
+      "file": "cleanup_rollback_points.py",
+      "line": 5
+    },
+    {
+      "type": "path_div",
+      "file": "cleanup_rollback_points.py",
+      "line": 5
+    },
+    {
+      "type": "path_div",
+      "file": "create_snapshot.py",
+      "line": 11
+    },
+    {
+      "type": "path_div",
+      "file": "create_snapshot.py",
+      "line": 12
+    },
+    {
+      "type": "path_div",
+      "file": "create_snapshot.py",
+      "line": 34
+    },
+    {
+      "type": "path_div",
+      "file": "create_snapshot.py",
+      "line": 46
+    },
+    {
+      "type": "path_div",
+      "file": "create_snapshot.py",
+      "line": 48
+    },
+    {
+      "type": "path_div",
+      "file": "create_snapshot.py",
+      "line": 56
+    },
+    {
+      "type": "path_div",
+      "file": "FIX_QUEUE.py",
+      "line": 9
+    },
+    {
+      "type": "path_div",
+      "file": "FIX_QUEUE.py",
+      "line": 9
+    },
+    {
+      "type": "path_div",
+      "file": "FIX_QUEUE.py",
+      "line": 31
+    },
+    {
+      "type": "path_div",
+      "file": "FIX_QUEUE.py",
+      "line": 31
+    },
+    {
+      "type": "path_div",
+      "file": "INIT_OMEGA.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "INIT_OMEGA.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "INIT_OMEGA.py",
+      "line": 11
+    },
+    {
+      "type": "path_div",
+      "file": "restore_everything.py",
+      "line": 6
+    },
+    {
+      "type": "path_div",
+      "file": "restore_everything.py",
+      "line": 7
+    },
+    {
+      "type": "path_div",
+      "file": "restore_everything.py",
+      "line": 32
+    },
+    {
+      "type": "path_div",
+      "file": "restore_everything.py",
+      "line": 33
+    },
+    {
+      "type": "path_div",
+      "file": "restore_full_project.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "restore_full_project.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "restore_full_project.py",
+      "line": 34
+    },
+    {
+      "type": "path_div",
+      "file": "restore_full_project.py",
+      "line": 67
+    },
+    {
+      "type": "path_div",
+      "file": "restore_full_project.py",
+      "line": 75
+    },
+    {
+      "type": "path_div",
+      "file": "restore_full_project.py",
+      "line": 75
+    },
+    {
+      "type": "path_div",
+      "file": "restore_full_project.py",
+      "line": 75
+    },
+    {
+      "type": "path_div",
+      "file": "restore_full_project.py",
+      "line": 79
+    },
+    {
+      "type": "path_div",
+      "file": "restore_full_project.py",
+      "line": 80
+    },
+    {
+      "type": "path_div",
+      "file": "restore_full_project.py",
+      "line": 83
+    },
+    {
+      "type": "path_div",
+      "file": "restore_snapshot.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "restore_snapshot.py",
+      "line": 9
+    },
+    {
+      "type": "path_div",
+      "file": "restore_snapshot.py",
+      "line": 37
+    },
+    {
+      "type": "path_div",
+      "file": "restore_snapshot.py",
+      "line": 48
+    },
+    {
+      "type": "path_div",
+      "file": "restore_snapshot.py",
+      "line": 49
+    },
+    {
+      "type": "path_div",
+      "file": "run_audit_v2.py",
+      "line": 9
+    },
+    {
+      "type": "path_div",
+      "file": "run_audit_v2.py",
+      "line": 24
+    },
+    {
+      "type": "path_div",
+      "file": "run_audit_v2.py",
+      "line": 25
+    },
+    {
+      "type": "path_div",
+      "file": "run_audit_v2.py",
+      "line": 82
+    },
+    {
+      "type": "path_div",
+      "file": "safe_change.py",
+      "line": 7
+    },
+    {
+      "type": "path_div",
+      "file": "safe_change.py",
+      "line": 7
+    },
+    {
+      "type": "path_div",
+      "file": "safe_change.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "safe_change.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "safe_change.py",
+      "line": 26
+    },
+    {
+      "type": "path_div",
+      "file": "safe_change.py",
+      "line": 26
+    },
+    {
+      "type": "path_div",
+      "file": "split_project_pack.py",
+      "line": 4
+    },
+    {
+      "type": "path_div",
+      "file": "split_project_pack.py",
+      "line": 5
+    },
+    {
+      "type": "path_div",
+      "file": "split_project_pack.py",
+      "line": 55
+    },
+    {
+      "type": "os.path.join",
+      "file": "split_project_pack.py",
+      "line": 58
+    },
+    {
+      "type": "path_div",
+      "file": "split_project_pack.py",
+      "line": 76
+    },
+    {
+      "type": "os.path.join",
+      "file": "split_project_pack.py",
+      "line": 79
+    },
+    {
+      "type": "path_div",
+      "file": "START_SAFE_LAUNCH.py",
+      "line": 7
+    },
+    {
+      "type": "path_div",
+      "file": "START_SAFE_LAUNCH.py",
+      "line": 7
+    },
+    {
+      "type": "path_div",
+      "file": "START_SAFE_LAUNCH.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "START_SAFE_LAUNCH.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "START_SAFE_LAUNCH.py",
+      "line": 9
+    },
+    {
+      "type": "path_div",
+      "file": "START_SAFE_LAUNCH.py",
+      "line": 9
+    },
+    {
+      "type": "path_div",
+      "file": "system_doctor.py",
+      "line": 10
+    },
+    {
+      "type": "path_div",
+      "file": "system_doctor.py",
+      "line": 10
+    },
+    {
+      "type": "path_div",
+      "file": "system_doctor.py",
+      "line": 11
+    },
+    {
+      "type": "path_div",
+      "file": "system_doctor.py",
+      "line": 14
+    },
+    {
+      "type": "path_div",
+      "file": "system_doctor.py",
+      "line": 15
+    },
+    {
+      "type": "path_div",
+      "file": "system_doctor.py",
+      "line": 16
+    },
+    {
+      "type": "path_div",
+      "file": "system_doctor.py",
+      "line": 17
+    },
+    {
+      "type": "path_div",
+      "file": "system_doctor.py",
+      "line": 18
+    },
+    {
+      "type": "path_div",
+      "file": "verify_project.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "verify_project.py",
+      "line": 11
+    },
+    {
+      "type": "path_div",
+      "file": "verify_project.py",
+      "line": 12
+    },
+    {
+      "type": "os.path.join",
+      "file": "verify_project.py",
+      "line": 92
+    },
+    {
+      "type": "path_div",
+      "file": "AUDIT/local_project_audit.py",
+      "line": 13
+    },
+    {
+      "type": "path_div",
+      "file": "AUDIT/local_project_audit.py",
+      "line": 13
+    },
+    {
+      "type": "path_div",
+      "file": "AUDIT/local_project_audit.py",
+      "line": 30
+    },
+    {
+      "type": "os.path.join",
+      "file": "AUDIT/local_project_audit.py",
+      "line": 35
+    },
+    {
+      "type": "path_div",
+      "file": "AUDIT/local_project_audit.py",
+      "line": 60
+    },
+    {
+      "type": "path_div",
+      "file": "AUDIT/local_project_audit.py",
+      "line": 60
+    },
+    {
+      "type": "path_div",
+      "file": "AUDIT/local_project_audit.py",
+      "line": 80
+    },
+    {
+      "type": "path_div",
+      "file": "AUDIT/local_project_audit.py",
+      "line": 140
+    },
+    {
+      "type": "path_div",
+      "file": "AUDIT/local_project_audit.py",
+      "line": 174
+    },
+    {
+      "type": "path_div",
+      "file": "AUDIT/local_project_audit.py",
+      "line": 174
+    },
+    {
+      "type": "path_div",
+      "file": "AUDIT/local_project_audit.py",
+      "line": 188
+    },
+    {
+      "type": "path_div",
+      "file": "AUDIT/local_project_audit.py",
+      "line": 188
+    },
+    {
+      "type": "path_div",
+      "file": "AUDIT/local_project_audit.py",
+      "line": 190
+    },
+    {
+      "type": "path_div",
+      "file": "AUDIT/local_project_audit.py",
+      "line": 203
+    },
+    {
+      "type": "path_div",
+      "file": "AUDIT/local_project_audit.py",
+      "line": 203
+    },
+    {
+      "type": "path_div",
+      "file": "AUDIT/local_project_audit.py",
+      "line": 204
+    },
+    {
+      "type": "path_div",
+      "file": "AUDIT/local_project_audit.py",
+      "line": 204
+    },
+    {
+      "type": "path_div",
+      "file": "AUDIT/local_project_audit.py",
+      "line": 205
+    },
+    {
+      "type": "path_div",
+      "file": "AUDIT/local_project_audit.py",
+      "line": 205
+    },
+    {
+      "type": "os.path.join",
+      "file": "AUDIT/local_project_audit.py",
+      "line": 215
+    },
+    {
+      "type": "path_div",
+      "file": "AUDIT/local_project_audit.py",
+      "line": 239
+    },
+    {
+      "type": "path_div",
+      "file": "AUDIT/local_project_audit.py",
+      "line": 258
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/bootstrap_guard.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/bootstrap_guard.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/bootstrap_guard.py",
+      "line": 9
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/bootstrap_guard.py",
+      "line": 9
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_01_CORE/butler_drawer.py",
+      "line": 67
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/butler_ui.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/diagnostic_tool.py",
+      "line": 29
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/diagnostic_tool.py",
+      "line": 56
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/execution_loop.py",
+      "line": 7
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/execution_loop.py",
+      "line": 7
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/execution_loop.py",
+      "line": 7
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/execution_loop.py",
+      "line": 7
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/execution_loop.py",
+      "line": 7
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/execution_loop.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/execution_loop.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/execution_loop.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/execution_loop.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/execution_loop.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/execution_loop.py",
+      "line": 44
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/execution_loop.py",
+      "line": 44
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/execution_loop.py",
+      "line": 51
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/flow_monitor.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/flow_monitor.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/flow_monitor.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/flow_monitor.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/flow_monitor.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/flow_monitor.py",
+      "line": 9
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/flow_monitor.py",
+      "line": 9
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/flow_monitor.py",
+      "line": 9
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/flow_monitor.py",
+      "line": 9
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/flow_monitor.py",
+      "line": 9
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/flow_monitor.py",
+      "line": 10
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/flow_monitor.py",
+      "line": 10
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/flow_monitor.py",
+      "line": 10
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/flow_monitor.py",
+      "line": 10
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/flow_monitor.py",
+      "line": 10
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/healthcheck.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/healthcheck.py",
+      "line": 15
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/healthcheck.py",
+      "line": 22
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/healthcheck.py",
+      "line": 22
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/healthcheck.py",
+      "line": 32
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/healthcheck.py",
+      "line": 33
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/healthcheck.py",
+      "line": 34
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/logger_config.py",
+      "line": 6
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/logger_config.py",
+      "line": 23
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/logger_config.py",
+      "line": 28
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/manifest_loader.py",
+      "line": 11
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/manifest_loader.py",
+      "line": 11
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/memory_guardian.py",
+      "line": 12
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/memory_guardian.py",
+      "line": 14
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/memory_guardian.py",
+      "line": 15
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/memory_guardian.py",
+      "line": 16
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/memory_guardian.py",
+      "line": 17
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/memory_guardian.py",
+      "line": 18
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/memory_guardian.py",
+      "line": 18
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/memory_guardian.py",
+      "line": 145
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/project_indexer.py",
+      "line": 6
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/project_indexer.py",
+      "line": 6
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/project_indexer.py",
+      "line": 79
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/project_indexer.py",
+      "line": 108
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_01_CORE/project_indexer.py",
+      "line": 126
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_01_CORE/project_indexer.py",
+      "line": 128
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_01_CORE/project_indexer.py",
+      "line": 130
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/project_indexer.py",
+      "line": 134
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_01_CORE/project_indexer.py",
+      "line": 135
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/project_indexer.py",
+      "line": 140
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/project_indexer.py",
+      "line": 141
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/project_state_builder.py",
+      "line": 14
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/project_state_builder.py",
+      "line": 15
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/project_state_builder.py",
+      "line": 17
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/project_state_builder.py",
+      "line": 18
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/project_state_builder.py",
+      "line": 19
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/project_state_builder.py",
+      "line": 20
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/project_state_builder.py",
+      "line": 83
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/project_state_builder.py",
+      "line": 88
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/project_state_builder.py",
+      "line": 90
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/project_state_builder.py",
+      "line": 107
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/project_state_builder.py",
+      "line": 143
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/project_state_builder.py",
+      "line": 143
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/project_state_builder.py",
+      "line": 174
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/run.py",
+      "line": 27
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/safety_gate.py",
+      "line": 10
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/safety_gate.py",
+      "line": 12
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/safety_gate.py",
+      "line": 24
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/safety_gate.py",
+      "line": 35
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/safety_gate.py",
+      "line": 49
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/safety_gate.py",
+      "line": 63
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/safety_gate.py",
+      "line": 88
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/self_healing_loop.py",
+      "line": 13
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/self_healing_loop.py",
+      "line": 13
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/self_healing_loop.py",
+      "line": 14
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/self_healing_loop.py",
+      "line": 15
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/self_healing_loop.py",
+      "line": 40
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/self_healing_loop.py",
+      "line": 41
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/system_guardian.py",
+      "line": 34
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/system_guardian.py",
+      "line": 51
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/system_guardian.py",
+      "line": 52
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/system_guardian.py",
+      "line": 53
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/system_stabilizer.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/system_stabilizer.py",
+      "line": 63
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/task_feeder.py",
+      "line": 9
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/task_feeder.py",
+      "line": 9
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/task_feeder.py",
+      "line": 9
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/task_feeder.py",
+      "line": 9
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/task_feeder.py",
+      "line": 9
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/task_feeder.py",
+      "line": 10
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/task_feeder.py",
+      "line": 10
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/task_feeder.py",
+      "line": 10
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/task_feeder.py",
+      "line": 10
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/task_feeder.py",
+      "line": 10
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/task_feeder.py",
+      "line": 11
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/task_feeder.py",
+      "line": 11
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/task_feeder.py",
+      "line": 20
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE/task_feeder.py",
+      "line": 36
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_01_CORE_BACKUP/butler_drawer.py",
+      "line": 67
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE_BACKUP/diagnostic_tool.py",
+      "line": 29
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE_BACKUP/diagnostic_tool.py",
+      "line": 56
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE_BACKUP/healthcheck.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE_BACKUP/healthcheck.py",
+      "line": 15
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE_BACKUP/healthcheck.py",
+      "line": 22
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE_BACKUP/healthcheck.py",
+      "line": 22
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE_BACKUP/healthcheck.py",
+      "line": 32
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE_BACKUP/healthcheck.py",
+      "line": 33
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE_BACKUP/healthcheck.py",
+      "line": 34
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE_BACKUP/logger_config.py",
+      "line": 6
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE_BACKUP/logger_config.py",
+      "line": 23
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE_BACKUP/logger_config.py",
+      "line": 28
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE_BACKUP/manifest_loader.py",
+      "line": 11
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE_BACKUP/manifest_loader.py",
+      "line": 11
+    },
+    {
+      "type": "path_div",
+      "file": "A_01_CORE_BACKUP/run.py",
+      "line": 27
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/archiver.py",
+      "line": 11
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/archiver.py",
+      "line": 12
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_02_MANAGERS/audit_reporter.py",
+      "line": 20
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_02_MANAGERS/audit_reporter.py",
+      "line": 50
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/audit_reporter.py",
+      "line": 54
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/catalog_manager.py",
+      "line": 7
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/context_builder.py",
+      "line": 11
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/context_builder.py",
+      "line": 26
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/context_builder.py",
+      "line": 26
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/context_builder.py",
+      "line": 27
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/context_builder.py",
+      "line": 27
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/context_builder.py",
+      "line": 28
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/context_builder.py",
+      "line": 28
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_02_MANAGERS/context_builder.py",
+      "line": 90
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_02_MANAGERS/context_builder.py",
+      "line": 108
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/dream_manager.py",
+      "line": 7
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/dream_manager.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/dream_manager.py",
+      "line": 9
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/dream_manager.py",
+      "line": 12
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/dream_manager.py",
+      "line": 13
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/dream_manager.py",
+      "line": 14
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/dream_manager.py",
+      "line": 83
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/dream_manager.py",
+      "line": 85
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_02_MANAGERS/impact_analyzer.py",
+      "line": 26
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/impact_analyzer.py",
+      "line": 44
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/impact_analyzer.py",
+      "line": 44
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/impact_analyzer.py",
+      "line": 45
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/impact_analyzer.py",
+      "line": 45
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/memory_manager.py",
+      "line": 9
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/memory_manager.py",
+      "line": 15
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/project_guardian.py",
+      "line": 21
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_02_MANAGERS/project_guardian.py",
+      "line": 31
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/project_guardian.py",
+      "line": 37
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_02_MANAGERS/project_guardian.py",
+      "line": 47
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/project_guardian.py",
+      "line": 88
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/project_guardian.py",
+      "line": 91
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/project_guardian.py",
+      "line": 96
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/queue_manager.py",
+      "line": 23
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/queue_manager.py",
+      "line": 23
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/recipe_validator.py",
+      "line": 157
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/recipe_validator.py",
+      "line": 192
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/session_manager.py",
+      "line": 14
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/session_manager.py",
+      "line": 17
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_02_MANAGERS/session_manager.py",
+      "line": 51
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_02_MANAGERS/tool_bridge.py",
+      "line": 18
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS_BACKUP/archiver.py",
+      "line": 11
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS_BACKUP/archiver.py",
+      "line": 12
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS_BACKUP/audit_reporter.py",
+      "line": 12
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS_BACKUP/audit_reporter.py",
+      "line": 12
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS_BACKUP/audit_reporter.py",
+      "line": 13
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS_BACKUP/audit_reporter.py",
+      "line": 13
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_02_MANAGERS_BACKUP/audit_reporter.py",
+      "line": 21
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS_BACKUP/audit_reporter.py",
+      "line": 26
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_02_MANAGERS_BACKUP/audit_reporter.py",
+      "line": 57
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS_BACKUP/catalog_manager.py",
+      "line": 7
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_02_MANAGERS_BACKUP/dispatcher.py",
+      "line": 32
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS_BACKUP/memory_manager.py",
+      "line": 9
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS_BACKUP/memory_manager.py",
+      "line": 15
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS_BACKUP/queue_manager.py",
+      "line": 23
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS_BACKUP/queue_manager.py",
+      "line": 23
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_02_MANAGERS_BACKUP/tool_bridge.py",
+      "line": 18
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_03_EXECUTORS/executor.py",
+      "line": 20
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_03_EXECUTORS/executor.py",
+      "line": 34
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_HANDLERS/archive_handler.py",
+      "line": 53
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_03_HANDLERS/archive_handler.py",
+      "line": 74
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_HANDLERS/archive_handler.py",
+      "line": 100
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_HANDLERS/archive_handler.py",
+      "line": 111
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_HANDLERS/code_detector.py",
+      "line": 65
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_03_HANDLERS/docx_handler.py",
+      "line": 16
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_03_HANDLERS/pdf_handler.py",
+      "line": 66
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_HANDLERS/pdf_handler.py",
+      "line": 126
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_03_HANDLERS/pdf_handler.py",
+      "line": 146
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_HANDLERS/pdf_ocr_pipeline.py",
+      "line": 40
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_HANDLERS/pdf_ocr_pipeline.py",
+      "line": 144
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_03_HANDLERS/pdf_ocr_pipeline.py",
+      "line": 201
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_03_HANDLERS/spreadsheet_handler.py",
+      "line": 49
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/agent_planner.py",
+      "line": 13
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/agent_planner.py",
+      "line": 18
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/butler_harness.py",
+      "line": 63
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/butler_harness.py",
+      "line": 63
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_03_ORCHESTRATION/butler_os_adapter.py",
+      "line": 42
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_03_ORCHESTRATION/butler_os_adapter.py",
+      "line": 46
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_03_ORCHESTRATION/butler_os_adapter.py",
+      "line": 88
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_03_ORCHESTRATION/butler_os_adapter.py",
+      "line": 89
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_03_ORCHESTRATION/butler_os_adapter.py",
+      "line": 90
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/chat_router.CLEAN_UTF8.py",
+      "line": 209
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/chat_router.CLEAN_UTF8.py",
+      "line": 211
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.after_import.py",
+      "line": 197
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.after_import.py",
+      "line": 199
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.after_import.py",
+      "line": 221
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.after_import.py",
+      "line": 221
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.after_resolver.py",
+      "line": 204
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.after_resolver.py",
+      "line": 206
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.after_resolver.py",
+      "line": 228
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.after_resolver.py",
+      "line": 228
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.hybrid_ok.py",
+      "line": 204
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.hybrid_ok.py",
+      "line": 206
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.hybrid_ok.py",
+      "line": 228
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.hybrid_ok.py",
+      "line": 228
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.py",
+      "line": 204
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.py",
+      "line": 206
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.py",
+      "line": 228
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/chat_router.HYBRID_WORK.py",
+      "line": 228
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/chat_router.py",
+      "line": 150
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/chat_router.py",
+      "line": 152
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/chat_router.py",
+      "line": 191
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/chat_router.py",
+      "line": 191
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/context_builder.py",
+      "line": 7
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/context_builder.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/context_builder.py",
+      "line": 9
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/context_builder.py",
+      "line": 10
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/context_builder.py",
+      "line": 29
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/context_builder.py",
+      "line": 29
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/context_builder.py",
+      "line": 30
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/context_builder.py",
+      "line": 30
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_03_ORCHESTRATION/context_builder.py",
+      "line": 68
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/dispatcher_bridge.py",
+      "line": 7
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/dispatcher_bridge.py",
+      "line": 7
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/dispatcher_bridge.py",
+      "line": 7
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/dispatcher_bridge.py",
+      "line": 7
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/dispatcher_bridge.py",
+      "line": 7
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/dispatcher_bridge.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/dispatcher_bridge.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/dispatcher_bridge.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/dispatcher_bridge.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/dispatcher_bridge.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/dispatcher_bridge.py",
+      "line": 9
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/dispatcher_bridge.py",
+      "line": 19
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/dispatcher_bridge.py",
+      "line": 36
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/dispatcher_bridge.py",
+      "line": 42
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/message_network.py",
+      "line": 10
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/message_network.py",
+      "line": 30
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/message_network.py",
+      "line": 62
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/observation_layer.py",
+      "line": 15
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/passport_commands.py",
+      "line": 34
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/passport_commands.py",
+      "line": 34
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/passport_commands.py",
+      "line": 34
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/passport_commands.py",
+      "line": 34
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_03_ORCHESTRATION/passport_commands.py",
+      "line": 49
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/registry_brain.py",
+      "line": 7
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/professor.py",
+      "line": 22
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/professor.py",
+      "line": 23
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/professor.py",
+      "line": 80
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_04_AGENTS/professor.py",
+      "line": 88
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/professor.py",
+      "line": 268
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/professor.py",
+      "line": 270
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS_BACKUP/professor.py",
+      "line": 19
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS_BACKUP/professor.py",
+      "line": 31
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_04_AGENTS_BACKUP/professor.py",
+      "line": 45
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_04_AGENTS_BACKUP/professor.py",
+      "line": 68
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS_BACKUP/professor.py",
+      "line": 74
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_CONFIG/project_memory_loader.py",
+      "line": 11
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_CONFIG/project_memory_loader.py",
+      "line": 11
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_CONFIG/project_passport_loader.py",
+      "line": 11
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_CONFIG/registry_loader.py",
+      "line": 11
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_CONFIG/registry_validator.py",
+      "line": 11
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/agent_planner.py",
+      "line": 13
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/agent_planner.py",
+      "line": 13
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/agent_planner.py",
+      "line": 103
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/agent_runtime.py",
+      "line": 26
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/agent_runtime.py",
+      "line": 52
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/agent_runtime.py",
+      "line": 52
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_07_MEMORY/attention_memory.py",
+      "line": 83
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_07_MEMORY/catalog_search_bridge.py",
+      "line": 90
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/change_request_manager.py",
+      "line": 21
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/change_request_manager.py",
+      "line": 21
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_07_MEMORY/context_budget_manager.py",
+      "line": 56
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/execution_registry.py",
+      "line": 13
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/execution_registry.py",
+      "line": 13
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/goal_loop_engine.py",
+      "line": 12
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/goal_loop_engine.py",
+      "line": 12
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/memory_facade.py",
+      "line": 15
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/memory_facade.py",
+      "line": 15
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_07_MEMORY/memory_facade.py",
+      "line": 78
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_07_MEMORY/memory_orchestrator.py",
+      "line": 74
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_07_MEMORY/memory_orchestrator_v2.py",
+      "line": 40
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/png_workflow_memory.py",
+      "line": 14
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/profile_manager.py",
+      "line": 6
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/profile_manager.py",
+      "line": 6
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/profile_manager.py",
+      "line": 7
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/profile_manager.py",
+      "line": 7
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_07_MEMORY/profile_manager.py",
+      "line": 101
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_07_MEMORY/profile_manager.py",
+      "line": 150
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_07_MEMORY/profile_manager.py",
+      "line": 193
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_07_MEMORY/profile_manager.py",
+      "line": 216
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/profile_sync.py",
+      "line": 6
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/profile_sync.py",
+      "line": 6
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/profile_sync.py",
+      "line": 7
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/profile_sync.py",
+      "line": 7
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_07_MEMORY/profile_sync.py",
+      "line": 73
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/project_context_builder.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/project_context_builder.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/project_context_builder.py",
+      "line": 9
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/project_context_builder.py",
+      "line": 9
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_07_MEMORY/project_context_builder.py",
+      "line": 32
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_07_MEMORY/project_context_builder.py",
+      "line": 52
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/project_context_builder.py",
+      "line": 59
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/project_context_builder.py",
+      "line": 59
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_07_MEMORY/project_context_builder.py",
+      "line": 72
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/project_context_builder.py",
+      "line": 78
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/project_context_builder.py",
+      "line": 78
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_07_MEMORY/project_context_builder.py",
+      "line": 105
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/project_history.py",
+      "line": 11
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/project_history.py",
+      "line": 11
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_07_MEMORY/project_history.py",
+      "line": 66
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_07_MEMORY/search_engine.py",
+      "line": 202
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/search_engine.py",
+      "line": 319
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/self_healing_memory.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/self_healing_memory.py",
+      "line": 9
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/self_healing_memory.py",
+      "line": 29
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_07_MEMORY/semantic_compression.py",
+      "line": 74
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/semantic_memory.py",
+      "line": 13
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_07_MEMORY/semantic_memory.py",
+      "line": 114
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_07_MEMORY/semantic_memory.py",
+      "line": 116
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_07_MEMORY/semantic_memory.py",
+      "line": 117
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_07_MEMORY/semantic_reasoning_engine.py",
+      "line": 108
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/semantic_reasoning_engine_v2.py",
+      "line": 19
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/semantic_reasoning_engine_v2.py",
+      "line": 19
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_07_MEMORY/semantic_reasoning_engine_v2.py",
+      "line": 146
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/semantic_relations_engine.py",
+      "line": 30
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_07_MEMORY/test_semantic_constraints_v3.py",
+      "line": 44
+    },
+    {
+      "type": "path_div",
+      "file": "A_09_TESTS/test_handlers.py",
+      "line": 12
+    },
+    {
+      "type": "path_div",
+      "file": "A_00_RESTORE/CHECKPOINT_IMAGE_LINK_OK_20260616_192929/runner.py",
+      "line": 22
+    },
+    {
+      "type": "path_div",
+      "file": "A_00_RESTORE/CHECKPOINT_IMAGE_LINK_OK_20260616_192929/runner.py",
+      "line": 22
+    },
+    {
+      "type": "path_div",
+      "file": "A_00_RESTORE/CHECKPOINT_IMAGE_LINK_OK_20260616_192929/runner.py",
+      "line": 192
+    },
+    {
+      "type": "path_div",
+      "file": "A_00_RESTORE/CHECKPOINT_IMAGE_LINK_OK_20260616_192943/runner.py",
+      "line": 23
+    },
+    {
+      "type": "path_div",
+      "file": "A_00_RESTORE/CHECKPOINT_IMAGE_LINK_OK_20260616_192943/runner.py",
+      "line": 23
+    },
+    {
+      "type": "path_div",
+      "file": "A_00_RESTORE/CHECKPOINT_IMAGE_LINK_OK_20260616_192943/runner.py",
+      "line": 193
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_00_RESTORE/SEARCH_ENGINE_BACKUPS/search_engine_20260610_115441.py",
+      "line": 152
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/ArchitectAgent/context_provider.py",
+      "line": 25
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/ArchitectAgent/context_provider.py",
+      "line": 26
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/ArchitectAgent/context_provider.py",
+      "line": 47
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/ArchitectAgent/context_provider.py",
+      "line": 56
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/ArchitectAgent/dependency_graph.py",
+      "line": 20
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_02_MANAGERS/ArchitectAgent/dependency_graph.py",
+      "line": 60
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_02_MANAGERS/ArchitectAgent/dependency_graph.py",
+      "line": 60
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/ArchitectAgent/queue_manager.py",
+      "line": 15
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/ArchitectAgent/queue_manager.py",
+      "line": 15
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/ArchitectAgent/queue_manager.py",
+      "line": 20
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/ExecutionMonitor/execution_monitor.py",
+      "line": 21
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/ExecutionMonitor/execution_monitor.py",
+      "line": 22
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/ExecutionMonitor/system_state.py",
+      "line": 43
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/ExecutionMonitor/system_state.py",
+      "line": 45
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/ExecutionMonitor/system_state.py",
+      "line": 47
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/ExecutionMonitor/system_state.py",
+      "line": 49
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_02_MANAGERS/Planner/goal_interpreter.py",
+      "line": 63
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/ProjectContextReader/PCR_ANALYZE.py",
+      "line": 7
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/ProjectContextReader/PCR_ANALYZE.py",
+      "line": 7
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/ProjectContextReader/PCR_INTERNAL.py",
+      "line": 7
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/ProjectContextReader/PCR_INTERNAL.py",
+      "line": 7
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/ProjectContextReader/PCR_INTERNAL.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/ProjectContextReader/PCR_INTERNAL.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/ProjectContextReader/PCR_V3.py",
+      "line": 63
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/ProjectContextReader/PCR_V3.py",
+      "line": 63
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/TaskRunner/recipe_queue_watcher.py",
+      "line": 20
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/TaskRunner/recipe_queue_watcher.py",
+      "line": 22
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/TaskRunner/recipe_queue_watcher.py",
+      "line": 24
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/TaskRunner/recipe_queue_watcher.py",
+      "line": 26
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/TaskRunner/recipe_writer.py",
+      "line": 26
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/TaskRunner/runner.py",
+      "line": 27
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/TaskRunner/runner.py",
+      "line": 27
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/TaskRunner/runner.py",
+      "line": 41
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/TaskRunner/runner.py",
+      "line": 48
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/TaskRunner/runner.py",
+      "line": 65
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/TaskRunner/runner.py",
+      "line": 96
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_02_MANAGERS/TaskRunner/runner.py",
+      "line": 104
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/TaskRunner/runner_once.py",
+      "line": 49
+    },
+    {
+      "type": "path_div",
+      "file": "A_02_MANAGERS/TaskRunner/runner_once.py",
+      "line": 53
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ENGINES/Generation_Engine/comfy_bridge.py",
+      "line": 118
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ENGINES/Generation_Engine/comfy_bridge.py",
+      "line": 119
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/guards/compile_guard.py",
+      "line": 17
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/guards/compile_guard.py",
+      "line": 34
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/guards/compile_guard.py",
+      "line": 78
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/guards/compile_guard.py",
+      "line": 78
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/guards/compile_guard.py",
+      "line": 81
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/guards/compile_guard.py",
+      "line": 81
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/guards/compile_guard.py",
+      "line": 81
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/guards/rollback_guard.py",
+      "line": 18
+    },
+    {
+      "type": "path_div",
+      "file": "A_03_ORCHESTRATION/guards/rollback_guard.py",
+      "line": 36
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_03_ORCHESTRATION/ConversationContext/ImageSession/image_session.py",
+      "line": 45
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_03_ORCHESTRATION/ConversationContext/ImageSession/image_session.py",
+      "line": 50
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_04_AGENTS/CodingDepartment/runner.py",
+      "line": 73
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ImageDepartment/runner.py",
+      "line": 25
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ImageDepartment/runner.py",
+      "line": 25
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ImageDepartment/runner.py",
+      "line": 229
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ImageDepartment/runner.py",
+      "line": 229
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ImageDepartment/runner.py",
+      "line": 232
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ImageDepartment/runner.py",
+      "line": 278
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/MemoryDepartment/runner.py",
+      "line": 14
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/MemoryDepartment/runner.py",
+      "line": 14
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/MemoryDepartment/runner.py",
+      "line": 15
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/MemoryDepartment/runner.py",
+      "line": 15
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/MemoryDepartment/runner.py",
+      "line": 16
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/MemoryDepartment/runner.py",
+      "line": 16
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_04_AGENTS/MemoryDepartment/runner.py",
+      "line": 57
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/runner.py",
+      "line": 88
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/TextDepartment/project_context_builder.py",
+      "line": 9
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/TextDepartment/project_context_builder.py",
+      "line": 9
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/TextDepartment/project_context_builder.py",
+      "line": 10
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/TextDepartment/project_context_builder.py",
+      "line": 10
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/TextDepartment/project_context_builder.py",
+      "line": 11
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/TextDepartment/project_context_builder.py",
+      "line": 11
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_04_AGENTS/TextDepartment/project_context_builder.py",
+      "line": 26
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_04_AGENTS/TextDepartment/project_context_builder.py",
+      "line": 42
+    },
+    {
+      "type": "os.path.join",
+      "file": "A_04_AGENTS/TextDepartment/project_context_builder.py",
+      "line": 52
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/ast_call_parser.py",
+      "line": 16
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/ast_call_parser.py",
+      "line": 19
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/ast_parser.py",
+      "line": 14
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/ast_parser.py",
+      "line": 68
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/ast_path_resolver.py",
+      "line": 15
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/ast_path_resolver.py",
+      "line": 68
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/ast_path_resolver.py",
+      "line": 85
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/config_scanner.py",
+      "line": 15
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/config_scanner.py",
+      "line": 50
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/config_scanner.py",
+      "line": 67
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/engineering_pipeline.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/engineering_pipeline.py",
+      "line": 9
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/engineering_pipeline.py",
+      "line": 55
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/engineering_pipeline.py",
+      "line": 55
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/engineering_pipeline.py",
+      "line": 56
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/engineering_pipeline.py",
+      "line": 56
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/engineering_pipeline.py",
+      "line": 57
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/engineering_pipeline.py",
+      "line": 57
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/engineering_pipeline.py",
+      "line": 58
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/engineering_pipeline.py",
+      "line": 58
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/engineering_pipeline.py",
+      "line": 59
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/engineering_pipeline.py",
+      "line": 59
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/engineering_pipeline.py",
+      "line": 61
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/engineering_pipeline.py",
+      "line": 61
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/engineering_pipeline.py",
+      "line": 63
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/engineering_pipeline.py",
+      "line": 63
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/engineering_pipeline.py",
+      "line": 64
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/engineering_pipeline.py",
+      "line": 64
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/engineering_pipeline.py",
+      "line": 66
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/evidence_builder.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/evidence_builder.py",
+      "line": 11
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/evidence_builder.py",
+      "line": 12
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/evidence_builder.py",
+      "line": 13
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/evidence_builder.py",
+      "line": 14
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/evidence_builder.py",
+      "line": 15
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/evidence_builder.py",
+      "line": 55
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/evidence_doctor.py",
+      "line": 7
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/evidence_doctor.py",
+      "line": 7
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/evidence_doctor.py",
+      "line": 7
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/evidence_doctor.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/evidence_doctor.py",
+      "line": 13
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/evidence_doctor.py",
+      "line": 14
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/evidence_doctor.py",
+      "line": 15
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/evidence_doctor.py",
+      "line": 16
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/evidence_doctor.py",
+      "line": 17
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/evidence_doctor.py",
+      "line": 18
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/evidence_doctor.py",
+      "line": 36
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/evidence_doctor.py",
+      "line": 37
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/evidence_doctor.py",
+      "line": 71
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/evidence_doctor.py",
+      "line": 72
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/evidence_doctor.py",
+      "line": 73
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/evidence_doctor.py",
+      "line": 111
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/evidence_doctor.py",
+      "line": 144
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/graph_builder.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/graph_builder.py",
+      "line": 24
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/graph_builder.py",
+      "line": 37
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/scope_loader.py",
+      "line": 29
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/structural_extractor.py",
+      "line": 29
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/structural_extractor.py",
+      "line": 109
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/structural_extractor.py",
+      "line": 126
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/ast_call_parser.py",
+      "line": 10
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/ast_call_parser.py",
+      "line": 10
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/ast_call_parser.py",
+      "line": 10
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/ast_call_parser.py",
+      "line": 10
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/ast_call_parser.py",
+      "line": 18
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/ast_call_parser.py",
+      "line": 21
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/ast_parser.py",
+      "line": 10
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/ast_parser.py",
+      "line": 10
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/ast_parser.py",
+      "line": 10
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/ast_parser.py",
+      "line": 10
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/ast_parser.py",
+      "line": 18
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/ast_path_resolver.py",
+      "line": 9
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/ast_path_resolver.py",
+      "line": 56
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/ast_path_resolver.py",
+      "line": 73
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/config_scanner.py",
+      "line": 9
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/config_scanner.py",
+      "line": 38
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/config_scanner.py",
+      "line": 55
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/engineering_pipeline.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/engineering_pipeline.py",
+      "line": 9
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/engineering_pipeline.py",
+      "line": 55
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/engineering_pipeline.py",
+      "line": 55
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/engineering_pipeline.py",
+      "line": 56
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/engineering_pipeline.py",
+      "line": 56
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/engineering_pipeline.py",
+      "line": 57
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/engineering_pipeline.py",
+      "line": 57
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/engineering_pipeline.py",
+      "line": 58
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/engineering_pipeline.py",
+      "line": 58
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/engineering_pipeline.py",
+      "line": 59
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/engineering_pipeline.py",
+      "line": 59
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/engineering_pipeline.py",
+      "line": 61
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/engineering_pipeline.py",
+      "line": 61
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/engineering_pipeline.py",
+      "line": 63
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/engineering_pipeline.py",
+      "line": 63
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/engineering_pipeline.py",
+      "line": 64
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/engineering_pipeline.py",
+      "line": 64
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/engineering_pipeline.py",
+      "line": 66
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/evidence_builder.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/evidence_builder.py",
+      "line": 11
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/evidence_builder.py",
+      "line": 12
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/evidence_builder.py",
+      "line": 13
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/evidence_builder.py",
+      "line": 53
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/graph_builder.py",
+      "line": 8
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/graph_builder.py",
+      "line": 24
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/graph_builder.py",
+      "line": 37
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/scope_loader.py",
+      "line": 9
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/scope_loader.py",
+      "line": 9
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/scope_loader.py",
+      "line": 9
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/scope_loader.py",
+      "line": 9
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/Discovery/execution_registry_discovery_agent.py",
+      "line": 30
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/Discovery/execution_registry_discovery_agent.py",
+      "line": 30
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/Discovery/goals_registry_discovery_agent.py",
+      "line": 30
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/Discovery/goals_registry_discovery_agent.py",
+      "line": 30
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/Discovery/passport_discovery_agent.py",
+      "line": 30
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/Discovery/passport_discovery_agent.py",
+      "line": 30
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/Discovery/registry_discovery_agent.py",
+      "line": 30
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/Discovery/registry_discovery_agent.py",
+      "line": 30
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/Discovery/registry_reader_agent.py",
+      "line": 27
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/Discovery/registry_reader_agent.py",
+      "line": 27
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/Scanners/ledger_scanner.py",
+      "line": 40
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/Scanners/ledger_scanner.py",
+      "line": 40
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/Scanners/observations_scanner.py",
+      "line": 34
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/Scanners/observations_scanner.py",
+      "line": 34
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/Scanners/reports_scanner.py",
+      "line": 36
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/Scanners/reports_scanner.py",
+      "line": 36
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/Scanners/snapshot_scanner.py",
+      "line": 34
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core/Scanners/snapshot_scanner.py",
+      "line": 34
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/Discovery/execution_registry_discovery_agent.py",
+      "line": 30
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/Discovery/execution_registry_discovery_agent.py",
+      "line": 30
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/Discovery/goals_registry_discovery_agent.py",
+      "line": 30
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/Discovery/goals_registry_discovery_agent.py",
+      "line": 30
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/Discovery/passport_discovery_agent.py",
+      "line": 30
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/Discovery/passport_discovery_agent.py",
+      "line": 30
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/Discovery/registry_discovery_agent.py",
+      "line": 30
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/Discovery/registry_discovery_agent.py",
+      "line": 30
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/Discovery/registry_reader_agent.py",
+      "line": 27
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/Discovery/registry_reader_agent.py",
+      "line": 27
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/Scanners/ledger_scanner.py",
+      "line": 40
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/Scanners/ledger_scanner.py",
+      "line": 40
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/Scanners/observations_scanner.py",
+      "line": 34
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/Scanners/observations_scanner.py",
+      "line": 34
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/Scanners/reports_scanner.py",
+      "line": 36
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/Scanners/reports_scanner.py",
+      "line": 36
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/Scanners/snapshot_scanner.py",
+      "line": 34
+    },
+    {
+      "type": "path_div",
+      "file": "A_04_AGENTS/ProjectDocumentationDepartment/Core_BACKUP_UTF8SIG/Scanners/snapshot_scanner.py",
+      "line": 34
+    },
+    {
+      "type": "path_div",
+      "file": "A_07_MEMORY/SESSION/session_manager_poly.py",
+      "line": 95
+    },
+    {
+      "type": "path_div",
+      "file": "STABLE_SNAPSHOTS/V2_STABLE_CLEAN/run_audit_v2.py",
+      "line": 9
+    },
+    {
+      "type": "path_div",
+      "file": "STABLE_SNAPSHOTS/V2_STABLE_CLEAN/run_audit_v2.py",
+      "line": 24
+    },
+    {
+      "type": "path_div",
+      "file": "STABLE_SNAPSHOTS/V2_STABLE_CLEAN/run_audit_v2.py",
+      "line": 25
+    },
+    {
+      "type": "path_div",
+      "file": "STABLE_SNAPSHOTS/V2_STABLE_CLEAN/run_audit_v2.py",
+      "line": 78
+    }
+  ]
+}

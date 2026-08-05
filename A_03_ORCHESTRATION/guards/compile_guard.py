@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 import json
 import py_compile
@@ -77,7 +77,7 @@ if __name__ == "__main__":
     # Тест 2: Эмуляция синтаксического брака (Ожидаем REJECTED / 422_SYNTAX_ERROR)
     broken_py = guard.project_root / "A_03_ORCHESTRATION" / "temporary_broken_module.py"
     broken_py.write_text("def unclosed_function_def(:\n    print('broken'", encoding="utf-8")
-    
+
     attack_cr_path = guard.project_root / "A_00_ARCHITECTURE" / "CHANGE_REQUESTS" / "CR_SYNTAX_ATTACK.json"
     attack_data = {
         "id": "CR_SYNTAX_ATTACK",

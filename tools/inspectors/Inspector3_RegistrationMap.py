@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 Inspector 3 — Registration Map v1.0
 READ ONLY. Находит регистрации компонентов в .py-файлах (паттерны register, Dispatcher и т.п.).

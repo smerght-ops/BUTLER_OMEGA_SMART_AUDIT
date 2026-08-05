@@ -280,7 +280,7 @@ class SemanticReasoningEngine:
         """
         # Work with raw bytes to avoid terminal encoding issues
         query_bytes = query.encode('utf-8')
-        
+
         intent = ""
         entities = []
         missing_information = []
@@ -292,7 +292,7 @@ class SemanticReasoningEngine:
             (["преобразуй", "конвертируй", "переведи", "измени формат"], "TRANSFORM"),
             (["измен", "отредактируй", "поправь", "обнови", "сделай как"], "EDIT"),
         ]
-        
+
         for stems, intent_name in intent_patterns:
             if any(stem.lower() in query.lower() for stem in stems):
                 intent = intent_name
@@ -378,7 +378,3 @@ if __name__ == "__main__":
 
         for r in result["matches"]:
             print(r)
-
-
-
-

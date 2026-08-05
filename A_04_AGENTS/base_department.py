@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 from abc import ABC, abstractmethod
 
 class BaseDepartment(ABC):

@@ -1,4 +1,4 @@
-﻿# GENIE FIND BASELINE
+# GENIE FIND BASELINE
 
 Write-Host ""
 Write-Host "=========== GENIE BASELINE SCAN ===========" -ForegroundColor Cyan

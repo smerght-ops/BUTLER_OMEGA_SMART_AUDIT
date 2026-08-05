@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 Stage 7.1
@@ -44,7 +44,3 @@ def run():
 if __name__ == "__main__":
 
     run()
-
-
-
-

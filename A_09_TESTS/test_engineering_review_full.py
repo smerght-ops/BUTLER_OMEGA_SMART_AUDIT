@@ -62,6 +62,31 @@ def test_git_oserror_is_diagnostic(monkeypatch):
     assert "OSError" in result.stderr
 
 
+def test_repository_baseline_checks_working_tree(monkeypatch):
+    calls = []
+
+    def fake_git(*args):
+        calls.append(args)
+        return checker.subprocess.CompletedProcess(args, 0, "", "")
+
+    monkeypatch.setattr(checker, "_git", fake_git)
+    assert checker.check_repository()["status"] == "PASS"
+    empty_tree = "4b825dc642cb6eb9a060e54bf8d69288fbee4904"
+    assert ("diff", "--check", empty_tree) in calls
+    assert ("diff", "--check", empty_tree, "HEAD") not in calls
+
+
+def test_repository_review_allows_intentional_working_changes(monkeypatch):
+    def fake_git(*args):
+        stdout = " M reviewed_file.py\n" if args == ("status", "--porcelain") else ""
+        return checker.subprocess.CompletedProcess(args, 0, stdout, "")
+
+    monkeypatch.setattr(checker, "_git", fake_git)
+    result = checker.check_repository()
+    assert result["status"] == "PASS"
+    assert "Uncommitted changes detected" in result["details"]
+
+
 def test_subprocess_uses_explicit_safe_handles(monkeypatch):
     captured = {}
 
@@ -83,8 +108,19 @@ def test_full_encoding_checks_json_yaml_md_ps1(tmp_path, monkeypatch):
         path = tmp_path / name
         path.write_text(content, encoding="utf-8")
         files.append(path)
-    monkeypatch.setattr(checker, "_changed_files", lambda: files)
+    monkeypatch.setattr(checker, "_scope_files", lambda suffixes: files)
     assert checker.check_encoding("full")["status"] == "PASS"
+
+
+def test_changed_encoding_uses_only_changed_files(tmp_path, monkeypatch):
+    changed = tmp_path / "changed.md"
+    changed.write_text("clean", encoding="utf-8")
+    corrupt = tmp_path / "production.md"
+    corrupt.write_bytes(b"\xff")
+    monkeypatch.setattr(checker, "_changed_files", lambda: [changed])
+    monkeypatch.setattr(checker, "_scope_files", lambda suffixes: [changed, corrupt])
+    assert checker.check_encoding("changed")["status"] == "PASS"
+    assert checker.check_encoding("full")["status"] == "FAIL"
 
 
 def test_scope_manifest_and_lifecycle_sections_present():

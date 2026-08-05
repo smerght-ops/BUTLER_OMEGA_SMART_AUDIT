@@ -1,9 +1,9 @@
 # BUTLER OMEGA SMART — MEMORY AUDIT 15.2 — PASS 1E
 ## FINAL ADVERSARIAL BASELINE VERIFICATION
 
-**MODE:** STRICT READ ONLY  
-**DATE:** 2026-07-27  
-**PROJECT ROOT:** C:\Users\KOS\Desktop\Butler_Agent\BUTLER_OMEGA_SMART  
+**MODE:** STRICT READ ONLY
+**DATE:** 2026-07-27
+**PROJECT ROOT:** C:\Users\KOS\Desktop\Butler_Agent\BUTLER_OMEGA_SMART
 
 ---
 
@@ -147,14 +147,14 @@ This is the actual production budget used in the main chat flow. The default of 
 | L5 Semantic | MemoryFacadeV2.l5 = SemanticMemory() | ✅ YES (3 consumers) | MEMORY_INDEX.jsonl | search_semantic + search_engine + knowledge_search |
 | L6 Strategy | shared with L3 | ❌ NO | goals_registry.json | Only via build_context() |
 
-**LOGICAL_MEMORY_LEVEL_COUNT = 6** — CONFIRMED. Six logical levels declared in MemoryFacadeV2 architecture.  
+**LOGICAL_MEMORY_LEVEL_COUNT = 6** — CONFIRMED. Six logical levels declared in MemoryFacadeV2 architecture.
 **DIRECT_BUILD_MEMORY_PACKET_SOURCE_COUNT = 4** — CONFIRMED. Four retrieval sources reach build_memory_packet().
 
 ### Section 2 — Two Routes:
 - **build_context()**: Called from `MemoryDepartment.execute()` line 208 → collects all L1-L6 for self-knowledge queries only.
 - **build_memory_packet()**: Called from `SmartDispatcherV2.dispatch()` line 265 → collects L2+L5+Profile+Graph for main chat flow.
 
-**BUILD_CONTEXT_PRODUCTION_CONSUMERS = MemoryDepartment.execute() (self-knowledge queries)**  
+**BUILD_CONTEXT_PRODUCTION_CONSUMERS = MemoryDepartment.execute() (self-knowledge queries)**
 **BUILD_MEMORY_PACKET_PRODUCTION_CONSUMERS = SmartDispatcherV2.dispatch() (main chat route)**
 
 ### Section 3 — Official Butler Chain:
@@ -171,8 +171,8 @@ USER QUERY → BUTLER_OS.py:5 (import dispatch)
                   → chat_provider.execute_employee(system_prompt + budget_context + user_content)
 ```
 
-**OFFICIAL_BUTLER_MEMORY_PATH = BUTLER_OS → dispatcher_bridge_v2 → AgentCoreCoordinator → SmartDispatcherV2.dispatch → build_memory_packet → ButlerHarness → CHAT provider**  
-**OFFICIAL_BUTLER_RECEIVES_L1_L6 = NO** (only L2+L5+Profile+Graph via build_memory_packet)  
+**OFFICIAL_BUTLER_MEMORY_PATH = BUTLER_OS → dispatcher_bridge_v2 → AgentCoreCoordinator → SmartDispatcherV2.dispatch → build_memory_packet → ButlerHarness → CHAT provider**
+**OFFICIAL_BUTLER_RECEIVES_L1_L6 = NO** (only L2+L5+Profile+Graph via build_memory_packet)
 **OFFICIAL_BUTLER_RECEIVES_MEMORY_PACKET = YES** (in context dict, budget_context injected into LLM prompt)
 
 ### Section 4 — Agent Core Chain:
@@ -181,7 +181,7 @@ AgentCoreCoordinator.execute() sends messages to Ollama `/api/chat`. The `contex
 - build_memory_packet() is called INSIDE SmartDispatcherV2.dispatch(), AFTER the tool decision
 - The LLM prompt in _execute_chat() receives budget_context from memory_packet
 
-**AGENT_CORE_MEMORY_STATUS = PARTIAL**  
+**AGENT_CORE_MEMORY_STATUS = PARTIAL**
 Agent Core does NOT receive Butler Memory before its first tool call. Full Butler Memory (via build_memory_packet) is only available after delegation to SmartDispatcherV2.
 
 ---
@@ -197,7 +197,7 @@ In `MemoryOrchestratorV2.build_memory_packet()`:
 | 3 | Session Events | session_history.jsonl | ButlerSessionManager → MemoryReplay | attention.rank_records(merged, user_input, limit=12) |
 | 4 | Graph Relations | semantic_graph.json | SemanticCore (BFS depth=3) | graph.analyze(user_input) — wrapped in try/except |
 
-**DIRECT_BUILD_MEMORY_PACKET_SOURCE_COUNT = 4** — CONFIRMED by code inspection.  
+**DIRECT_BUILD_MEMORY_PACKET_SOURCE_COUNT = 4** — CONFIRMED by code inspection.
 These are four retrieval sources, NOT four memory levels. L1/L3/L4/L6 are absent from this packet.
 
 ---
@@ -251,7 +251,7 @@ immutable RAW voice transcript (.md)
 
 **Reasoning:** All architectural claims in BUTLER_MEMORY_AUDIT_MASTER_15_2.md have been verified against current production code. One statement was refuted (bridge existence) and one corrected (token budget), but these corrections strengthen rather than undermine the baseline. The memory architecture is stable:
 - 6 logical levels confirmed
-- 4 retrieval sources in primary packet confirmed  
+- 4 retrieval sources in primary packet confirmed
 - Two distinct build methods with different consumers confirmed
 - Official Butler chain proven end-to-end
 - Agent Core partial memory boundary proven
@@ -277,10 +277,10 @@ immutable RAW voice transcript (.md)
 | butler_harness.py | A_03_ORCHESTRATION/butler_harness.py | Department execution pipeline |
 | MemoryDepartment/runner.py | A_04_AGENTS/MemoryDepartment/runner.py | build_context() caller |
 
-## FILES_CHANGED: NONE  
-## FILES_CREATED: NONE  
-## PROCESSES_STARTED: NONE  
-## MODELS_STARTED: NONE  
+## FILES_CHANGED: NONE
+## FILES_CREATED: NONE
+## PROCESSES_STARTED: NONE
+## MODELS_STARTED: NONE
 
 ---
 

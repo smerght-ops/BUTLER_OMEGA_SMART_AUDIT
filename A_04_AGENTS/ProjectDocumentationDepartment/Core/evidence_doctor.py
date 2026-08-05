@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 import re
 import subprocess
 from pathlib import Path
@@ -153,12 +153,3 @@ def dispatch():
 
 if __name__ == "__main__":
     dispatch()
-
-
-
-
-
-
-
-
-

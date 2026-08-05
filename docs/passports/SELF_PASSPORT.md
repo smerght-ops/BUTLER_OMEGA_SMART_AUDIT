@@ -1,7 +1,7 @@
 # SELF PASSPORT
 
-Passport version: 1.0  
-Updated: 2026-07-13T18:32:56  
+Passport version: 1.0
+Updated: 2026-07-13T18:32:56
 Last exam: 20260713_183256
 
 ## Knowledge

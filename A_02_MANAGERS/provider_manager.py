@@ -15,11 +15,11 @@ class ProviderManager:
         try:
             response = requests.get(self.base_url, timeout=5)
             if response.status_code == 200:
-                print("Ollama СЃРµСЂРІРµСЂ РґРѕСЃС‚СѓРїРµРЅ")
+                print("Ollama сервер доступен")
                 return True
             return False
         except:
-            print("РћС€РёР±РєР° РїРѕРґРєР»СЋС‡РµРЅРёСЏ Рє Ollama")
+            print("Ошибка подключения к Ollama")
             return False
 
     def get_local_models(self):
@@ -36,11 +36,11 @@ class ProviderManager:
 
     def inspect_manifest_models(self):
         models = self.get_local_models()
-        print(f"Р”РѕСЃС‚СѓРїРЅС‹Рµ РјРѕРґРµР»Рё: {models}")
+        print(f"Доступные модели: {models}")
         if self.analysis_model in models or f"{self.analysis_model}:latest" in models:
-            print(f"РњРѕРґРµР»СЊ {self.analysis_model} РЅР°Р№РґРµРЅР°.")
+            print(f"Модель {self.analysis_model} найдена.")
             return True
-        print(f"РњРѕРґРµР»СЊ {self.analysis_model} РќР• РЅР°Р№РґРµРЅР°.")
+        print(f"Модель {self.analysis_model} НЕ найдена.")
         return False
 
 if __name__ == "__main__":

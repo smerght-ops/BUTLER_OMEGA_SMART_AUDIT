@@ -1,4 +1,4 @@
-﻿# GENIE PATCH CONFIDENCE
+# GENIE PATCH CONFIDENCE
 # Butler Omega Smart
 # Stage 4.29.18
 

@@ -1,4 +1,4 @@
-﻿from pathlib import Path
+from pathlib import Path
 
 path = Path("A_03_ORCHESTRATION/butler_harness.py")
 

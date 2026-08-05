@@ -1,4 +1,4 @@
-﻿
+
 # IMPLEMENTATION INSTRUCTIONS
 
 Project Root
@@ -2270,5 +2270,3 @@ At completion, produce:
 
 RepositoryKnowledgeDepartment RFC v1.1
 FINAL IMPLEMENTATION SPECIFICATION
-
-

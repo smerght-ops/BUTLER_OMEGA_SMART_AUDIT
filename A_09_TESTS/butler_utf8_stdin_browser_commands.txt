@@ -1,3 +1,2 @@
 Открой сайт https://example.com
 exit
-

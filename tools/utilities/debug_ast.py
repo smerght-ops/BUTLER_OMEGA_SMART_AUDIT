@@ -1,4 +1,4 @@
-﻿import ast
+import ast
 from pathlib import Path
 
 p = Path("A_02_MANAGERS/ArchitectAgent/architect_agent.py")

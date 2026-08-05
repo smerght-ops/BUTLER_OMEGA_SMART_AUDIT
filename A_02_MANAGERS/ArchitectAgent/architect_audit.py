@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 from .context_provider import ContextProvider
 from .goal_analyzer import GoalAnalyzer

@@ -1,0 +1,49 @@
+{
+  "generated_at": 1782379232,
+  "project": "BUTLER_OMEGA_SMART",
+  "architecture_version": "3.0.0",
+  "approved": true,
+  "production_architecture": "A_00_ARCHITECTURE/PRODUCTION_ARCHITECTURE.json",
+  "runtime_status": "ACTIVE_PRODUCTION",
+  "memory_contract": "A_00_ARCHITECTURE/MEMORY_CONTRACT.json",
+  "production_test_command": "python -m pytest -c pytest.ini",
+  "shared_runtime_lifecycle": true,
+  "critical_files": {
+    "A_01_CORE/memory_guardian.py": {
+      "exists": true,
+      "sha256": "6be98be9d007cf8e10126df0237e09147e8fa11d546c808480c7d3fc1a149152",
+      "size": 7449,
+      "mtime": 1782378759
+    },
+    "A_01_CORE/project_state_builder.py": {
+      "exists": true,
+      "sha256": "906f2a3e1446b8480442432efcd92ec039adc1a552248dc94c40dc91a26985e4",
+      "size": 7540,
+      "mtime": 1782353257
+    },
+    "A_01_CORE/bootstrap_guard.py": {
+      "exists": true,
+      "sha256": "d42642284e0a8cd5df33ae152f6bb6c24b830d5c74ab5899e50acf08b2eff0a2",
+      "size": 2023,
+      "mtime": 1781519193
+    },
+    "A_01_CORE/orchestrator.py": {
+      "exists": true,
+      "sha256": "50bb584b58f823412c7e7b1be47415429d1589f99ed1dd3c08788eaac04ff92b",
+      "size": 1780,
+      "mtime": 1781028811
+    },
+    "A_02_MANAGERS/catalog_manager.py": {
+      "exists": true,
+      "sha256": "49ac6c1580c6c90f3c3def03c7b7ed3039bafcd9476d985597660bbe0ef7738c",
+      "size": 4578,
+      "mtime": 1781028290
+    },
+    "A_04_AGENTS/professor.py": {
+      "exists": true,
+      "sha256": "697171545665bf39bef682ec52b116cf6d761bd676b47ae9d50107cb74942b26",
+      "size": 53883,
+      "mtime": 1781290048
+    }
+  }
+}

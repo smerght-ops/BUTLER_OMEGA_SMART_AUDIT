@@ -1,8 +1,8 @@
 # Butler Omega Smart Text Transport Standard
 
-Status: OFFICIAL  
-Version: BOS-TEXT-TRANSPORT-1.0  
-Date: 2026-07-10  
+Status: OFFICIAL
+Version: BOS-TEXT-TRANSPORT-1.0
+Date: 2026-07-10
 Scope: safe transfer of large `.md`, `.py`, `.ps1`, `.json`, `.txt`, `.csv`, and other byte-preserved documents through ChatGPT into PowerShell.
 
 ## Purpose
@@ -11,8 +11,8 @@ Butler Omega Smart must never rely on direct large here-string pastes for import
 
 ## Research Basis
 
-Research script: `A_00_UTILS/butler_transport_research.py`  
-Report: `A_06_WORKSPACE/AUDITS/BUTLER_TEXT_TRANSPORT_RESEARCH_20260710_112159.md`  
+Research script: `A_00_UTILS/butler_transport_research.py`
+Report: `A_06_WORKSPACE/AUDITS/BUTLER_TEXT_TRANSPORT_RESEARCH_20260710_112159.md`
 Fixtures: real Butler PowerShell, Python, Markdown, and JSON mixed into 300, 500, and 1000 line test files.
 
 Verification method:
@@ -47,7 +47,7 @@ original bytes
 -> WriteAllBytes
 ```
 
-Default block size: `8000` Base64 characters.  
+Default block size: `8000` Base64 characters.
 Reason: this is deliberately smaller than the larger locally verified block sizes and is safer for manual ChatGPT-to-PowerShell transfer.
 
 ## Rules

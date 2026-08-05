@@ -6,14 +6,14 @@ def test_catalog_update():
     # Создадим фиктивный файл для теста, если его нет
     test_file = Path("test_doc.txt")
     test_file.profile_manager.set_fact("Это тестовый документ для проверки БД.")
-    
+
     # Пытаемся записать с новыми полями
     success = cm.register_document(
-        relative_path="test_doc.txt", 
-        summary="Тестовое резюме", 
+        relative_path="test_doc.txt",
+        summary="Тестовое резюме",
         tags="тест, база, проверка"
     )
-    
+
     if success:
         print("✓ Успех: Данные с Summary и Tags записаны в БД.")
     else:

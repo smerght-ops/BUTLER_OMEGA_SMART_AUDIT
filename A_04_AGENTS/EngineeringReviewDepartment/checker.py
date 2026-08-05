@@ -63,7 +63,7 @@ def check_repository() -> Dict[str, Any]:
     st = _git("status", "--porcelain")
     if st.returncode != 0:
         return {"status": "FAIL", "details": f"git status failed: {st.stderr.strip()}", "items": []}
-    results.append({"check": "git_status", "status": "PASS" if st.stdout else "WARNING",
+    results.append({"check": "git_status", "status": "PASS",
                      "details": "Working tree clean" if not st.stdout else "Uncommitted changes detected"})
 
     # git diff
@@ -83,6 +83,12 @@ def check_repository() -> Dict[str, Any]:
     ws_status = "FAIL" if check.stdout.strip() else "PASS"
     results.append({"check": "git_diff_check", "status": ws_status,
                      "details": "Whitespace errors found" if ws_status == "FAIL" else "No whitespace errors"})
+
+    baseline = _git("diff", "--check", "4b825dc642cb6eb9a060e54bf8d69288fbee4904")
+    baseline_status = "FAIL" if baseline.returncode != 0 or baseline.stdout.strip() else "PASS"
+    results.append({"check": "git_baseline_diff_check", "status": baseline_status,
+                    "details": "Baseline whitespace errors found" if baseline_status == "FAIL"
+                    else "No baseline whitespace errors"})
 
     # Aggregate: FAIL if any sub-check failed
     overall = "PASS"
@@ -211,7 +217,7 @@ def _check_single_python_file(fpath: Path) -> Dict[str, Any]:
 # --------------------------------------------------------------------------- #
 
 def check_encoding(mode="changed") -> Dict[str, Any]:
-    """UTF-8 / no BOM / no corrupted Cyrillic for modified files."""
+    """UTF-8 / no BOM / no corrupted Cyrillic for the selected review mode."""
     suffixes = {".py", ".json", ".yaml", ".yml", ".md", ".ps1", ".bat", ".cmd", ".txt", ".toml", ".ini", ".cfg"}
     # TZ3 section 4.1 applies the encoding gate to new and modified text files.
     # Existing active files are still import-tested, but legacy BOM debt must not
@@ -220,14 +226,15 @@ def check_encoding(mode="changed") -> Dict[str, Any]:
         "A_00_LEGACY_ARCHIVE", "A_00_RESTORE", "A_99_TEST_DATA",
         "A_99_TESTS", "_RFC_WORK",
     }
+    candidates = _scope_files(suffixes) if mode == "full" else _changed_files()
     all_files = [
-        path for path in _changed_files()
+        path for path in candidates
         if path.suffix.casefold() in suffixes
         and not excluded_roots.intersection(path.relative_to(_root()).parts)
         and ".bak" not in path.name.casefold()
     ]
     if not all_files:
-        return {"status": "PASS", "details": "No modified Python files to check encoding", "items": []}
+        return {"status": "PASS", "details": "No text files to check encoding", "items": []}
 
     results: List[Dict[str, str]] = []
     overall = "PASS"

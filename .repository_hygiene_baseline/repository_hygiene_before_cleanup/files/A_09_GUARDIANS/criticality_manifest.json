@@ -1,0 +1,76 @@
+﻿{
+  "dispatcher": {
+    "_execute_department": {
+      "severity": "CRITICAL",
+      "pattern": "def _execute_department",
+      "impact": "Harness execution layer removed"
+    },
+
+    "harness_execute": {
+      "severity": "CRITICAL",
+      "pattern": "self\\.harness\\.execute",
+      "impact": "Commit pipeline bypassed"
+    },
+
+    "dispatcher_routing": {
+      "severity": "CRITICAL",
+      "pattern": "return self\\._execute_department",
+      "impact": "Departments executed directly"
+    },
+
+    "commit_pipeline": {
+      "severity": "HIGH",
+      "pattern": "commit_result",
+      "impact": "Commit stage unavailable"
+    },
+
+    "executor_wrapper": {
+      "severity": "HIGH",
+      "pattern": "executor=",
+      "impact": "Execution wrapper removed"
+    }
+  },
+
+  "resolver": {
+
+    "_success": {
+      "severity":"HIGH",
+      "pattern":"def _success"
+    },
+
+    "_failure": {
+      "severity":"HIGH",
+      "pattern":"def _failure"
+    },
+
+    "STATUS_OK":{
+      "severity":"LOW",
+      "pattern":"STATUS_OK"
+    },
+
+    "ERR_EMPTY_QUERY":{
+      "severity":"LOW",
+      "pattern":"ERR_EMPTY_QUERY"
+    },
+
+    "ERR_EMPTY_CONTEXT":{
+      "severity":"LOW",
+      "pattern":"ERR_EMPTY_CONTEXT"
+    },
+
+    "ERR_NO_MATCH":{
+      "severity":"LOW",
+      "pattern":"ERR_NO_MATCH"
+    },
+
+    "ERR_INDEX_OUT_OF_RANGE":{
+      "severity":"LOW",
+      "pattern":"ERR_INDEX_OUT_OF_RANGE"
+    },
+
+    "ERR_NO_SELECTED_OBJECT":{
+      "severity":"LOW",
+      "pattern":"ERR_NO_SELECTED_OBJECT"
+    }
+  }
+}

@@ -118,15 +118,15 @@ for round_index in round_counter:          # цикл по раундам
     for event in prediction_stream._iter_events():
         if isinstance(event, PredictionToolCallEvent):
             tool_call_requests.append(...)
-    
+
     prediction = prediction_stream.result()  # дождаться завершения генерации
-    
+
     # 2. Если есть tool calls — выполнить их
     if pending_tool_calls:
         tool_results = [finish_tool_call(fut) for fut in as_completed(...)]
         agent_chat.add_assistant_response(prediction, tool_call_requests)
         agent_chat.add_tool_results(tool_results)  # ← управление возвращается LLM здесь
-    
+
     # 3. Если нет tool calls — выходим из цикла
     if not tool_call_requests:
         break

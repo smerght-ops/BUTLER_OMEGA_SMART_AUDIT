@@ -1,4 +1,4 @@
-﻿# GENIE Guardian v1.1
+# GENIE Guardian v1.1
 # Проверка архитектуры через manifest
 
 $ManifestPath = ".\A_09_GUARDIANS\architecture_manifest.json"

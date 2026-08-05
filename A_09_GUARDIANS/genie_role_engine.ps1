@@ -1,4 +1,4 @@
-﻿Write-Host ""
+Write-Host ""
 Write-Host "========== GENIE ROLE ENGINE ==========" -ForegroundColor Cyan
 Write-Host ""
 

@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 from A_07_CONFIG.project_passport_loader import ProjectPassportLoader
 from A_07_CONFIG.registry_loader import RegistryLoader

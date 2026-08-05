@@ -1,4 +1,4 @@
-﻿# INSPECTOR LINE AUDIT — READ ONLY
+# INSPECTOR LINE AUDIT — READ ONLY
 
 Generated: 2026-07-09 09:03:26
 
@@ -853,7 +853,7 @@ from pathlib import Path
 from typing import Dict, List, Any
 
 class Inspector5_DependencyGraph:
-    def __init__(self, 
+    def __init__(self,
                  entity_path: str = "Inspector1_EntityMap.json",
                  import_path: str = "Inspector2_ImportMap.json",
                  registration_path: str = "Inspector3_RegistrationAST.json",
@@ -892,7 +892,7 @@ from typing import Dict, List, Any
 class Inspector5_DependencyGraph:
 
 ### FUNCTIONS
-    def __init__(self, 
+    def __init__(self,
     def load_json(self, path: Path) -> Dict:
     def build(self):
     def save(self):

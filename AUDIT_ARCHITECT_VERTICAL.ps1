@@ -1,4 +1,4 @@
-﻿$ErrorActionPreference = "SilentlyContinue"
+$ErrorActionPreference = "SilentlyContinue"
 $Root = (Get-Location).Path
 $Report = Join-Path $Root "ARCHITECT_VERTICAL_AUDIT_REPORT.txt"
 

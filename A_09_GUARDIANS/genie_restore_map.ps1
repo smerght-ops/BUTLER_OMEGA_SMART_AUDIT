@@ -1,4 +1,4 @@
-﻿# GENIE RESTORE MAP
+# GENIE RESTORE MAP
 
 $Manifest = ".\A_09_GUARDIANS\criticality_manifest.json"
 $Baseline = ".\A_09_GUARDIANS\baseline_path.txt"
@@ -42,4 +42,3 @@ $json.resolver.PSObject.Properties | ForEach-Object{
 Write-Host ""
 
 Write-Host "RESTORE MAP READY." -ForegroundColor Green
-

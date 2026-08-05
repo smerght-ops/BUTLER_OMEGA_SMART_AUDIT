@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 from dataclasses import dataclass, field
 from typing import List
@@ -28,4 +28,3 @@ class EngineeringEvidence:
     status: str = "DISCOVERED"
 
     notes: str = ""
-

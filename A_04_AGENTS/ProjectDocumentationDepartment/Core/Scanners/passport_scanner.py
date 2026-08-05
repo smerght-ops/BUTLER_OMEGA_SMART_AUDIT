@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 import json
 from pathlib import Path
@@ -33,4 +33,3 @@ class PassportScanner:
 
 if __name__ == "__main__":
     print("=== PASSPORT SCANNER READY ===")
-

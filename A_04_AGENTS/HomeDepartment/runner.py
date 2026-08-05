@@ -409,4 +409,3 @@ class HomeDepartment(BaseDepartment):
                 lines.append(f"- {item.get('title')} ({item.get('id')})")
 
         return "\n".join(lines)
-

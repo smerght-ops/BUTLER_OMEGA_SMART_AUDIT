@@ -1,4 +1,4 @@
-﻿param(
+param(
     [ValidateSet("full","state","risk","cascade")]
     [string]$Mode="full"
 )

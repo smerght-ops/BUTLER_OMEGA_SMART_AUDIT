@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 import json
 from pathlib import Path
 
@@ -112,7 +112,3 @@ class ProjectContextBuilder:
 if __name__ == "__main__":
     builder = ProjectContextBuilder()
     print(builder.build_context())
-
-
-
-

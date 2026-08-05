@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 import json
 import subprocess
@@ -36,9 +36,9 @@ class AgentPlannerV2:
                 "active_phase": "CRITICAL_ERROR",
                 "active_task": "FIX_REGISTRY"
             }
-            
+
         current_phase = reg.get("current_phase", "UNKNOWN")
-        
+
         plan = {
             "active_goal": reg.get("active_goal", "UNKNOWN"),
             "active_phase": current_phase,
@@ -57,7 +57,7 @@ class AgentPlannerV2:
                 if task.get("status") == "PENDING":
                     plan["active_task"] = task.get("id")
                     return plan
-                        
+
         return plan
 
     def complete_task(self, task_id: str) -> bool:
@@ -83,7 +83,7 @@ class AgentPlannerV2:
             return False
 
         all_done = all(t.get("status") == "COMPLETED" for t in subgoal.get("tasks", []))
-        
+
         if all_done:
             subgoal["status"] = "COMPLETED"
             for s in reg.get("subgoals", []):

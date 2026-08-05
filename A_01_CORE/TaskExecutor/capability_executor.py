@@ -11,6 +11,15 @@ from pathlib import Path
 from tools.inspectors.CapabilityRegistry import CapabilityRegistry
 
 from .execution_context import ExecutionContext
+from A_01_CORE.event_bus import EventBus
+from A_01_CORE.execution_journal import ExecutionJournal
+from A_01_CORE.runtime_contracts import (
+    CancellationToken,
+    ResourceLease,
+    TaskContract,
+    TaskResult,
+    TaskState,
+)
 from A_07_MEMORY.semantic_memory import SemanticMemory
 from A_03_ORCHESTRATION.permission import DepartmentExecutionGateway
 
@@ -25,20 +34,30 @@ class CapabilityExecutor:
         self._department_sources = None
         self.skill_memory = SemanticMemory()
         self.department_gateway = DepartmentExecutionGateway()
-        self.journal_dir = self.root / "A_05_STORAGE" / "tasks"
-        self.journal_dir.mkdir(parents=True, exist_ok=True)
+        self.journal = ExecutionJournal(self.root)
+        self.journal_dir = self.journal.directory
 
-    def execute(self, plan: dict, context: ExecutionContext | None = None) -> dict:
+    def execute(
+        self,
+        plan: dict | TaskContract,
+        context: ExecutionContext | None = None,
+        cancellation_token: CancellationToken | None = None,
+    ) -> dict:
         started = time.time()
-        task_id = "task_" + hashlib.sha256(
+        contract = plan if isinstance(plan, TaskContract) else None
+        plan = dict(contract.plan) if contract else plan
+        task_id = contract.task_id if contract else "task_" + hashlib.sha256(
             json.dumps(plan, ensure_ascii=False, sort_keys=True, default=str).encode("utf-8")
         ).hexdigest()[:16]
-        journal_path = self.journal_dir / f"{task_id}.json"
-        journal = self._load_journal(journal_path)
+        token = cancellation_token or CancellationToken()
+        journal_path = self.journal.path_for(task_id)
+        journal = self.journal.load(task_id)
         if context is None and journal.get("final_status") not in {None, "completed"}:
             context = ExecutionContext.from_snapshot(journal.get("context"))
         context = context or ExecutionContext(plan.get("variables"))
         self._active_plan, self._active_task_id, self._active_journal = plan, task_id, journal_path
+        self._active_lease = ResourceLease("task_execution", task_id)
+        EventBus.publish("task.started", {"task_id": task_id, "goal": plan.get("goal")})
         steps = list(plan.get("steps") or [])
         completed_count = len(context.history)
         self._write_journal(journal_path, plan, context, completed_count, "running")
@@ -49,6 +68,11 @@ class CapabilityExecutor:
         for index, step in enumerate(steps, 1):
             if index <= completed_count:
                 continue
+            if token.is_cancelled:
+                return self._final(
+                    started, False, "cancelled", context,
+                    failed_step=index, error=token.reason or "cancelled",
+                )
             capability = self._capability(step)
             if capability is None:
                 return self._final(
@@ -147,14 +171,6 @@ class CapabilityExecutor:
             result["metadata"]["vision_verified"] = False
         return result
 
-    @staticmethod
-    def _load_journal(path):
-        try:
-            value = json.loads(path.read_text(encoding="utf-8-sig"))
-            return value if isinstance(value, dict) else {}
-        except (OSError, ValueError, TypeError):
-            return {}
-
     def _write_journal(self, path, plan, context, current_step, status, error=None):
         payload = {
             "task_id": self._active_task_id, "original_request": plan.get("goal"),
@@ -167,8 +183,7 @@ class CapabilityExecutor:
             "final_status": status, "error": error, "context": context.snapshot(),
             "updated_at": datetime.now().isoformat(),
         }
-        path.write_text(json.dumps(payload, ensure_ascii=False, indent=2, default=self._json_value) + "\n",
-                        encoding="utf-8")
+        self.journal.write(self._active_task_id, payload, default=self._json_value)
 
     def _capability(self, step: dict) -> dict | None:
         capability_id = step.get("capability_id")
@@ -260,6 +275,19 @@ class CapabilityExecutor:
                 "resumable_journal": str(getattr(self, "_active_journal", "")),
             },
         }
+        state = {
+            "completed": TaskState.COMPLETED,
+            "cancelled": TaskState.CANCELLED,
+        }.get(status, TaskState.FAILED)
+        structured = TaskResult(
+            task_id=getattr(self, "_active_task_id", ""),
+            state=state,
+            ok=bool(ok),
+            output=text,
+            error=result["error"],
+            metadata={"failed_step": failed_step, "artifacts": artifacts},
+        )
+        result["metadata"]["structured_result"] = structured.to_dict()
         journal_path = getattr(self, "_active_journal", None)
         plan = getattr(self, "_active_plan", {})
         if journal_path:
@@ -282,6 +310,15 @@ class CapabilityExecutor:
             encoding="utf-8",
         )
         result["metadata"]["execution_log"] = str(log_path)
+        lease = getattr(self, "_active_lease", None)
+        if lease is not None:
+            lease.release()
+            result["metadata"]["resource_lease"] = {
+                "lease_id": lease.lease_id,
+                "resource": lease.resource,
+                "released_at": lease.released_at,
+            }
+        EventBus.publish("task.finished", result["metadata"]["structured_result"])
         return result
 
     @staticmethod

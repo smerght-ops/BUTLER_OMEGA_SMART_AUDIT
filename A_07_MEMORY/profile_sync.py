@@ -1,3 +1,13 @@
+# -*- coding: utf-8 -*-
+# =============================================================================
+# DEPRECATED — LEGACY
+# =============================================================================
+# Этот файл является дубликатом A_07_MEMORY/profile_manager.py.
+# Все импорты в продакшене перенесены на profile_manager.
+# Статус: DEPRECATED. Не удалять до завершения ТЗ №5A-FINAL.
+# Единственный владелец user_profile.json → ProfileManager (profile_manager.py).
+# =============================================================================
+
 from pathlib import Path
 import json
 from datetime import datetime, timezone

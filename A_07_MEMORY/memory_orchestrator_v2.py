@@ -10,6 +10,17 @@ from A_07_MEMORY.semantic_core import SemanticCore
 from A_07_MEMORY.profile_manager import load_profile
 
 
+_production_memory_orchestrator = None
+
+
+def get_memory_orchestrator(token_budget: int = 1200):
+    """Return the single process-wide production memory orchestrator."""
+    global _production_memory_orchestrator
+    if _production_memory_orchestrator is None:
+        _production_memory_orchestrator = MemoryOrchestratorV2(token_budget=token_budget)
+    return _production_memory_orchestrator
+
+
 class MemoryOrchestratorV2:
     """
     FINAL MEMORY CONTROLLER
@@ -177,7 +188,7 @@ class MemoryOrchestratorV2:
 # =========================
 
 if __name__ == "__main__":
-    mo = MemoryOrchestratorV2()
+    mo = get_memory_orchestrator()
 
     print("=== MEMORY ORCHESTRATOR v2 TEST ===\n")
 

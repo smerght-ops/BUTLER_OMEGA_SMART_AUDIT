@@ -25,8 +25,8 @@ class ArchitectAgent:
 
     def _provider(self):
         if self.provider is None:
-            from A_02_MANAGERS.smart_dispatcher import SmartDispatcher
-            self.provider = SmartDispatcher(project_root=self.root)
+            from A_02_MANAGERS.smart_dispatcher import get_chat_provider
+            self.provider = get_chat_provider(project_root=self.root)
         return self.provider
 
     def answer(self, query: str):

@@ -126,8 +126,8 @@ class DKICompiler:
     def _call_llm(self, raw_path, raw_text, model_name):
         """Call the approved ACTIVE_SUPPORT model-provider boundary."""
         try:
-            from A_02_MANAGERS.smart_dispatcher import SmartDispatcher
-            response = SmartDispatcher().execute_employee(
+            from A_02_MANAGERS.smart_dispatcher import get_chat_provider
+            response = get_chat_provider().execute_employee(
                 employee="chat",
                 system_prompt="Extract validated DKI JSON only.",
                 user_content=self._build_extraction_prompt(raw_path, raw_text),

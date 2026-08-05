@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 import json
 from pathlib import Path
 
@@ -52,7 +52,7 @@ def is_allowed(filepath):
 
 if __name__ == "__main__":
     tests = [
-        "A_03_ORCHESTRATION/chat_router.py",
+        "A_00_LEGACY_ARCHIVE/production_cleanup_tz4/orchestration/chat_router.py",
         "A_03_ORCHESTRATION/chat_router.BEFORE_APPEND.py",
         "A_03_ORCHESTRATION/chat_router.STABLE_BEFORE_HYBRID.py",
         "A_99_TEST_DATA/chat_router_bak_pure.py",

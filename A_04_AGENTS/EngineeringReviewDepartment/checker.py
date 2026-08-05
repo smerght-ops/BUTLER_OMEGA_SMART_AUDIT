@@ -10,6 +10,7 @@ any project files. Each check returns a dict with keys:
 
 import subprocess
 import sys
+import os
 import ast
 import json
 import importlib.util
@@ -27,13 +28,22 @@ from typing import Any, Dict, List
 def _run(cmd: List[str], cwd: Path, timeout: int = 60) -> subprocess.CompletedProcess:
     """Run a shell command and return the result."""
     return subprocess.run(
-        cmd, capture_output=True, text=True, encoding="utf-8", errors="replace",
-        cwd=str(cwd), timeout=timeout,
+        cmd, stdin=subprocess.DEVNULL, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+        text=True, encoding="utf-8", errors="replace", cwd=str(cwd), timeout=timeout,
+        close_fds=True,
+        creationflags=subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0,
     )
 
 
 def _git(*args: str) -> subprocess.CompletedProcess:
-    return _run(["git"] + list(args), cwd=_root())
+    command = ["git"] + list(args)
+    try:
+        return _run(command, cwd=_root())
+    except OSError as exc:
+        return subprocess.CompletedProcess(
+            command, 126, stdout="",
+            stderr=f"command={' '.join(command)}; exception={type(exc).__name__}; reason={exc}",
+        )
 
 
 def _root() -> Path:
@@ -100,8 +110,9 @@ def _get_modified_python_files() -> List[Path]:
         name = line[3:].strip().strip('"')
         if " -> " in name:
             name = name.split(" -> ", 1)[1]
-        if name.endswith(".py"):
-            files.append(root / name)
+        path = root / name
+        if name.endswith(".py") and path.is_file():
+            files.append(path)
     return files
 
 
@@ -205,7 +216,16 @@ def check_encoding(mode="changed") -> Dict[str, Any]:
     # TZ3 section 4.1 applies the encoding gate to new and modified text files.
     # Existing active files are still import-tested, but legacy BOM debt must not
     # trigger a mass repository rewrite forbidden by section 3.1.
-    all_files = [path for path in _changed_files() if path.suffix.casefold() in suffixes]
+    excluded_roots = {
+        "A_00_LEGACY_ARCHIVE", "A_00_RESTORE", "A_99_TEST_DATA",
+        "A_99_TESTS", "_RFC_WORK",
+    }
+    all_files = [
+        path for path in _changed_files()
+        if path.suffix.casefold() in suffixes
+        and not excluded_roots.intersection(path.relative_to(_root()).parts)
+        and ".bak" not in path.name.casefold()
+    ]
     if not all_files:
         return {"status": "PASS", "details": "No modified Python files to check encoding", "items": []}
 
@@ -283,6 +303,8 @@ def check_imports(mode="changed") -> Dict[str, Any]:
             continue
         try:
             relative = path.relative_to(_root()).with_suffix("")
+            if not relative.parts or not all(part.isidentifier() for part in relative.parts):
+                raise ValueError("path is not an importable package name")
             module_name = ".".join(relative.parts)
             command = [sys.executable, "-c", package_script, module_name]
         except ValueError:
@@ -908,57 +930,27 @@ def check_duplicates() -> Dict[str, Any]:
 # --------------------------------------------------------------------------- #
 
 def check_tests() -> Dict[str, Any]:
-    """Run existing project tests and py_compile checks."""
+    """Run the canonical production test command from pytest.ini."""
     root = _root()
-    test_dir = root / "A_09_TESTS"
     results: List[Dict[str, str]] = []
     overall = "PASS"
-
-    # 1. py_compile all .py files in A_09_TESTS
-    if test_dir.is_dir():
-        for py_file in sorted(test_dir.rglob("*.py")):
-            if "__pycache__" in str(py_file):
-                continue
-            try:
-                import py_compile
-                py_compile.compile(str(py_file), doraise=True)
-                results.append({"check": f"compile_{py_file.stem}", "status": "PASS",
-                                "details": f"{py_file.name} compiles OK"})
-            except Exception as exc:
-                overall = "FAIL"
-                results.append({"check": f"compile_{py_file.stem}", "status": "FAIL",
-                                "details": f"{py_file.name}: {exc}"})
-
-        # 2. Run profile tests via subprocess (timeout-safe)
-        test_files = [
-            "A_09_TESTS/test_repository_knowledge_department.py",
-            "A_09_TESTS/test_repository_knowledge_lifecycle.py",
-            "A_09_TESTS/test_project_documentation_rkd_integration.py",
-            "A_09_TESTS/test_project_indexer_rkd_adapter.py",
-            "A_09_TESTS/test_project_scope.py",
-            "A_09_TESTS/test_system_manifest.py",
-            "A_09_TESTS/test_engineering_review_full.py",
-        ]
-        if test_files:
-            try:
-                proc = _run([sys.executable, "-m", "pytest", *test_files, "-q"], cwd=str(root), timeout=180)
-                if proc.returncode == 0:
-                    results.append({"check": "complete_pytest_profile", "status": "PASS",
-                                    "details": f"Profile tests passed ({len(test_files)} files)"})
-                else:
-                    overall = "FAIL"
-                    results.append({"check": "complete_pytest_profile", "status": "FAIL",
-                                    "details": f"Profile tests failed (exit {proc.returncode})"})
-            except subprocess.TimeoutExpired:
-                overall = "WARNING"
-                results.append({"check": "complete_pytest_profile", "status": "FAIL",
-                                "details": "Profile tests timed out"})
-                overall = "FAIL"
-            except Exception as exc:
-                # pytest may not be installed; fall back to basic import test
-                results.append({"check": "complete_pytest_profile", "status": "FAIL",
-                                "details": f"pytest profile internal error: {exc}"})
-                overall = "FAIL"
+    try:
+        proc = _run([sys.executable, "-m", "pytest", "-c", "pytest.ini"], cwd=str(root), timeout=180)
+        if proc.returncode == 0:
+            results.append({"check": "complete_pytest_profile", "status": "PASS",
+                            "details": "Canonical pytest.ini production route passed"})
+        else:
+            overall = "FAIL"
+            results.append({"check": "complete_pytest_profile", "status": "FAIL",
+                            "details": f"Canonical test route failed (exit {proc.returncode})"})
+    except subprocess.TimeoutExpired:
+        overall = "FAIL"
+        results.append({"check": "complete_pytest_profile", "status": "FAIL",
+                        "details": "Canonical test route timed out"})
+    except Exception as exc:
+        overall = "FAIL"
+        results.append({"check": "complete_pytest_profile", "status": "FAIL",
+                        "details": f"Canonical test route internal error: {exc}"})
 
     return {"status": overall, "details": "; ".join(r["details"] for r in results), "items": results}
 

@@ -31,12 +31,12 @@
     {"name": "System Guardian", "mode": "NOT_REQUIRED"}
   ],
   "alternative_launchers": [
-    {"path": "START_BUTLER.ps1", "status": "LEGACY", "action": "DOCUMENT"},
-    {"path": "START_BUTLER_FULL.ps1", "status": "LEGACY", "action": "DOCUMENT"},
-    {"path": "START_BUTLER_RUNTIME_DIAGNOSTIC.bat", "status": "DIAGNOSTIC", "action": "KEEP"},
-    {"path": "START_SAFE_LAUNCH.py", "status": "EXPERIMENTAL", "action": "DOCUMENT"},
-    {"path": "START_BUTLER_CORE.py", "status": "DEVELOPMENT", "action": "DOCUMENT"},
-    {"path": "START_BUTLER_SYSTEM.py", "status": "DEVELOPMENT", "action": "DOCUMENT"}
+    {"path": "A_00_LEGACY_ARCHIVE/production_cleanup_tz4/launchers/START_BUTLER.ps1", "status": "LEGACY", "action": "ISOLATED"},
+    {"path": "A_00_LEGACY_ARCHIVE/production_cleanup_tz4/launchers/START_BUTLER_FULL.ps1", "status": "LEGACY", "action": "ISOLATED"},
+    {"path": "A_99_TEST_DATA/runtime_diagnostics/START_BUTLER_RUNTIME_DIAGNOSTIC.bat", "status": "DIAGNOSTIC", "action": "ISOLATED"},
+    {"path": "_RFC_WORK/launchers/START_SAFE_LAUNCH.py", "status": "DEVELOPMENT", "action": "ISOLATED"},
+    {"path": "_RFC_WORK/launchers/START_BUTLER_CORE.py", "status": "DEVELOPMENT", "action": "ISOLATED"},
+    {"path": "_RFC_WORK/launchers/START_BUTLER_SYSTEM.py", "status": "DEVELOPMENT", "action": "ISOLATED"}
   ],
   "evidence": [
     "START_BUTLER_OS.ps1 owns session state and exact child PIDs",
@@ -47,7 +47,7 @@
   "validation": {
     "launcher_parser": "PASS",
     "stop_parser": "PASS",
-    "ownership_tests": "PENDING",
-    "smoke_test": "PENDING"
+    "ownership_tests": "PASS",
+    "smoke_test": "PASS"
   }
 }

@@ -20,5 +20,5 @@ Ollama и ComfyUI считаются внешними сервисами и не
 
 ## Boundaries
 
-`chat_router.py`, старые launcher и `professor.py` классифицированы как legacy и не входят
+Старые `chat_router*` и launcher физически изолированы в `A_00_LEGACY_ARCHIVE/production_cleanup_tz4`; `professor.py` классифицирован как legacy и не входит
 в официальную цепочку. Диагностические Inspector не являются production index.

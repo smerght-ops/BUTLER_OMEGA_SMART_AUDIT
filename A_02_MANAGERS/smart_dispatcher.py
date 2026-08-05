@@ -4,13 +4,26 @@ import os
 import re
 import time
 import uuid
+
 import requests
+
 from A_00_UTILS.llm_output_sanitizer import NO_REASONING_PROMPT, sanitize_llm_output
+
 
 OLLAMA_URL = os.environ.get(
     "BUTLER_OLLAMA_BASE",
-    "http://127.0.0.1:11434"
+    "http://127.0.0.1:11434",
 ).rstrip("/") + "/api/generate"
+
+_production_chat_provider = None
+
+
+def get_chat_provider(project_root=None):
+    """Return the single process-wide production model provider."""
+    global _production_chat_provider
+    if _production_chat_provider is None:
+        _production_chat_provider = SmartDispatcher(project_root=project_root)
+    return _production_chat_provider
 
 
 class SmartDispatcher:
@@ -22,13 +35,10 @@ class SmartDispatcher:
 
         if has_image:
             return "vision"
-
-        if re.search(r"(python|РєРѕРґ|code|traceback|ЃРїСЂР°РІСЊ|СЃРєСЂїС‚)", text):
+        if re.search(r"(python|код|code|traceback|ошибка|скрипт)", text):
             return "coder"
-
-        if re.search(r"(РЅР°СЂЃСѓР№|СЃРіРµРЅРµСЂЂСѓР№.*РєР°СЂС‚Ѕ|СЃРѕР·РґР°Р№.*·РѕР±СЂР°Р¶)", text):
+        if re.search(r"(нарисуй|сгенерируй.*картин|создай.*изображ)", text):
             return "image"
-
         return "chat"
 
     def _model_for_role(self, role: str) -> str:
@@ -37,7 +47,7 @@ class SmartDispatcher:
             "coder": "Codestral-Pro:latest",
             "vision": "qwen2.5-vl:latest",
             "dream": "qwen35-ru:latest",
-            "image": "qwen35-ru:latest"
+            "image": "qwen35-ru:latest",
         }
         return mapping.get(role, "qwen35-ru:latest")
 
@@ -46,15 +56,12 @@ class SmartDispatcher:
         employee=None,
         system_prompt="",
         user_content="",
-        has_image=False
+        has_image=False,
     ):
         start = time.time()
-
         role = employee or self.determine_role(user_content, has_image)
         model = self._model_for_role(role)
-
         prompt = f"SYSTEM:\n{system_prompt}\n{NO_REASONING_PROMPT}\n\nUSER:\n{user_content}"
-
         dto = {
             "request_id": uuid.uuid4().hex[:8],
             "role": role,
@@ -67,28 +74,17 @@ class SmartDispatcher:
         }
 
         try:
-            request_payload = {
-                "model": model,
-                "prompt": prompt,
-                "stream": False
-            }
+            request_payload = {"model": model, "prompt": prompt, "stream": False}
             if role == "chat":
                 request_payload["think"] = False
-                request_payload["options"] = {
-                    "num_ctx": 4096,
-                    "temperature": 0,
-                }
+                request_payload["options"] = {"num_ctx": 4096, "temperature": 0}
 
             last_error = None
             data = None
             text = ""
             for attempt in range(3):
                 try:
-                    response = requests.post(
-                        OLLAMA_URL,
-                        json=request_payload,
-                        timeout=180
-                    )
+                    response = requests.post(OLLAMA_URL, json=request_payload, timeout=180)
                     response.raise_for_status()
                     candidate = response.json()
                     raw_text = candidate.get("response", "")
@@ -109,14 +105,12 @@ class SmartDispatcher:
 
             dto["status"] = "ok"
             dto["text"] = text
-
         except Exception as ex:
             dto["status"] = "error"
             dto["fallback_reason"] = str(ex)
             dto["text"] = ""
 
         dto["latency_ms"] = int((time.time() - start) * 1000)
-
         return dto
 
     @staticmethod

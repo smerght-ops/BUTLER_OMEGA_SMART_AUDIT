@@ -14,7 +14,7 @@ def test_active_system_matches_runtime_contract():
     runtime = load("A_00_ARCHITECTURE/RUNTIME_CONTRACT.json")
     assert runtime["official_launcher"] in active
     assert runtime["official_stop_launcher"] in active
-    assert "chat_router.py` имеет статус `LEGACY" in active
+    assert "A_00_LEGACY_ARCHIVE/production_cleanup_tz4" in active
 
 
 def test_system_manifest_matches_production_architecture():
@@ -23,6 +23,7 @@ def test_system_manifest_matches_production_architecture():
     assert manifest["project"] == "BUTLER_OMEGA_SMART"
     assert architecture["status"] == "ACTIVE_PRODUCTION"
     assert architecture["canonical_department_registry"] == "A_02_MANAGERS/department_registry.py"
+    assert architecture["tests"] == ["python -m pytest -c pytest.ini"]
 
 
 def test_no_multiple_active_architecture_documents():
@@ -35,4 +36,6 @@ def test_no_multiple_active_architecture_documents():
 def test_tree_classification_contains_required_groups():
     classification = load("A_00_ARCHITECTURE/PRODUCTION_TREE_CLASSIFICATION.json")
     assert {"launcher", "router_bridge", "memory", "knowledge_review", "evidence"} <= set(classification["groups"])
-    assert classification["moves"] == []
+    assert classification["moves"]
+    assert sum(status == "ACTIVE_PRODUCTION" for status in classification["departments"].values()) == 18
+    assert set(classification["departments"].values()) <= {"ACTIVE_PRODUCTION", "ACTIVE_PARTIAL", "DEVELOPMENT", "LEGACY", "UNUSED"}

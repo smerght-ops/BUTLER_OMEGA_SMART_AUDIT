@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 import json
 from pathlib import Path, PurePosixPath
@@ -8,7 +8,7 @@ class FrozenCoreGuard:
 
     def __init__(self):
         self.frozen_directories = {"A_01_CORE"}
-        self.frozen_files = {"chat_router.py"}
+        self.frozen_files = {"dispatcher_bridge_v2.py", "smart_dispatcher_v2.py"}
 
     def validate(self, cr_path: Path) -> dict:
 

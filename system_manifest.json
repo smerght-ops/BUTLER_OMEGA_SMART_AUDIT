@@ -35,13 +35,8 @@
   "root_entry_files": [
     "START_BUTLER_OS.ps1",
     "STOP_BUTLER_OS.ps1",
-    "START_BUTLER.ps1",
-    "START_BUTLER_FULL.ps1",
-    "START_BUTLER_RUNTIME_DIAGNOSTIC.bat",
-    "START_SAFE_LAUNCH.py",
-    "START_BUTLER_CORE.py",
-    "START_BUTLER_SYSTEM.py",
     "BUTLER_OS.py",
+    "pytest.ini",
     "PROJECT_SCOPE.yaml",
     "system_manifest.json",
     "requirements.txt"

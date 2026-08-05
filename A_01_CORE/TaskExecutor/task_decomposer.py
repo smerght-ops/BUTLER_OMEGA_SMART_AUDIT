@@ -81,7 +81,8 @@ class TaskDecomposer:
         Returns empty list if decomposition fails.
         """
         if not hasattr(self, '_chat_provider'):
-            self._chat_provider = SmartDispatcher()
+            from A_02_MANAGERS.smart_dispatcher import get_chat_provider
+            self._chat_provider = get_chat_provider()
         import re
         match = re.search(r'["\']+([^"\']+\.docx)["\']+', request, re.I)
         docx_path = match.group(1) if match else None

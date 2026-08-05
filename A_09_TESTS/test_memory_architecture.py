@@ -25,7 +25,19 @@ def test_memory_department_uses_orchestrator():
 def test_dki_does_not_import_chat_router():
     source = (ROOT / "A_07_MEMORY/dki_compiler.py").read_text(encoding="utf-8")
     assert "A_03_ORCHESTRATION.chat_router" not in source
-    assert "SmartDispatcher" in source
+    assert "get_chat_provider" in source
+
+
+def test_production_memory_orchestrator_is_shared():
+    from A_07_MEMORY.memory_orchestrator_v2 import get_memory_orchestrator
+
+    assert get_memory_orchestrator() is get_memory_orchestrator()
+
+
+def test_production_chat_provider_is_shared():
+    from A_02_MANAGERS.smart_dispatcher import get_chat_provider
+
+    assert get_chat_provider() is get_chat_provider()
 
 
 def test_architectural_graph_uses_rkd_and_does_not_scan():

@@ -5,7 +5,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 
-LAUNCHER = ROOT / "START_SAFE_LAUNCH.py"
+LAUNCHER = ROOT / "_RFC_WORK" / "launchers" / "START_SAFE_LAUNCH.py"
 
 process = None
 

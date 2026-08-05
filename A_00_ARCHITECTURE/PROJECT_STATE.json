@@ -6,6 +6,8 @@
   "production_architecture": "A_00_ARCHITECTURE/PRODUCTION_ARCHITECTURE.json",
   "runtime_status": "ACTIVE_PRODUCTION",
   "memory_contract": "A_00_ARCHITECTURE/MEMORY_CONTRACT.json",
+  "production_test_command": "python -m pytest -c pytest.ini",
+  "shared_runtime_lifecycle": true,
   "critical_files": {
     "A_01_CORE/memory_guardian.py": {
       "exists": true,

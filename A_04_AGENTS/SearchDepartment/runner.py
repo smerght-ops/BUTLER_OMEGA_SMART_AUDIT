@@ -269,8 +269,8 @@ class SearchDepartment(BaseDepartment):
 
     def _ask_internal_model(self, topic: str) -> dict:
         if self.model_provider is None:
-            from A_02_MANAGERS.smart_dispatcher import SmartDispatcher
-            self.model_provider = SmartDispatcher()
+            from A_02_MANAGERS.smart_dispatcher import get_chat_provider
+            self.model_provider = get_chat_provider()
         result = self.model_provider.execute_employee(
             employee="chat",
             system_prompt=(

@@ -2,6 +2,7 @@
   "schema": "butler.memory-contract.v1",
   "version": "1.0",
   "production_orchestrator": "A_07_MEMORY.memory_orchestrator_v2.MemoryOrchestratorV2",
+  "production_lifecycle": "A_07_MEMORY.memory_orchestrator_v2.get_memory_orchestrator",
   "department_interface": "A_04_AGENTS.MemoryDepartment.runner.MemoryDepartment",
   "types": [
     {"type": "SESSION", "writer": "MemoryOrchestratorV2", "api": "add_session_event", "storage": "A_05_STORAGE/session_history.jsonl", "lifetime": "session"},
@@ -18,7 +19,7 @@
     "Project architecture knowledge is owned by RKD and consumed through its Gateway",
     "Conflict resolution uses versioned evolve/rollback operations"
   ],
-  "llm_boundary": "A_02_MANAGERS.smart_dispatcher.SmartDispatcher",
+  "llm_boundary": "A_02_MANAGERS.smart_dispatcher.get_chat_provider",
   "legacy_replacements": {
     "chat_router.ask_ollama": "SmartDispatcher.execute_employee",
     "architectural_knowledge_graph ROOT.rglob": "repository_knowledge_gateway.get_index",

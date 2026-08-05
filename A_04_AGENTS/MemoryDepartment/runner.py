@@ -8,7 +8,7 @@ import json
 import re
 
 from A_07_MEMORY import memory_router
-from A_07_MEMORY.memory_orchestrator_v2 import MemoryOrchestratorV2
+from A_07_MEMORY.memory_orchestrator_v2 import get_memory_orchestrator
 from A_07_MEMORY.profile_manager import get_fact, get_memory_summary, load_profile
 
 class MemoryDepartment(BaseDepartment):
@@ -38,7 +38,7 @@ class MemoryDepartment(BaseDepartment):
         self.permanent = self.root / "A_05_STORAGE" / "USER_MEMORY.md"
         self.project   = self.root / "A_07_CONFIG" / "project_state.json"
         self.session   = self.root / "A_05_STORAGE" / "session_history.jsonl"
-        self.memory = MemoryOrchestratorV2()
+        self.memory = get_memory_orchestrator()
 
     def can_handle(self, query: str, context: dict = None) -> bool:
         q = (query or "").lower()

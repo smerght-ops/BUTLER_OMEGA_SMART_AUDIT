@@ -41,7 +41,40 @@ def test_import_side_effect_is_unsafe():
 def test_complete_pytest_profile_is_real_pytest_source():
     source = Path(checker.__file__).read_text(encoding="utf-8")
     assert '"-m", "pytest"' in source
-    assert "test_repository_knowledge_lifecycle.py" in source
+    assert '"-c", "pytest.ini"' in source
+
+
+def test_pytest_uses_workspace_temp_and_cache(tmp_path):
+    config = (Path(checker.__file__).resolve().parents[2] / "pytest.ini").read_text(encoding="utf-8")
+    root = Path(checker.__file__).resolve().parents[2]
+    assert root / ".pytest_runtime_tmp" in tmp_path.parents
+    assert "cache_dir = .pytest_runtime_cache" in config
+
+
+def test_git_oserror_is_diagnostic(monkeypatch):
+    def fail(*args, **kwargs):
+        raise OSError(6, "invalid handle")
+
+    monkeypatch.setattr(checker, "_run", fail)
+    result = checker._git("ls-files")
+    assert result.returncode == 126
+    assert "git ls-files" in result.stderr
+    assert "OSError" in result.stderr
+
+
+def test_subprocess_uses_explicit_safe_handles(monkeypatch):
+    captured = {}
+
+    def fake_run(command, **kwargs):
+        captured.update(kwargs)
+        return checker.subprocess.CompletedProcess(command, 0, "", "")
+
+    monkeypatch.setattr(checker.subprocess, "run", fake_run)
+    checker._run(["git", "ls-files"], Path.cwd())
+    assert captured["stdin"] is checker.subprocess.DEVNULL
+    assert captured["stdout"] is checker.subprocess.PIPE
+    assert captured["stderr"] is checker.subprocess.PIPE
+    assert captured["close_fds"] is True
 
 
 def test_full_encoding_checks_json_yaml_md_ps1(tmp_path, monkeypatch):

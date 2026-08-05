@@ -13,14 +13,14 @@ from A_03_ORCHESTRATION.ConversationContext.context_engine import (
 )
 from A_01_CORE.TaskExecutor import CapabilityExecutor, TaskExecutor
 from A_04_AGENTS.DocumentsDepartment.runner import DocumentsDepartment
-from A_07_MEMORY.memory_orchestrator_v2 import MemoryOrchestratorV2
+from A_07_MEMORY.memory_orchestrator_v2 import get_memory_orchestrator
 
 EXIT_WORDS = {"выход", "exit", "quit", "q"}
 VOICE_COMMAND = {"voice", "mic", "голос"}
 _task_planner = TaskExecutor()
 _capability_executor = CapabilityExecutor()
 _documents_capability = DocumentsDepartment()
-_memory_orchestrator = MemoryOrchestratorV2(token_budget=1200)
+_memory_orchestrator = get_memory_orchestrator()
 def _start_secretary_session():
     from A_09_INTERFACE.voice_input import ramble_session
     return ramble_session()

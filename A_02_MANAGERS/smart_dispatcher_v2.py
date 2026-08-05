@@ -8,10 +8,10 @@ from A_07_MEMORY.semantic_memory import SemanticMemory
 from A_07_MEMORY.semantic_reasoning_engine import SemanticReasoningEngine
 from A_03_ORCHESTRATION.butler_harness import ButlerHarness
 from A_03_ORCHESTRATION.permission import DepartmentExecutionGateway
-from A_02_MANAGERS.smart_dispatcher import SmartDispatcher
+from A_02_MANAGERS.smart_dispatcher import get_chat_provider
 from A_02_MANAGERS.goal_manager import GoalManager
 from A_02_MANAGERS.department_registry import instantiate_departments
-from A_07_MEMORY.memory_orchestrator_v2 import MemoryOrchestratorV2
+from A_07_MEMORY.memory_orchestrator_v2 import get_memory_orchestrator
 from A_01_CORE.TaskExecutor.task_executor import TaskExecutor
 
 
@@ -23,8 +23,8 @@ class SmartDispatcherV2:
         self._last_semantic_intent = None
         self.harness = ButlerHarness()
         self.department_gateway = DepartmentExecutionGateway()
-        self.chat_provider = SmartDispatcher()
-        self.memory_orchestrator = MemoryOrchestratorV2(token_budget=1200)
+        self.chat_provider = get_chat_provider()
+        self.memory_orchestrator = get_memory_orchestrator()
         self.task_executor = TaskExecutor()
         self.audio_engine = create_audio_engine()
 

@@ -18,8 +18,9 @@ def test_official_launcher_and_runtime_chain_contract():
 def test_alternative_launchers_classified():
     contract = json.loads((ROOT / "A_00_ARCHITECTURE/RUNTIME_CONTRACT.json").read_text(encoding="utf-8"))
     rows = {row["path"]: row["status"] for row in contract["alternative_launchers"]}
-    assert rows["START_BUTLER_RUNTIME_DIAGNOSTIC.bat"] == "DIAGNOSTIC"
+    assert rows["A_99_TEST_DATA/runtime_diagnostics/START_BUTLER_RUNTIME_DIAGNOSTIC.bat"] == "DIAGNOSTIC"
     assert all(status != "ACTIVE_PRODUCTION" for status in rows.values())
+    assert all(row["action"] == "ISOLATED" for row in contract["alternative_launchers"])
 
 
 def test_session_state_created_and_partial_start_rolls_back_owned_processes():

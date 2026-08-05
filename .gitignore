@@ -37,6 +37,10 @@ __pycache__/
 *.pyo
 *.pyd
 .pytest_cache/
+.pytest_cache_local/
+.pytest_tmp/
+.pytest_runtime_cache/
+.pytest_runtime_tmp/
 .mypy_cache/
 
 # ---------- Virtual Environments ----------
@@ -222,6 +226,12 @@ A_06_WORKSPACE/**
 # ---------- Test reports ----------
 A_09_TESTS/reports/
 A_99_TESTS/reports/
+
+# ---------- Tracked production cleanup isolation ----------
+!A_00_LEGACY_ARCHIVE/
+A_00_LEGACY_ARCHIVE/*
+!A_00_LEGACY_ARCHIVE/production_cleanup_tz4/
+!A_00_LEGACY_ARCHIVE/production_cleanup_tz4/**
 
 # ---------- Generated artifacts ----------
 **/benchmark/**

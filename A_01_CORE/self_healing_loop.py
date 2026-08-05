@@ -7,7 +7,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from A_02_MANAGERS.smart_dispatcher import SmartDispatcher
+from A_02_MANAGERS.smart_dispatcher import get_chat_provider
 from A_01_CORE.safety_gate import guarded_write
 
 SANDBOX = ROOT / "A_00_AVARIYKA" / "SELF_HEALING_SANDBOX"
@@ -23,7 +23,7 @@ print(broken_variable_trigger_error)
 
 TARGET.write_text(BROKEN.strip() + "\n", encoding="utf-8")
 
-dispatcher = SmartDispatcher(ROOT)
+dispatcher = get_chat_provider(ROOT)
 
 for attempt in range(1, 4):
 

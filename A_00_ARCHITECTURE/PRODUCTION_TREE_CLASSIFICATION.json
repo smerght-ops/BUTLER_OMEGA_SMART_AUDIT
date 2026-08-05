@@ -1,12 +1,72 @@
 {
   "schema": "butler.production-tree-classification.v1",
   "groups": {
-    "launcher": {"START_BUTLER_OS.ps1": "ACTIVE_PRODUCTION", "STOP_BUTLER_OS.ps1": "ACTIVE_PRODUCTION", "START_BUTLER_RUNTIME_DIAGNOSTIC.bat": "DIAGNOSTIC", "START_BUTLER.ps1": "LEGACY", "START_BUTLER_FULL.ps1": "LEGACY", "START_SAFE_LAUNCH.py": "EXPERIMENTAL", "START_BUTLER_CORE.py": "DEVELOPMENT", "START_BUTLER_SYSTEM.py": "DEVELOPMENT"},
-    "router_bridge": {"A_03_ORCHESTRATION/dispatcher_bridge_v2.py": "ACTIVE_PRODUCTION", "A_03_ORCHESTRATION/dispatcher_bridge.py": "LEGACY", "A_03_ORCHESTRATION/chat_router.py": "LEGACY", "A_03_ORCHESTRATION/chat_router.CLEAN_UTF8.py": "DUPLICATE", "A_03_ORCHESTRATION/chat_router.HYBRID_WORK*": "DUPLICATE", "A_03_ORCHESTRATION/chat_router_mirror.py": "DUPLICATE", "A_03_ORCHESTRATION/chat_router_test_restore.py": "TEST_ARTIFACT"},
-    "memory": {"A_07_MEMORY/memory_orchestrator_v2.py": "ACTIVE_PRODUCTION", "A_07_MEMORY/memory_orchestrator.py": "LEGACY", "A_07_MEMORY/memory_facade_v2.py": "ACTIVE_SUPPORT", "A_07_MEMORY/memory_facade.py": "LEGACY", "A_07_MEMORY/architectural_knowledge_graph.py": "ACTIVE_SUPPORT"},
-    "knowledge_review": {"A_04_AGENTS/RepositoryKnowledgeDepartment": "ACTIVE_PRODUCTION", "A_04_AGENTS/EngineeringReviewDepartment": "ACTIVE_PRODUCTION", "A_01_CORE/project_indexer.py": "ACTIVE_SUPPORT", "tools/inspectors": "DIAGNOSTIC"},
-    "evidence": {"A_09_TESTS": "TEST_ARTIFACT", "A_99_TESTS": "TEST_ARTIFACT", "A_99_TEST_DATA": "TEST_ARTIFACT", "AUDIT": "GENERATED", "AUDIT_PACKS": "GENERATED", "docs/reports": "GENERATED"}
+    "launcher": {
+      "START_BUTLER_OS.ps1": "ACTIVE_PRODUCTION",
+      "STOP_BUTLER_OS.ps1": "ACTIVE_PRODUCTION",
+      "_RFC_WORK/launchers": "DEVELOPMENT",
+      "A_99_TEST_DATA/runtime_diagnostics": "DIAGNOSTIC",
+      "A_00_LEGACY_ARCHIVE/production_cleanup_tz4/launchers": "LEGACY"
+    },
+    "router_bridge": {
+      "A_03_ORCHESTRATION/dispatcher_bridge_v2.py": "ACTIVE_PRODUCTION",
+      "A_00_LEGACY_ARCHIVE/production_cleanup_tz4/orchestration": "LEGACY"
+    },
+    "memory": {
+      "A_07_MEMORY/memory_orchestrator_v2.py": "ACTIVE_PRODUCTION",
+      "A_07_MEMORY/memory_orchestrator.py": "LEGACY",
+      "A_07_MEMORY/memory_facade_v2.py": "ACTIVE_SUPPORT",
+      "A_07_MEMORY/memory_facade.py": "LEGACY",
+      "A_07_MEMORY/architectural_knowledge_graph.py": "ACTIVE_SUPPORT"
+    },
+    "knowledge_review": {
+      "A_04_AGENTS/RepositoryKnowledgeDepartment": "ACTIVE_PRODUCTION",
+      "A_04_AGENTS/EngineeringReviewDepartment": "ACTIVE_PRODUCTION",
+      "A_01_CORE/project_indexer.py": "ACTIVE_SUPPORT",
+      "tools/inspectors": "DIAGNOSTIC"
+    },
+    "evidence": {
+      "A_09_TESTS": "ACTIVE_PRODUCTION",
+      "A_99_TESTS": "LEGACY",
+      "A_99_TEST_DATA": "DIAGNOSTIC",
+      "AUDIT": "GENERATED",
+      "AUDIT_PACKS": "GENERATED",
+      "docs/reports": "GENERATED"
+    }
   },
-  "moves": [],
-  "note": "No file was moved or deleted; classification precedes any future isolation batch."
+  "departments": {
+    "PublicationGuardianDepartment": "ACTIVE_PRODUCTION",
+    "RepositoryKnowledgeDepartment": "ACTIVE_PRODUCTION",
+    "EngineeringReviewDepartment": "ACTIVE_PRODUCTION",
+    "ProjectDocumentationDepartment": "ACTIVE_PRODUCTION",
+    "BrowserDepartment": "ACTIVE_PRODUCTION",
+    "ImageDepartment": "ACTIVE_PRODUCTION",
+    "VideoDepartment": "ACTIVE_PRODUCTION",
+    "AudioDepartment": "ACTIVE_PRODUCTION",
+    "ArchiveDepartment": "ACTIVE_PRODUCTION",
+    "FilesystemDepartment": "ACTIVE_PRODUCTION",
+    "CodingDepartment": "ACTIVE_PRODUCTION",
+    "VisionDepartment": "ACTIVE_PRODUCTION",
+    "SearchDepartment": "ACTIVE_PRODUCTION",
+    "MemoryDepartment": "ACTIVE_PRODUCTION",
+    "OpenDocumentDepartment": "ACTIVE_PRODUCTION",
+    "DocumentsDepartment": "ACTIVE_PRODUCTION",
+    "TextDepartment": "ACTIVE_PRODUCTION",
+    "HomeDepartment": "ACTIVE_PRODUCTION",
+    "BionicDepartment": "DEVELOPMENT",
+    "GitPublishGuardianDepartment": "DEVELOPMENT",
+    "ChatDepartment": "UNUSED",
+    "ExternalDepartment": "UNUSED",
+    "OCRDepartment": "UNUSED",
+    "VoiceDepartment": "UNUSED"
+  },
+  "moves": [
+    {"source": "START_BUTLER.ps1", "destination": "A_00_LEGACY_ARCHIVE/production_cleanup_tz4/launchers/START_BUTLER.ps1", "classification": "LEGACY"},
+    {"source": "START_BUTLER_FULL.ps1", "destination": "A_00_LEGACY_ARCHIVE/production_cleanup_tz4/launchers/START_BUTLER_FULL.ps1", "classification": "LEGACY"},
+    {"source": "A_03_ORCHESTRATION/chat_router*", "destination": "A_00_LEGACY_ARCHIVE/production_cleanup_tz4/orchestration", "classification": "LEGACY"},
+    {"source": "A_03_ORCHESTRATION/dispatcher_bridge.py", "destination": "A_00_LEGACY_ARCHIVE/production_cleanup_tz4/orchestration/dispatcher_bridge.py", "classification": "LEGACY"},
+    {"source": "START_SAFE_LAUNCH.py|START_BUTLER_CORE.py|START_BUTLER_SYSTEM.py", "destination": "_RFC_WORK/launchers", "classification": "DEVELOPMENT"},
+    {"source": "START_BUTLER_RUNTIME_DIAGNOSTIC.bat", "destination": "A_99_TEST_DATA/runtime_diagnostics/START_BUTLER_RUNTIME_DIAGNOSTIC.bat", "classification": "DIAGNOSTIC"}
+  ],
+  "note": "Production root contains only the official launcher and stop launcher; alternative routes are physically isolated."
 }

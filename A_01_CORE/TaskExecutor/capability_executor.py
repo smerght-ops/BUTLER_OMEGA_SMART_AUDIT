@@ -13,6 +13,7 @@ from tools.inspectors.CapabilityRegistry import CapabilityRegistry
 from .execution_context import ExecutionContext
 from A_01_CORE.event_bus import EventBus
 from A_01_CORE.execution_journal import ExecutionJournal
+from A_01_CORE.judge_runtime import JudgeRuntime
 from A_01_CORE.runtime_contracts import (
     CancellationToken,
     ResourceLease,
@@ -34,6 +35,7 @@ class CapabilityExecutor:
         self._department_sources = None
         self.skill_memory = SemanticMemory()
         self.department_gateway = DepartmentExecutionGateway()
+        self.judge = JudgeRuntime()
         self.journal = ExecutionJournal(self.root)
         self.journal_dir = self.journal.directory
 
@@ -288,6 +290,8 @@ class CapabilityExecutor:
             metadata={"failed_step": failed_step, "artifacts": artifacts},
         )
         result["metadata"]["structured_result"] = structured.to_dict()
+        judge = getattr(self, "judge", None) or JudgeRuntime()
+        result["metadata"]["judge"] = judge.evaluate(result, evidence=context.history)
         journal_path = getattr(self, "_active_journal", None)
         plan = getattr(self, "_active_plan", {})
         if journal_path:

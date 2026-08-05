@@ -11,6 +11,7 @@ from pathlib import Path
 
 from A_04_AGENTS.base_department import BaseDepartment
 from A_03_ORCHESTRATION.observation_layer import ObservationLayer
+from A_01_CORE.judge_runtime import Evidence, JudgeRuntime
 from .checker import run_full_review, format_report
 
 
@@ -27,6 +28,7 @@ class EngineeringReviewDepartment(BaseDepartment):
     def __init__(self, root=None, observation=None):
         self.root = Path(root or Path(__file__).resolve().parents[2]).resolve()
         self.observation = observation or ObservationLayer()
+        self.judge = JudgeRuntime()
 
     def can_handle(self, query: str, context: dict = None) -> bool:
         normalized = " ".join(str(query or "").casefold().split())
@@ -38,6 +40,21 @@ class EngineeringReviewDepartment(BaseDepartment):
             context = dict(context or {})
             mode = "full" if context.get("full") or "full" in str(query).casefold() else "changed"
             report = run_full_review(mode=mode, detailed=bool(context.get("detailed")))
+            evidence = [
+                Evidence(
+                    source="EngineeringReviewDepartment",
+                    claim=name,
+                    value=check.get("status"),
+                    verified=check.get("status") == "PASS",
+                    kind="engineering_check",
+                )
+                for name, check in report.get("checks", {}).items()
+            ]
+            judgment = self.judge.evaluate(
+                {"ok": report.get("overall") == "PASS", "error": None if report.get("overall") == "PASS" else "ENGINEERING_REVIEW_FAILED"},
+                evidence=evidence,
+            )
+            report["judge"] = judgment
             text = format_report(report)
             return self._result(started, True, {"report": report}, None, text=text)
         except Exception as error:

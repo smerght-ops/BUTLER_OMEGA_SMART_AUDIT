@@ -416,7 +416,7 @@ class ArchitectAgent:
 
         lines.extend(["", "Runtime:", "- SmartDispatcherV2"])
         if runtime_departments:
-            lines.append("- Departments:")
+            lines.append("- Полный состав Department:")
             lines.extend(
                 f"  - {item.get('class')} | {item.get('source')}"
                 for item in runtime_departments if item.get("class")

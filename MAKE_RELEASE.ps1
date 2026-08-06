@@ -1,5 +1,13 @@
 $ProjectRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
 
+$ContinuousAcceptance = Join-Path $ProjectRoot "RUN_CONTINUOUS_ACCEPTANCE.ps1"
+Write-Host "[CHECK] Phase 9 Continuous Acceptance (FULL)" -ForegroundColor Cyan
+& $ContinuousAcceptance -AcceptanceMode full
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "[FAIL] Release blocked by Phase 9 Continuous Acceptance." -ForegroundColor Red
+    exit 1
+}
+
 Write-Host ""
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host "      BUTLER OMEGA RELEASE CHECK" -ForegroundColor Cyan

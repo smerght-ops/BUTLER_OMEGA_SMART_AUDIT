@@ -27,7 +27,7 @@ DEPARTMENTS = {
 
 
 COMPONENTS = {
-    "GOAL_MANAGER": {"module": "A_02_MANAGERS.goal_manager", "class": "GoalManager", "component_type": "MANAGER", "status": "ACTIVE_SUPPORT"},
+    "GOAL_MANAGER": {"module": "A_02_MANAGERS.goal_manager", "class": "GoalManager", "component_type": "MANAGER", "status": "ACTIVE_SUPPORT", "routable": True, "order": 105},
     "CHAT_PROVIDER": {"module": "A_02_MANAGERS.smart_dispatcher", "class": "SmartDispatcher", "component_type": "SERVICE", "status": "ACTIVE_SUPPORT"}
 }
 
@@ -36,15 +36,25 @@ def department_specs():
     return tuple(sorted(DEPARTMENTS.items(), key=lambda item: item[1]["order"]))
 
 
+def routable_specs():
+    """Return Departments plus explicitly routable support components."""
+    support = (
+        (name, spec) for name, spec in COMPONENTS.items()
+        if spec.get("routable") is True
+    )
+    return tuple(sorted((*DEPARTMENTS.items(), *support),
+                        key=lambda item: item[1]["order"]))
+
+
 def instantiate_departments():
     instances = []
-    for expected_name, spec in department_specs():
+    for expected_name, spec in routable_specs():
         cls = getattr(import_module(spec["module"]), spec["class"])
         instance = cls()
         actual_name = str(getattr(instance, "NAME", "")).upper()
         if actual_name != expected_name:
-            raise RuntimeError(f"DEPARTMENT_NAME_MISMATCH:{expected_name}:{actual_name}")
+            raise RuntimeError(f"ROUTABLE_NAME_MISMATCH:{expected_name}:{actual_name}")
         if not callable(getattr(instance, "can_handle", None)) or not callable(getattr(instance, "execute", None)):
-            raise RuntimeError(f"DEPARTMENT_CONTRACT_INVALID:{expected_name}")
+            raise RuntimeError(f"ROUTABLE_CONTRACT_INVALID:{expected_name}")
         instances.append(instance)
     return instances

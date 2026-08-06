@@ -4,6 +4,7 @@ from A_04_AGENTS.base_department import BaseDepartment
 
 from pathlib import Path
 from time import perf_counter
+import ast
 import json
 import re
 
@@ -227,8 +228,22 @@ class MemoryDepartment(BaseDepartment):
                 f"(знание: {entry['knowledge'].get('key')})" for entry in links[:10]
             )
 
-        # Controlled knowledge is queried by meaning; do not reinterpret the
-        # whole natural-language question as a literal profile key.
+        if q in {"кто я", "как меня зовут"}:
+            name = get_fact("user_name", "name")
+            return f"Вас зовут {name}." if name else "Имя пользователя не сохранено."
+
+        if "любимый цвет" in q:
+            color = get_fact("preferences", "favorite_color")
+            return f"Ваш любимый цвет — {color}." if color else "Любимый цвет не сохранён."
+
+        match = re.search(r"какой мой\s+(.+)$", q)
+        if match:
+            key = match.group(1).strip()
+            value = get_fact("facts", key)
+            return f"Ваш {key} — {value}." if value else f"Факт «{key}» не найден в памяти."
+
+        # Fuzzy controlled-knowledge retrieval follows exact profile keys so a
+        # weak semantic match cannot override an authoritative user fact.
         knowledge = self.memory.search_knowledge(query)
         if knowledge:
             item = knowledge[0]
@@ -243,20 +258,6 @@ class MemoryDepartment(BaseDepartment):
                 )
             if value is not None:
                 return f"Активное значение: {value}."
-
-        if q in {"кто я", "как меня зовут"}:
-            name = get_fact("user_name", "name")
-            return f"Вас зовут {name}." if name else "Имя пользователя не сохранено."
-
-        if "любимый цвет" in q:
-            color = get_fact("preferences", "favorite_color")
-            return f"Ваш любимый цвет — {color}." if color else "Любимый цвет не сохранён."
-
-        match = re.search(r"какой мой\s+(.+)$", q)
-        if match:
-            key = match.group(1).strip()
-            value = get_fact("facts", key)
-            return f"Ваш {key} — {value}." if value else f"Факт «{key}» не найден в памяти."
 
         profile = load_profile()
         words = {word for word in re.findall(r"[a-zа-я0-9_-]+", q, re.I) if len(word) >= 3}
@@ -419,7 +420,32 @@ class MemoryDepartment(BaseDepartment):
             if found:
                 break
         if not found:
-            return f"Department {target}: информация отсутствует в Inspector v3.1."
+            source = self.root / "A_04_AGENTS" / target / "runner.py"
+            try:
+                tree = ast.parse(source.read_text(encoding="utf-8-sig"))
+                found = next(
+                    item for item in tree.body
+                    if isinstance(item, ast.ClassDef)
+                    and item.name.casefold() == target.casefold()
+                )
+                methods = [
+                    item.name for item in found.body
+                    if isinstance(item, (ast.FunctionDef, ast.AsyncFunctionDef))
+                    and not item.name.startswith("_")
+                ]
+                imports = self._unique(
+                    node.module for node in tree.body
+                    if isinstance(node, ast.ImportFrom) and node.module
+                )
+                return (
+                    f"Назначение Department {target}: зарегистрированный компонент "
+                    f"{source.relative_to(self.root).as_posix()}. "
+                    f"Возможности по Inspector: {', '.join(methods) if methods else 'публичные методы не указаны'}. "
+                    f"Используемые данные/зависимости по Inspector: {', '.join(imports) if imports else 'не указаны'}. "
+                    "Ограничения: live AST подтверждает структуру, но не доказывает динамическое выполнение."
+                )
+            except (OSError, UnicodeError, SyntaxError, StopIteration):
+                return f"Department {target}: информация отсутствует в Inspector v3.1 и live AST."
         methods = [method.get("name") for method in found.get("methods", []) if method.get("name") and not method.get("name").startswith("_")]
         imports = self._unique(
             entry.get("module") for entry in (found_item or {}).get("imports", []) if entry.get("module")

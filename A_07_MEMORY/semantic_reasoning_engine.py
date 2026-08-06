@@ -136,6 +136,14 @@ class SemanticReasoningEngine:
             and bool(re.search(r"\b(?:я|мо[йяеёию]|мне|меня|обо\s+мне)\b", normalized))
             and not has_stem("архитектур", "компонент", "runtime", "внутрен")
         )
+        artifact_memory_subject = (
+            (lifecycle_ellipsis and not explicit_project_object)
+            or (named_project_component and has_stem("внутр"))
+            or (
+                has_stem("зна")
+                and bool(re.search(r"\bсво(?:ем|ём)\s+проект", normalized))
+            )
+        )
 
         reasons = []
         if asks_for_information:
@@ -151,7 +159,7 @@ class SemanticReasoningEngine:
         if inherits_project_object:
             reasons.append("inherited_project_self_reference")
 
-        matched = (not explicit_operation) and (not personal_memory_subject) and asks_for_information and (
+        matched = (not explicit_operation) and (not personal_memory_subject) and (not artifact_memory_subject) and asks_for_information and (
             (explicit_project_object and project_knowledge_dimension)
             or (explicit_project_object and has_stem("зна", "уме", "расскаж"))
             or (inherits_project_object and project_knowledge_dimension)

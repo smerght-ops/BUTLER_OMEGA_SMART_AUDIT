@@ -91,8 +91,27 @@ class ContextProvider:
             if owns and isinstance(node.value, (ast.List, ast.Tuple)):
                 registered.extend(item.func.id for item in node.value.elts
                                   if isinstance(item, ast.Call) and isinstance(item.func, ast.Name))
+        registry_specs = {}
+        if not registered:
+            registry_path = self.root / "A_02_MANAGERS" / "department_registry.py"
+            try:
+                registry_tree = ast.parse(registry_path.read_text(encoding="utf-8-sig"))
+                registry_node = next(
+                    node for node in registry_tree.body
+                    if isinstance(node, ast.Assign)
+                    and any(isinstance(target, ast.Name) and target.id == "DEPARTMENTS"
+                            for target in node.targets)
+                )
+                registry_specs = ast.literal_eval(registry_node.value)
+                registered = list(registry_specs)
+            except (OSError, SyntaxError, UnicodeError, ValueError, StopIteration):
+                registry_specs = {}
         for class_name in registered:
-            module, imported_name = imports.get(class_name, (None, class_name))
+            spec = registry_specs.get(class_name, {})
+            module, imported_name = imports.get(
+                class_name,
+                (spec.get("module"), spec.get("class", class_name)),
+            )
             source = module.replace(".", "/") + ".py" if module else None
             info = {"class": imported_name, "registered": True, "runtime_reachable": True,
                     "source": source, "capabilities": [], "public_methods": [], "implementation_markers": []}

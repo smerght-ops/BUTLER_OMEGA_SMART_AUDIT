@@ -32,11 +32,48 @@ function Resolve-ButlerPython {
         & $env:BUTLER_PYTHON -c "import requests,yaml,fitz" 2>$null
         if ($LASTEXITCODE -eq 0) { return (Resolve-Path -LiteralPath $env:BUTLER_PYTHON).Path }
     }
+    $bundled = Join-Path $env:USERPROFILE ".cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe"
+    if (Test-Path -LiteralPath $bundled -PathType Leaf) {
+        & $bundled -c "import requests,yaml,fitz" 2>$null
+        if ($LASTEXITCODE -eq 0) { return (Resolve-Path -LiteralPath $bundled).Path }
+    }
     throw "CANONICAL_PYTHON_UNAVAILABLE"
 }
 
 function Test-ServicePort([int]$Port) {
     return Test-NetConnection 127.0.0.1 -Port $Port -InformationLevel Quiet -WarningAction SilentlyContinue
+}
+
+function Wait-ServicePort([string]$Name, [int]$Port, [int]$TimeoutSeconds) {
+    $deadline = [DateTime]::UtcNow.AddSeconds($TimeoutSeconds)
+    while ([DateTime]::UtcNow -lt $deadline) {
+        if (Test-ServicePort $Port) { return }
+        Start-Sleep -Seconds 2
+    }
+    throw "${Name}_START_TIMEOUT"
+}
+
+function Start-RequiredServices([hashtable]$State) {
+    if (-not (Test-ServicePort 11434)) {
+        $ollamaPath = Join-Path $env:LOCALAPPDATA "Programs\Ollama\ollama.exe"
+        if (-not (Test-Path -LiteralPath $ollamaPath -PathType Leaf)) { throw "OLLAMA_EXECUTABLE_NOT_FOUND" }
+        $ollama = Start-Process -FilePath $ollamaPath -ArgumentList @("serve") -WindowStyle Minimized -PassThru
+        $State.processes += @{ role = "Ollama"; pid = $ollama.Id; command_token = "ollama"; owned = $true }
+        Write-State $State
+        Wait-ServicePort "OLLAMA" 11434 60
+        $State.external_services[0].mode = "BUTLER_OWNED"
+    }
+    if (-not (Test-ServicePort 8188)) {
+        $comfyRoot = "D:\AI_Studio\ComfyUI_windows_portable"
+        $comfyPython = Join-Path $comfyRoot "python_embeded\python.exe"
+        $comfyMain = Join-Path $comfyRoot "ComfyUI\main.py"
+        if (-not (Test-Path -LiteralPath $comfyPython -PathType Leaf) -or -not (Test-Path -LiteralPath $comfyMain -PathType Leaf)) { throw "COMFYUI_EXECUTABLE_NOT_FOUND" }
+        $comfy = Start-Process -FilePath $comfyPython -ArgumentList @("-s", "ComfyUI\main.py", "--windows-standalone-build") -WorkingDirectory $comfyRoot -WindowStyle Minimized -PassThru
+        $State.processes += @{ role = "ComfyUI"; pid = $comfy.Id; command_token = "ComfyUI\main.py"; owned = $true }
+        Write-State $State
+        Wait-ServicePort "COMFYUI" 8188 180
+        $State.external_services[1].mode = "BUTLER_OWNED"
+    }
 }
 
 function Stop-OwnedProcesses([hashtable]$State) {
@@ -70,7 +107,11 @@ $state = @{
 }
 
 if (Test-Path -LiteralPath $StatePath) {
-    throw "ACTIVE_BUTLER_SESSION_EXISTS: $StatePath"
+    $oldState = Get-Content -LiteralPath $StatePath -Raw -Encoding UTF8 | ConvertFrom-Json
+    $live = @($oldState.processes | Where-Object { $_.owned -and (Get-Process -Id $_.pid -ErrorAction SilentlyContinue) })
+    if ($live.Count -gt 0) { throw "ACTIVE_BUTLER_SESSION_EXISTS: $StatePath" }
+    Remove-Item -LiteralPath $StatePath -Force
+    Write-Host "BUTLER_STALE_SESSION_RECOVERED session=$($oldState.session_id)"
 }
 Write-State $state
 
@@ -83,12 +124,14 @@ if ($ValidateOnly) {
 }
 
 try {
+    Start-RequiredServices $state
+    Write-State $state
     $runner = Start-Process -FilePath $PythonExe -ArgumentList @("-m", "A_02_MANAGERS.TaskRunner.runner_loop") -WorkingDirectory $ProjectRoot -WindowStyle Hidden -PassThru
     $state.processes += @{ role = "RunnerLoop"; pid = $runner.Id; command_token = "A_02_MANAGERS.TaskRunner.runner_loop"; owned = $true }
     Write-State $state
 
     $butlerArguments = @(".\BUTLER_OS.py") + @($ButlerArgs | Where-Object { $null -ne $_ -and $_ -ne "" })
-    $butler = Start-Process -FilePath $PythonExe -ArgumentList $butlerArguments -WorkingDirectory $ProjectRoot -WindowStyle Hidden -PassThru
+    $butler = Start-Process -FilePath $PythonExe -ArgumentList $butlerArguments -WorkingDirectory $ProjectRoot -NoNewWindow -PassThru
     $state.processes += @{ role = "ButlerOS"; pid = $butler.Id; command_token = "BUTLER_OS.py"; owned = $true }
     $state.status = "RUNNING"
     Write-State $state
